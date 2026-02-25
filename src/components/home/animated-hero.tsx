@@ -98,7 +98,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
           <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <div className="mb-5 flex flex-wrap gap-2">
-                {["Dubai, UAE", "Agentic AI", "Claude-Native Delivery"].map((chip) => (
+                {["Dubai, UAE", "Business + Agency Delivery"].map((chip) => (
                   <span
                     key={chip}
                     data-hero-chip
@@ -120,9 +120,8 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                 </span>
               </h1>
               <p data-hero-copy className="mt-5 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg">
-                Dubai-based AI software house for businesses that need operational automation and agencies that need a
-                white-label partner to ship AI projects fast. We specialize in Claude / Claude Code workflows, agentic
-                automation, and AI-enabled product delivery.
+                Dubai-based AI software house for operational automation and white-label AI delivery. We help
+                businesses automate workflows and help agencies ship AI projects faster with Claude-native execution.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <div data-hero-cta>
@@ -136,15 +135,19 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                   </Button>
                 </div>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3 text-xs text-ink/65 sm:text-sm">
-                <Link href="/services/agentic-ai-automation" className="focus-ring rounded-full border border-white/10 px-3 py-1.5 hover:bg-white/5">
-                  Agentic AI Automation
+              <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-ink/65 sm:text-sm">
+                <span className="font-mono uppercase tracking-[0.18em] text-ink/55">Core focus</span>
+                <Link
+                  href="/services"
+                  className="focus-ring rounded-full border border-white/10 px-3 py-1.5 hover:bg-white/5"
+                >
+                  View services
                 </Link>
-                <Link href="/services/claude-code-automation" className="focus-ring rounded-full border border-white/10 px-3 py-1.5 hover:bg-white/5">
-                  Claude Code Automation
-                </Link>
-                <Link href="/services/white-label-ai-delivery" className="focus-ring rounded-full border border-white/10 px-3 py-1.5 hover:bg-white/5">
-                  White-Label AI Delivery
+                <Link
+                  href="/agency-partners"
+                  className="focus-ring rounded-full border border-white/10 px-3 py-1.5 hover:bg-white/5"
+                >
+                  Agency partnerships
                 </Link>
               </div>
             </div>
@@ -153,7 +156,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
               <div className="glass-panel gradient-stroke relative overflow-hidden rounded-3xl p-5 sm:p-6">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-1/70 to-transparent" />
                 <div className="mb-4 flex items-center justify-between">
-                  <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-1">Two delivery tracks</p>
+                  <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-1">Pick your path</p>
                   <span className="rounded-full border border-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-ink/60">
                     Launch-ready
                   </span>
@@ -168,8 +171,14 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                       <h2 className="font-display text-xl font-semibold">For Businesses</h2>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-ink/75">
-                      Automate operations, build internal tools, and deploy AI workflows with measurable business impact.
+                      Operational automation, AI-enabled internal tools, and production-ready workflows.
                     </p>
+                    <Link
+                      href="/services"
+                      className="focus-ring mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-accent-1 hover:bg-white/5"
+                    >
+                      Explore services <span aria-hidden>↗</span>
+                    </Link>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                     <div className="flex items-center gap-3">
@@ -180,19 +189,21 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                       <h2 className="font-display text-xl font-semibold">For Agencies</h2>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-ink/75">
-                      White-label AI implementation for software houses in Eastern Europe, South America, Australia, and New Zealand.
+                      White-label AI implementation support for software houses and digital agencies.
                     </p>
+                    <Link
+                      href="/agency-partners"
+                      className="focus-ring mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-accent-2 hover:bg-white/5"
+                    >
+                      Partner model <span aria-hidden>↗</span>
+                    </Link>
                   </div>
                 </div>
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">Base</p>
-                    <p className="mt-1 text-lg font-semibold">Dubai, UAE</p>
-                  </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">Mode</p>
-                    <p className="mt-1 text-lg font-semibold">Agentic + Product</p>
-                  </div>
+                <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">Fastest starting point</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/80">
+                    Start with one workflow or one client AI pilot, then scale after measurable results.
+                  </p>
                 </div>
               </div>
             </div>

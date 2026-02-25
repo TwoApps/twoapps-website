@@ -17,12 +17,12 @@ export function PageHero({ eyebrow, title, description, chips = [] }: PageHeroPr
           <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-accent-2/15 blur-3xl" />
           <div className="relative">
             {eyebrow ? <Tag className="mb-5">{eyebrow}</Tag> : null}
-            <h1 className="text-balance font-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance max-w-5xl font-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
               {title}
             </h1>
-            <p className="mt-5 max-w-3xl text-base leading-relaxed text-ink/75 sm:text-lg">{description}</p>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-ink/75 sm:text-lg sm:leading-8">{description}</p>
             {chips.length ? (
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-7 flex flex-wrap gap-2.5">
                 {chips.map((chip) => (
                   <span
                     key={chip}

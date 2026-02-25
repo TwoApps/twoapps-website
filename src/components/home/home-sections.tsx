@@ -64,9 +64,9 @@ export function ServicesOverviewSection() {
                 <Tag>{service.audiences.includes("agency") && service.audiences.includes("business") ? "Business + Agency" : "Agency"}</Tag>
               </div>
               <h3 className="font-display text-2xl font-semibold leading-tight">{service.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink/75">{service.summary}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink/75">{service.tagline}</p>
               <ul className="mt-4 space-y-2 text-sm text-ink/85">
-                {service.deliverables.slice(0, 3).map((item) => (
+                {service.benefits.slice(0, 2).map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
                     <span>{item}</span>
@@ -94,7 +94,7 @@ export function FounderProofSection() {
             <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">
               Company-first positioning, backed by deep hands-on execution experience
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-ink/75 sm:text-base">
+            <p className="mt-4 max-w-[62ch] text-sm leading-relaxed text-ink/75 sm:text-base">
               Two Apps is presented as a studio, but your founder credibility is a major trust asset: strong experience across
               automation, cloud/product engineering, Claude/Claude Code workflows, and compliance-aware process design.
             </p>
@@ -103,9 +103,7 @@ export function FounderProofSection() {
                 "Claude / Claude Code automation expertise",
                 "AI-native workflow design and orchestration",
                 "Flutter + AWS product engineering background",
-                "AML / KYC process and ops automation fit",
-                "Internal dashboards, APIs, and integrations",
-                "Fast pilot-to-production execution"
+                "AML / KYC process and ops automation fit"
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-ink/85">
                   {item}
@@ -124,17 +122,17 @@ export function FounderProofSection() {
           <Card className="p-6">
             <Tag className="mb-4">Target Markets</Tag>
             <h3 className="font-display text-2xl font-semibold">Where to focus first</h3>
-            <div className="mt-4 space-y-4">
-              <div>
+            <div className="mt-4 space-y-3">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <p className="font-medium">Direct clients (UAE/GCC)</p>
                 <p className="mt-1 text-sm text-ink/70">
-                  SMEs and mid-market teams with recurring operational workflows and no internal AI delivery team yet.
+                  Ops-heavy SMEs and mid-market teams that need practical automation execution.
                 </p>
               </div>
-              <div>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <p className="font-medium">Agency partners (global)</p>
                 <p className="mt-1 text-sm text-ink/70">
-                  Software houses that want to sell AI automation and AI-enabled features without hiring an AI team immediately.
+                  Software houses adding AI services without building an AI team first.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -159,15 +157,15 @@ export function WorkPreviewSection() {
           subtitle="Launch proof can start with strong case-style summaries based on your CV and delivery experience, then expand into formal client case studies later."
         />
       </AnimatedReveal>
-      <div className="mt-8 grid gap-4 lg:grid-cols-3">
-        {caseStudies.map((item, index) => (
+      <div className="mt-8 grid gap-4 lg:grid-cols-2">
+        {caseStudies.slice(0, 2).map((item, index) => (
           <AnimatedReveal key={item.slug} delay={0.05 * index}>
             <Card className="h-full p-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">{item.context}</p>
               <h3 className="mt-2 text-xl font-display font-semibold leading-tight">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink/75">{item.problem}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink/75">{item.approach}</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {item.tech.map((tech) => (
+                {item.tech.slice(0, 3).map((tech) => (
                   <span key={tech} className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-ink/70">
                     {tech}
                   </span>
@@ -198,12 +196,13 @@ export function IndustriesAndRegionsSection() {
               Two Apps focuses on businesses where manual workflows create delays, errors, and coordination overhead.
             </p>
             <ul className="mt-4 grid gap-2 text-sm text-ink/85">
-              {featuredIndustries.map((industry) => (
+              {featuredIndustries.slice(0, 4).map((industry) => (
                 <li key={industry} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
                   {industry}
                 </li>
               ))}
             </ul>
+            <p className="mt-3 text-xs text-ink/60">More industry targets are listed on the industries page.</p>
             <Button href="/industries" variant="ghost" className="mt-5 px-0">
               Explore industries
             </Button>

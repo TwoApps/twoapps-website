@@ -26,7 +26,12 @@ export function Heading({
         {title}
       </h2>
       {subtitle ? (
-        <p className="text-balance mt-4 max-w-3xl text-base leading-relaxed text-ink/75 sm:text-lg">
+        <p
+          className={cn(
+            "text-balance mt-4 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg",
+            align === "center" && "mx-auto"
+          )}
+        >
           {subtitle}
         </p>
       ) : null}
