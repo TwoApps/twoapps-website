@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: 6 7 13;
+  --ink: 244 246 255;
+  --muted: 152 157 183;
+  --line: 255 255 255;
+  --accent-1: 64 214 255;
+  --accent-2: 255 140 66;
+  --accent-3: 161 107 255;
+  --font-display: "Avenir Next", "Helvetica Neue", "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-body: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(900px 520px at 8% -10%, rgba(64, 214, 255, 0.16), transparent 65%),
+    radial-gradient(880px 520px at 100% 0%, rgba(255, 140, 66, 0.13), transparent 62%),
+    radial-gradient(900px 560px at 50% 120%, rgba(161, 107, 255, 0.12), transparent 68%),
+    rgb(var(--paper));
+  color: rgb(var(--ink));
+  font-family: var(--font-body), sans-serif;
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+::selection {
+  background: rgba(64, 214, 255, 0.24);
+  color: rgb(var(--ink));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.glass-panel {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03)),
+    rgba(13, 14, 24, 0.55);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 50px rgba(0, 0, 0, 0.28);
+}
+
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.08) 0.6px, transparent 0.8px),
+    radial-gradient(rgba(255, 255, 255, 0.04) 0.7px, transparent 0.9px);
+  background-position:
+    0 0,
+    12px 14px;
+  background-size:
+    18px 18px,
+    22px 22px;
+}
+
+.gradient-stroke {
+  position: relative;
+}
+
+.gradient-stroke::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    125deg,
+    rgba(64, 214, 255, 0.35),
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 140, 66, 0.25)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.grid-backdrop {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at 50% 30%, black, transparent 85%);
+}
+
+.hero-orb {
+  border-radius: 999px;
+  filter: blur(8px);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+}
+
+.prose-dark {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.prose-dark p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.prose-dark h2,
+.prose-dark h3 {
+  color: rgb(var(--ink));
+}
+
+.prose-dark a {
+  color: rgb(var(--accent-1));
+}
+
+.focus-ring {
+  @apply outline-none focus-visible:ring-2 focus-visible:ring-accent-1/60 focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
