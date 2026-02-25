@@ -1,7 +1,11 @@
 const DEFAULT_SITE_URL = "http://localhost:3000";
 
 export function getSiteUrl() {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || DEFAULT_SITE_URL;
+  const vercelUrl =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
+    process.env.VERCEL_URL?.trim();
+  const inferredVercelUrl = vercelUrl ? `https://${vercelUrl.replace(/^https?:\/\//, "")}` : null;
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || inferredVercelUrl || DEFAULT_SITE_URL;
 
   try {
     return new URL(raw).toString().replace(/\/$/, "");
