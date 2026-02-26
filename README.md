@@ -73,3 +73,4 @@ Optional:
 - The site is content-driven using typed data in `src/content/`.
 - `src/content/articles/` is reserved for future MDX blog/case-study expansion.
 - Booking CTA falls back to `/book` until `NEXT_PUBLIC_BOOKING_URL` is set.
+- Vercel deployment steps: see `VERCEL_DEPLOY.md`.
