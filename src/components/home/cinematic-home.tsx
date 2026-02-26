@@ -90,25 +90,27 @@ function useHeroMotion(ref: React.RefObject<HTMLDivElement | null>) {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
         tl.fromTo(
           q("[data-hero-in]"),
-          { y: 18, opacity: 0, filter: "blur(8px)" },
+          { y: 30, opacity: 0, filter: "blur(12px)", scale: 0.985 },
           {
             y: 0,
             opacity: 1,
             filter: "blur(0px)",
-            duration: 0.8,
-            stagger: 0.08
+            scale: 1,
+            duration: 0.95,
+            stagger: 0.06
           }
         ).fromTo(
           q("[data-hero-panel]"),
-          { y: 36, opacity: 0, rotateX: 8 },
-          { y: 0, opacity: 1, rotateX: 0, duration: 0.9 },
-          0.15
+          { y: 64, opacity: 0, rotateX: 14, rotateY: -7, scale: 0.95 },
+          { y: 0, opacity: 1, rotateX: 0, rotateY: 0, scale: 1, duration: 1.05 },
+          0.1
         );
 
         gsap.to(q("[data-hero-logo-ghost]"), {
-          yPercent: -12,
-          xPercent: 4,
-          scale: 1.03,
+          yPercent: -20,
+          xPercent: 8,
+          rotate: 10,
+          scale: 1.08,
           ease: "none",
           scrollTrigger: {
             trigger: root,
@@ -119,13 +121,15 @@ function useHeroMotion(ref: React.RefObject<HTMLDivElement | null>) {
         });
 
         gsap.to(q("[data-hero-floating]"), {
-          y: (i: number) => (i % 2 === 0 ? -12 : 10),
-          x: (i: number) => (i % 2 === 0 ? 6 : -4),
-          duration: 4.6,
+          y: (i: number) => (i % 2 === 0 ? -22 : 18),
+          x: (i: number) => (i % 2 === 0 ? 14 : -12),
+          rotate: (i: number) => (i % 2 === 0 ? 8 : -8),
+          scale: (i: number) => (i % 2 === 0 ? 1.08 : 0.94),
+          duration: 2.8,
           ease: "sine.inOut",
           repeat: -1,
           yoyo: true,
-          stagger: 0.18
+          stagger: 0.12
         });
       }, root);
 
@@ -143,9 +147,12 @@ function HomeHeroScene({ bookingHref }: { bookingHref: string }) {
   return (
     <SceneViewport pad="spacious" className="pt-6 sm:pt-10">
       <div ref={ref} className="relative">
-        <div className="neon-frame gradient-stroke relative min-h-[calc(100svh-7rem)] overflow-hidden rounded-[2rem] p-5 sm:p-8 lg:p-10">
+        <div
+          data-hero-shell
+          className="neon-frame gradient-stroke animate-home-hero-throb relative min-h-[calc(100svh-7rem)] overflow-hidden rounded-[2rem] p-5 sm:p-8 lg:p-10"
+        >
           <GlowField intensity="strong" />
-          <LightBeams count={11} diagonal className="opacity-45" />
+          <LightBeams count={15} diagonal className="opacity-60" />
           <div className="noise-overlay" />
 
           <img
@@ -154,9 +161,16 @@ function HomeHeroScene({ bookingHref }: { bookingHref: string }) {
             alt=""
             className="pointer-events-none absolute right-[-6%] top-[6%] h-[55%] w-auto opacity-[0.16] blur-[1px] sm:opacity-[0.2]"
           />
-          <div data-hero-floating className="absolute left-[7%] top-[15%] h-24 w-24 rounded-full border border-accent-1/20 bg-accent-1/6 blur-sm" />
-          <div data-hero-floating className="absolute right-[18%] top-[16%] h-8 w-8 rounded-full bg-accent-1/35 blur-[2px]" />
-          <div data-hero-floating className="absolute right-[14%] bottom-[20%] h-20 w-20 rounded-full border border-accent-2/20 bg-accent-2/5" />
+          <div
+            data-hero-floating
+            className="absolute left-[7%] top-[15%] h-28 w-28 rounded-full border border-accent-1/25 bg-accent-1/10 blur-sm"
+          />
+          <div data-hero-floating className="absolute right-[18%] top-[16%] h-10 w-10 rounded-full bg-accent-1/40 blur-[2px]" />
+          <div
+            data-hero-floating
+            className="absolute right-[14%] bottom-[20%] h-24 w-24 rounded-full border border-accent-2/25 bg-accent-2/10"
+          />
+          <div data-hero-floating className="absolute left-[18%] bottom-[18%] h-14 w-14 rounded-full bg-accent-3/20 blur-[3px]" />
 
           <div className="relative grid h-full gap-5 lg:grid-cols-[1fr_0.95fr]">
             <div className="flex flex-col justify-between">
@@ -200,7 +214,7 @@ function HomeHeroScene({ bookingHref }: { bookingHref: string }) {
             </div>
 
             <div data-hero-panel className="relative flex items-end lg:items-center">
-              <ParallaxStack className="group relative w-full [perspective:1200px]">
+              <ParallaxStack className="group relative w-full [perspective:900px]">
                 <div className="parallax-card-layer absolute inset-6 rounded-3xl border border-accent-1/10 bg-accent-1/[0.03] blur-sm" />
                 <Card className="parallax-card relative overflow-hidden p-5 sm:p-6">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(82,255,239,.08),transparent_55%)]" />
@@ -386,7 +400,11 @@ function HomeProcessScene({ bookingHref }: { bookingHref: string }) {
 
 export function CinematicHomeExperience({ bookingHref }: HomeCinematicExperienceProps) {
   return (
-    <>
+    <div className="relative" data-homepage-motion-shell>
+      <div
+        aria-hidden
+        className="home-hue-overlay pointer-events-none fixed inset-0 -z-[9] opacity-70 animate-home-hue-cycle"
+      />
       <HomeHeroScene bookingHref={bookingHref} />
       <HomePathScene />
       <HomeCapabilityScene />
@@ -414,6 +432,6 @@ export function CinematicHomeExperience({ bookingHref }: HomeCinematicExperience
           </div>
         </div>
       </SceneViewport>
-    </>
+    </div>
   );
 }
