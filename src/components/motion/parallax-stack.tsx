@@ -2,14 +2,14 @@
 
 import { useEffect, useRef } from "react";
 
-import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 
 export function ParallaxStack({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const reduced = usePrefersReducedMotion();
+  const motionDisabled = useMotionDisabled();
 
   useEffect(() => {
-    if (reduced) return;
+    if (motionDisabled) return;
     const node = ref.current;
     if (!node) return;
 
@@ -33,7 +33,7 @@ export function ParallaxStack({ children, className }: { children: React.ReactNo
       node.removeEventListener("mousemove", onMove);
       node.removeEventListener("mouseleave", onLeave);
     };
-  }, [reduced]);
+  }, [motionDisabled]);
 
   return (
     <div

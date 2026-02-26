@@ -372,6 +372,22 @@ a {
 }
 
 @media (max-width: 639px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .parallax-card,
+  .parallax-card-layer {
+    transform: none !important;
+  }
+
   .scene-mobile-card-stack [data-scene-visual-card] + [data-scene-visual-card] {
     margin-top: 0.625rem;
   }

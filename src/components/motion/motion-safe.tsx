@@ -1,6 +1,6 @@
 "use client";
 
-import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 
 export function MotionSafe({
   children,
@@ -9,6 +9,6 @@ export function MotionSafe({
   children: React.ReactNode;
   fallback?: React.ReactNode;
 }) {
-  const reduced = usePrefersReducedMotion();
-  return <>{reduced ? fallback : children}</>;
+  const motionDisabled = useMotionDisabled();
+  return <>{motionDisabled ? fallback : children}</>;
 }

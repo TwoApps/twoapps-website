@@ -15,6 +15,7 @@ import { ParallaxStack } from "@/components/motion/parallax-stack";
 import { SceneCaption } from "@/components/motion/scene-caption";
 import { SceneViewport } from "@/components/motion/scene-viewport";
 import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
@@ -69,10 +70,12 @@ const processFrames: StickySceneFrame[] = processSteps.map((step) => ({
 }));
 
 function useHeroMotion(ref: React.RefObject<HTMLDivElement | null>) {
+  const motionDisabled = useMotionDisabled();
+
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (motionDisabled) return;
 
     let revert = () => {};
 
@@ -137,7 +140,7 @@ function useHeroMotion(ref: React.RefObject<HTMLDivElement | null>) {
     })();
 
     return () => revert();
-  }, [ref]);
+  }, [motionDisabled, ref]);
 }
 
 function HomeHeroScene({ bookingHref }: { bookingHref: string }) {

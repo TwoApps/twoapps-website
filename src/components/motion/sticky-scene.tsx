@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import { SceneProgressRail } from "@/components/motion/scene-progress-rail";
 import { SceneCaption } from "@/components/motion/scene-caption";
-import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -37,14 +37,14 @@ export function StickyScene({
   className?: string;
   heightMultiplier?: number;
 }) {
-  const reduced = usePrefersReducedMotion();
+  const motionDisabled = useMotionDisabled();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const pinRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [viewportMode, setViewportMode] = useState<StickySceneViewportMode>("unknown");
   const stepLabels = useMemo(() => frames.map((frame) => frame.label), [frames]);
   const isDesktop = viewportMode === "desktop";
-  const shouldUseStaticLayout = reduced || viewportMode !== "desktop";
+  const shouldUseStaticLayout = motionDisabled || viewportMode !== "desktop";
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 1024px)");
@@ -64,7 +64,7 @@ export function StickyScene({
     const root = rootRef.current;
     const pin = pinRef.current;
 
-    if (reduced || !isDesktop || frames.length <= 1) {
+    if (motionDisabled || !isDesktop || frames.length <= 1) {
       setActiveIndex(0);
       if (pin) resetVisualCards(pin);
       return;
@@ -121,7 +121,7 @@ export function StickyScene({
       trigger?.kill();
       resetVisualCards(pin);
     };
-  }, [frames, isDesktop, reduced]);
+  }, [frames, isDesktop, motionDisabled]);
 
   if (shouldUseStaticLayout) {
     return (

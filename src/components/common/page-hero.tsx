@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { GlowField } from "@/components/motion/glow-field";
 import { LightBeams } from "@/components/motion/light-beams";
 import { SceneCaption } from "@/components/motion/scene-caption";
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { Tag } from "@/components/ui/tag";
 
 type PageHeroProps = {
@@ -16,11 +17,12 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, description, chips = [] }: PageHeroProps) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const motionDisabled = useMotionDisabled();
 
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (motionDisabled) return;
 
     let ctx: { revert?: () => void } | null = null;
     void (async () => {
@@ -41,7 +43,7 @@ export function PageHero({ eyebrow, title, description, chips = [] }: PageHeroPr
       }, root);
     })();
     return () => ctx?.revert?.();
-  }, []);
+  }, [motionDisabled]);
 
   return (
     <section className="relative pt-8 sm:pt-10 lg:pt-12">

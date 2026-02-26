@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
+
 type AnimatedRevealProps = {
   children: React.ReactNode;
   delay?: number;
@@ -18,12 +20,13 @@ export function AnimatedReveal({
 }: AnimatedRevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
+  const motionDisabled = useMotionDisabled();
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (motionDisabled) {
       setVisible(true);
       return;
     }
@@ -42,7 +45,7 @@ export function AnimatedReveal({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [motionDisabled]);
 
   return (
     <motion.div

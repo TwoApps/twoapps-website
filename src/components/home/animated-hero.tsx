@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { Button } from "@/components/ui/button";
 
 type AnimatedHeroProps = {
@@ -11,11 +12,12 @@ type AnimatedHeroProps = {
 
 export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
+  const motionDisabled = useMotionDisabled();
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (motionDisabled) return;
 
     let cleanup = () => {};
 
@@ -84,7 +86,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
     })();
 
     return () => cleanup();
-  }, []);
+  }, [motionDisabled]);
 
   return (
     <section className="relative overflow-hidden pt-10 sm:pt-14 lg:pt-16">

@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { usePrefersReducedMotion } from "@/components/motion/use-prefers-reduced-motion";
+import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { cn } from "@/lib/utils";
 
 const SESSION_KEY = "twoapps_logo_preloader_seen";
 
 export function LogoPreloader() {
-  const reduced = usePrefersReducedMotion();
+  const motionDisabled = useMotionDisabled();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -22,8 +22,8 @@ export function LogoPreloader() {
     if (typeof window === "undefined") return;
     if (window.sessionStorage.getItem(SESSION_KEY) === "1") return;
 
-    const isMobile = window.innerWidth < 768;
-    if (reduced || isMobile) {
+    const isPhone = window.innerWidth < 640;
+    if (motionDisabled || isPhone) {
       window.sessionStorage.setItem(SESSION_KEY, "1");
       return;
     }
@@ -76,7 +76,7 @@ export function LogoPreloader() {
     return () => {
       cancelled = true;
     };
-  }, [mounted, reduced]);
+  }, [mounted, motionDisabled]);
 
   return (
     <div
