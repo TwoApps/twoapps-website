@@ -1,5 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { Section } from "@/components/ui/section";
+import { GlowField } from "@/components/motion/glow-field";
+import { LightBeams } from "@/components/motion/light-beams";
+import { SceneCaption } from "@/components/motion/scene-caption";
+import { SceneViewport } from "@/components/motion/scene-viewport";
 
 export function CtaBand({
   title,
@@ -17,15 +20,14 @@ export function CtaBand({
   secondaryLabel?: string;
 }) {
   return (
-    <Section className="pt-6">
-      <div className="gradient-stroke glass-panel relative overflow-hidden rounded-3xl p-7 sm:p-10">
+    <SceneViewport pad="spacious" className="pt-8">
+      <div className="neon-frame gradient-stroke relative overflow-hidden rounded-[1.9rem] p-7 sm:p-10 lg:p-12">
+        <GlowField intensity="default" />
+        <LightBeams count={8} className="opacity-35" />
         <div className="noise-overlay" />
-        <div className="absolute left-4 top-4 h-36 w-36 rounded-full bg-accent-1/10 blur-3xl" />
-        <div className="absolute right-6 bottom-4 h-40 w-40 rounded-full bg-accent-2/10 blur-3xl" />
-        <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="relative flex min-h-[280px] flex-col justify-between gap-8 lg:min-h-[340px]">
           <div className="max-w-3xl">
-            <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">{title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-ink/75 sm:text-base">{copy}</p>
+            <SceneCaption eyebrow="Next Step" title={title} subline={copy} />
           </div>
           <div className="flex flex-wrap gap-3">
             <Button href={primaryHref}>{primaryLabel}</Button>
@@ -35,6 +37,6 @@ export function CtaBand({
           </div>
         </div>
       </div>
-    </Section>
+    </SceneViewport>
   );
 }

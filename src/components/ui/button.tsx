@@ -19,14 +19,14 @@ type NativeButtonProps = CommonProps &
   };
 
 const base =
-  "focus-ring relative inline-flex items-center justify-center gap-2 rounded-full font-medium transition-transform duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50";
+  "focus-ring relative inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<NonNullable<CommonProps["variant"]>, string> = {
   primary:
-    "bg-gradient-to-r from-accent-1/90 via-accent-3/80 to-accent-2/90 text-paper shadow-glow [box-shadow:0_0_0_1px_rgba(255,255,255,.08),0_18px_40px_rgba(64,214,255,.18)]",
+    "text-[#021111] bg-[linear-gradient(90deg,rgba(0,228,212,.95),rgba(82,255,239,.9),rgba(0,205,194,.95))] shadow-[0_0_0_1px_rgba(255,255,255,.08),0_12px_35px_rgba(0,228,212,.2)] hover:shadow-[0_0_0_1px_rgba(255,255,255,.1),0_16px_45px_rgba(0,228,212,.28)]",
   secondary:
-    "glass-panel text-ink hover:bg-white/10 [box-shadow:0_0_0_1px_rgba(255,255,255,.08)]",
-  ghost: "text-ink/90 hover:bg-white/5"
+    "border border-white/10 bg-white/[0.035] text-ink hover:border-accent-1/20 hover:bg-accent-1/5 [box-shadow:0_0_0_1px_rgba(0,228,212,.04)]",
+  ghost: "text-ink/90 hover:bg-accent-1/6 hover:text-accent-1"
 };
 
 const sizes: Record<NonNullable<CommonProps["size"]>, string> = {

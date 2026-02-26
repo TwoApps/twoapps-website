@@ -1,17 +1,8 @@
 import { getBookingUrl } from "@/lib/site-config";
 import { buildMetadata, localBusinessSchema, organizationSchema } from "@/lib/seo";
 
-import { CtaBand } from "@/components/common/cta-band";
 import { JsonLd } from "@/components/json-ld";
-import { AnimatedHero } from "@/components/home/animated-hero";
-import {
-  AudienceSplitSection,
-  FounderProofSection,
-  IndustriesAndRegionsSection,
-  ProcessSection,
-  ServicesOverviewSection,
-  WorkPreviewSection
-} from "@/components/home/home-sections";
+import { CinematicHomeExperience } from "@/components/home/cinematic-home";
 
 export const metadata = buildMetadata({
   title: "Agentic AI Software House in Dubai",
@@ -33,19 +24,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={[organizationSchema(), localBusinessSchema()]} />
-      <AnimatedHero bookingHref={bookingHref} />
-      <AudienceSplitSection />
-      <ServicesOverviewSection />
-      <FounderProofSection />
-      <WorkPreviewSection />
-      <IndustriesAndRegionsSection />
-      <ProcessSection />
-      <CtaBand
-        title="Start with one high-value workflow or one white-label AI pilot"
-        copy="The fastest path is a focused pilot: one workflow, one client scope, one measurable outcome. Build credibility and systems first, then expand."
-        primaryHref={bookingHref}
-        primaryLabel="Book discovery call"
-      />
+      <CinematicHomeExperience bookingHref={bookingHref} />
     </>
   );
 }

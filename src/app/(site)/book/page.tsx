@@ -2,10 +2,12 @@ import { buildMetadata } from "@/lib/seo";
 import { getBookingUrl } from "@/lib/site-config";
 
 import { PageHero } from "@/components/common/page-hero";
+import { ExpandableDetailPanel } from "@/components/common/expandable-detail-panel";
+import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
+import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
-import { Tag } from "@/components/ui/tag";
 
 export const metadata = buildMetadata({
   title: "Book Discovery Call",
@@ -15,6 +17,19 @@ export const metadata = buildMetadata({
   keywords: ["book ai automation consultation", "book discovery call two apps"],
   ogImage: "/og-default.svg"
 });
+
+const bookingFrames: StickySceneFrame[] = [
+  {
+    label: "Goal",
+    headline: "Use a short call to define the right pilot",
+    subline: "Discovery calls are for choosing scope, constraints, and the fastest measurable starting point."
+  },
+  {
+    label: "Fallback",
+    headline: "No booking link? The contact flow still works",
+    subline: "Submit the contact form with availability and context. The team can coordinate from there."
+  }
+];
 
 export default function BookPage() {
   const bookingUrl = getBookingUrl();
@@ -26,36 +41,68 @@ export default function BookPage() {
         title={bookingUrl ? "Book a discovery call" : "Booking link coming soon"}
         description={
           bookingUrl
-            ? "Use the booking link below to schedule a discovery call for a direct project or white-label agency partnership."
-            : "The public booking link is not live yet. Please use the contact form and mention your availability for a discovery call."
+            ? "Use the live booking link for direct projects or white-label agency partnerships."
+            : "The public booking link is not live yet. Use the contact form and share availability for a discovery call."
         }
         chips={["Direct clients", "Agency partners", "Dubai-based / global support"]}
       />
-      <Section>
-        <Card className="mx-auto max-w-3xl p-6 sm:p-8">
-          <Tag className="mb-4">{bookingUrl ? "Booking live" : "Placeholder flow active"}</Tag>
-          <p className="text-sm leading-relaxed text-ink/80 sm:text-base">
-            {bookingUrl
-              ? "The primary CTA now points to the live booking link. You can also use the contact form if you need to share context before scheduling."
-              : "This page intentionally acts as the CTA fallback until a real booking URL (for example Calendly) is configured via NEXT_PUBLIC_BOOKING_URL."}
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {bookingUrl ? (
-              <Button href={bookingUrl}>Open booking link</Button>
-            ) : (
-              <Button href="/contact">Use contact form</Button>
-            )}
-            <Button href="/contact" variant="secondary">
-              Contact instead
-            </Button>
-          </div>
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-ink/70">
-            <p className="font-medium text-ink">Typical discovery call goals</p>
-            <ul className="mt-2 space-y-1">
-              <li>Define the workflow or delivery bottleneck</li>
-              <li>Choose the right pilot scope</li>
-              <li>Confirm timeline, collaboration model, and constraints</li>
-            </ul>
+
+      <StickyScene
+        eyebrow="Booking Flow"
+        frames={bookingFrames}
+        heightMultiplier={2.2}
+        visual={
+          <StackedVisualCards
+            items={[
+              {
+                title: bookingUrl ? "Booking link is live" : "Placeholder flow active",
+                body: bookingUrl
+                  ? "The primary CTA opens the live booking page. You can still use the contact form if you want to share context before the call."
+                  : "This page intentionally acts as a CTA fallback until NEXT_PUBLIC_BOOKING_URL is configured."
+              },
+              {
+                title: "Typical call outcomes",
+                body: "Define the workflow bottleneck, choose the pilot scope, and confirm timeline, collaboration model, and constraints.",
+                meta: ["Scope", "Timeline", "Constraints"]
+              }
+            ]}
+          />
+        }
+      />
+
+      <Section className="pt-6">
+        <Card className="mx-auto max-w-3xl p-4 sm:p-5">
+          <ExpandableDetailPanel
+            title={bookingUrl ? "Open the booking link" : "Use the contact fallback"}
+            summary={bookingUrl ? "Primary CTA now points to your live scheduler" : "Booking URL is not configured yet"}
+            defaultOpen
+          >
+            <div className="space-y-4 text-sm text-ink/78 sm:text-base">
+              <p>
+                {bookingUrl
+                  ? "Use the button below to schedule. If you need to share background before the call, you can still use the contact form."
+                  : "Use the contact page and mention your preferred times. This keeps the website flow working until a live booking tool is added."}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {bookingUrl ? (
+                  <Button href={bookingUrl}>Open booking link</Button>
+                ) : (
+                  <Button href="/contact">Use contact form</Button>
+                )}
+                <Button href="/contact" variant="secondary">
+                  Contact instead
+                </Button>
+              </div>
+            </div>
+          </ExpandableDetailPanel>
+          <div className="mt-3">
+            <ExpandableDetailPanel title="Typical discovery call goals" summary="What gets decided in the first call">
+              <ul className="space-y-2 text-sm text-ink/78">
+                <li>Define the workflow or delivery bottleneck</li>
+                <li>Choose the right pilot scope</li>
+                <li>Confirm timeline, collaboration model, and constraints</li>
+              </ul>
+            </ExpandableDetailPanel>
           </div>
         </Card>
       </Section>

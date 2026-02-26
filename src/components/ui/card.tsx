@@ -7,7 +7,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "glass-panel gradient-stroke relative overflow-hidden rounded-3xl p-6 sm:p-7",
+        "neon-frame gradient-stroke relative overflow-hidden rounded-3xl p-6 sm:p-7",
         className
       )}
       {...props}

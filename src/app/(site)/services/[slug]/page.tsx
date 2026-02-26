@@ -8,9 +8,10 @@ import { CtaBand } from "@/components/common/cta-band";
 import { FaqSection } from "@/components/common/faq-section";
 import { PageHero } from "@/components/common/page-hero";
 import { JsonLd } from "@/components/json-ld";
-import { Card } from "@/components/ui/card";
+import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
+import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
+import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 import { Section } from "@/components/ui/section";
-import { Tag } from "@/components/ui/tag";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -41,6 +42,24 @@ export default async function ServiceDetailPage({ params }: Props) {
     { name: service.title, path: `/services/${service.slug}` }
   ];
 
+  const serviceFrames: StickySceneFrame[] = [
+    {
+      label: "Overview",
+      headline: service.title,
+      subline: service.tagline
+    },
+    {
+      label: "Outcomes",
+      headline: "Built for production workflows, not demos",
+      subline: service.benefits[0] ?? service.summary
+    },
+    {
+      label: "Process",
+      headline: "Pilot first, then harden and expand",
+      subline: service.process[0] ?? "Start with a bounded pilot and scale after measurable results."
+    }
+  ];
+
   return (
     <>
       <JsonLd
@@ -64,77 +83,119 @@ export default async function ServiceDetailPage({ params }: Props) {
           "Production-oriented implementation"
         ]}
       />
-      <Section className="pb-8 sm:pb-12">
+
+      <Section className="pb-0 pt-6 sm:pt-8">
         <Breadcrumbs items={breadcrumbItems} />
-        <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="p-6 sm:p-8">
-            <Tag className="mb-4">Overview</Tag>
-            <p className="text-sm leading-relaxed text-ink/80 sm:text-base">{service.summary}</p>
-            <div className="mt-6">
-              <h2 className="font-display text-2xl font-semibold">Benefits</h2>
-              <ul className="mt-4 space-y-3 text-sm text-ink/80">
-                {service.benefits.map((benefit) => (
-                  <li key={benefit} className="flex gap-2">
-                    <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                    <span>{benefit}</span>
+      </Section>
+
+      <StickyScene
+        eyebrow="Service Summary"
+        frames={serviceFrames}
+        heightMultiplier={2.8}
+        visual={
+          <StackedVisualCards
+            items={[
+              {
+                title: "What this service covers",
+                body: service.summary,
+                meta: service.audiences.map((audience) => audience.toUpperCase())
+              },
+              {
+                title: "Typical deliverables",
+                body: service.deliverables[0] ?? "Workflow discovery and implementation",
+                meta: service.deliverables.slice(1, 3)
+              },
+              {
+                title: "How engagements start",
+                body: "Audit or pilot on one workflow / delivery stream, then expand after proving value.",
+                meta: [service.process[0] ?? "Audit", service.process[1] ?? "Pilot"]
+              }
+            ]}
+          />
+        }
+      />
+
+      <DetailPanelsSection
+        eyebrow="Service Details"
+        title="Expand the implementation detail"
+        subtitle="All long-form service detail stays crawlable and server-rendered while the top of the page stays focused."
+        items={[
+          {
+            title: "Overview and benefits",
+            summary: "What this service improves first",
+            content: (
+              <div className="space-y-4 text-sm text-ink/78">
+                <p className="leading-relaxed">{service.summary}</p>
+                <ul className="space-y-2">
+                  {service.benefits.map((benefit) => (
+                    <li key={benefit} className="flex gap-2">
+                      <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          },
+          {
+            title: "Deliverables",
+            summary: "What a typical engagement includes",
+            content: (
+              <ul className="space-y-2 text-sm text-ink/78">
+                {service.deliverables.map((item) => (
+                  <li key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                    {item}
                   </li>
                 ))}
               </ul>
-            </div>
-          </Card>
-          <Card className="p-6">
-            <Tag className="mb-4">Best Fit</Tag>
-            <div className="space-y-4 text-sm text-ink/80">
-              <div>
-                <p className="font-medium text-ink">Audience</p>
-                <p className="mt-1">
-                  {service.audiences.includes("business") && service.audiences.includes("agency")
-                    ? "Direct businesses and agency/software house partners"
-                    : "Agency/software house partners"}
-                </p>
+            )
+          },
+          {
+            title: "Delivery process",
+            summary: "Pilot-first engagement sequence",
+            content: (
+              <ol className="space-y-2 text-sm text-ink/78">
+                {service.process.map((step, index) => (
+                  <li key={step} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                    <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-xs">
+                      {index + 1}
+                    </span>
+                    {step}
+                  </li>
+                ))}
+              </ol>
+            )
+          },
+          {
+            title: "Best fit and delivery mode",
+            summary: "Audience, starting point, and execution style",
+            content: (
+              <div className="space-y-4 text-sm text-ink/78">
+                <div>
+                  <p className="font-medium text-ink">Audience</p>
+                  <p className="mt-1">
+                    {service.audiences.includes("business") && service.audiences.includes("agency")
+                      ? "Direct businesses and agency/software house partners"
+                      : "Agency/software house partners"}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium text-ink">Typical starting point</p>
+                  <p className="mt-1">
+                    Audit or pilot on one workflow / delivery stream, then expand after proving value.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium text-ink">Delivery mode</p>
+                  <p className="mt-1">
+                    Remote-first, with structured handoff, review, and production hardening.
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="font-medium text-ink">Typical starting point</p>
-                <p className="mt-1">Audit or pilot on one workflow / delivery stream, then expand after proving value.</p>
-              </div>
-              <div>
-                <p className="font-medium text-ink">Delivery mode</p>
-                <p className="mt-1">Remote-first, with structured handoff, review, and production hardening.</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </Section>
-
-      <Section className="pt-0">
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Card className="p-6">
-            <Tag className="mb-4">Deliverables</Tag>
-            <h2 className="font-display text-2xl font-semibold">What a typical engagement includes</h2>
-            <ul className="mt-4 space-y-3 text-sm text-ink/80">
-              {service.deliverables.map((item) => (
-                <li key={item} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Card>
-          <Card className="p-6">
-            <Tag className="mb-4">Process</Tag>
-            <h2 className="font-display text-2xl font-semibold">Delivery stages</h2>
-            <ol className="mt-4 space-y-3 text-sm text-ink/80">
-              {service.process.map((step, index) => (
-                <li key={step} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-                  <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-xs">
-                    {index + 1}
-                  </span>
-                  {step}
-                </li>
-              ))}
-            </ol>
-          </Card>
-        </div>
-      </Section>
+            )
+          }
+        ]}
+      />
 
       <FaqSection items={service.faq} />
       <CtaBand
