@@ -14,6 +14,16 @@ export type StickySceneFrame = {
   subline: string;
 };
 
+type StickySceneViewportMode = "unknown" | "desktop" | "nonDesktop";
+
+function resetVisualCards(container: HTMLElement) {
+  const cards = Array.from(container.querySelectorAll<HTMLElement>("[data-scene-visual-card]"));
+  cards.forEach((card) => {
+    card.style.removeProperty("transform");
+    card.style.removeProperty("opacity");
+  });
+}
+
 export function StickyScene({
   eyebrow,
   frames,
@@ -31,12 +41,14 @@ export function StickyScene({
   const rootRef = useRef<HTMLDivElement | null>(null);
   const pinRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [viewportMode, setViewportMode] = useState<StickySceneViewportMode>("unknown");
   const stepLabels = useMemo(() => frames.map((frame) => frame.label), [frames]);
+  const isDesktop = viewportMode === "desktop";
+  const shouldUseStaticLayout = reduced || viewportMode !== "desktop";
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 1024px)");
-    const onChange = () => setIsDesktop(media.matches);
+    const onChange = () => setViewportMode(media.matches ? "desktop" : "nonDesktop");
     onChange();
 
     if (typeof media.addEventListener === "function") {
@@ -51,17 +63,14 @@ export function StickyScene({
   useEffect(() => {
     const root = rootRef.current;
     const pin = pinRef.current;
-    if (!root || !pin) return;
 
     if (reduced || !isDesktop || frames.length <= 1) {
       setActiveIndex(0);
-      const cards = Array.from(pin.querySelectorAll<HTMLElement>("[data-scene-visual-card]"));
-      cards.forEach((card) => {
-        card.style.removeProperty("transform");
-        card.style.removeProperty("opacity");
-      });
+      if (pin) resetVisualCards(pin);
       return;
     }
+
+    if (!root || !pin) return;
 
     let trigger: { kill: () => void } | null = null;
     let cancelled = false;
@@ -110,16 +119,11 @@ export function StickyScene({
     return () => {
       cancelled = true;
       trigger?.kill();
-
-      const cards = Array.from(pin.querySelectorAll<HTMLElement>("[data-scene-visual-card]"));
-      cards.forEach((card) => {
-        card.style.removeProperty("transform");
-        card.style.removeProperty("opacity");
-      });
+      resetVisualCards(pin);
     };
   }, [frames, isDesktop, reduced]);
 
-  if (reduced || !isDesktop) {
+  if (shouldUseStaticLayout) {
     return (
       <section className={cn("relative py-10 sm:py-14", className)}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -143,13 +147,7 @@ export function StickyScene({
               ))}
             </div>
             {visual ? (
-              <div
-                className={cn(
-                  "relative",
-                  "[&_[data-scene-visual-card]]:static",
-                  "[&_[data-scene-visual-card]]:mb-3"
-                )}
-              >
+              <div className="scene-mobile-card-stack relative">
                 {visual}
               </div>
             ) : null}

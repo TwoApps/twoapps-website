@@ -349,6 +349,34 @@ a {
   animation: homeHeroThrob 3.2s ease-in-out infinite;
 }
 
+.scene-mobile-card-stack [data-scene-visual-root] {
+  position: relative;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.scene-mobile-card-stack [data-scene-visual-card] {
+  position: static !important;
+  inset: auto !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  opacity: 1 !important;
+  margin-bottom: 0 !important;
+}
+
+.scene-mobile-card-stack [data-scene-visual-card] + [data-scene-visual-card] {
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 639px) {
+  .scene-mobile-card-stack [data-scene-visual-card] + [data-scene-visual-card] {
+    margin-top: 0.625rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

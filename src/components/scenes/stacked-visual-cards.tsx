@@ -15,7 +15,7 @@ export function StackedVisualCards({
   className?: string;
 }) {
   return (
-    <div className={cn("relative h-full min-h-[420px]", className)}>
+    <div data-scene-visual-root className={cn("relative h-full min-h-[420px]", className)}>
       <div className="absolute inset-0 rounded-3xl border border-white/10 bg-white/[0.02]" />
       {items.map((item, index) => (
         <Card
