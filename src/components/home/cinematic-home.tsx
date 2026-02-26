@@ -28,13 +28,13 @@ type HomeCinematicExperienceProps = {
 const pathFrames: StickySceneFrame[] = [
   {
     label: "Businesses",
-    headline: "Automation for ops-heavy teams",
-    subline: "Build AI workflows and internal tools without waiting to assemble an in-house AI engineering unit."
+    headline: "Cut manual work with practical AI workflows",
+    subline: "We build AI workflows and internal tools that help your team move faster without hiring a full AI team first."
   },
   {
     label: "Agencies",
-    headline: "White-label AI delivery for software houses",
-    subline: "Sell AI scopes with implementation backing and keep your client relationship while Two Apps ships the AI layer."
+    headline: "White-label AI delivery for agencies and software houses",
+    subline: "Win AI projects with confidence and keep the client relationship while TwoApps handles implementation behind the scenes."
   }
 ];
 
@@ -47,18 +47,18 @@ const capabilityFrames: StickySceneFrame[] = services.map((service) => ({
 const proofFrames: StickySceneFrame[] = [
   {
     label: "Founder",
-    headline: "Founder depth strengthens the studio",
-    subline: "Claude / Claude Code automation expertise, product engineering background, and compliance-aware workflow experience."
+    headline: "Founder-led execution helps projects move faster",
+    subline: "Hands-on experience across AI workflows, product engineering, and compliance-aware operations supports better scoping and delivery."
   },
   {
     label: "Work",
-    headline: "Representative patterns, not generic promises",
-    subline: "Case-style summaries show implementation thinking and delivery fit across automation, compliance ops, and AI-enabled tools."
+    headline: "Real delivery patterns, not vague AI promises",
+    subline: "Case-style summaries show how work is scoped, built, and rolled out across automation and internal tools."
   },
   {
     label: "Markets",
-    headline: "Dubai-based, built for UAE/GCC and global agencies",
-    subline: "Direct business delivery locally and white-label partnerships across high-opportunity regions."
+    headline: "UAE-based, serving businesses and agencies globally",
+    subline: "Local access in the UAE plus remote delivery for teams worldwide."
   }
 ];
 
@@ -176,13 +176,13 @@ function HomeHeroScene({ bookingHref }: { bookingHref: string }) {
             <div className="flex flex-col justify-between">
               <div>
                 <div data-hero-in className="mb-5 flex flex-wrap gap-2">
-                  <Tag>Dubai, UAE</Tag>
-                  <Tag>Cinematic AI Delivery</Tag>
+                  <Tag>UAE-based</Tag>
+                  <Tag>Global delivery</Tag>
                 </div>
                 <div data-hero-in>
                   <SceneCaption
-                    title="Agentic AI systems and white-label AI delivery"
-                    subline="One studio for operational automation, Claude-native execution, and agency partnership delivery."
+                    title="AI workflows and white-label delivery that help teams move faster"
+                    subline="We help businesses reduce manual work and help agencies deliver AI projects faster with practical implementation support."
                     titleClassName="max-w-4xl text-4xl sm:text-5xl lg:text-7xl"
                   />
                 </div>
@@ -191,7 +191,7 @@ function HomeHeroScene({ bookingHref }: { bookingHref: string }) {
                     Book discovery call
                   </Button>
                   <Button href="/contact" variant="secondary" size="lg">
-                    Start conversation
+                    Start a conversation
                   </Button>
                 </div>
               </div>
@@ -225,21 +225,21 @@ function HomeHeroScene({ bookingHref }: { bookingHref: string }) {
                     <div className="mt-4 space-y-3">
                       <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-4">
                         <p className="text-sm font-semibold text-ink">Businesses</p>
-                        <p className="mt-1 text-sm text-ink/65">Ops automation, internal tools, AI workflows</p>
+                        <p className="mt-1 text-sm text-ink/65">AI workflows and internal tools that reduce manual work</p>
                       </div>
                       <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-4">
                         <p className="text-sm font-semibold text-ink">Agencies / Software Houses</p>
-                        <p className="mt-1 text-sm text-ink/65">White-label AI implementation and delivery support</p>
+                        <p className="mt-1 text-sm text-ink/65">White-label AI implementation and extra delivery capacity</p>
                       </div>
                     </div>
                     <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
                       <div className="rounded-2xl border border-white/10 bg-black/30 p-3">
                         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">Base</p>
-                        <p className="mt-1 text-ink">Dubai</p>
+                        <p className="mt-1 text-ink">UAE</p>
                       </div>
                       <div className="rounded-2xl border border-white/10 bg-black/30 p-3">
                         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">Style</p>
-                        <p className="mt-1 text-ink">Agentic + Product</p>
+                        <p className="mt-1 text-ink">Practical + Fast</p>
                       </div>
                     </div>
                   </div>
@@ -264,13 +264,13 @@ function HomePathScene() {
           items={[
             {
               title: "Business Delivery",
-              body: "Automate operations, deploy internal AI workflows, and build the operator interface your team actually uses.",
-              meta: ["Ops automation", "Internal tools", "AI workflows"]
+              body: "Reduce repetitive work with AI workflows and internal tools your team can actually use day to day.",
+              meta: ["Save time", "Internal tools", "AI workflows"]
             },
             {
               title: "Agency Partnership",
-              body: "Ship AI scopes with a white-label implementation partner while your team owns the client relationship.",
-              meta: ["White-label", "Claude-native", "Delivery capacity"]
+              body: "Deliver AI projects with a white-label implementation partner while your team keeps client ownership.",
+              meta: ["White-label", "Delivery support", "Capacity"]
             }
           ]}
         />
@@ -305,16 +305,16 @@ function HomeProofMarketScene() {
       frames={proofFrames}
       heightMultiplier={3}
       visual={
-        <div className="relative h-full min-h-[420px]">
+        <div data-scene-visual-root className="relative h-full min-h-[420px]">
           <Card data-scene-visual-card className="absolute inset-x-0 top-0 z-30 p-5 sm:p-6">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent-1/80">Founder Proof</p>
-            <p className="mt-3 font-display text-2xl font-semibold">Hands-on execution depth</p>
+            <p className="mt-3 font-display text-2xl font-semibold">Hands-on build and delivery experience</p>
             <div className="mt-4 grid gap-2 sm:grid-cols-2">
               {[
-                "Claude / Claude Code automation",
+                "Claude / Claude Code workflows",
                 "Flutter + AWS delivery",
-                "AML / KYC workflow fit",
-                "AI product + ops tooling"
+                "AML / KYC process fit",
+                "AI tools + internal dashboards"
               ].map((item) => (
                 <div key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-3 py-2 text-sm text-ink/70">
                   {item}
@@ -338,7 +338,8 @@ function HomeProofMarketScene() {
           <Card data-scene-visual-card className="absolute inset-x-6 top-16 z-10 p-5 sm:inset-x-10">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent-1/80">Regions</p>
             <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.015] p-4">
-              <p className="text-sm text-ink/70">Direct clients: Dubai / UAE / GCC</p>
+              <p className="text-sm text-ink/70">UAE-based, serving clients globally</p>
+              <p className="mt-2 text-xs text-ink/60">Partner demand is especially strong in:</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {globalPartnerRegions.map((region) => (
                   <span key={region} className="rounded-full border border-white/10 px-3 py-1 text-xs text-ink/70">
@@ -361,7 +362,7 @@ function HomeProcessScene({ bookingHref }: { bookingHref: string }) {
       frames={processFrames}
       heightMultiplier={3.2}
       visual={
-        <div className="relative h-full min-h-[420px]">
+        <div data-scene-visual-root className="relative h-full min-h-[420px]">
           {processSteps.map((step, index) => (
             <Card
               key={step.title}
@@ -420,7 +421,7 @@ export function CinematicHomeExperience({ bookingHref }: HomeCinematicExperience
               <SceneCaption
                 eyebrow="Start Small"
                 title="One workflow. One pilot. Then scale."
-                subline="The fastest way to prove value is a focused implementation with clear ownership and measurable outcomes."
+                subline="The fastest way to prove value is a focused pilot with a clear owner, a clear goal, and a measurable result."
               />
             </div>
             <div className="flex flex-wrap gap-3">

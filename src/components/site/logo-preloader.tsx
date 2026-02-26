@@ -103,7 +103,7 @@ export function LogoPreloader() {
           className="h-24 w-auto drop-shadow-[0_0_25px_rgba(0,228,212,.35)] sm:h-28"
         />
         <p data-preloader-text className="mt-4 font-mono text-[11px] uppercase tracking-[0.3em] text-accent-1/90">
-          Two Apps
+          TwoApps
         </p>
       </div>
     </div>

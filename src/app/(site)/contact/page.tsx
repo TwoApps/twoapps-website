@@ -13,9 +13,9 @@ import { Section } from "@/components/ui/section";
 export const metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact Two Apps to discuss agentic AI automation, Claude/Claude Code workflows, AI-enabled products, or white-label AI delivery for software houses.",
+    "Contact TwoApps to discuss AI workflow automation, internal tools, Claude/Claude Code workflows, or white-label AI delivery support.",
   canonicalPath: "/contact",
-  keywords: ["contact ai automation agency dubai", "white label ai partner contact"],
+  keywords: ["contact ai automation partner uae", "white label ai partner contact"],
   ogImage: "/og-default.svg"
 });
 
@@ -41,7 +41,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Tell us what you need to ship"
         description="One brief form for direct business automation projects and white-label agency partnerships."
-        chips={["Businesses", "Agencies / software houses", "Dubai-based / global delivery"]}
+        chips={["Businesses", "Agencies / software houses", "UAE-based / global delivery"]}
       />
 
       <StickyScene
@@ -95,10 +95,10 @@ export default function ContactPage() {
                 </Button>
               </div>
             </ExpandableDetailPanel>
-            <ExpandableDetailPanel title="Location" summary="Dubai-based, global delivery support">
+            <ExpandableDetailPanel title="Location" summary="UAE-based, global delivery support">
               <p className="text-sm text-ink/78">Dubai, UAE</p>
               <p className="mt-2 text-sm text-ink/65">
-                Serving UAE/GCC businesses and white-label agency partners internationally.
+                Serving businesses and white-label agency partners worldwide.
               </p>
             </ExpandableDetailPanel>
           </div>

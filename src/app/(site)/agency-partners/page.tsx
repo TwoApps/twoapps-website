@@ -10,7 +10,7 @@ import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 export const metadata = buildMetadata({
   title: "Agency Partners",
   description:
-    "White-label AI implementation partner for software houses and agencies: agentic automation, Claude-native workflows, and AI-enabled feature delivery.",
+    "UAE-based white-label AI implementation partner for software houses and agencies. TwoApps helps teams deliver AI workflows, AI features, and internal tools without hiring a full AI team first.",
   canonicalPath: "/agency-partners",
   keywords: ["white label ai partner", "agency ai implementation partner", "software house AI delivery partner"],
   ogImage: "/og-default.svg"
@@ -19,8 +19,8 @@ export const metadata = buildMetadata({
 const partnerFrames: StickySceneFrame[] = [
   {
     label: "Model",
-    headline: "Your agency owns the client. Two Apps ships the AI layer.",
-    subline: "White-label or co-delivery support for AI automation, AI features, and Claude-native execution workflows."
+    headline: "Your agency owns the client. TwoApps ships the AI layer.",
+    subline: "White-label or co-delivery support for AI workflows, AI features, and delivery systems your team can reuse."
   },
   {
     label: "Fit",
@@ -57,9 +57,9 @@ export default function AgencyPartnersPage() {
     <>
       <PageHero
         eyebrow="Agency Partners"
-        title="White-label AI delivery, without turning your page into a wall of text"
-        description="Start with the partnership model in the scenes below. Open detail panels only when you need the specifics."
-        chips={["B2B2B model", "White-label friendly", ...globalPartnerRegions]}
+        title="White-label AI delivery your agency can sell with confidence"
+        description="Start with the partnership model in the scenes below. Open the detail panels only when you need the operational specifics."
+        chips={["UAE-based / global", "White-label friendly", ...globalPartnerRegions]}
       />
 
       <StickyScene
@@ -71,12 +71,12 @@ export default function AgencyPartnersPage() {
             items={[
               {
                 title: "White-label implementation",
-                body: "Two Apps executes the AI automation and AI feature layer while your team keeps client ownership and account continuity.",
+                body: "TwoApps executes the AI automation and AI feature layer while your team keeps client ownership and account continuity.",
                 meta: ["White-label", "Co-delivery", "NDA-friendly"]
               },
               {
-                title: "Claude-native delivery support",
-                body: "Claude / Claude Code workflow setup, playbooks, and repeatable execution patterns for your delivery team.",
+                title: "Claude / Claude Code workflow support",
+                body: "Claude and Claude Code workflow setup, playbooks, and repeatable delivery patterns for your team.",
                 meta: ["Claude Code", "Playbooks", "Acceleration"]
               },
               {
@@ -122,7 +122,7 @@ export default function AgencyPartnersPage() {
         subtitle="This keeps the top of the page readable while preserving the operational specifics your team needs."
         items={[
           {
-            title: "What agencies can resell with Two Apps behind the scenes",
+            title: "What agencies can resell with TwoApps behind the scenes",
             summary: "Core white-label AI delivery capabilities",
             content: (
               <ul className="space-y-2 text-sm text-ink/78">
@@ -192,7 +192,7 @@ export default function AgencyPartnersPage() {
 
       <CtaBand
         title="Explore a white-label pilot or AI capability sprint"
-        copy="If your agency has client demand for AI but no implementation capacity yet, start with one pilot and build from there."
+        copy="If your agency has client demand for AI but limited implementation capacity, start with one pilot and build a repeatable model from there."
         primaryHref="/contact"
         primaryLabel="Talk partnership"
         secondaryHref="/regions/white-label-ai-partner-software-houses"

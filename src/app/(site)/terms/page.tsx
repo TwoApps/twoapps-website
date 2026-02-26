@@ -6,9 +6,9 @@ import { Section } from "@/components/ui/section";
 
 export const metadata = buildMetadata({
   title: "Terms of Use",
-  description: "Terms of use for the Two Apps website.",
+  description: "Terms of use for the TwoApps website.",
   canonicalPath: "/terms",
-  keywords: ["two apps terms"],
+  keywords: ["twoapps terms"],
   ogImage: "/og-default.svg"
 });
 
@@ -18,7 +18,7 @@ export default function TermsPage() {
       <PageHero
         eyebrow="Legal"
         title="Terms of Use"
-        description="Launch-ready website terms for Two Apps. Replace placeholders and obtain legal review if you need jurisdiction-specific terms."
+        description="Launch-ready website terms for TwoApps. Replace placeholders and obtain legal review if you need jurisdiction-specific terms."
       />
       <Section>
         <Card className="prose-dark max-w-none p-6 sm:p-8">
@@ -38,7 +38,7 @@ export default function TermsPage() {
             <div>
               <h2 className="font-display text-2xl font-semibold">Content and intellectual property</h2>
               <p className="mt-2">
-                Website content, branding, and materials are owned by Two Apps unless otherwise stated. Do not reproduce or redistribute without permission.
+                Website content, branding, and materials are owned by TwoApps unless otherwise stated. Do not reproduce or redistribute without permission.
               </p>
             </div>
             <div>
@@ -50,7 +50,7 @@ export default function TermsPage() {
             <div>
               <h2 className="font-display text-2xl font-semibold">Limitation of liability</h2>
               <p className="mt-2">
-                The website is provided on an “as-is” basis. To the fullest extent permitted by law, Two Apps disclaims liability arising from website use.
+                The website is provided on an “as-is” basis. To the fullest extent permitted by law, TwoApps disclaims liability arising from website use.
               </p>
             </div>
           </div>

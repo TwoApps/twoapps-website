@@ -10,7 +10,7 @@ import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 export const metadata = buildMetadata({
   title: "Work",
   description:
-    "Case-style summaries based on founder expertise and delivery experience across Claude automation workflows, compliance operations, and AI-enabled product engineering.",
+    "Representative case-style summaries showing how TwoApps scopes and delivers AI workflows, compliance operations improvements, and internal product tooling.",
   canonicalPath: "/work",
   keywords: ["ai automation case studies", "claude code workflow implementation examples", "aml kyc automation examples"],
   ogImage: "/og-default.svg"
@@ -28,7 +28,7 @@ export default function WorkPage() {
       <PageHero
         eyebrow="Work"
         title="Proof first, details on demand"
-        description="Start with the representative case patterns in the scene below. Expand each case to review the problem, approach, outcomes, and tech."
+        description="Start with the case patterns below, then expand any summary to review the problem, approach, outcomes, and tools used."
         chips={["Founder-backed", "Implementation-focused", "Representative summaries"]}
       />
 
@@ -50,7 +50,7 @@ export default function WorkPage() {
       <DetailPanelsSection
         eyebrow="Case Details"
         title="Expand a case summary"
-        subtitle="These are representative, honest case-style summaries designed to show implementation thinking before formal client case studies are published."
+        subtitle="These are honest, representative summaries designed to show how TwoApps thinks and delivers before full client case studies are published."
         items={caseStudies.map((item) => ({
           title: item.title,
           summary: item.context,
@@ -88,7 +88,7 @@ export default function WorkPage() {
 
       <CtaBand
         title="Want to turn one of your workflows into a measured pilot?"
-        copy="We can start with a discovery call and define the smallest implementation that proves value quickly."
+        copy="We can start with a short discovery call and define the smallest pilot that proves value quickly."
         primaryHref="/contact"
         primaryLabel="Start a pilot discussion"
       />

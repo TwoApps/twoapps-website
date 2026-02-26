@@ -12,7 +12,7 @@ import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 export const metadata = buildMetadata({
   title: "Industries",
   description:
-    "Industries where Two Apps delivers the most value first: operations-heavy businesses and compliance-aware teams needing AI workflow automation and internal tools.",
+    "Industries where TwoApps is a strong fit first: operations-heavy teams and compliance-aware businesses that need practical AI workflows and internal tools.",
   canonicalPath: "/industries",
   keywords: ["ai automation industries", "operations automation consulting", "fintech aml kyc automation"],
   ogImage: "/og-default.svg"
@@ -43,7 +43,7 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="Industry pages should show fit, not just keywords"
         description="Use the scenes for the top-level positioning and open the detail panels to see the current launch focus and expansion targets."
-        chips={["UAE/GCC direct clients", "Ops-heavy teams", "Compliance-aware workflows"]}
+        chips={["UAE-based, global", "Ops-heavy teams", "Compliance-aware workflows"]}
       />
 
       <StickyScene
@@ -111,7 +111,7 @@ export default function IndustriesPage() {
 
       <CtaBand
         title="Have an operations-heavy industry with repetitive workflows?"
-        copy="We can map the workflow first and identify where agentic automation, AI copilots, or internal tools create the fastest impact."
+        copy="We can map the workflow first and identify where AI workflows, AI copilots, or internal tools will create the fastest impact."
         primaryHref="/contact"
         primaryLabel="Discuss an industry workflow"
       />

@@ -5,15 +5,16 @@ import { JsonLd } from "@/components/json-ld";
 import { CinematicHomeExperience } from "@/components/home/cinematic-home";
 
 export const metadata = buildMetadata({
-  title: "Agentic AI Software House in Dubai",
+  title: "UAE-Based AI Automation & Software Delivery",
   description:
-    "Two Apps is a Dubai-based agentic AI software house building AI automations, Claude-powered delivery workflows, and white-label AI implementation for agencies and software houses.",
+    "TwoApps is a UAE-based AI automation and software delivery partner serving clients worldwide. We help businesses reduce manual work and help agencies deliver AI projects faster.",
   canonicalPath: "/",
   keywords: [
-    "dubai agentic ai software house",
+    "uae ai automation partner",
+    "middle east ai automation company",
     "claude code automation partner",
     "white label ai delivery partner",
-    "uae ai automation agency"
+    "global ai workflow implementation"
   ],
   ogImage: "/og-default.svg"
 });

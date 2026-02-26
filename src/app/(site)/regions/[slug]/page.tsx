@@ -52,7 +52,7 @@ export default async function RegionDetailPage({ params }: Props) {
     },
     {
       label: "Fit",
-      headline: isGcc ? "Direct business delivery for UAE/GCC teams" : "White-label capacity for global software houses",
+      headline: isGcc ? "Direct delivery for UAE/GCC teams" : "White-label delivery capacity for software houses",
       subline: region.marketFocus[0] ?? "Regional page focus and target buyer profile."
     },
     {
@@ -73,8 +73,8 @@ export default async function RegionDetailPage({ params }: Props) {
             path: `/regions/${region.slug}`,
             serviceType: "Regional AI automation and implementation partner",
             areaServed: isGcc
-              ? ["Dubai", "UAE", "GCC"]
-              : ["Eastern Europe", "South America", "Australia", "New Zealand"]
+              ? ["Dubai", "UAE", "GCC", "Middle East"]
+              : ["Middle East", "Eastern Europe", "South America", "Australia", "New Zealand"]
           })
         ]}
       />
@@ -82,7 +82,11 @@ export default async function RegionDetailPage({ params }: Props) {
         eyebrow="Region"
         title={region.title}
         description={region.summary}
-        chips={isGcc ? ["Dubai", "UAE", "GCC", "Direct delivery"] : ["White-label", "Eastern Europe", "South America", "Australia / New Zealand"]}
+        chips={
+          isGcc
+            ? ["Dubai", "UAE", "GCC", "Direct delivery"]
+            : ["White-label", "Middle East", "Eastern Europe", "Australia / New Zealand"]
+        }
       />
 
       <Section className="pb-0 pt-6 sm:pt-8">
@@ -102,7 +106,7 @@ export default async function RegionDetailPage({ params }: Props) {
                 meta: region.marketFocus.slice(1, 3)
               },
               {
-                title: "Why Two Apps",
+                title: "Why TwoApps",
                 body: region.whyTwoApps[0] ?? "Regional execution fit and differentiators",
                 meta: region.whyTwoApps.slice(1, 3)
               },
@@ -135,7 +139,7 @@ export default async function RegionDetailPage({ params }: Props) {
             )
           },
           {
-            title: "Why Two Apps",
+            title: "Why TwoApps",
             summary: "Positioning and differentiation",
             content: (
               <ul className="space-y-2 text-sm text-ink/78">
@@ -162,9 +166,9 @@ export default async function RegionDetailPage({ params }: Props) {
                 </div>
                 {!isGcc ? (
                   <p className="leading-relaxed text-ink/70">
-                    This partner model is especially relevant for agencies in Eastern Europe, South America, Australia,
-                    and New Zealand that need specialized AI implementation capacity without immediately expanding
-                    headcount.
+                    This partner model is especially relevant for agencies in the Middle East, Eastern Europe, South
+                    America, Australia, and New Zealand that need specialized AI implementation capacity without
+                    immediately expanding headcount.
                   </p>
                 ) : null}
               </div>
@@ -182,7 +186,7 @@ export default async function RegionDetailPage({ params }: Props) {
             : "Start with one client pilot or a capability sprint to establish a repeatable white-label delivery model."
         }
         primaryHref="/contact"
-        primaryLabel="Contact Two Apps"
+        primaryLabel="Talk to TwoApps"
       />
     </>
   );

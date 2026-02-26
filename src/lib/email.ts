@@ -33,7 +33,7 @@ export async function sendContactEmail(payload: ContactPayload) {
 
   const html = `
     <div style="font-family: Arial, sans-serif; color: #111; line-height: 1.5;">
-      <h1 style="font-size: 20px; margin-bottom: 12px;">New Two Apps Website Inquiry</h1>
+      <h1 style="font-size: 20px; margin-bottom: 12px;">New TwoApps Website Inquiry</h1>
       <table cellpadding="8" cellspacing="0" border="1" style="border-collapse: collapse; border-color: #ddd; width: 100%; margin-bottom: 16px;">
         <tbody>
           ${rows

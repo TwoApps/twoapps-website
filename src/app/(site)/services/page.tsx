@@ -12,9 +12,9 @@ import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-s
 export const metadata = buildMetadata({
   title: "Services",
   description:
-    "Agentic AI automation, Claude/Claude Code workflow implementation, AI-enabled product engineering, and white-label AI delivery for software houses.",
+    "AI workflow automation, Claude/Claude Code workflow setup, AI-enabled product support, and white-label AI delivery for businesses and software houses.",
   canonicalPath: "/services",
-  keywords: ["agentic ai services", "claude code automation consulting", "white label ai delivery"],
+  keywords: ["ai workflow automation services", "claude code automation consulting", "white label ai delivery"],
   ogImage: "/og-default.svg"
 });
 
@@ -29,9 +29,9 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="One capability at a time, built to ship"
-        description="Scroll the service stack for the headline view. Open detail panels below when you want the full scope."
-        chips={["Dubai-based", "Business + Agency", "Claude-native execution"]}
+        title="Practical AI services that help teams ship faster"
+        description="Start with the service stack for a quick view, then open any panel for the full scope, deliverables, and starting points."
+        chips={["UAE-based", "Businesses + agencies", "Global delivery"]}
       />
 
       <StickyScene
@@ -102,7 +102,7 @@ export default function ServicesPage() {
       <DetailPanelsSection
         eyebrow="Offers"
         title="Productized ways to start"
-        subtitle="Start with a bounded pilot or setup rather than a long discovery-heavy engagement."
+        subtitle="Start with a focused pilot or setup instead of a long, vague discovery process."
         className="pt-0"
         items={[
           {
@@ -112,7 +112,7 @@ export default function ServicesPage() {
               <ul className="space-y-2 text-sm text-ink/78">
                 {[
                   "AI Automation Audit (1-2 weeks)",
-                  "30-Day Agentic Pilot (one workflow end-to-end)",
+                  "30-Day AI Workflow Pilot (one workflow end-to-end)",
                   "Claude Code Team Acceleration Setup",
                   "White-Label AI Capability Sprint for agencies"
                 ].map((offer) => (

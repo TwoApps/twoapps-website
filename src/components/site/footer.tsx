@@ -10,10 +10,10 @@ export function Footer() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr_1fr]">
           <div>
-            <p className="font-display text-2xl font-semibold">Two Apps</p>
+            <p className="font-display text-2xl font-semibold">TwoApps</p>
             <p className="mt-3 max-w-md text-sm leading-relaxed text-ink/70">
-              Dubai-based agentic AI software house building AI automations, Claude-powered delivery workflows,
-              and white-label AI implementation for software agencies.
+              UAE-based AI automation and software delivery partner helping businesses reduce manual work and helping
+              agencies ship AI projects faster.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {globalPartnerRegions.map((region) => (
@@ -42,6 +42,7 @@ export function Footer() {
             <h2 className="font-mono text-xs uppercase tracking-[0.24em] text-accent-2">Contact</h2>
             <ul className="mt-4 space-y-2 text-sm text-ink/80">
               <li>Dubai, UAE</li>
+              <li className="text-ink/60">Serving clients worldwide</li>
               <li>
                 <Link href="/contact" className="focus-ring rounded-md hover:text-ink">
                   Contact form
@@ -66,7 +67,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-ink/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Two Apps. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} TwoApps. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="focus-ring rounded-md hover:text-ink">
               Privacy

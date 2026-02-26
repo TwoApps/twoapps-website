@@ -48,9 +48,9 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
             <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded-xl px-2 py-2">
               <img src="/twoapps-logo-mark.svg" alt="" className="h-8 w-auto shrink-0 sm:h-9" />
               <span className="hidden sm:block">
-                <span className="block font-display text-lg font-semibold leading-none">Two Apps</span>
+                <span className="block font-display text-lg font-semibold leading-none">TwoApps</span>
                 <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-accent-1/70">
-                  Agentic AI Studio
+                  UAE-based | Global delivery
                 </span>
               </span>
             </Link>
