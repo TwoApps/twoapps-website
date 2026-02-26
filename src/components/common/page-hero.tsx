@@ -1,3 +1,10 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+import { GlowField } from "@/components/motion/glow-field";
+import { LightBeams } from "@/components/motion/light-beams";
+import { SceneCaption } from "@/components/motion/scene-caption";
 import { Tag } from "@/components/ui/tag";
 
 type PageHeroProps = {
@@ -8,25 +15,59 @@ type PageHeroProps = {
 };
 
 export function PageHero({ eyebrow, title, description, chips = [] }: PageHeroProps) {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let ctx: { revert?: () => void } | null = null;
+    void (async () => {
+      const [{ gsap }] = await Promise.all([import("gsap")]);
+      ctx = gsap.context(() => {
+        gsap.fromTo(
+          root.querySelectorAll("[data-hero-rise]"),
+          { y: 18, opacity: 0, filter: "blur(6px)" },
+          {
+            y: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            stagger: 0.08,
+            duration: 0.8,
+            ease: "power3.out"
+          }
+        );
+      }, root);
+    })();
+    return () => ctx?.revert?.();
+  }, []);
+
   return (
-    <section className="relative pt-12 sm:pt-16 lg:pt-20">
+    <section className="relative pt-8 sm:pt-10 lg:pt-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="gradient-stroke glass-panel relative overflow-hidden rounded-3xl px-6 py-10 sm:px-8 sm:py-12 lg:px-12">
+        <div
+          ref={ref}
+          className="neon-frame gradient-stroke relative overflow-hidden rounded-[1.75rem] px-6 py-10 sm:px-8 sm:py-12 lg:px-12"
+        >
+          <GlowField intensity="strong" />
+          <LightBeams count={10} className="opacity-45" />
           <div className="noise-overlay" />
-          <div className="absolute right-0 top-0 h-40 w-40 translate-x-8 -translate-y-8 rounded-full bg-accent-1/15 blur-3xl" />
-          <div className="absolute bottom-0 left-1/3 h-32 w-32 rounded-full bg-accent-2/15 blur-3xl" />
+          <div className="absolute -right-8 top-0 h-52 w-52 rounded-full bg-accent-1/12 blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 h-40 w-40 rounded-full bg-accent-3/12 blur-3xl" />
           <div className="relative">
-            {eyebrow ? <Tag className="mb-5">{eyebrow}</Tag> : null}
-            <h1 className="text-balance max-w-5xl font-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-              {title}
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-ink/75 sm:text-lg sm:leading-8">{description}</p>
+            <div data-hero-rise>
+              {eyebrow ? <Tag className="mb-5">{eyebrow}</Tag> : null}
+            </div>
+            <div data-hero-rise>
+              <SceneCaption title={title} subline={description} />
+            </div>
             {chips.length ? (
-              <div className="mt-7 flex flex-wrap gap-2.5">
-                {chips.map((chip) => (
+              <div data-hero-rise className="mt-7 flex flex-wrap gap-2.5">
+                {chips.slice(0, 5).map((chip) => (
                   <span
                     key={chip}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-ink/75"
+                    className="rounded-full border border-accent-1/12 bg-white/[0.02] px-3 py-1 text-xs text-ink/68"
                   >
                     {chip}
                   </span>

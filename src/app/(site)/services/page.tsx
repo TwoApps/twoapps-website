@@ -5,10 +5,9 @@ import { buildMetadata } from "@/lib/seo";
 
 import { CtaBand } from "@/components/common/cta-band";
 import { PageHero } from "@/components/common/page-hero";
-import { AnimatedReveal } from "@/components/ui/animated-reveal";
-import { Card } from "@/components/ui/card";
-import { Section } from "@/components/ui/section";
-import { Tag } from "@/components/ui/tag";
+import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
+import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
+import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
 
 export const metadata = buildMetadata({
   title: "Services",
@@ -19,80 +18,132 @@ export const metadata = buildMetadata({
   ogImage: "/og-default.svg"
 });
 
+const serviceFrames: StickySceneFrame[] = services.map((service) => ({
+  label: service.title.split(" ").slice(0, 2).join(" "),
+  headline: service.title,
+  subline: service.tagline
+}));
+
 export default function ServicesPage() {
   return (
     <>
       <PageHero
         eyebrow="Services"
-        title="AI automation and AI delivery services built for execution"
-        description="Two Apps helps businesses automate operations and helps agencies ship AI projects through white-label implementation support."
+        title="One capability at a time, built to ship"
+        description="Scroll the service stack for the headline view. Open detail panels below when you want the full scope."
         chips={["Dubai-based", "Business + Agency", "Claude-native execution"]}
       />
-      <Section>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <AnimatedReveal key={service.slug} delay={0.05 * index}>
-              <Card className="h-full p-6">
-                <Tag className="mb-4">
-                  {service.audiences.includes("business") && service.audiences.includes("agency")
-                    ? "Business + Agency"
-                    : "Agency"}
-                </Tag>
-                <h2 className="text-balance font-display text-2xl font-semibold">{service.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-ink/75">{service.tagline}</p>
-                <ul className="mt-5 space-y-2 text-sm text-ink/85">
-                  {service.benefits.slice(0, 3).map((benefit) => (
+
+      <StickyScene
+        eyebrow="Service Stack"
+        frames={serviceFrames}
+        heightMultiplier={3.2}
+        visual={
+          <StackedVisualCards
+            items={services.map((service) => ({
+              title: service.title,
+              body: service.summary,
+              meta: [
+                service.audiences.includes("business") && service.audiences.includes("agency")
+                  ? "Business + Agency"
+                  : "Agency",
+                "Production-oriented"
+              ]
+            }))}
+          />
+        }
+      />
+
+      <DetailPanelsSection
+        eyebrow="All Services"
+        title="Expand a service for benefits, deliverables, and starting points"
+        subtitle="Each panel stays concise at first view and opens into the implementation detail."
+        items={services.map((service) => ({
+          title: service.title,
+          summary: service.tagline,
+          content: (
+            <div className="space-y-6 text-sm text-ink/78">
+              <div>
+                <p className="font-medium text-ink">Summary</p>
+                <p className="mt-2 leading-relaxed">{service.summary}</p>
+              </div>
+              <div>
+                <p className="font-medium text-ink">Key benefits</p>
+                <ul className="mt-2 space-y-2">
+                  {service.benefits.slice(0, 4).map((benefit) => (
                     <li key={benefit} className="flex gap-2">
                       <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
                       <span>{benefit}</span>
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="focus-ring mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-sm text-accent-1 hover:bg-white/5"
-                >
-                  View service <span aria-hidden>↗</span>
-                </Link>
-              </Card>
-            </AnimatedReveal>
-          ))}
-        </div>
-      </Section>
-      <Section className="pt-0">
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Card className="p-6">
-            <h2 className="font-display text-2xl font-semibold">Productized starting offers</h2>
-            <ul className="mt-4 space-y-3 text-sm text-ink/80">
-              {[
-                "AI Automation Audit (1-2 weeks)",
-                "30-Day Agentic Pilot (one workflow end-to-end)",
-                "Claude Code Team Acceleration Setup",
-                "White-Label AI Capability Sprint for agencies"
-              ].map((offer) => (
-                <li key={offer} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-                  {offer}
-                </li>
-              ))}
-            </ul>
-          </Card>
-          <Card className="p-6">
-            <h2 className="font-display text-2xl font-semibold">Outcomes we optimize for</h2>
-            <ul className="mt-4 space-y-3 text-sm text-ink/80">
-              {[
-                "Reduced manual ops time",
-                "Faster turnaround and response times",
-                "Lower execution inconsistency across recurring work",
-                "Faster AI project delivery without in-house AI hiring delays"
-              ].map((item) => (
-                <li key={item} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Card>
-        </div>
-      </Section>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {service.audiences.map((audience) => (
+                  <span
+                    key={audience}
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.16em] text-ink/65"
+                  >
+                    {audience}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href={`/services/${service.slug}`}
+                className="focus-ring inline-flex items-center gap-2 rounded-full border border-accent-1/15 bg-accent-1/[0.04] px-3 py-1.5 text-sm text-accent-1 hover:bg-accent-1/[0.08]"
+              >
+                Open service page <span aria-hidden>↗</span>
+              </Link>
+            </div>
+          )
+        }))}
+      />
+
+      <DetailPanelsSection
+        eyebrow="Offers"
+        title="Productized ways to start"
+        subtitle="Start with a bounded pilot or setup rather than a long discovery-heavy engagement."
+        className="pt-0"
+        items={[
+          {
+            title: "Starting offers",
+            summary: "Fast entry points for direct businesses and agency partners",
+            content: (
+              <ul className="space-y-2 text-sm text-ink/78">
+                {[
+                  "AI Automation Audit (1-2 weeks)",
+                  "30-Day Agentic Pilot (one workflow end-to-end)",
+                  "Claude Code Team Acceleration Setup",
+                  "White-Label AI Capability Sprint for agencies"
+                ].map((offer) => (
+                  <li key={offer} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                    {offer}
+                  </li>
+                ))}
+              </ul>
+            )
+          },
+          {
+            title: "Outcomes we optimize for",
+            summary: "What successful projects typically improve first",
+            content: (
+              <ul className="space-y-2 text-sm text-ink/78">
+                {[
+                  "Reduced manual ops time",
+                  "Faster turnaround and response times",
+                  "Lower execution inconsistency across recurring work",
+                  "Faster AI project delivery without in-house AI hiring delays"
+                ].map((item) => (
+                  <li key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )
+          }
+        ]}
+      />
+
       <CtaBand
         title="Need help picking the right starting service?"
         copy="Start with the highest-friction workflow or the next AI project your team is expected to deliver. We can scope the right pilot."

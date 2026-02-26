@@ -1,12 +1,13 @@
 import Link from "next/link";
 
-import { regions } from "@/content";
+import { globalPartnerRegions, regions } from "@/content";
 import { buildMetadata } from "@/lib/seo";
 
 import { CtaBand } from "@/components/common/cta-band";
 import { PageHero } from "@/components/common/page-hero";
-import { Card } from "@/components/ui/card";
-import { Section } from "@/components/ui/section";
+import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
+import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
+import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 
 export const metadata = buildMetadata({
   title: "Regions",
@@ -17,23 +18,62 @@ export const metadata = buildMetadata({
   ogImage: "/og-default.svg"
 });
 
+const regionFrames: StickySceneFrame[] = [
+  {
+    label: "Direct",
+    headline: "Dubai / UAE / GCC for direct automation projects",
+    subline: "Founder-led teams and ops-heavy businesses that need practical AI implementation, not demos."
+  },
+  {
+    label: "Partner",
+    headline: "Global white-label delivery for software houses",
+    subline: "A strong fit for agencies in Eastern Europe, South America, Australia, and New Zealand."
+  }
+];
+
 export default function RegionsPage() {
   return (
     <>
       <PageHero
         eyebrow="Regions"
-        title="Regional focus for direct clients and agency partnerships"
-        description="Two Apps serves direct businesses in Dubai/UAE/GCC and partners with software houses globally through a white-label AI delivery model."
-        chips={["Dubai, UAE, GCC", "Eastern Europe", "South America", "Australia / New Zealand"]}
+        title="Two regional tracks, one delivery model"
+        description="Direct business automation in UAE/GCC and white-label AI delivery for agencies globally."
+        chips={["Dubai, UAE, GCC", ...globalPartnerRegions]}
       />
-      <Section>
-        <div className="grid gap-4 lg:grid-cols-2">
-          {regions.map((region) => (
-            <Card key={region.slug} className="p-6">
-              <h2 className="text-balance font-display text-2xl font-semibold">{region.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink/75">{region.summary}</p>
-              <ul className="mt-4 space-y-2 text-sm text-ink/80">
-                {region.marketFocus.map((item) => (
+
+      <StickyScene
+        eyebrow="Coverage"
+        frames={regionFrames}
+        heightMultiplier={2.4}
+        visual={
+          <StackedVisualCards
+            items={[
+              {
+                title: "UAE / GCC Direct Delivery",
+                body: "Automation audits, pilots, and internal AI tooling for businesses with operational bottlenecks and execution pressure.",
+                meta: ["Dubai", "UAE", "GCC"]
+              },
+              {
+                title: "Global Agency Partnerships",
+                body: "White-label implementation support for software houses adding AI automation and AI-enabled product work.",
+                meta: [...globalPartnerRegions]
+              }
+            ]}
+          />
+        }
+      />
+
+      <DetailPanelsSection
+        eyebrow="Region Pages"
+        title="Open a region page by delivery track"
+        subtitle="Each region page keeps the cinematic intro and moves the deeper positioning into expandable sections."
+        items={regions.map((region) => ({
+          title: region.title,
+          summary: region.summary,
+          content: (
+            <div className="space-y-4 text-sm text-ink/78">
+              <ul className="space-y-2">
+                {region.marketFocus.slice(0, 3).map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
                     <span>{item}</span>
@@ -42,14 +82,15 @@ export default function RegionsPage() {
               </ul>
               <Link
                 href={`/regions/${region.slug}`}
-                className="focus-ring mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-sm text-accent-1 hover:bg-white/5"
+                className="focus-ring inline-flex items-center gap-2 rounded-full border border-accent-1/15 bg-accent-1/[0.04] px-3 py-1.5 text-sm text-accent-1 hover:bg-accent-1/[0.08]"
               >
-                View region page <span aria-hidden>↗</span>
+                Open region page <span aria-hidden>↗</span>
               </Link>
-            </Card>
-          ))}
-        </div>
-      </Section>
+            </div>
+          )
+        }))}
+      />
+
       <CtaBand
         title="Need direct delivery in UAE/GCC or a white-label AI partner for your agency?"
         copy="Two Apps supports both paths with one delivery model: practical pilots, production hardening, and ongoing iteration."

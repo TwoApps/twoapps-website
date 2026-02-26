@@ -8,9 +8,10 @@ import { CtaBand } from "@/components/common/cta-band";
 import { FaqSection } from "@/components/common/faq-section";
 import { PageHero } from "@/components/common/page-hero";
 import { JsonLd } from "@/components/json-ld";
-import { Card } from "@/components/ui/card";
+import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
+import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
+import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 import { Section } from "@/components/ui/section";
-import { Tag } from "@/components/ui/tag";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -41,6 +42,25 @@ export default async function IndustryDetailPage({ params }: Props) {
     { name: industry.title, path: `/industries/${industry.slug}` }
   ];
 
+  const frames: StickySceneFrame[] = [
+    {
+      label: "Pain",
+      headline: industry.title,
+      subline: industry.summary
+    },
+    {
+      label: "Approach",
+      headline: "Automation with human control points",
+      subline: industry.solutions[0] ?? "AI-assisted workflow design with approval gates."
+    },
+    {
+      label: "Pilot",
+      headline: "Choose a bounded operational pilot",
+      subline:
+        "The right pilot is operationally real, but safe enough to implement with clear ownership and approval checkpoints."
+    }
+  ];
+
   return (
     <>
       <JsonLd
@@ -60,51 +80,85 @@ export default async function IndustryDetailPage({ params }: Props) {
         description={industry.summary}
         chips={["Compliance-aware", "Workflow automation", "Human-in-the-loop design"]}
       />
-      <Section className="pb-8 sm:pb-12">
+
+      <Section className="pb-0 pt-6 sm:pt-8">
         <Breadcrumbs items={breadcrumbItems} />
-        <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <Card className="p-6">
-            <Tag className="mb-4">Pain Points</Tag>
-            <h2 className="font-display text-2xl font-semibold">Where teams lose time and consistency</h2>
-            <ul className="mt-4 space-y-3 text-sm text-ink/80">
-              {industry.painPoints.map((item) => (
-                <li key={item} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Card>
-          <Card className="p-6">
-            <Tag className="mb-4">Approach</Tag>
-            <h2 className="font-display text-2xl font-semibold">What we usually implement</h2>
-            <ul className="mt-4 space-y-3 text-sm text-ink/80">
-              {industry.solutions.map((item) => (
-                <li key={item} className="flex gap-2">
-                  <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        </div>
       </Section>
 
-      <Section className="pt-0">
-        <Card className="p-6 sm:p-8">
-          <Tag className="mb-4">Example Automations</Tag>
-          <h2 className="font-display text-3xl font-semibold">Launch ideas for a compliance workflow pilot</h2>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            {industry.exampleAutomations.map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-ink/80">
-                {item}
+      <StickyScene
+        eyebrow="Industry Summary"
+        frames={frames}
+        heightMultiplier={2.8}
+        visual={
+          <StackedVisualCards
+            items={[
+              {
+                title: "Common pain points",
+                body: industry.painPoints[0] ?? "Manual queue pressure and repetitive process handling.",
+                meta: industry.painPoints.slice(1, 3)
+              },
+              {
+                title: "Typical solution pattern",
+                body: industry.solutions[0] ?? "AI-assisted workflow routing and operator support.",
+                meta: industry.solutions.slice(1, 3)
+              },
+              {
+                title: "Pilot ideas",
+                body: industry.exampleAutomations[0] ?? "Start with one bounded automation opportunity.",
+                meta: industry.exampleAutomations.slice(1, 3)
+              }
+            ]}
+          />
+        }
+      />
+
+      <DetailPanelsSection
+        eyebrow="Industry Detail"
+        title="Expand pain points, solutions, and pilot ideas"
+        subtitle="Top-of-page visuals stay minimal while the operational detail remains visible to users and search engines."
+        items={[
+          {
+            title: "Pain points",
+            summary: "Where teams lose time and consistency",
+            content: (
+              <ul className="space-y-2 text-sm text-ink/78">
+                {industry.painPoints.map((item) => (
+                  <li key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            )
+          },
+          {
+            title: "What we usually implement",
+            summary: "Workflow and tooling patterns for this industry",
+            content: (
+              <ul className="space-y-2 text-sm text-ink/78">
+                {industry.solutions.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )
+          },
+          {
+            title: "Example automations",
+            summary: "Pilot candidates and workflow launch ideas",
+            content: (
+              <div className="grid gap-2 md:grid-cols-2 text-sm text-ink/78">
+                {industry.exampleAutomations.map((item) => (
+                  <div key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+                    {item}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <p className="mt-5 text-sm leading-relaxed text-ink/70">
-            The right pilot should be operationally real but bounded enough to implement safely with clear ownership and approval checkpoints.
-          </p>
-        </Card>
-      </Section>
+            )
+          }
+        ]}
+      />
 
       <FaqSection items={industry.faq} />
       <CtaBand

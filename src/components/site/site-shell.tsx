@@ -2,16 +2,18 @@ import { getBookingUrl } from "@/lib/site-config";
 
 import { BackgroundLayer } from "@/components/site/background-layer";
 import { Footer } from "@/components/site/footer";
-import { Header } from "@/components/site/header";
+import { FloatingNav } from "@/components/site/floating-nav";
+import { LogoPreloader } from "@/components/site/logo-preloader";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const bookingHref = getBookingUrl() ?? "/book";
 
   return (
     <>
+      <LogoPreloader />
       <BackgroundLayer />
-      <Header bookingHref={bookingHref} />
-      <main>{children}</main>
+      <FloatingNav bookingHref={bookingHref} />
+      <main className="pt-16 sm:pt-20">{children}</main>
       <Footer />
     </>
   );
