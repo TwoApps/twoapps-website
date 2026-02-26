@@ -12,7 +12,7 @@ import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 export const metadata = buildMetadata({
   title: "Regions",
   description:
-    "Regional focus pages for Two Apps: Dubai/UAE/GCC direct automation delivery and global white-label AI partnerships for software houses and agencies.",
+    "Regional pages for TwoApps covering UAE/GCC direct automation delivery and global white-label AI partnerships for software houses and agencies, including Middle East target-market coverage for SEO.",
   canonicalPath: "/regions",
   keywords: ["dubai ai automation partner", "white label ai partner global agencies"],
   ogImage: "/og-default.svg"
@@ -22,12 +22,12 @@ const regionFrames: StickySceneFrame[] = [
   {
     label: "Direct",
     headline: "Dubai / UAE / GCC for direct automation projects",
-    subline: "Founder-led teams and ops-heavy businesses that need practical AI implementation, not demos."
+    subline: "A strong fit for teams that need practical implementation and measurable workflow improvements, not just AI demos."
   },
   {
     label: "Partner",
     headline: "Global white-label delivery for software houses",
-    subline: "A strong fit for agencies in Eastern Europe, South America, Australia, and New Zealand."
+    subline: "A strong fit for agencies in the Middle East, Eastern Europe, South America, Australia, and New Zealand."
   }
 ];
 
@@ -37,7 +37,7 @@ export default function RegionsPage() {
       <PageHero
         eyebrow="Regions"
         title="Two regional tracks, one delivery model"
-        description="Direct business automation in UAE/GCC and white-label AI delivery for agencies globally."
+        description="Direct business automation in UAE/GCC and white-label AI delivery for agencies globally, with regional pages to support search and fit messaging."
         chips={["Dubai, UAE, GCC", ...globalPartnerRegions]}
       />
 
@@ -55,7 +55,7 @@ export default function RegionsPage() {
               },
               {
                 title: "Global Agency Partnerships",
-                body: "White-label implementation support for software houses adding AI automation and AI-enabled product work.",
+                body: "White-label implementation support for software houses adding AI workflows, AI features, and internal tools for clients.",
                 meta: [...globalPartnerRegions]
               }
             ]}
@@ -93,7 +93,7 @@ export default function RegionsPage() {
 
       <CtaBand
         title="Need direct delivery in UAE/GCC or a white-label AI partner for your agency?"
-        copy="Two Apps supports both paths with one delivery model: practical pilots, production hardening, and ongoing iteration."
+        copy="TwoApps supports both paths with one delivery model: practical pilots, workflow stabilization, and ongoing iteration."
         primaryHref="/contact"
         primaryLabel="Discuss your case"
       />

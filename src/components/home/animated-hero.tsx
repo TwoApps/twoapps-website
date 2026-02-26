@@ -98,7 +98,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
           <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div>
               <div className="mb-5 flex flex-wrap gap-2">
-                {["Dubai, UAE", "Business + Agency Delivery"].map((chip) => (
+                {["UAE-based", "Global delivery", "Businesses + agencies"].map((chip) => (
                   <span
                     key={chip}
                     data-hero-chip
@@ -110,18 +110,18 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
               </div>
               <h1 className="text-balance font-display text-4xl font-semibold leading-[0.94] sm:text-5xl lg:text-7xl">
                 <span className="block" data-hero-title-line>
-                  Two Apps builds
+                  TwoApps helps teams
                 </span>
                 <span className="block bg-gradient-to-r from-accent-1 via-white to-accent-2 bg-clip-text text-transparent" data-hero-title-line>
-                  agentic AI systems
+                  automate real work
                 </span>
                 <span className="block text-ink/92" data-hero-title-line>
-                  and white-label AI delivery
+                  and deliver AI projects faster
                 </span>
               </h1>
               <p data-hero-copy className="mt-5 max-w-2xl text-base leading-relaxed text-ink/75 sm:text-lg">
-                Dubai-based AI software house for operational automation and white-label AI delivery. We help
-                businesses automate workflows and help agencies ship AI projects faster with Claude-native execution.
+                UAE-based, serving globally. We help businesses reduce manual work with AI workflows, and we help
+                agencies deliver AI projects faster with white-label implementation support.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <div data-hero-cta>
@@ -171,7 +171,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                       <h2 className="font-display text-xl font-semibold">For Businesses</h2>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-ink/75">
-                      Operational automation, AI-enabled internal tools, and production-ready workflows.
+                      AI workflows and internal tools that reduce manual work and speed up daily operations.
                     </p>
                     <Link
                       href="/services"
@@ -189,7 +189,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                       <h2 className="font-display text-xl font-semibold">For Agencies</h2>
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-ink/75">
-                      White-label AI implementation support for software houses and digital agencies.
+                      White-label AI implementation and extra delivery capacity for agencies and software houses.
                     </p>
                     <Link
                       href="/agency-partners"
@@ -202,7 +202,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                 <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">Fastest starting point</p>
                   <p className="mt-2 text-sm leading-relaxed text-ink/80">
-                    Start with one workflow or one client AI pilot, then scale after measurable results.
+                    Start with one workflow or one client pilot, then scale after you see clear results.
                   </p>
                 </div>
               </div>

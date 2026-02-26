@@ -12,9 +12,9 @@ import { Section } from "@/components/ui/section";
 export const metadata = buildMetadata({
   title: "Book Discovery Call",
   description:
-    "Book a discovery call with Two Apps to discuss AI automation, Claude/Claude Code implementation, or white-label AI delivery support.",
+    "Book a discovery call with TwoApps to discuss AI workflow automation, internal tools, or white-label AI delivery support.",
   canonicalPath: "/book",
-  keywords: ["book ai automation consultation", "book discovery call two apps"],
+  keywords: ["book ai automation consultation", "book discovery call twoapps"],
   ogImage: "/og-default.svg"
 });
 
@@ -41,10 +41,10 @@ export default function BookPage() {
         title={bookingUrl ? "Book a discovery call" : "Booking link coming soon"}
         description={
           bookingUrl
-            ? "Use the live booking link for direct projects or white-label agency partnerships."
+            ? "Use the live booking link for direct business projects or white-label agency partnerships."
             : "The public booking link is not live yet. Use the contact form and share availability for a discovery call."
         }
-        chips={["Direct clients", "Agency partners", "Dubai-based / global support"]}
+        chips={["Direct clients", "Agency partners", "UAE-based / global support"]}
       />
 
       <StickyScene

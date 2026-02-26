@@ -50,12 +50,12 @@ export default async function ServiceDetailPage({ params }: Props) {
     },
     {
       label: "Outcomes",
-      headline: "Built for production workflows, not demos",
+      headline: "Built for real workflows, not demos",
       subline: service.benefits[0] ?? service.summary
     },
     {
       label: "Process",
-      headline: "Pilot first, then harden and expand",
+      headline: "Pilot first, then stabilize and scale",
       subline: service.process[0] ?? "Start with a bounded pilot and scale after measurable results."
     }
   ];
@@ -188,7 +188,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div>
                   <p className="font-medium text-ink">Delivery mode</p>
                   <p className="mt-1">
-                    Remote-first, with structured handoff, review, and production hardening.
+                    Remote-first, with structured handoff, review, and reliability improvements as the workflow scales.
                   </p>
                 </div>
               </div>

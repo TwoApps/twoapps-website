@@ -14,8 +14,8 @@ export function AudienceSplitSection() {
       <AnimatedReveal>
         <Heading
           eyebrow="Two Paths"
-          title="Built for direct business outcomes and white-label agency partnerships"
-          subtitle="Two Apps is positioned to serve both operationally-heavy businesses and software houses that need a specialized AI implementation partner."
+          title="One team for business automation and agency white-label delivery"
+          subtitle="TwoApps helps businesses reduce manual work and helps agencies deliver AI projects faster with practical implementation support."
           align="center"
           className="max-w-4xl"
         />
@@ -52,8 +52,8 @@ export function ServicesOverviewSection() {
       <AnimatedReveal>
         <Heading
           eyebrow="Service Pillars"
-          title="What Two Apps delivers"
-          subtitle="Agentic automation systems, Claude-native execution workflows, and AI-enabled product delivery for business teams and partner agencies."
+          title="What TwoApps helps you build"
+          subtitle="AI workflows, internal tools, and white-label AI delivery support that solve real operational bottlenecks."
         />
       </AnimatedReveal>
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -92,18 +92,18 @@ export function FounderProofSection() {
           <Card className="p-6 sm:p-8">
             <Tag className="mb-4">Founder Proof</Tag>
             <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">
-              Company-first positioning, backed by deep hands-on execution experience
+              Founder-led delivery that makes scoping and execution faster
             </h2>
             <p className="mt-4 max-w-[62ch] text-sm leading-relaxed text-ink/75 sm:text-base">
-              Two Apps is presented as a studio, but your founder credibility is a major trust asset: strong experience across
-              automation, cloud/product engineering, Claude/Claude Code workflows, and compliance-aware process design.
+              TwoApps is company-led, but founder depth is a major trust advantage. Clients get practical experience across
+              AI workflows, product engineering, Claude/Claude Code workflows, and compliance-aware process design.
             </p>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {[
-                "Claude / Claude Code automation expertise",
-                "AI-native workflow design and orchestration",
+                "Claude / Claude Code workflow setup",
+                "AI workflow design with guardrails",
                 "Flutter + AWS product engineering background",
-                "AML / KYC process and ops automation fit"
+                "AML / KYC process and operations fit"
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-3 text-sm text-ink/85">
                   {item}
@@ -112,7 +112,7 @@ export function FounderProofSection() {
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href="/about" variant="secondary">
-                About Two Apps
+                About TwoApps
               </Button>
               <Button href="https://zainhthegreat.github.io/my_cv_zain/" variant="ghost" target="_blank" rel="noreferrer">
                 View founder CV
@@ -121,22 +121,22 @@ export function FounderProofSection() {
           </Card>
           <Card className="p-6">
             <Tag className="mb-4">Target Markets</Tag>
-            <h3 className="font-display text-2xl font-semibold">Where to focus first</h3>
+            <h3 className="font-display text-2xl font-semibold">UAE-based, serving globally</h3>
             <div className="mt-4 space-y-3">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="font-medium">Direct clients (UAE/GCC)</p>
+                <p className="font-medium">Direct business clients</p>
                 <p className="mt-1 text-sm text-ink/70">
-                  Ops-heavy SMEs and mid-market teams that need practical automation execution.
+                  We work with teams worldwide, with strong local access in the UAE for workshops and faster alignment.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="font-medium">Agency partners (global)</p>
+                <p className="font-medium">Agency and software house partners</p>
                 <p className="mt-1 text-sm text-ink/70">
-                  Software houses adding AI services without building an AI team first.
+                  White-label delivery support for agencies that want to sell AI work without hiring a full team first.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-2">Agency regions</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-2">Common partner markets</p>
                 <p className="mt-2 text-sm leading-relaxed text-ink/80">{globalPartnerRegions.join(" • ")}</p>
               </div>
             </div>
@@ -153,8 +153,8 @@ export function WorkPreviewSection() {
       <AnimatedReveal>
         <Heading
           eyebrow="Work Style"
-          title="Case-style summaries built from real expertise"
-          subtitle="Launch proof can start with strong case-style summaries based on your CV and delivery experience, then expand into formal client case studies later."
+          title="Plain-language proof before long technical documents"
+          subtitle="These case-style summaries show how TwoApps scopes and delivers work. They can later expand into formal case studies as client approvals grow."
         />
       </AnimatedReveal>
       <div className="mt-8 grid gap-4 lg:grid-cols-2">
@@ -193,7 +193,7 @@ export function IndustriesAndRegionsSection() {
             <Tag className="mb-4">Industries</Tag>
             <h2 className="font-display text-2xl font-semibold sm:text-3xl">Operationally heavy teams benefit first</h2>
             <p className="mt-3 text-sm leading-relaxed text-ink/75">
-              Two Apps focuses on businesses where manual workflows create delays, errors, and coordination overhead.
+              TwoApps focuses on teams where manual workflows create delays, errors, and too much back-and-forth.
             </p>
             <ul className="mt-4 grid gap-2 text-sm text-ink/85">
               {featuredIndustries.slice(0, 4).map((industry) => (
@@ -209,18 +209,18 @@ export function IndustriesAndRegionsSection() {
           </Card>
           <Card className="p-6">
             <Tag className="mb-4">Geography</Tag>
-            <h2 className="font-display text-2xl font-semibold sm:text-3xl">Dubai-based with global partner reach</h2>
+            <h2 className="font-display text-2xl font-semibold sm:text-3xl">UAE-based with global delivery</h2>
             <p className="mt-3 text-sm leading-relaxed text-ink/75">
-              Direct focus on UAE/GCC businesses, plus white-label support for software houses in high-opportunity regions.
+              We serve clients worldwide. UAE location helps with local collaboration, while delivery is built for remote teams and agency partnerships.
             </p>
             <div className="mt-4 grid gap-3">
               <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                 <p className="font-medium">Direct clients</p>
-                <p className="mt-1 text-sm text-ink/70">Dubai, UAE, GCC</p>
+                <p className="mt-1 text-sm text-ink/70">UAE-based with global client support</p>
               </div>
               <div className="rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                 <p className="font-medium">Agency partners</p>
-                <p className="mt-1 text-sm text-ink/70">{globalPartnerRegions.join(", ")}</p>
+                <p className="mt-1 text-sm text-ink/70">Global delivery, with strong fit in {globalPartnerRegions.join(", ")}</p>
               </div>
             </div>
             <Button href="/regions/white-label-ai-partner-software-houses" variant="ghost" className="mt-5 px-0">
@@ -239,8 +239,8 @@ export function ProcessSection() {
       <AnimatedReveal>
         <Heading
           eyebrow="Process"
-          title="Audit → Pilot → Harden → Expand"
-          subtitle="A practical delivery model for both business automation work and white-label agency engagements."
+          title="Audit → Pilot → Stabilize → Scale"
+          subtitle="A simple delivery model for both direct business projects and white-label agency work."
         />
       </AnimatedReveal>
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">

@@ -180,7 +180,7 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
         <FormField label="Region" error={fieldErrors.region}>
           <input
             className={inputClassName}
-            placeholder="e.g. Dubai, UAE / Australia / Eastern Europe"
+            placeholder="e.g. UAE, Saudi Arabia, Poland, Australia, Brazil"
             value={values.region}
             onChange={(e) => update("region", e.target.value)}
           />
@@ -191,8 +191,8 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
         <legend className="px-1 text-sm font-medium text-ink/90">I am contacting you as</legend>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {[
-            { key: "business", label: "Business team", hint: "Direct client automation / AI products" },
-            { key: "agency", label: "Agency / software house", hint: "White-label AI delivery partner" }
+            { key: "business", label: "Business team", hint: "I need help improving operations or building an AI workflow" },
+            { key: "agency", label: "Agency / software house", hint: "I need a white-label AI delivery partner" }
           ].map((option) => (
             <label
               key={option.key}
@@ -237,7 +237,7 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
       <FormField label="Project details" required error={fieldErrors.message}>
         <textarea
           className={cn(inputClassName, "min-h-36 resize-y")}
-          placeholder="What workflow or project are you trying to build, improve, or deliver?"
+          placeholder="Describe the problem in simple words: what is slowing the team down, and what outcome do you want?"
           value={values.message}
           onChange={(e) => update("message", e.target.value)}
           aria-invalid={Boolean(fieldErrors.message)}

@@ -23,7 +23,7 @@ export function CinematicStickySummary({
       frames={frames}
       heightMultiplier={Math.max(2.5, Math.min(3.5, 1.8 + frames.length * 0.55))}
       visual={
-        <div className="relative h-full min-h-[420px]">
+        <div data-scene-visual-root className="relative h-full min-h-[420px]">
           <div className="absolute inset-0 overflow-hidden rounded-3xl">
             <GlowField intensity="soft" />
             <LightBeams count={6} className="opacity-35" />

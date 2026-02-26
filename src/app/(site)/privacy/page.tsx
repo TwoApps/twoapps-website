@@ -6,9 +6,9 @@ import { Section } from "@/components/ui/section";
 
 export const metadata = buildMetadata({
   title: "Privacy Policy",
-  description: "Privacy policy for the Two Apps website and contact form.",
+  description: "Privacy policy for the TwoApps website and contact form.",
   canonicalPath: "/privacy",
-  keywords: ["two apps privacy policy"],
+  keywords: ["twoapps privacy policy"],
   ogImage: "/og-default.svg"
 });
 
@@ -18,13 +18,13 @@ export default function PrivacyPage() {
       <PageHero
         eyebrow="Legal"
         title="Privacy Policy"
-        description="This is a launch-ready privacy policy template for the Two Apps marketing website. Replace placeholders with your legal/business details before production publication if required."
+        description="This is a launch-ready privacy policy template for the TwoApps marketing website. Replace placeholders with your legal/business details before production publication if required."
       />
       <Section>
         <Card className="prose-dark max-w-none p-6 sm:p-8">
           <div className="space-y-5 text-sm leading-relaxed">
             <p>
-              Two Apps (“we”, “us”, “our”) collects limited information through this website when you submit the contact form or interact with the site.
+              TwoApps (“we”, “us”, “our”) collects limited information through this website when you submit the contact form or interact with the site.
             </p>
             <div>
               <h2 className="font-display text-2xl font-semibold">Information we collect</h2>

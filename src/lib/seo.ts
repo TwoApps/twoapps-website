@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { BRAND_NAME, SEO_TARGET_REGIONS } from "@/lib/brand";
 import { getGscVerification, getSiteUrl } from "@/lib/site-config";
 
 export type SeoMeta = {
@@ -10,9 +11,9 @@ export type SeoMeta = {
   ogImage?: string;
 };
 
-const siteName = "Two Apps";
+const siteName = BRAND_NAME;
 const defaultDescription =
-  "Dubai-based agentic AI software house building AI automations, Claude-powered workflows, and white-label AI delivery systems for businesses and software agencies.";
+  "TwoApps is a UAE-based AI automation and software delivery partner that helps businesses and agencies reduce manual work, ship faster, and launch practical AI workflows.";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -41,7 +42,7 @@ export const baseMetadata: Metadata = {
         url: "/og-default.svg",
         width: 1200,
         height: 630,
-        alt: "Two Apps"
+        alt: siteName
       }
     ]
   },
@@ -109,10 +110,10 @@ export function organizationSchema(siteUrl = getSiteUrl()) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Two Apps",
+    name: siteName,
     url: siteUrl,
     description: defaultDescription,
-    areaServed: ["United Arab Emirates", "GCC", "Europe", "South America", "Australia", "New Zealand"],
+    areaServed: [...SEO_TARGET_REGIONS],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dubai",
@@ -126,7 +127,7 @@ export function localBusinessSchema(siteUrl = getSiteUrl()) {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Two Apps",
+    name: siteName,
     url: siteUrl,
     description: defaultDescription,
     address: {
@@ -134,7 +135,7 @@ export function localBusinessSchema(siteUrl = getSiteUrl()) {
       addressLocality: "Dubai",
       addressCountry: "AE"
     },
-    areaServed: ["UAE", "GCC", "Eastern Europe", "South America", "Australia", "New Zealand"]
+    areaServed: [...SEO_TARGET_REGIONS]
   };
 }
 
@@ -154,11 +155,10 @@ export function serviceSchema(input: {
     url: `${siteUrl}${input.path}`,
     provider: {
       "@type": "Organization",
-      name: "Two Apps",
+      name: siteName,
       url: siteUrl
     },
-    areaServed:
-      input.areaServed || ["UAE", "GCC", "Eastern Europe", "South America", "Australia", "New Zealand"],
+    areaServed: input.areaServed || [...SEO_TARGET_REGIONS],
     serviceType: input.serviceType
   };
 }

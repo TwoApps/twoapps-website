@@ -21,9 +21,9 @@ export function Header({ bookingHref }: { bookingHref: string }) {
                 TA
               </span>
               <span className="hidden sm:block">
-                <span className="block font-display text-lg font-semibold leading-none">Two Apps</span>
+                <span className="block font-display text-lg font-semibold leading-none">TwoApps</span>
                 <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">
-                  Agentic AI Studio
+                  UAE-based | Global delivery
                 </span>
               </span>
             </Link>

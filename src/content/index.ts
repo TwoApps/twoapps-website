@@ -15,17 +15,17 @@ export const audienceTracks = {
     key: "business" as const,
     title: "For Businesses",
     description:
-      "Automate operations, ship internal tools, and deploy AI workflows without waiting to build an in-house AI engineering team.",
+      "Cut manual work, speed up operations, and launch useful AI workflows without hiring a full AI team first.",
     href: "/services",
-    bullets: ["Ops automation", "AI copilots", "Internal dashboards", "Compliance workflows"]
+    bullets: ["Save time", "Reduce manual tasks", "Internal tools", "Clear approvals"]
   },
   agency: {
     key: "agency" as const,
     title: "For Agencies / Software Houses",
     description:
-      "White-label AI delivery and Claude-native implementation support so your team can sell and ship AI projects faster.",
+      "Offer AI projects with confidence using TwoApps as your white-label implementation partner, while you keep the client relationship.",
     href: "/agency-partners",
-    bullets: ["White-label delivery", "Claude Code setup", "AI feature implementation", "Delivery acceleration"]
+    bullets: ["White-label delivery", "AI project support", "Claude Code setup", "Extra delivery capacity"]
   }
 };
 
@@ -33,55 +33,55 @@ export const services: Service[] = [
   {
     slug: "agentic-ai-automation",
     title: "Agentic AI Automation",
-    tagline: "Automate operational workflows with multi-step AI systems that actually execute work.",
+    tagline: "Turn repetitive work into AI-powered workflows with clear checks, approvals, and human oversight.",
     summary:
-      "We design and implement agentic workflows for support, operations, finance ops, reporting, onboarding, and internal back-office processes.",
+      "We build practical AI workflows for support, operations, finance ops, onboarding, reporting, and back-office work so your team spends less time on repeat tasks.",
     audiences: ["business", "agency"],
     benefits: [
-      "Reduce manual operational workload and response times",
-      "Standardize execution quality across recurring processes",
-      "Add approvals, escalation, and human-in-the-loop checkpoints",
-      "Integrate AI workflows with your existing CRM, ERP, and internal tools"
+      "Reduce manual work and turnaround time on repeat tasks",
+      "Keep output quality more consistent across the team",
+      "Add approval steps and exception handling where people need to stay involved",
+      "Connect workflows to your CRM, ERP, email, or internal tools"
     ],
     deliverables: [
-      "Workflow discovery and automation design map",
-      "Agent orchestration logic and prompt/runtime design",
-      "Integrations with APIs, databases, and internal systems",
-      "Monitoring, alerting, and failure-handling patterns",
-      "Handover documentation and improvement backlog"
+      "Workflow discovery and priority map",
+      "AI workflow design with guardrails and decision points",
+      "Integrations with your tools, APIs, and data sources",
+      "Monitoring and failure-handling setup",
+      "Handover notes and next-step improvement backlog"
     ],
     process: [
-      "Process audit and bottleneck mapping",
-      "Pilot workflow implementation with measurable outcomes",
-      "Production hardening and monitoring",
-      "Expansion into adjacent workflows"
+      "Review the current process and identify bottlenecks",
+      "Build one pilot workflow with a measurable goal",
+      "Stabilize the workflow with monitoring and fallback paths",
+      "Expand into the next high-value process"
     ],
     faq: [
       {
-        question: "What kinds of workflows are a good fit for agentic automation?",
+        question: "What kinds of workflows are a good fit for AI automation?",
         answer:
-          "High-volume, rules-aware, repetitive workflows with clear outputs are the best fit. Examples include ticket triage, onboarding checks, reporting assembly, and internal ops routing."
+          "The best fit is repeatable work with clear inputs and outputs. Examples include ticket triage, onboarding checks, report prep, routing, and internal follow-up workflows."
       },
       {
-        question: "Do you replace staff?",
+        question: "Does this replace my team?",
         answer:
-          "The goal is typically capacity expansion and speed, not replacement. We design systems that handle repeatable work while humans manage exceptions and decision-heavy tasks."
+          "Usually no. The goal is to remove repetitive work, reduce delays, and free people to focus on exceptions, decisions, and customer-facing tasks."
       },
       {
-        question: "Can you integrate with our existing tools?",
+        question: "Can this work with our current tools?",
         answer:
-          "Yes. We usually integrate with your existing stack first so the automation fits current operations instead of forcing a new platform rollout."
+          "Yes. We usually build around your current systems first so the workflow fits how your team already works."
       }
     ],
     seo: {
-      title: "Agentic AI Automation Services in Dubai & UAE",
+      title: "AI Workflow Automation Services | TwoApps",
       description:
-        "Two Apps builds agentic AI automation systems for UAE/GCC businesses and global agencies: workflow automation, internal ops AI, and production-ready orchestration.",
+        "TwoApps is a UAE-based AI automation partner serving UAE/GCC, the Middle East, Eastern Europe, South America, Australia, and New Zealand. We build practical AI workflows for business teams and agencies.",
       keywords: [
-        "agentic ai automation dubai",
         "ai workflow automation uae",
-        "agentic automation agency gcc",
-        "operations automation ai"
+        "agentic ai automation middle east",
+        "operations automation ai gcc",
+        "ai workflow implementation partner"
       ],
       canonicalPath: "/services/agentic-ai-automation",
       ogImage: "/og-default.svg"
@@ -90,50 +90,50 @@ export const services: Service[] = [
   {
     slug: "claude-code-automation",
     title: "Claude / Claude Code Automation",
-    tagline: "Make Claude and Claude Code part of your delivery system, not just a chat tab.",
+    tagline: "Turn Claude and Claude Code into repeatable team workflows instead of one-off prompts.",
     summary:
-      "We set up Claude-first development and operations workflows: coding automation, QA loops, task execution flows, and repeatable team standards.",
+      "We help teams use Claude and Claude Code in a structured way for coding, QA, reviews, and delivery tasks so results are faster and more consistent.",
     audiences: ["business", "agency"],
     benefits: [
-      "Increase engineering throughput with structured Claude workflows",
-      "Reduce inconsistency in AI-assisted delivery across teams",
-      "Turn repeated dev/ops tasks into automated playbooks",
-      "Enable faster prototyping and internal tooling delivery"
+      "Speed up engineering and delivery work with repeatable AI-assisted steps",
+      "Reduce inconsistent outputs across people and projects",
+      "Turn repeat tasks into playbooks your team can actually follow",
+      "Improve quality with review checkpoints and clear rules"
     ],
     deliverables: [
-      "Claude/Claude Code workflow architecture",
-      "Team playbooks, prompting standards, and operating patterns",
-      "Automation scripts and integrations around coding tasks",
-      "Risk controls for review, validation, and approvals",
-      "Training and onboarding sessions for the team"
+      "Claude / Claude Code workflow setup",
+      "Team playbooks and prompting standards",
+      "Automation scripts around common coding and QA tasks",
+      "Review and risk-control checkpoints",
+      "Training and onboarding for the team"
     ],
     process: [
-      "Workflow and team maturity assessment",
-      "Pilot setup on one delivery stream",
-      "Playbook standardization and rollout",
-      "Optimization based on review metrics and velocity"
+      "Assess how your team currently uses AI tools",
+      "Run a pilot on one delivery stream",
+      "Document playbooks and rollout rules",
+      "Improve the workflow using feedback and metrics"
     ],
     faq: [
       {
         question: "Is this only for software teams?",
         answer:
-          "No. Claude-based automations can support operations, support teams, analysts, and internal business functions. We scope based on actual repetitive work."
+          "No. We can also use Claude-based workflows for operations, support, analysts, and internal teams with repeatable knowledge work."
       },
       {
-        question: "Can you work with our existing engineering standards?",
+        question: "Do we need to change our engineering standards?",
         answer:
-          "Yes. We adapt to your review process, branching, testing expectations, and compliance requirements instead of forcing a generic AI workflow."
+          "No. We fit the workflow into your review process, testing standards, and compliance requirements."
       },
       {
-        question: "What if our team is new to Claude Code?",
+        question: "What if my team is new to Claude Code?",
         answer:
-          "That is common. We can structure a ramp-up with a pilot and internal playbooks so the adoption is practical and measurable."
+          "That is normal. We start small with a pilot, then document the workflow so your team can use it safely and consistently."
       }
     ],
     seo: {
-      title: "Claude Code Automation & Implementation Partner",
+      title: "Claude Code Automation Partner | TwoApps",
       description:
-        "Two Apps helps companies and software houses implement Claude and Claude Code automation workflows for faster AI-native delivery and repeatable engineering operations.",
+        "TwoApps helps businesses and software teams build repeatable Claude and Claude Code workflows for faster delivery, better consistency, and safer AI-assisted execution.",
       keywords: [
         "claude code automation",
         "claude code consulting",
@@ -147,54 +147,54 @@ export const services: Service[] = [
   {
     slug: "white-label-ai-delivery",
     title: "White-Label AI Delivery for Software Houses",
-    tagline: "Become the AI-capable agency your clients expect without building an in-house AI team first.",
+    tagline: "Offer AI projects without hiring a full in-house AI team first.",
     summary:
-      "Two Apps works as a white-label implementation partner for software houses and agencies that want to sell AI automation and AI-enabled product work.",
+      "TwoApps works behind the scenes as a white-label implementation partner for software houses and agencies that want to deliver AI workflows, AI features, and internal tools.",
     audiences: ["agency"],
     benefits: [
-      "Expand your services without delaying on hiring",
-      "Win AI scopes with implementation backing",
-      "Keep client relationships while we operate behind the scenes",
-      "Add delivery capacity for AI-heavy backlogs and pilots"
+      "Start selling AI projects faster without delaying on hiring",
+      "Win more scopes with credible implementation support",
+      "Keep the client relationship while we deliver the AI layer",
+      "Add flexible delivery capacity for pilots and backlogs"
     ],
     deliverables: [
-      "Discovery support and solution framing for your client opportunities",
+      "Support for discovery and solution framing",
       "White-label implementation of AI workflows and features",
-      "Technical delivery documentation for your team handoff",
-      "Optional ongoing support and optimization retainer",
+      "Delivery documentation for handoff to your team",
+      "Optional ongoing support and optimization",
       "Internal enablement for your agency team"
     ],
     process: [
-      "Partner alignment and white-label operating model",
-      "Pilot client project execution",
-      "Delivery playbook and communication cadence",
-      "Retainer or capacity model for ongoing work"
+      "Align on communication model and white-label rules",
+      "Run one pilot on a real client project",
+      "Set a repeatable delivery cadence",
+      "Move into a retainer or capacity model if needed"
     ],
     faq: [
       {
-        question: "Will you talk directly to our clients?",
+        question: "Will you speak directly with our client?",
         answer:
-          "We can work either white-label behind your team or in a co-delivery model. The communication structure is agreed upfront per project."
+          "We can work fully white-label behind your team or in a co-delivery setup. We agree the communication model before work starts."
       },
       {
-        question: "Which agencies are a good fit?",
+        question: "Which agencies are the best fit?",
         answer:
-          "Software houses, product studios, and digital agencies that already ship web/mobile platforms and want AI automation or AI features as a credible upsell."
+          "Software houses, product studios, and digital agencies that already deliver web or mobile work and need a reliable partner for AI scopes."
       },
       {
-        question: "Do you support agencies outside the Middle East?",
+        question: "Do you support agencies outside the UAE?",
         answer:
-          "Yes. We specifically support partners in Eastern Europe, South America, Australia, and New Zealand in addition to UAE/GCC collaborations."
+          "Yes. We are UAE-based and work with partners across the Middle East, Eastern Europe, South America, Australia, and New Zealand, plus other regions where there is a fit."
       }
     ],
     seo: {
-      title: "White-Label AI Delivery Partner for Software Houses",
+      title: "White-Label AI Delivery Partner | TwoApps",
       description:
-        "Dubai-based white-label AI delivery partner for software houses and agencies. Two Apps helps teams ship AI automations, Claude workflows, and AI-enabled client solutions.",
+        "UAE-based white-label AI delivery partner for software houses and agencies. TwoApps supports teams in UAE/GCC, the Middle East, Eastern Europe, South America, Australia, and New Zealand.",
       keywords: [
         "white label ai partner agency",
         "ai delivery partner software house",
-        "white label agentic ai implementation",
+        "white label ai implementation middle east",
         "agency ai implementation partner"
       ],
       canonicalPath: "/services/white-label-ai-delivery",
@@ -208,46 +208,46 @@ export const industries: Industry[] = [
     slug: "fintech-aml-kyc-automation",
     title: "Fintech / AML / KYC Automation",
     summary:
-      "Automation and AI-assisted workflow design for compliance-heavy processes where speed, consistency, and auditability matter.",
+      "AI-assisted workflow design for compliance-heavy teams that need faster processing, fewer errors, and a clear audit trail.",
     painPoints: [
-      "Manual review queues and repetitive document handling",
-      "Inconsistent triage and case routing across teams",
-      "Slow onboarding and verification turnaround",
-      "Operational bottlenecks between compliance and product teams"
+      "Manual review queues that slow down onboarding and case handling",
+      "Repetitive document checks that consume analyst time",
+      "Inconsistent triage and routing between team members",
+      "Poor visibility across tools, queues, and handoffs"
     ],
     solutions: [
-      "AI-assisted document classification and workflow routing",
-      "Rules + AI hybrid decision support with human approval gates",
-      "Analyst copilots for case summaries and investigation prep",
-      "Internal dashboards for queue visibility and escalation handling"
+      "AI-assisted document sorting and workflow routing",
+      "Rules plus AI support with human approval checkpoints",
+      "Analyst copilots for summaries and investigation prep",
+      "Internal dashboards for queue visibility and escalations"
     ],
     exampleAutomations: [
       "KYC intake triage and document completeness checks",
-      "AML alert enrichment and case summary drafting",
-      "Ops reporting automation for compliance operations",
-      "Escalation routing and SLA monitoring workflows"
+      "AML alert enrichment and case summary drafts",
+      "Compliance ops reporting automation",
+      "Escalation routing and SLA monitoring"
     ],
     faq: [
       {
-        question: "Can AI be used in compliance workflows safely?",
+        question: "Can AI be used safely in compliance workflows?",
         answer:
-          "Yes, when designed with strict boundaries. We use human-in-the-loop checkpoints, audit trails, and clear decision ownership so AI assists rather than silently decides."
+          "Yes, with clear boundaries. We design workflows with human review checkpoints, audit trails, and explicit ownership so AI supports the team instead of making hidden decisions."
       },
       {
-        question: "Do you replace our compliance systems?",
+        question: "Do we need to replace our current compliance systems?",
         answer:
-          "Usually no. We integrate with existing systems and improve workflow execution around them, which reduces rollout risk and shortens time-to-value."
+          "Usually no. We normally improve the workflow around your current tools, which reduces rollout risk and gets results faster."
       },
       {
         question: "Is this only for large fintech companies?",
         answer:
-          "No. Smaller fintechs and regulated startups often see the biggest gains because automation reduces pressure on lean teams during growth."
+          "No. Smaller fintechs and regulated startups often get strong results because automation removes pressure from lean teams."
       }
     ],
     seo: {
       title: "Fintech AML KYC Workflow Automation Services",
       description:
-        "Two Apps builds AI-assisted AML/KYC and compliance operations workflows for fintech teams, improving speed, consistency, and operational visibility.",
+        "TwoApps helps fintech teams improve AML/KYC and compliance operations with AI-assisted workflows, human review checkpoints, and better operational visibility.",
       keywords: [
         "aml workflow automation",
         "kyc automation ai",
@@ -265,49 +265,49 @@ export const regions: RegionPage[] = [
     slug: "dubai-uae-gcc-ai-automation",
     title: "AI Automation Partner in Dubai, UAE & GCC",
     summary:
-      "Two Apps is a Dubai-based AI automation and product engineering partner helping UAE/GCC businesses automate operations and ship AI-enabled systems.",
+      "TwoApps is a UAE-based AI automation and software delivery partner helping teams in Dubai, the UAE, and the GCC reduce manual work and launch practical AI systems.",
     marketFocus: [
-      "UAE/GCC SMEs with operational bottlenecks",
-      "Founders and COOs needing practical automation, not AI demos",
-      "Product teams looking to add AI-enabled workflows and internal tools"
+      "UAE/GCC businesses with slow, manual operational workflows",
+      "Founders and operators who need a real pilot, not an AI demo",
+      "Teams that need internal tools and workflow automation built together"
     ],
     whyTwoApps: [
-      "Dubai-based execution with global delivery capability",
-      "Claude/Claude Code automation depth combined with product engineering",
-      "Practical implementation across web/mobile/backend/internal tooling",
-      "Strong fit for operations-heavy and compliance-aware workflows"
+      "UAE-based execution with global delivery experience",
+      "Strong AI workflow delivery plus product engineering capability",
+      "Practical implementation across web, mobile, backend, and internal tools",
+      "A good fit for operations-heavy and compliance-aware work"
     ],
     engagementModel: [
-      "Automation audit and prioritization sprint",
+      "Automation audit and priority sprint",
       "30-day pilot for one workflow or internal tool",
-      "Production rollout and ongoing optimization retainer"
+      "Production rollout and ongoing optimization support"
     ],
     faq: [
       {
         question: "Do you work on-site in Dubai?",
         answer:
-          "We can support remote-first delivery and on-site sessions when needed for workshops, discovery, or stakeholder alignment in Dubai/UAE."
+          "Yes, when needed. We can work remotely or support on-site sessions in Dubai for workshops, discovery, and stakeholder alignment."
       },
       {
-        question: "Can you build both the automation and the product interface?",
+        question: "Can you build the automation and the interface?",
         answer:
-          "Yes. We can implement the workflow engine and the internal dashboard/admin interface required to operate it."
+          "Yes. We can build both the workflow engine and the internal dashboard or admin interface your team needs to use it."
       },
       {
         question: "What size companies do you support?",
         answer:
-          "We support startups, SMEs, and mid-market teams. The best fit is a team with recurring operational work and a clear owner for the process."
+          "We support startups, SMEs, and mid-market teams. The best fit is a team with recurring operational work and a clear process owner."
       }
     ],
     seo: {
-      title: "Dubai UAE GCC AI Automation Agency | Two Apps",
+      title: "Dubai UAE GCC AI Automation Partner | TwoApps",
       description:
-        "Dubai-based agentic AI automation and product engineering partner for UAE/GCC companies. Build internal AI workflows, automations, and AI-enabled systems with Two Apps.",
+        "TwoApps is a UAE-based AI automation partner for Dubai, UAE, and GCC teams. We build practical AI workflows, internal tools, and automation systems that reduce manual work.",
       keywords: [
         "dubai ai automation agency",
         "uae ai automation company",
-        "gcc agentic ai partner",
-        "dubai ai workflow automation"
+        "gcc ai workflow automation",
+        "middle east ai automation partner"
       ],
       canonicalPath: "/regions/dubai-uae-gcc-ai-automation",
       ogImage: "/og-default.svg"
@@ -317,17 +317,17 @@ export const regions: RegionPage[] = [
     slug: "white-label-ai-partner-software-houses",
     title: "White-Label AI Partner for Software Houses (Global)",
     summary:
-      "Two Apps partners with software houses and agencies as a white-label AI implementation team, with a strong fit for agencies in Eastern Europe, South America, Australia, and New Zealand.",
+      "TwoApps supports software houses and agencies as a white-label AI implementation partner, with strong demand fit across the Middle East, Eastern Europe, South America, Australia, and New Zealand.",
     marketFocus: [
       "Software houses adding AI services to existing web/mobile delivery",
-      "Agencies needing an implementation partner for AI automation projects",
-      "Teams that want AI capability without immediate in-house hiring"
+      "Agencies that need implementation support for AI workflows and AI features",
+      "Teams that want to start selling AI work before hiring in-house specialists"
     ],
     whyTwoApps: [
-      "Specialized Claude-native and agentic workflow execution",
-      "Cost-efficient senior delivery from Dubai without commodity outsourcing positioning",
-      "Flexible white-label or co-delivery collaboration model",
-      "Able to build AI automation plus product/UI surfaces around it"
+      "Practical AI delivery focused on real client outcomes",
+      "Senior execution from a UAE base without commodity outsourcing positioning",
+      "Flexible white-label or co-delivery collaboration",
+      "Can build the AI workflow and the product/UI around it"
     ],
     engagementModel: [
       "Capability sprint for your agency team",
@@ -339,28 +339,28 @@ export const regions: RegionPage[] = [
       {
         question: "Can you support agencies across time zones?",
         answer:
-          "Yes. Dubai is a useful overlap point across Europe, the Middle East, Africa, Australia/New Zealand, and parts of South America depending on project cadence."
+          "Yes. Being UAE-based gives us useful overlap time with the Middle East, Eastern Europe, parts of South America, and Australia/New Zealand."
       },
       {
         question: "Do you sign NDAs and work white-label?",
         answer:
-          "Yes. White-label collaboration and confidentiality are core to this service model."
+          "Yes. NDAs, confidentiality, and white-label delivery are core parts of this service model."
       },
       {
-        question: "What projects do agencies typically bring to you?",
+        question: "What projects do agencies usually bring to you?",
         answer:
-          "AI automation pilots, AI features inside existing apps, internal tools for client ops teams, and Claude/agentic execution workflows their team does not yet have bandwidth to build."
+          "Common projects include AI automation pilots, AI features inside existing apps, internal tools for client teams, and Claude/agentic workflows the agency does not have time to build."
       }
     ],
     seo: {
-      title: "White-Label AI Partner for Software Houses | Two Apps",
+      title: "White-Label AI Partner for Software Houses | TwoApps",
       description:
-        "Two Apps is a Dubai-based white-label AI implementation partner for software houses and agencies in Eastern Europe, South America, Australia, and New Zealand.",
+        "TwoApps is a UAE-based white-label AI implementation partner for software houses and agencies in UAE/GCC, the Middle East, Eastern Europe, South America, Australia, and New Zealand.",
       keywords: [
         "white label ai partner software houses",
         "agency ai implementation partner",
         "white label ai delivery eastern europe agency",
-        "ai partner for software houses australia new zealand"
+        "ai partner software house middle east australia"
       ],
       canonicalPath: "/regions/white-label-ai-partner-software-houses",
       ogImage: "/og-default.svg"
@@ -371,16 +371,16 @@ export const regions: RegionPage[] = [
 export const caseStudies: CaseStudySummary[] = [
   {
     slug: "claude-automation-ops-acceleration",
-    title: "Claude-Centric Automation Workflows for Fast Execution",
-    context: "AI operations and engineering workflow optimization",
+    title: "Claude Workflows That Help Teams Deliver Faster",
+    context: "AI-assisted engineering and operations delivery",
     problem:
-      "Teams using AI ad hoc often hit inconsistency, duplicated effort, and review overhead because there is no shared workflow for how AI-generated work is created and validated.",
+      "Teams were using AI in an ad hoc way, which caused inconsistent outputs, duplicated effort, and extra review work.",
     approach:
-      "Designed repeatable Claude/Claude Code-centric workflows with task structure, review gates, and operational patterns that turn one-off usage into a reliable delivery system.",
+      "Built repeatable Claude and Claude Code workflows with clear task structure, review steps, and handoff rules so the team could use AI in a consistent way.",
     outcomes: [
-      "Faster execution on repeated implementation tasks",
-      "Improved consistency in outputs and review expectations",
-      "Clear handoff patterns for scaling AI-assisted delivery"
+      "Faster delivery on repeat implementation tasks",
+      "More consistent output quality and review expectations",
+      "Clearer handoffs for scaling AI-assisted work"
     ],
     tech: ["Claude", "Claude Code", "Automation playbooks", "Workflow design"],
     disclaimer: "Representative summary based on founder expertise and delivery experience."
@@ -388,31 +388,31 @@ export const caseStudies: CaseStudySummary[] = [
   {
     slug: "aml-kyc-workflow-automation-patterns",
     title: "Compliance Workflow Automation Patterns (AML/KYC)",
-    context: "Fintech / compliance operations process design",
+    context: "Fintech and compliance operations process design",
     problem:
-      "Compliance-heavy teams face queue pressure, repetitive manual checks, and operational delays when process steps are fragmented across tools and human handoffs.",
+      "Compliance teams were dealing with queue pressure, repetitive checks, and slow handoffs across tools and people.",
     approach:
-      "Mapped workflow stages, introduced automation opportunities with human approval gates, and structured AI-assisted steps for summaries, triage, and process support.",
+      "Mapped the process, introduced automation opportunities, and added AI-assisted steps with human approval gates for safer execution.",
     outcomes: [
-      "Reduced repetitive handling in compliance operations",
-      "Better workflow visibility and escalation paths",
-      "Safer AI use with human-in-the-loop control points"
+      "Less repetitive handling in compliance operations",
+      "Better visibility across queues and escalations",
+      "Safer AI usage with human control points"
     ],
     tech: ["Workflow automation", "Internal tools", "AI-assisted processing", "Ops dashboards"],
     disclaimer: "Representative summary based on domain and implementation experience."
   },
   {
     slug: "ai-enabled-product-and-dashboard-delivery",
-    title: "AI-Enabled Product & Internal Dashboard Delivery",
+    title: "AI Workflow + Dashboard Delivery in One Build",
     context: "Custom product engineering and internal tooling",
     problem:
-      "Businesses often need both the automation backend and a usable interface for teams to operate, approve, and monitor workflows, but vendors only deliver one side.",
+      "The team needed both the automation backend and a usable interface, but vendors often delivered only one side.",
     approach:
-      "Combined product engineering (web/mobile/admin) with automation workflows so teams can run AI-enabled operations with a clear interface and control layer.",
+      "Delivered the workflow logic and the operator-facing product interface together so teams could run, approve, and monitor AI-assisted processes in one system.",
     outcomes: [
       "End-to-end delivery from workflow logic to operator UI",
       "Faster time-to-value for internal AI systems",
-      "Less coordination overhead between multiple vendors"
+      "Less coordination between multiple vendors"
     ],
     tech: ["Flutter", "AWS", "Web apps", "Dashboards", "API integrations"],
     disclaimer: "Representative summary synthesized from founder CV and project experience."
@@ -422,19 +422,19 @@ export const caseStudies: CaseStudySummary[] = [
 export const processSteps = [
   {
     title: "Audit",
-    copy: "Map the workflow, bottlenecks, approvals, and integration points. Prioritize what should be automated first."
+    copy: "Understand the workflow, bottlenecks, approvals, and systems involved. Choose the best starting point first."
   },
   {
     title: "Pilot",
-    copy: "Implement one production-relevant workflow with measurable outcomes and clear ownership."
+    copy: "Build one real workflow with a clear goal so you can measure value quickly."
   },
   {
-    title: "Harden",
-    copy: "Add monitoring, guardrails, fallback behavior, and operator visibility for stable operation."
+    title: "Stabilize",
+    copy: "Add monitoring, guardrails, and fallback behavior so the workflow runs reliably."
   },
   {
-    title: "Expand",
-    copy: "Scale into adjacent workflows or white-label client delivery streams without rebuilding from scratch."
+    title: "Scale",
+    copy: "Expand into the next workflow or client use case without starting from scratch."
   }
 ] as const;
 
@@ -443,7 +443,7 @@ export const featuredIndustries = [
   "Real Estate Operations",
   "Logistics and Supply Chain",
   "Recruitment / Staffing",
-  "E-commerce Ops",
+  "E-commerce Operations",
   "Support-heavy Service Businesses"
 ] as const;
 
