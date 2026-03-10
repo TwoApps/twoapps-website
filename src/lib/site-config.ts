@@ -27,6 +27,21 @@ export function getBookingUrl() {
   }
 }
 
+/** Calendly embed URL for inline iframe (adds embed params). Returns null if booking URL is not Calendly. */
+export function getCalendlyEmbedUrl(): string | null {
+  const booking = getBookingUrl();
+  if (!booking) return null;
+  try {
+    const u = new URL(booking);
+    if (!u.hostname.endsWith("calendly.com")) return null;
+    u.searchParams.set("embed_domain", getSiteUrl().replace(/^https?:\/\//, ""));
+    u.searchParams.set("embed_type", "Inline");
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
+
 export function getGscVerification() {
   return process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim() || null;
 }

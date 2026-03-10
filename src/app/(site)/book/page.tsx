@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/seo";
-import { getBookingUrl } from "@/lib/site-config";
+import { getBookingUrl, getCalendlyEmbedUrl } from "@/lib/site-config";
 
+import { CalendlyEmbed } from "@/components/book/calendly-embed";
 import { PageHero } from "@/components/common/page-hero";
 import { ExpandableDetailPanel } from "@/components/common/expandable-detail-panel";
 import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
@@ -33,6 +34,7 @@ const bookingFrames: StickySceneFrame[] = [
 
 export default function BookPage() {
   const bookingUrl = getBookingUrl();
+  const calendlyEmbedUrl = getCalendlyEmbedUrl();
 
   return (
     <>
@@ -70,22 +72,45 @@ export default function BookPage() {
         }
       />
 
+      {calendlyEmbedUrl && (
+        <Section className="pt-6">
+          <div className="mx-auto max-w-4xl">
+            <CalendlyEmbed embedUrl={calendlyEmbedUrl} />
+            <p className="mt-3 text-center text-sm text-ink/60">
+              Prefer to open in a new tab?{" "}
+              <a
+                href={bookingUrl ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-1 hover:underline"
+              >
+                Open Calendly
+              </a>
+            </p>
+          </div>
+        </Section>
+      )}
+
       <Section className="pt-6">
         <Card className="mx-auto max-w-3xl p-4 sm:p-5">
           <ExpandableDetailPanel
-            title={bookingUrl ? "Open the booking link" : "Use the contact fallback"}
+            title={bookingUrl ? (calendlyEmbedUrl ? "Or use the link" : "Open the booking link") : "Use the contact fallback"}
             summary={bookingUrl ? "Primary CTA now points to your live scheduler" : "Booking URL is not configured yet"}
-            defaultOpen
+            defaultOpen={!calendlyEmbedUrl}
           >
             <div className="space-y-4 text-sm text-ink/78 sm:text-base">
               <p>
                 {bookingUrl
-                  ? "Use the button below to schedule. If you need to share background before the call, you can still use the contact form."
+                  ? calendlyEmbedUrl
+                    ? "Schedule above or use the link to open Calendly in a new tab. You can also use the contact form to share context before the call."
+                    : "Use the button below to schedule. If you need to share background before the call, you can still use the contact form."
                   : "Use the contact page and mention your preferred times. This keeps the website flow working until a live booking tool is added."}
               </p>
               <div className="flex flex-wrap gap-3">
                 {bookingUrl ? (
-                  <Button href={bookingUrl}>Open booking link</Button>
+                  <Button href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                    {calendlyEmbedUrl ? "Open in new tab" : "Open booking link"}
+                  </Button>
                 ) : (
                   <Button href="/contact">Use contact form</Button>
                 )}
