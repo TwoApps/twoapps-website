@@ -1,0 +1,47 @@
+{
+  "name": "TwoApps | Agentic AI Software House",
+  "short_name": "TwoApps",
+  "description": "TwoApps is a UAE-based AI automation and software delivery partner that helps businesses and agencies reduce manual work, ship faster, and launch practical AI workflows.",
+  "start_url": "/",
+  "display": "website",
+  "background_color": "#ffffff",
+  "theme_color": "#00E4D4",
+  "icons": [
+    {
+      "src": "/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
