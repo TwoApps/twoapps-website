@@ -42,6 +42,10 @@ export function getCalendlyEmbedUrl(): string | null {
   }
 }
 
+export function getContactPhone() {
+  return process.env.NEXT_PUBLIC_CONTACT_PHONE?.trim() || null;
+}
+
 export function getGscVerification() {
   return process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim() || null;
 }
