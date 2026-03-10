@@ -1,0 +1,68 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Write",
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash",
+      "Bash(git:*)",
+      "Bash(github:*)",
+      "Bash(gh:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(yarn:*)",
+      "Bash(pnpm:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(xargs:*)"
+    ],
+    "block": [
+      "Edit(.env)",
+      "Edit(.env.local)",
+      "Edit(.env.production)",
+      "Edit(**/.env)",
+      "Edit(package-lock.json)",
+      "Edit(yarn.lock)",
+      "Edit(pnpm-lock.yaml)",
+      "Edit(node_modules/**)",
+      "Edit(.next/**)",
+      "Edit(dist/**)",
+      "Edit(build/**)"
+    ]
+  },
+  "hooks": {
+    "postToolUse": {
+      "run": [
+        "npm run lint -- --fix"
+      ],
+      "when": "on_success"
+    }
+  },
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@context7/mcp-server-context7"]
+    }
+  },
+  "skills": {
+    "commit": {
+      "description": "Create git commits with conventional commit format",
+      "disableModelInvocation": false
+    },
+    "code-review": {
+      "description": "Review code for bugs, quality issues, and best practices",
+      "disableModelInvocation": false
+    }
+  }
+}

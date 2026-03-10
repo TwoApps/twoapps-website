@@ -1,0 +1,7 @@
+# Ignore local Claude settings (API keys, personal preferences)
+settings.local.json
+
+# But allow team-wide settings
+!settings.json
+!hooks/
+!skills/
