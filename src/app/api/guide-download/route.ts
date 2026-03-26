@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { addLead, updateLeadNurtureStatus, updateLeadEmailStats } from "@/lib/leads-store";
+import { sendWelcomeEmail } from "@/lib/guide-emails";
 
 const guideDownloadSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name.").max(120),
@@ -9,18 +11,7 @@ const guideDownloadSchema = z.object({
   honeypot: z.string().max(0).optional().default("")
 });
 
-type LeadEntry = {
-  name: string;
-  email: string;
-  company: string;
-  sourcePage: string;
-  downloadedAt: string;
-};
-
-export const runtime = "edge";
-
-// In-memory store for edge runtime (resets on cold start, use external DB for persistence)
-const leadsStore: LeadEntry[] = [];
+export const runtime = "nodejs"; // Changed from edge to nodejs for file system access
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -49,23 +40,52 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Add new lead to in-memory store
-    const newLead: LeadEntry = {
+    // Store lead in leads.json
+    const lead = addLead({
       name: parsed.data.name,
       email: parsed.data.email,
       company: parsed.data.company,
-      sourcePage: parsed.data.sourcePage,
-      downloadedAt: new Date().toISOString()
-    };
+      sourcePage: parsed.data.sourcePage
+    });
 
-    leadsStore.push(newLead);
+    console.log("[GUIDE-DOWNLOAD] New lead captured", {
+      leadId: lead.id,
+      email: lead.email,
+      name: lead.name,
+      company: lead.company
+    });
 
-    // Also log to console for visibility (can be captured by logging service)
-    console.log("New guide download:", JSON.stringify(newLead));
+    // Send Day 0 welcome email (async, don't block response)
+    sendWelcomeEmail(lead)
+      .then(result => {
+        if (result.success) {
+          // Update nurture sequence status
+          updateLeadNurtureStatus(lead.id, {
+            day0Sent: true,
+            day0SentAt: new Date().toISOString()
+          });
+          updateLeadEmailStats(lead.id, { emailsSent: 1 });
+        } else {
+          console.error("[GUIDE-DOWNLOAD] Failed to send welcome email", {
+            leadId: lead.id,
+            error: result.error
+          });
+        }
+      })
+      .catch(error => {
+        console.error("[GUIDE-DOWNLOAD] Unexpected error sending welcome email", {
+          leadId: lead.id,
+          error: error instanceof Error ? error.message : "Unknown error"
+        });
+      });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Guide download save failed:", error);
+    console.error("[GUIDE-DOWNLOAD] Failed to process request", {
+      error: error instanceof Error ? error.message : "Unknown error",
+      stack: error instanceof Error ? error.stack : undefined
+    });
+    
     return NextResponse.json(
       {
         ok: false,
