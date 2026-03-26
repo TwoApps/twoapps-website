@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 import { JsonLd } from "@/components/json-ld";
 import { Container } from "@/components/ui/container";
@@ -374,12 +375,12 @@ function IndustrySection({
               <div className="mb-4 text-accent-1">{getIcon(industry.icon)}</div>
               <h3 className="mb-3 font-display text-xl font-semibold">{industry.title}</h3>
               <p className="mb-4 text-sm leading-relaxed text-ink/60">{industry.description}</p>
-              <a
+              <Link
                 href="/industries"
                 className="inline-flex items-center gap-1 text-sm font-medium text-accent-1 hover:underline"
               >
                 Learn more {getIcon("chevronRight")}
-              </a>
+              </Link>
             </div>
           ))}
         </div>
@@ -409,7 +410,7 @@ function TestimonialsSection({
               className="rounded-2xl border border-white/10 bg-white/[0.02] p-8"
             >
               <blockquote className="mb-6 text-lg leading-relaxed text-ink/80 italic">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-1/20 text-lg font-bold text-accent-1">

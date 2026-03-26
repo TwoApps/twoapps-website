@@ -254,7 +254,7 @@ export function caseStudyEmailTemplate(lead: LeadEntry): { subject: string; html
 /**
  * Day 5: Common AI Workflow Use Cases
  */
-export function useCasesEmailTemplate(lead: LeadEntry): { subject: string; html: string } {
+export function getCasesEmailTemplate(lead: LeadEntry): { subject: string; html: string } {
   const subject = "5 ways companies are using AI right now";
   
   const html = `

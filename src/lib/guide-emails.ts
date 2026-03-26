@@ -9,7 +9,7 @@ import type { LeadEntry } from "@/lib/leads-store";
 import {
   welcomeEmailTemplate,
   caseStudyEmailTemplate,
-  useCasesEmailTemplate,
+  getCasesEmailTemplate,
   pilotProcessEmailTemplate,
   consultationOfferEmailTemplate
 } from "@/lib/email-templates/guide-emails";
@@ -110,7 +110,7 @@ export async function sendCaseStudyEmail(lead: LeadEntry): Promise<EmailSendResu
 export async function sendUseCasesEmail(lead: LeadEntry): Promise<EmailSendResult> {
   try {
     const resend = getResendClient();
-    const { subject, html } = useCasesEmailTemplate(lead);
+    const { subject, html } = getCasesEmailTemplate(lead);
     
     const result = await resend.emails.send({
       from: FROM_EMAIL,
