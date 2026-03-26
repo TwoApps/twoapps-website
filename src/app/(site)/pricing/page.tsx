@@ -352,6 +352,26 @@ function PricingContent() {
         </div>
       </section>
 
+      {/* Compliance Services */}
+      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-accent-1/20 bg-gradient-to-b from-accent-1/[0.04] to-transparent p-6 sm:p-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 className="text-lg font-semibold text-ink sm:text-xl">
+                Need AI Compliance Services?
+              </h3>
+              <p className="mt-2 text-sm text-ink/65">
+                AI Governance Audit ($20K) and Compliance-as-a-Service ($5K/month) for fintech
+                and regulated industries. GDPR, MAS TRM, PDPA, DIFC, ADGM coverage.
+              </p>
+            </div>
+            <Button href="/compliance" variant="primary" className="shrink-0">
+              View Compliance Services
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <CtaBand
         title="Ready to automate?"
         copy="Pick a package or contact us to discuss which workflow will give you the fastest ROI."
