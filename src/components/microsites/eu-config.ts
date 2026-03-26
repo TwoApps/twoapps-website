@@ -2,20 +2,15 @@ import type { RegionalConfig } from "./types";
 
 export const euConfig: RegionalConfig = {
   slug: "eu",
-  meta: {
-    title: "AI Workflow Automation Europe | GDPR-Compliant by Design | TwoApps",
-    description:
-      "AI automation. GDPR-compliant by design. European businesses need automation that respects data protection. Request a compliance-ready proposal today.",
-    keywords: [
-      "AI automation Europe",
-      "GDPR compliant automation",
-      "workflow automation EU",
-      "data residency automation",
-      "European AI solutions",
-      "privacy-first automation"
-    ],
-    ogImage: "/og-default.svg",
-    canonicalPath: "/eu"
+  hero: {
+    eyebrow: "Privacy-First • European-Ready",
+    headline: "AI Automation. GDPR-Compliant by Design.",
+    subheadline:
+      "European businesses can't compromise on data protection. TwoApps builds AI workflows with GDPR compliance built in from day one — not retrofitted. Whether it's data residency, right to deletion, or audit trails, your automation meets European standards.",
+    primaryCta: "Request a compliance-ready proposal",
+    secondaryCta: "View GDPR features",
+    trustBar: "Trusted by European businesses",
+    trustMarks: ["GDPR-compliant", "Data residency", "Privacy by design"]
   },
   hero: {
     eyebrow: "Privacy-First • European-Ready",

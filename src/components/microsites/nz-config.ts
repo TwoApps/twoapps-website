@@ -2,20 +2,15 @@ import type { RegionalConfig } from "./types";
 
 export const nzConfig: RegionalConfig = {
   slug: "nz",
-  meta: {
-    title: "AI Workflow Automation New Zealand | Supercharge Your Team | TwoApps",
-    description:
-      "Your team, supercharged. AI workflow automation for New Zealand businesses facing staffing challenges. Free workflow review available.",
-    keywords: [
-      "AI automation New Zealand",
-      "workflow automation NZ",
-      "business automation",
-      "staffing challenges",
-      "Kiwi business automation",
-      "team productivity"
-    ],
-    ogImage: "/og-default.svg",
-    canonicalPath: "/nz"
+  hero: {
+    eyebrow: "Kiwi Business, Global Capability",
+    headline: "Your Team, Supercharged.",
+    subheadline:
+      "New Zealand businesses don't need to hire in a tight market to grow. We build AI workflows that let your existing team handle more — without the burnout. From Auckland to Christchurch, we deliver automation that understands Kiwi business realities.",
+    primaryCta: "See what's possible in a free workflow review",
+    secondaryCta: "How it works",
+    trustBar: "Supporting Kiwi businesses",
+    trustMarks: ["Remote-friendly", "NZ timezone", "Flexible engagement"]
   },
   hero: {
     eyebrow: "Kiwi Business, Global Capability",

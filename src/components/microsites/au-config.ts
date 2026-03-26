@@ -14,7 +14,15 @@ export const auConfig: RegionalConfig = {
       "rising wage costs automation"
     ],
     ogImage: "/og-default.svg",
-    canonicalPath: "/au"
+    canonicalPath: "/au",
+    alternates: [
+      { hreflang: "en-au", href: "https://thetwoapps.com/au" },
+      { hreflang: "en-sg", href: "https://thetwoapps.com/sg" },
+      { hreflang: "en-nz", href: "https://thetwoapps.com/nz" },
+      { hreflang: "en-ae", href: "https://thetwoapps.com/ae" },
+      { hreflang: "en-eu", href: "https://thetwoapps.com/eu" },
+      { hreflang: "x-default", href: "https://thetwoapps.com" }
+    ]
   },
   hero: {
     eyebrow: "Australian Business • Enterprise-Ready",
@@ -212,7 +220,7 @@ export const auConfig: RegionalConfig = {
       {
         question: "We already have consultants advising us.",
         answer:
-          "Advisors tell you what to do. We do it. We don't leave you with a PowerPoint — we leave you with working automation. Many clients use us to execute on their consultants' recommendations."
+          "Advisors tell you what to do. We do it. We don't leave you with a PowerPoint — we leave them with working automation. Many clients use us to execute on their consultants' recommendations."
       },
       {
         question: "Can you scale with us?",

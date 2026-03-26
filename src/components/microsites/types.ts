@@ -58,6 +58,7 @@ export interface RegionalConfig {
     keywords: string[];
     ogImage?: string;
     canonicalPath?: string;
+    alternates?: Array<{ hreflang: string; href: string }>;
   };
   hero: {
     eyebrow: string;

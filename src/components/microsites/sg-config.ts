@@ -14,7 +14,15 @@ export const sgConfig: RegionalConfig = {
       "Singapore business automation"
     ],
     ogImage: "/og-default.svg",
-    canonicalPath: "/sg"
+    canonicalPath: "/sg",
+    alternates: [
+      { hreflang: "en-sg", href: "https://thetwoapps.com/sg" },
+      { hreflang: "en-au", href: "https://thetwoapps.com/au" },
+      { hreflang: "en-nz", href: "https://thetwoapps.com/nz" },
+      { hreflang: "en-ae", href: "https://thetwoapps.com/ae" },
+      { hreflang: "en-eu", href: "https://thetwoapps.com/eu" },
+      { hreflang: "x-default", href: "https://thetwoapps.com" }
+    ]
   },
   hero: {
     eyebrow: "Singapore Business • Asia-Ready",
@@ -22,9 +30,9 @@ export const sgConfig: RegionalConfig = {
     subheadline:
       "Singapore businesses face some of the highest operational costs in Asia. TwoApps builds AI workflows that reduce manual work while maintaining the compliance standards MAS and PDPA demand. Start with one pilot workflow. Scale what works.",
     primaryCta: "Book a 30-minute workflow audit",
-    secondaryCta: "How it works ↓",
+    secondaryCta: "How it works",
     trustBar: "Trusted by Singapore businesses",
-    trustMarks: ["MAS Compliant", "PDPA Ready", "Singapore References"]
+    trustMarks: ["Production-grade", "MAS compliant", "SGD pricing"]
   },
   painPoints: {
     title: "The Singapore Business Challenge",
@@ -82,6 +90,7 @@ export const sgConfig: RegionalConfig = {
       duration: "Ongoing partnership"
     }
   ],
+  featuresTitle: "Built for Singapore Standards",
   features: {
     title: "Built for Singapore Standards",
     items: [
@@ -117,6 +126,7 @@ export const sgConfig: RegionalConfig = {
       }
     ]
   },
+  industriesTitle: "Solutions by Industry",
   industries: {
     title: "Solutions by Industry",
     items: [
@@ -140,6 +150,7 @@ export const sgConfig: RegionalConfig = {
       }
     ]
   },
+  testimonialsTitle: "Trusted by Singapore Businesses",
   testimonials: {
     title: "Trusted by Singapore Businesses",
     items: [
@@ -147,15 +158,13 @@ export const sgConfig: RegionalConfig = {
         quote: "The MAS compliance requirements were our biggest concern. TwoApps built automation with audit trails and approval chains built in. Our compliance team signed off without changes.",
         name: "Sarah Tan",
         title: "Operations Director, FinServe Pte Ltd",
-        stat: "40% cost reduction • MAS compliant",
-        avatar: "ST"
+        stat: "40% cost reduction • MAS compliant"
       },
       {
         quote: "We needed to scale fast but couldn't hire fast enough. TwoApps automated our customer onboarding and support workflows. We handle 3x the volume with the same team.",
         name: "Michael Lim",
         title: "CTO, LogiTech Solutions",
-        stat: "3x throughput • SGD 200K saved annually",
-        avatar: "ML"
+        stat: "3x throughput • SGD 200K saved annually"
       }
     ]
   },

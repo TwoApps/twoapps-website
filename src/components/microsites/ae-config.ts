@@ -15,7 +15,15 @@ export const aeConfig: RegionalConfig = {
       "transformation mandate"
     ],
     ogImage: "/og-default.svg",
-    canonicalPath: "/ae"
+    canonicalPath: "/ae",
+    alternates: [
+      { hreflang: "en-ae", href: "https://thetwoapps.com/ae" },
+      { hreflang: "en-sg", href: "https://thetwoapps.com/sg" },
+      { hreflang: "en-au", href: "https://thetwoapps.com/au" },
+      { hreflang: "en-nz", href: "https://thetwoapps.com/nz" },
+      { hreflang: "en-eu", href: "https://thetwoapps.com/eu" },
+      { hreflang: "x-default", href: "https://thetwoapps.com" }
+    ]
   },
   hero: {
     eyebrow: "Dubai-Based • GCC-Focused • Vision 2030 Aligned",
@@ -23,9 +31,9 @@ export const aeConfig: RegionalConfig = {
     subheadline:
       "Transformation isn't a future goal — it's happening now. TwoApps, based in Dubai, helps GCC organizations implement AI workflows that align with national transformation agendas. From government compliance to rapid scaling, we deliver automation that meets local standards.",
     primaryCta: "Schedule a transformation consultation",
-    secondaryCta: "Learn more ↓",
+    secondaryCta: "Learn more",
     trustBar: "Trusted by GCC organizations",
-    trustMarks: ["Vision 2030 Aligned", "Arabic Support", "Local Presence"]
+    trustMarks: ["Dubai-based", "Vision 2030 aligned", "Arabic support"]
   },
   painPoints: {
     title: "The GCC Transformation Challenge",
@@ -83,6 +91,7 @@ export const aeConfig: RegionalConfig = {
       duration: "Ongoing partnership"
     }
   ],
+  featuresTitle: "Built for GCC Standards",
   features: {
     title: "Built for GCC Standards",
     items: [
@@ -118,6 +127,7 @@ export const aeConfig: RegionalConfig = {
       }
     ]
   },
+  industriesTitle: "Solutions by Industry",
   industries: {
     title: "Solutions by Industry",
     items: [
@@ -141,6 +151,7 @@ export const aeConfig: RegionalConfig = {
       }
     ]
   },
+  testimonialsTitle: "Trusted by GCC Organizations",
   testimonials: {
     title: "Trusted by GCC Organizations",
     items: [
@@ -148,15 +159,13 @@ export const aeConfig: RegionalConfig = {
         quote: "TwoApps understood our Vision 2030 alignment requirements from day one. They delivered automation that met government standards and accelerated our digital transformation timeline.",
         name: "H.E. Abdullah Al-Rashid",
         title: "Director of Digital Transformation, Government Entity",
-        stat: "Vision 2030 aligned • 60% faster service delivery",
-        avatar: "AR"
+        stat: "Vision 2030 aligned • 60% faster service delivery"
       },
       {
         quote: "Having a Dubai-based partner made all the difference. Same timezone, understood our business culture, and delivered Arabic-language workflows. The local presence accelerated everything.",
         name: "Fatima Al-Mansouri",
         title: "CEO, Emirates Property Group",
-        stat: "AED 2M annual savings • Arabic support",
-        avatar: "FM"
+        stat: "AED 2M annual savings • Arabic support"
       }
     ]
   },
