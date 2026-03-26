@@ -24,7 +24,8 @@ export const aeConfig: RegionalConfig = {
       "Transformation isn't a future goal — it's happening now. TwoApps, based in Dubai, helps GCC organizations implement AI workflows that align with national transformation agendas. From government compliance to rapid scaling, we deliver automation that meets local standards.",
     primaryCta: "Schedule a transformation consultation",
     secondaryCta: "Learn more ↓",
-    trustBar: "Trusted by GCC organizations"
+    trustBar: "Trusted by GCC organizations",
+    trustMarks: ["Vision 2030 Aligned", "Arabic Support", "Local Presence"]
   },
   painPoints: {
     title: "The GCC Transformation Challenge",
@@ -59,31 +60,29 @@ export const aeConfig: RegionalConfig = {
       }
     ]
   },
-  howItWorks: {
-    title: "Transformation Process",
-    steps: [
-      {
-        title: "Strategy & Roadmap",
-        subtitle: "1-hour consultation to understand your transformation goals and create an automation roadmap aligned with your mandates.",
-        duration: "1 hour consultation"
-      },
-      {
-        title: "Design & Build",
-        subtitle: "We design and build your workflow with government compliance and localization built in.",
-        duration: "4-6 weeks delivery"
-      },
-      {
-        title: "Deploy Pilot",
-        subtitle: "Test with your team. Full training and Arabic documentation available.",
-        duration: "2 weeks test"
-      },
-      {
-        title: "Scale & Transform",
-        subtitle: "Expand across your organization. Continuous support for your transformation journey.",
-        duration: "Ongoing partnership"
-      }
-    ]
-  },
+  howItWorksTitle: "Transformation Process",
+  howItWorks: [
+    {
+      title: "Strategy & Roadmap",
+      subtitle: "1-hour consultation to understand your transformation goals and create an automation roadmap aligned with your mandates.",
+      duration: "1 hour consultation"
+    },
+    {
+      title: "Design & Build",
+      subtitle: "We design and build your workflow with government compliance and localization built in.",
+      duration: "4-6 weeks delivery"
+    },
+    {
+      title: "Deploy Pilot",
+      subtitle: "Test with your team. Full training and Arabic documentation available.",
+      duration: "2 weeks test"
+    },
+    {
+      title: "Scale & Transform",
+      subtitle: "Expand across your organization. Continuous support for your transformation journey.",
+      duration: "Ongoing partnership"
+    }
+  ],
   features: {
     title: "Built for GCC Standards",
     items: [
@@ -172,7 +171,8 @@ export const aeConfig: RegionalConfig = {
         "Compliance requirements review",
         "Transformation roadmap",
         "No obligation"
-      ]
+      ],
+      cta: "Schedule Free Session"
     },
     pilot: {
       title: "Transformation Project",
@@ -186,9 +186,10 @@ export const aeConfig: RegionalConfig = {
         "90 days post-launch support",
         "Ongoing transformation partnership"
       ],
-      popular: true,
-      note: "All prices in AED. Government and enterprise packages available. Start with a free consultation — no commitment."
-    }
+      cta: "Enquire Now",
+      popular: true
+    },
+    note: "All prices in AED. Government and enterprise packages available. Start with a free consultation — no commitment."
   },
   faq: {
     title: "Common Questions",

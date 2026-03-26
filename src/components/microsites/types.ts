@@ -5,6 +5,20 @@ export interface RegionalPainPoint {
   stat: string;
 }
 
+export interface RegionalPricingTier {
+  title: string;
+  price: string;
+  features: string[];
+  cta: string;
+  popular?: boolean;
+}
+
+export interface RegionalPricing {
+  free: RegionalPricingTier;
+  pilot: RegionalPricingTier;
+  note: string;
+}
+
 export interface RegionalFeature {
   icon: string;
   title: string;
@@ -52,23 +66,25 @@ export interface RegionalConfig {
     primaryCta: string;
     secondaryCta: string;
     trustBar: string;
+    trustMarks?: string[];
   };
   painPoints: {
     title: string;
     items: RegionalPainPoint[];
   };
-  howItWorks?: {
-    title: string;
-    steps: RegionalProcessStep[];
-  };
+  howItWorksTitle?: string;
+  howItWorks?: RegionalProcessStep[];
+  featuresTitle?: string;
   features: {
     title: string;
     items: RegionalFeature[];
   };
+  industriesTitle?: string;
   industries: {
     title: string;
     items: RegionalIndustry[];
   };
+  testimonialsTitle?: string;
   testimonials: {
     title: string;
     items: RegionalTestimonial[];

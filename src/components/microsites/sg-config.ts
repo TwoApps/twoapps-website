@@ -23,7 +23,8 @@ export const sgConfig: RegionalConfig = {
       "Singapore businesses face some of the highest operational costs in Asia. TwoApps builds AI workflows that reduce manual work while maintaining the compliance standards MAS and PDPA demand. Start with one pilot workflow. Scale what works.",
     primaryCta: "Book a 30-minute workflow audit",
     secondaryCta: "How it works ↓",
-    trustBar: "Trusted by Singapore businesses"
+    trustBar: "Trusted by Singapore businesses",
+    trustMarks: ["MAS Compliant", "PDPA Ready", "Singapore References"]
   },
   painPoints: {
     title: "The Singapore Business Challenge",
@@ -58,31 +59,29 @@ export const sgConfig: RegionalConfig = {
       }
     ]
   },
-  howItWorks: {
-    title: "Simple Process, Real Results",
-    steps: [
-      {
-        title: "Free Workflow Audit",
-        subtitle: "30-minute call to understand your challenges and identify automation opportunities. No obligation, real insights.",
-        duration: "30 min call"
-      },
-      {
-        title: "Design & Build",
-        subtitle: "We design and build your workflow with compliance built in from day one.",
-        duration: "3-5 weeks delivery"
-      },
-      {
-        title: "Deploy Pilot",
-        subtitle: "Test with your team. We train, support, and refine until it's working smoothly.",
-        duration: "2 weeks test"
-      },
-      {
-        title: "Scale & Optimize",
-        subtitle: "Expand to more workflows. Continuous optimization and support.",
-        duration: "Ongoing partnership"
-      }
-    ]
-  },
+  howItWorksTitle: "Simple Process, Real Results",
+  howItWorks: [
+    {
+      title: "Free Workflow Audit",
+      subtitle: "30-minute call to understand your challenges and identify automation opportunities. No obligation, real insights.",
+      duration: "30 min call"
+    },
+    {
+      title: "Design & Build",
+      subtitle: "We design and build your workflow with compliance built in from day one.",
+      duration: "3-5 weeks delivery"
+    },
+    {
+      title: "Deploy Pilot",
+      subtitle: "Test with your team. We train, support, and refine until it's working smoothly.",
+      duration: "2 weeks test"
+    },
+    {
+      title: "Scale & Optimize",
+      subtitle: "Expand to more workflows. Continuous optimization and support.",
+      duration: "Ongoing partnership"
+    }
+  ],
   features: {
     title: "Built for Singapore Standards",
     items: [
@@ -170,7 +169,8 @@ export const sgConfig: RegionalConfig = {
         "Compliance requirements assessment",
         "High-level ROI estimate",
         "No obligation"
-      ]
+      ],
+      cta: "Book Audit"
     },
     pilot: {
       title: "Pilot Workflow",
@@ -183,9 +183,10 @@ export const sgConfig: RegionalConfig = {
         "30 days post-launch support",
         "Ongoing partnership available"
       ],
-      popular: true,
-      note: "All prices in SGD. MAS and PDPA compliance included. Start with a free audit — no commitment."
-    }
+      cta: "Get Started",
+      popular: true
+    },
+    note: "All prices in SGD. MAS and PDPA compliance included. Start with a free audit — no commitment."
   },
   faq: {
     title: "Common Questions",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { JsonLd } from "@/components/json-ld";
 import { Container } from "@/components/ui/container";
@@ -10,7 +10,13 @@ import { GlowField } from "@/components/motion/glow-field";
 import { LightBeams } from "@/components/motion/light-beams";
 import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { cn } from "@/lib/utils";
-import type { RegionalConfig } from "./types";
+import type { 
+  RegionalConfig, 
+  RegionalFeature, 
+  RegionalIndustry, 
+  RegionalTestimonial, 
+  RegionalProcessStep 
+} from "./types";
 
 const iconMap: Record<string, React.ReactNode> = {
   dollarSign: (
@@ -231,15 +237,11 @@ function RegionalHero({ hero }: { hero: RegionalConfig["hero"] }) {
               {hero.trustBar}
             </p>
             <div className="flex flex-wrap gap-3">
-              <span className="rounded-full border border-accent-1/15 bg-accent-1/5 px-3 py-1.5 text-xs text-accent-1">
-                MAS Compliant
-              </span>
-              <span className="rounded-full border border-accent-1/15 bg-accent-1/5 px-3 py-1.5 text-xs text-accent-1">
-                PDPA Ready
-              </span>
-              <span className="rounded-full border border-accent-1/15 bg-accent-1/5 px-3 py-1.5 text-xs text-accent-1">
-                Singapore References
-              </span>
+              {hero.trustMarks?.map((mark, i) => (
+                <span key={i} className="rounded-full border border-accent-1/15 bg-accent-1/5 px-3 py-1.5 text-xs text-accent-1">
+                  {mark}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -286,7 +288,7 @@ function HowItWorksSection({
   steps,
 }: {
   title: string;
-  steps: RegionalConfig["howItWorks"];
+  steps: RegionalProcessStep[];
 }) {
   return (
     <section id="how-it-works" className="py-16 sm:py-20 lg:py-24">
@@ -296,7 +298,7 @@ function HowItWorksSection({
         </h2>
         <div className="mx-auto max-w-4xl">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => (
+            {steps?.map((step, i) => (
               <div key={i} className="relative">
                 {i < steps.length - 1 && (
                   <div className="absolute left-1/2 top-8 hidden h-px w-full bg-gradient-to-r from-accent-1/30 to-transparent lg:block" />
@@ -324,7 +326,7 @@ function FeaturesSection({
   features,
 }: {
   title: string;
-  features: RegionalConfig["features"];
+  features: RegionalFeature[];
 }) {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
@@ -355,7 +357,7 @@ function IndustrySection({
   industries,
 }: {
   title: string;
-  industries: RegionalConfig["industries"];
+  industries: RegionalIndustry[];
 }) {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
@@ -392,7 +394,7 @@ function TestimonialsSection({
   testimonials,
 }: {
   title: string;
-  testimonials: RegionalConfig["testimonials"];
+  testimonials: RegionalTestimonial[];
 }) {
   return (
     <section className="py-16 sm:py-20 lg:py-24">
@@ -481,7 +483,7 @@ function PricingSection({ pricing }: { pricing: RegionalConfig["pricing"] }) {
 
 // FAQ Section
 function FaqSection({ faq }: { faq: RegionalConfig["faq"] }) {
-  const [openIndex, setOpenIndex] = React.useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className="py-16 sm:py-20 lg:py-24">
@@ -580,26 +582,28 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
       />
 
       {/* How It Works */}
-      <HowItWorksSection
-        title={config.howItWorksTitle}
-        steps={config.howItWorks}
-      />
+      {config.howItWorks && (
+        <HowItWorksSection
+          title={config.howItWorksTitle || "How It Works"}
+          steps={config.howItWorks}
+        />
+      )}
 
       {/* Features */}
       <FeaturesSection
-        title={config.featuresTitle}
-        features={config.features}
+        title={config.featuresTitle || config.features.title}
+        features={config.features.items}
       />
 
       {/* Industries */}
       <IndustrySection
-        title={config.industriesTitle}
-        industries={config.industries}
+        title={config.industriesTitle || config.industries.title}
+        industries={config.industries.items}
       />
 
       {/* Testimonials */}
       <TestimonialsSection
-        title={config.testimonials.title}
+        title={config.testimonialsTitle || config.testimonials.title}
         testimonials={config.testimonials.items}
       />
 
@@ -616,4 +620,18 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
 }
 
 // Export metadata builder
-export { BuildMetadata };
+export function BuildMetadata(config: RegionalConfig) {
+  return {
+    title: config.meta.title,
+    description: config.meta.description,
+    keywords: config.meta.keywords,
+    openGraph: {
+      title: config.meta.title,
+      description: config.meta.description,
+      images: [config.meta.ogImage || "/og-default.svg"],
+    },
+    alternates: {
+      canonical: config.meta.canonicalPath || `/${config.slug}`,
+    },
+  };
+}
