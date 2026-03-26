@@ -130,6 +130,10 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
 
           setSubmitted(true);
           setValues({ ...initialState, sourcePage });
+          
+          // Trigger PDF download
+          window.open("/downloads/5-ai-workflows-guide.pdf", "_blank");
+          
           if (typeof window !== "undefined" && window.plausible) {
             window.plausible("Guide Download", {
               props: {
@@ -160,9 +164,17 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-emerald-200">Guide sent!</h3>
+          <h3 className="text-lg font-semibold text-emerald-200">Guide downloading!</h3>
           <p className="mt-2 text-sm text-emerald-200/80">
-            Check your inbox for the PDF. If you don&apos;t see it, check your spam folder.
+            Your PDF should open in a new tab. If it doesn&apos;t,{" "}
+            <a 
+              href="/downloads/5-ai-workflows-guide.pdf" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              click here to download
+            </a>.
           </p>
         </div>
 

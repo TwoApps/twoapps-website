@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { promises as fs } from "fs";
-import path from "path";
 
 const guideDownloadSchema = z.object({
   name: z.string().trim().min(2, "Please enter your name.").max(120),
@@ -19,7 +17,10 @@ type LeadEntry = {
   downloadedAt: string;
 };
 
-export const runtime = "nodejs";
+export const runtime = "edge";
+
+// In-memory store for edge runtime (resets on cold start, use external DB for persistence)
+const leadsStore: LeadEntry[] = [];
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -48,27 +49,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const dataDir = path.join(process.cwd(), "data");
-    const leadsFile = path.join(dataDir, "leads.json");
-
-    // Ensure data directory exists
-    try {
-      await fs.access(dataDir);
-    } catch {
-      await fs.mkdir(dataDir, { recursive: true });
-    }
-
-    // Read existing leads
-    let leads: LeadEntry[] = [];
-    try {
-      const existingData = await fs.readFile(leadsFile, "utf-8");
-      leads = JSON.parse(existingData) as LeadEntry[];
-    } catch {
-      // File doesn't exist or is invalid, start with empty array
-      leads = [];
-    }
-
-    // Add new lead
+    // Add new lead to in-memory store
     const newLead: LeadEntry = {
       name: parsed.data.name,
       email: parsed.data.email,
@@ -77,10 +58,10 @@ export async function POST(request: Request) {
       downloadedAt: new Date().toISOString()
     };
 
-    leads.push(newLead);
+    leadsStore.push(newLead);
 
-    // Write back to file
-    await fs.writeFile(leadsFile, JSON.stringify(leads, null, 2));
+    // Also log to console for visibility (can be captured by logging service)
+    console.log("New guide download:", JSON.stringify(newLead));
 
     return NextResponse.json({ ok: true });
   } catch (error) {
