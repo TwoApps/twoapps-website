@@ -1,0 +1,391 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-03-26",
+  "sequences": [
+    {
+      "id": 1,
+      "name": "Lead → Consultation",
+      "description": "Convert cold/warm leads into booked consultation calls",
+      "duration": 14,
+      "triggerStage": "lead",
+      "exitStage": "consultation",
+      "exitCondition": "Consultation booked OR no response after Day 14",
+      "emails": [
+        {
+          "index": 0,
+          "day": 0,
+          "subject": "Thanks for your interest — here's what we do differently",
+          "purpose": "Acknowledge, set expectations, establish differentiation",
+          "keyPoints": [
+            "Differentiate from buzzword-heavy competitors",
+            "Emphasize outcome-first approach",
+            "Clear CTA: book consultation"
+          ],
+          "templatePath": "/templates/nurture/seq1-email1.md",
+          "regionalVariants": {
+            "singapore": {
+              "additions": ["Mention PSG/EDG grant eligibility"],
+              "tone": "More formal, metrics-focused"
+            },
+            "australia": {
+              "additions": [],
+              "tone": "Direct, conversational"
+            },
+            "new-zealand": {
+              "additions": ["Emphasize local references if available"],
+              "tone": "Softer, relationship-focused"
+            },
+            "gcc-uae": {
+              "additions": ["More formal greeting", "WhatsApp follow-up option"],
+              "tone": "Formal, respectful"
+            },
+            "europe": {
+              "additions": ["GDPR compliance mention"],
+              "tone": "Professional, thorough"
+            }
+          }
+        },
+        {
+          "index": 1,
+          "day": 2,
+          "subject": "[Case Study] How [Company] saved 40 hours/week",
+          "purpose": "Social proof, industry relevance",
+          "keyPoints": [
+            "Specific, measurable results",
+            "Similar industry/vertical to lead",
+            "Clear before/after comparison"
+          ],
+          "templatePath": "/templates/nurture/seq1-email2.md"
+        },
+        {
+          "index": 2,
+          "day": 5,
+          "subject": "See what automation could save you",
+          "purpose": "ROI value proposition, interactive element",
+          "keyPoints": [
+            "ROI calculator link",
+            "Industry-specific examples",
+            "Clear savings table by company size"
+          ],
+          "templatePath": "/templates/nurture/seq1-email3.md",
+          "cta": {
+            "primary": "Calculate your automation ROI",
+            "secondary": "Book a call to discuss"
+          }
+        },
+        {
+          "index": 3,
+          "day": 9,
+          "subject": "Common concerns about AI automation (and why they're worth addressing)",
+          "purpose": "Objection handling preemptively",
+          "keyPoints": [
+            "Address: burned by AI before",
+            "Address: trust concerns",
+            "Address: in-house vs. partner",
+            "Address: job displacement fears",
+            "Address: cost concerns"
+          ],
+          "templatePath": "/templates/nurture/seq1-email4.md"
+        },
+        {
+          "index": 4,
+          "day": 14,
+          "subject": "Let's talk — book a free 30-min consultation",
+          "purpose": "Final push, clear CTA",
+          "keyPoints": [
+            "Summarize value proposition",
+            "Clear consultation benefits",
+            "No-obligation framing",
+            "Exit option: newsletter subscription"
+          ],
+          "templatePath": "/templates/nurture/seq1-email5.md",
+          "isBreakupEmail": true
+        }
+      ],
+      "abTestVariants": {
+        "email1": {
+          "subjectLines": [
+            "Thanks for your interest — here's what we do differently",
+            "[First Name], here's why most AI automation fails (and how we're different)",
+            "Quick question about [Company]'s workflow"
+          ]
+        },
+        "email5": {
+          "ctaVariants": [
+            "Book your free 30-min consultation",
+            "See what automation could look like for [Company]",
+            "Let's solve [specific problem] together"
+          ]
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Consultation → Proposal",
+      "description": "Convert consultation calls into proposals and closed deals",
+      "duration": 10,
+      "triggerStage": "consultation",
+      "exitStage": "proposal",
+      "exitCondition": "Proposal accepted OR marked as lost",
+      "emails": [
+        {
+          "index": 0,
+          "day": 0,
+          "subject": "Great meeting — here's what we discussed",
+          "purpose": "Recap, next steps, maintain momentum",
+          "keyPoints": [
+            "Summarize pain points heard",
+            "Restate goals discussed",
+            "Note constraints and stakeholders",
+            "Commit to proposal delivery date"
+          ],
+          "templatePath": "/templates/nurture/seq2-email1.md",
+          "personalizationFields": [
+            "painPoints",
+            "goals",
+            "constraints",
+            "stakeholders",
+            "proposalDueDate"
+          ]
+        },
+        {
+          "index": 1,
+          "day": 3,
+          "subject": "[Case Study] How we solved [similar problem] for [Company]",
+          "purpose": "Reinforce with relevant social proof",
+          "keyPoints": [
+            "Match case study to discussed problem",
+            "Include specific metrics",
+            "Link to full case study",
+            "Include proposal link"
+          ],
+          "templatePath": "/templates/nurture/seq2-email2.md"
+        },
+        {
+          "index": 2,
+          "day": 7,
+          "subject": "Our recommended approach for [Company]",
+          "purpose": "Mini proposal teaser, create urgency",
+          "keyPoints": [
+            "Opportunity summary",
+            "Estimated hours/financial impact",
+            "Pilot scope and investment",
+            "Clear next steps"
+          ],
+          "templatePath": "/templates/nurture/seq2-email3.md"
+        },
+        {
+          "index": 3,
+          "day": 10,
+          "subject": "Following up — any questions?",
+          "purpose": "Final check-in, clear CTA",
+          "keyPoints": [
+            "Acknowledge internal process needs",
+            "Offer to address concerns",
+            "Flexible timing options",
+            "Clear 'what happens next' if they proceed"
+          ],
+          "templatePath": "/templates/nurture/seq2-email4.md"
+        }
+      ],
+      "commonObjections": [
+        {
+          "objection": "We need to think about it",
+          "response": "Totally understand. What specific aspects are you weighing? I might be able to provide information that helps the decision."
+        },
+        {
+          "objection": "Budget is tight this quarter",
+          "response": "I hear that a lot. A few options: 1) Start with smaller pilot scope, 2) Deferred payment until pilot proves value, 3) Plan for Q2 now and lock in current pricing."
+        },
+        {
+          "objection": "We need IT/security review",
+          "response": "Absolutely — we have documentation ready: architecture diagrams, security policies, SOC 2 reports, and GDPR compliance docs. I can also do a technical call with your IT team directly."
+        },
+        {
+          "objection": "We're comparing with other vendors",
+          "response": "Smart move. When comparing, make sure to look at: 1) Time to value (we're 2-4 weeks vs. 3-6 months), 2) What's included (we cover implementation, training, and support), 3) Flexibility (we customize vs. templated solutions)."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Post-Delivery",
+      "description": "Ensure client success, gather testimonials, drive referrals and upsells",
+      "duration": 60,
+      "triggerStage": "delivery",
+      "exitStage": "completed",
+      "exitCondition": "Transition to account management after Day 60",
+      "emails": [
+        {
+          "index": 0,
+          "day": 0,
+          "subject": "Your automation is live — next steps",
+          "purpose": "Set expectations, provide resources",
+          "keyPoints": [
+            "Confirm go-live",
+            "Provide dashboard/documentation links",
+            "Support contacts",
+            "Success metrics to track"
+          ],
+          "templatePath": "/templates/nurture/seq3-email1.md"
+        },
+        {
+          "index": 1,
+          "day": 7,
+          "subject": "How's it going?",
+          "purpose": "Check-in, offer support",
+          "keyPoints": [
+            "Ask about smoothness",
+            "Ask about team comfort",
+            "Ask about early results",
+            "Open door for feedback"
+          ],
+          "templatePath": "/templates/nurture/seq3-email2.md"
+        },
+        {
+          "index": 2,
+          "day": 14,
+          "subject": "Know someone who needs this?",
+          "purpose": "Referral request",
+          "keyPoints": [
+            "Explain referral program benefits",
+            "Make it easy (template/link)",
+            "No pressure framing"
+          ],
+          "templatePath": "/templates/nurture/seq3-email3.md",
+          "referralProgram": {
+            "referrerBenefit": "10% of first-year contract value (up to $5,000)",
+            "referredBenefit": "5% discount on pilot + priority scheduling"
+          }
+        },
+        {
+          "index": 3,
+          "day": 21,
+          "subject": "Ready to automate another workflow?",
+          "purpose": "Upsell opportunity",
+          "keyPoints": [
+            "Ask about next pain point",
+            "Common workflow progressions",
+            "Offer free workflow audit"
+          ],
+          "templatePath": "/templates/nurture/seq3-email4.md"
+        },
+        {
+          "index": 4,
+          "day": 30,
+          "subject": "Quick favor — and a thank you",
+          "purpose": "Testimonial request + case study invitation",
+          "keyPoints": [
+            "Request brief testimonial",
+            "Offer incentive",
+            "Offer full case study opportunity"
+          ],
+          "templatePath": "/templates/nurture/seq3-email5.md",
+          "testimonialIncentive": "$500 credit toward future work"
+        },
+        {
+          "index": 5,
+          "day": 60,
+          "subject": "Quarterly business review invitation",
+          "purpose": "Strategic partnership, expansion planning",
+          "keyPoints": [
+            "Review performance",
+            "Identify new opportunities",
+            "Plan ahead",
+            "Gather feedback"
+          ],
+          "templatePath": "/templates/nurture/seq3-email6.md"
+        }
+      ],
+      "kpiTracking": [
+        {
+          "metric": "Uptime",
+          "target": "99.9%"
+        },
+        {
+          "metric": "Processing volume",
+          "target": "[Expected volume]"
+        },
+        {
+          "metric": "Error rate",
+          "target": "<1%"
+        },
+        {
+          "metric": "Time saved (hours/week)",
+          "target": "[Expected hours]"
+        },
+        {
+          "metric": "Client satisfaction (NPS)",
+          "target": "8+"
+        },
+        {
+          "metric": "Support tickets",
+          "target": "<2/month"
+        }
+      ],
+      "upsellTriggers": [
+        "Usage consistently above expected volume",
+        "Client mentions new pain points",
+        "Team expansion",
+        "Positive feedback received",
+        "Referral made",
+        "90+ days since last workflow deployed"
+      ]
+    }
+  ],
+  "regionalSettings": {
+    "singapore": {
+      "grantEligibility": ["PSG", "EDG"],
+      "grantFunding": "50-80%",
+      "preferredCurrency": "SGD",
+      "businessDays": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "timezone": "Asia/Singapore"
+    },
+    "australia": {
+      "preferredCurrency": "AUD",
+      "businessDays": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "timezone": "Australia/Sydney"
+    },
+    "new-zealand": {
+      "preferredCurrency": "NZD",
+      "businessDays": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "timezone": "Pacific/Auckland"
+    },
+    "gcc-uae": {
+      "preferredCurrency": "AED",
+      "businessDays": ["Sun", "Mon", "Tue", "Wed", "Thu"],
+      "timezone": "Asia/Dubai",
+      "whatsappPreferred": true
+    },
+    "europe": {
+      "preferredCurrency": "EUR",
+      "businessDays": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "timezone": "Europe/London",
+      "gdprCompliance": true
+    },
+    "global": {
+      "preferredCurrency": "USD",
+      "businessDays": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "timezone": "UTC"
+    }
+  },
+  "emailSettings": {
+    "fromAddress": "team@twoapps.com",
+    "fromName": "Zain, TwoApps",
+    "replyTo": "team@twoapps.com",
+    "companySignature": {
+      "name": "Zain",
+      "title": "CEO, TwoApps",
+      "email": "team@twoapps.com",
+      "phone": "+971 55 672 7803",
+      "website": "thetwoapps.com"
+    }
+  },
+  "brandSettings": {
+    "company": "TwoApps",
+    "website": "https://thetwoapps.com",
+    "email": "team@twoapps.com",
+    "phone": "+971 55 672 7803",
+    "tagline": "One workflow. One pilot. Then scale."
+  }
+}
