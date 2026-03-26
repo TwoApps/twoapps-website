@@ -5,7 +5,7 @@ export const sgConfig: RegionalConfig = {
   meta: {
     title: "AI Workflow Automation Singapore | MAS & PDPA Compliant | TwoApps",
     description:
-      "Cut costs. Stay compliant. Scale faster. AI workflow automation for Singapore businesses facing high labor costs and regulatory requirements.",
+      "Cut costs. Stay compliant. Scale faster. AI workflow automation for Singapore businesses facing high labor costs and regulatory requirements",
     keywords: [
       "AI automation Singapore",
       "workflow automation SG",
@@ -14,7 +14,7 @@ export const sgConfig: RegionalConfig = {
       "Singapore business automation"
     ],
     ogImage: "/og-default.svg",
-    canonicalPath: "/sg",
+    canonicalPath: "/sg"
   },
   hero: {
     eyebrow: "Singapore Business • Asia-Ready",
@@ -22,7 +22,7 @@ export const sgConfig: RegionalConfig = {
     subheadline:
       "Singapore businesses face some of the highest operational costs in Asia. TwoApps builds AI workflows that reduce manual work while maintaining the compliance standards MAS and PDPA demand. Start with one pilot workflow. Scale what works.",
     primaryCta: "Book a 30-minute workflow audit",
-    secondaryCta: "How it works ↓"
+    secondaryCta: "How it works ↓",
     trustBar: "Trusted by Singapore businesses"
   },
   painPoints: {
@@ -39,21 +39,21 @@ export const sgConfig: RegionalConfig = {
         icon: "shieldCheck",
         title: "Regulatory Compliance",
         description:
-          "MAS, PDPA, and other regulatory requirements demand careful attention. Non-compliance isn't an option",
+          "MAS, PDPA, and other regulatory requirements demand careful attention. Non-compliance isn't an option.",
         stat: "Compliance built-in"
       },
       {
         icon: "users",
         title: "Talent Shortage",
         description:
-          "Finding and retaining tech talent is a constant challenge. Automation helps you compete for talent",
+          "Finding and retaining tech talent is a constant challenge. Automation helps you compete for talent.",
         stat: "Do more with your team"
       },
       {
         icon: "trendingUp",
         title: "Competitive Pressure",
         description:
-          "Singapore is Asia's most demanding market. Efficiency isn't optional — it's survival",
+          "Singapore is Asia's most demanding market. Efficiency isn't optional — it's survival.",
         stat: "Stay competitive"
       }
     ]
@@ -63,22 +63,22 @@ export const sgConfig: RegionalConfig = {
     steps: [
       {
         title: "Free Workflow Audit",
-        subtitle: "30-minute call to understand your challenges and identify automation opportunities. No obligation, real insights",
+        subtitle: "30-minute call to understand your challenges and identify automation opportunities. No obligation, real insights.",
         duration: "30 min call"
       },
       {
         title: "Design & Build",
-        subtitle: "We design and build your workflow with compliance built in from day one",
+        subtitle: "We design and build your workflow with compliance built in from day one.",
         duration: "3-5 weeks delivery"
       },
       {
         title: "Deploy Pilot",
-        subtitle: "Test with your team. We train, support, and refine until it's working smoothly",
+        subtitle: "Test with your team. We train, support, and refine until it's working smoothly.",
         duration: "2 weeks test"
       },
       {
         title: "Scale & Optimize",
-        subtitle: "Expand to more workflows. Continuous optimization and support",
+        subtitle: "Expand to more workflows. Continuous optimization and support.",
         duration: "Ongoing partnership"
       }
     ]
@@ -89,32 +89,32 @@ export const sgConfig: RegionalConfig = {
       {
         icon: "landmark",
         title: "MAS Compliant",
-        description: "Compliance checkpoints built into every workflow"
+        description: "Compliance checkpoints built into every workflow."
       },
       {
         icon: "shield",
         title: "PDPA Ready",
-        description: "Data protection built into every workflow"
+        description: "Data protection built into every workflow."
       },
       {
         icon: "zap",
         title: "Rapid Deployment",
-        description: "See results in weeks, not months"
+        description: "See results in weeks, not months."
       },
       {
         icon: "dollarSign",
         title: "SGD Pricing",
-        description: "Transparent pricing in Singapore dollars"
+        description: "Transparent pricing in Singapore dollars."
       },
       {
         icon: "users",
         title: "Local References",
-        description: "Singapore business references available"
+        description: "Singapore business references available."
       },
       {
         icon: "building",
         title: "Enterprise Grade",
-        description: "Production ready with monitoring & support"
+        description: "Production ready with monitoring & support."
       }
     ]
   },
@@ -125,19 +125,19 @@ export const sgConfig: RegionalConfig = {
         icon: "landmark",
         title: "Fintech",
         description:
-        "Automate compliance reporting, transaction monitoring, and customer onboarding. MAS-compliant workflows with full audit trails."
+          "Automate compliance reporting, transaction monitoring, and customer onboarding. MAS-compliant workflows with full audit trails."
       },
       {
         icon: "zap",
         title: "Logistics",
         description:
-        "Streamline supply chain coordination, shipment tracking, and customs documentation. Connect with port systems and freight forwarders."
+          "Streamline supply chain coordination, shipment tracking, and customs documentation. Connect with port systems and freight forwarders."
       },
       {
         icon: "zap",
         title: "SaaS & Technology",
         description:
-        "Automate customer success workflows, billing processes, and technical support. Scale your operations without proportional headcount growth"
+          "Automate customer success workflows, billing processes, and technical support. Scale operations without proportional headcount growth."
       }
     ]
   },
@@ -183,9 +183,9 @@ export const sgConfig: RegionalConfig = {
         "30 days post-launch support",
         "Ongoing partnership available"
       ],
-      popular: true
+      popular: true,
       note: "All prices in SGD. MAS and PDPA compliance included. Start with a free audit — no commitment."
-    ]
+    }
   },
   faq: {
     title: "Common Questions",
@@ -198,34 +198,29 @@ export const sgConfig: RegionalConfig = {
       {
         question: "How do we know this will work in our environment?",
         answer:
-          "We start with a pilot on one workflow. You see results before committing to larger investment. Most Singapore clients see ROI within the first 30 days of pilot deployment"
-      },
-      {
-        question: "What if our team doesn't adopt it?",
-        answer:
-          "We design with change management in mind. Workflows include human checkpoints and approvals — your team stays in control. Plus, we train and support until adoption is smooth"
+          "We start with a pilot on one workflow. You see results before committing to larger investment. Most Singapore clients see ROI within the first 30 days of pilot deployment."
       },
       {
         question: "The cost seems high for a pilot",
         answer:
-          "Compared to hiring a full AI team or the cost of manual errors and inefficiency, the pilot pays for itself. We also scope pilots to your budget — let's find the right starting point"
+          "Compared to hiring a full AI team or the cost of manual errors and inefficiency, the pilot pays for itself. We also scope pilots to your budget — let's find the right starting point."
       },
       {
         question: "Can you work with our existing systems?",
         answer:
-          "Yes — we're technology agnostic. Whether you're on SAP, Oracle, or or cloud-native tools, we integrate with your existing stack, not replace it"
+          "Yes — we're technology agnostic. Whether you're on SAP, Oracle, or cloud-native tools, we integrate with your existing stack, not replace it."
       }
     ]
   },
   finalCta: {
     headline: "Ready to Cut Costs and Stay Compliant?",
     subheadline:
-      "Book your free 30-minute workflow audit. We'll show you exactly where automation can reduce costs while keeping you compliant — no obligation, just clarity",
-    cta: "Book a 30-minute workflow audit →",
-    supporting: "MAS-compliant • PDPA-ready • SGD pricing • Singapore references"
+      "Book your free 30-minute workflow audit. We'll show you exactly where automation can reduce costs while keeping you compliant — no obligation, just clarity.",
+    cta: "Book a 30-minute workflow audit",
+    supporting: "MAS-compliant • PDPA-ready • Singapore references"
   },
   footer: {
-    tagline: "AI workflow automation for Singapore businesses. MAS and PDPA compliant",
+    tagline: "AI workflow automation for Singapore businesses. MAS and PDPA compliant.",
     contactLabel: "Singapore"
   },
   schema: {

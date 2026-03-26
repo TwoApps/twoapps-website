@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { BuildMetadata } from "@/lib/seo";
+
 import { JsonLd } from "@/components/json-ld";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";

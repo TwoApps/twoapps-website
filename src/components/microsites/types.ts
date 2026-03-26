@@ -22,6 +22,7 @@ export interface RegionalTestimonial {
   name: string;
   title: string;
   stat: string;
+  avatar?: string;
 }
 
 export interface RegionalFaq {
@@ -29,24 +30,9 @@ export interface RegionalFaq {
   answer: string;
 }
 
-export interface RegionalPricing {
-  free: {
-    title: string;
-    price: string;
-    features: string[];
-  };
-  pilot: {
-    title: string;
-    price: string;
-    features: string[];
-  };
-  note: string;
-}
-
 export interface RegionalProcessStep {
   title: string;
   subtitle: string;
-  description: string;
   duration: string;
 }
 
@@ -57,6 +43,7 @@ export interface RegionalConfig {
     description: string;
     keywords: string[];
     ogImage?: string;
+    canonicalPath?: string;
   };
   hero: {
     eyebrow: string;
@@ -70,7 +57,7 @@ export interface RegionalConfig {
     title: string;
     items: RegionalPainPoint[];
   };
-  process: {
+  howItWorks?: {
     title: string;
     steps: RegionalProcessStep[];
   };
