@@ -164,9 +164,9 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-ink">You're on the list!</h3>
+          <h3 className="text-lg font-semibold text-ink">You&apos;re on the list!</h3>
           <p className="mt-2 text-sm text-ink/70">
-            We'll email you when the demo date is set. You'll get priority access and all the resources after the session.
+            We&apos;ll email you when the demo date is set. You&apos;ll get priority access and all the resources after the session.
           </p>
           {registrationCount && registrationCount > 1 && (
             <p className="mt-3 text-xs text-ink/50">

@@ -266,7 +266,7 @@ export default function AcademyPage() {
                   Not Sure Which Course Is Right for You?
                 </h3>
                 <p className="mb-6 text-sm text-ink/70">
-                  Answer 5 quick questions and we'll recommend the perfect starting point for your automation journey.
+                  Answer 5 quick questions and we&apos;ll recommend the perfect starting point for your automation journey.
                 </p>
                 <Button onClick={() => setQuizStarted(true)}>
                   Take the Assessment — 2 Minutes
@@ -319,7 +319,7 @@ export default function AcademyPage() {
                       {recommendation.secondary.subtitle}
                     </p>
                     <Button 
-                      variant="outline" 
+                      variant="secondary" 
                       onClick={() => setSelectedCourse(recommendation.secondary)}
                       className="w-full text-sm"
                     >
@@ -329,7 +329,7 @@ export default function AcademyPage() {
                 </div>
                 
                 <div className="text-center">
-                  <Button variant="link" onClick={resetQuiz} className="text-sm">
+                  <Button variant="ghost" onClick={resetQuiz} className="text-sm">
                     Retake Assessment
                   </Button>
                 </div>
@@ -448,7 +448,7 @@ export default function AcademyPage() {
         <div className="mx-auto mt-12 max-w-3xl text-center">
           <p className="text-sm text-ink/60">
             Want personalized help implementing these frameworks?{" "}
-            <Button href="/book" variant="link" className="px-0">
+            <Button href="/book" variant="ghost" className="px-0">
               Book a free workflow audit
             </Button>
           </p>

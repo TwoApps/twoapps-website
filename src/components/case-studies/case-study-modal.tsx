@@ -161,7 +161,7 @@ export function CaseStudyModal({
             }}
           >
             <div className="text-5xl mb-4" style={{ color: accentColor, opacity: 0.3 }}>
-              "
+              &ldquo;
             </div>
             <blockquote
               className="text-lg italic mb-4"

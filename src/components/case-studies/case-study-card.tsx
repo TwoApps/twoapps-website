@@ -249,7 +249,7 @@ export function CaseStudyCard({
             }}
           >
             <div className="text-6xl mb-4" style={{ color: accentColor, opacity: 0.3 }}>
-              "
+              &ldquo;
             </div>
             <blockquote
               className="text-lg md:text-xl italic mb-6 leading-relaxed"
@@ -365,7 +365,7 @@ export function CaseStudyCard({
             color: mutedColor,
           }}
         >
-          "{caseStudy.testimonial.quote.slice(0, 120)}..."
+          &ldquo;{caseStudy.testimonial.quote.slice(0, 120)}...&rdquo;
         </div>
 
         {/* Read More */}

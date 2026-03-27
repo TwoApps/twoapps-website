@@ -104,7 +104,7 @@ function ServiceCard({
 
       <div className="mb-6 flex-1">
         <p className="mb-3 text-xs font-medium uppercase tracking-wider text-accent-1">
-          What's Included
+          What&apos;s Included
         </p>
         <ul className="space-y-2.5">
           {deliverables.map((item, i) => (

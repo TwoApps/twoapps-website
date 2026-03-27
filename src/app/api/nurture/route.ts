@@ -286,7 +286,7 @@ async function handleTrackEmail(data: {
 
   // If email was clicked, it's a positive signal - update lead score
   if (status === 'clicked') {
-    const currentScore = lead.metadata?.leadScore || 0;
+    const currentScore = (lead.metadata?.leadScore as number) || 0;
     store.updateLead(leadId, {
       metadata: {
         ...lead.metadata,
@@ -315,7 +315,7 @@ async function handleUpdateStage(data: {
 
   // Determine new sequence based on stage
   let newSequence = lead.currentSequence;
-  let newEmailIndex = 0;
+  const newEmailIndex = 0;
 
   switch (newStage) {
     case 'consultation':

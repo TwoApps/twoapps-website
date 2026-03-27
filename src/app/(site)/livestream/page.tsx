@@ -52,9 +52,9 @@ export default function LivestreamPage() {
           {/* What to expect */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold text-ink">What you'll see</h2>
+              <h2 className="text-2xl font-semibold text-ink">What you&apos;ll see</h2>
               <p className="mt-2 text-ink/70">
-                A complete walkthrough of building a customer support ticket triage system—the same pattern we've used with fintech, SaaS, and e-commerce clients.
+                A complete walkthrough of building a customer support ticket triage system—the same pattern we&apos;ve used with fintech, SaaS, and e-commerce clients.
               </p>
             </div>
 
@@ -140,7 +140,7 @@ export default function LivestreamPage() {
                 </span>
               </summary>
               <p className="mt-4 text-sm text-ink/60">
-                No. The demo is designed for both technical and non-technical viewers. We explain what we're doing at each step and why it matters for business outcomes.
+                No. The demo is designed for both technical and non-technical viewers. We explain what we&apos;re doing at each step and why it matters for business outcomes.
               </p>
             </details>
 
@@ -168,7 +168,7 @@ export default function LivestreamPage() {
                 </span>
               </summary>
               <p className="mt-4 text-sm text-ink/60">
-                We'll use n8n for workflow automation, integrate with common tools like Slack and email, and show AI patterns that work with various LLM providers. The concepts apply regardless of your specific tech stack.
+                We&apos;ll use n8n for workflow automation, integrate with common tools like Slack and email, and show AI patterns that work with various LLM providers. The concepts apply regardless of your specific tech stack.
               </p>
             </details>
 
@@ -182,7 +182,7 @@ export default function LivestreamPage() {
                 </span>
               </summary>
               <p className="mt-4 text-sm text-ink/60">
-                No. This is 30 minutes of real building. At the end, we'll mention how TwoApps can help if you want to implement something similar—but the focus is on teaching you practical patterns you can use yourself.
+                No. This is 30 minutes of real building. At the end, we&apos;ll mention how TwoApps can help if you want to implement something similar—but the focus is on teaching you practical patterns you can use yourself.
               </p>
             </details>
           </div>
