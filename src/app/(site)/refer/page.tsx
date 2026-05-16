@@ -2,9 +2,9 @@ import { buildMetadata } from "@/lib/seo";
 import ReferralContent from "./referral-content";
 
 export const metadata = buildMetadata({
-  title: "Referral Program | Get $500 Credit",
+  title: "Referral Program — Earn project credit",
   description:
-    "Refer a business to TwoApps and you both win. You get $500 credit toward your next project, they get a free $2,000 workflow audit. No limits on referrals.",
+    "Refer a business and you both win. You get a project credit when they take an audit. They get automation insights. No limits on referrals.",
   canonicalPath: "/refer",
   keywords: [
     "twoapps referral program",

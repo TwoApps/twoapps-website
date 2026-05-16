@@ -11,12 +11,14 @@ import { GlowField } from "@/components/motion/glow-field";
 import { LightBeams } from "@/components/motion/light-beams";
 import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { cn } from "@/lib/utils";
-import type { 
-  RegionalConfig, 
-  RegionalFeature, 
-  RegionalIndustry, 
-  RegionalTestimonial, 
-  RegionalProcessStep 
+import type {
+  RegionalConfig,
+  RegionalFeature,
+  RegionalIndustry,
+  RegionalPainPoint,
+  RegionalTestimonial,
+  RegionalFaq,
+  RegionalProcessStep,
 } from "./types";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -257,15 +259,15 @@ function PainPointsSection({
   items,
 }: {
   title: string;
-  items: RegionalConfig["painPoints"]["items"];
+  items: RegionalPainPoint[];
 }) {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-20">
       <Container>
         <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
           {title}
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => (
             <div
               key={i}
@@ -292,7 +294,7 @@ function HowItWorksSection({
   steps: RegionalProcessStep[];
 }) {
   return (
-    <section id="how-it-works" className="py-16 sm:py-20 lg:py-24">
+    <section id="how-it-works" className="py-12 sm:py-16 lg:py-20">
       <Container>
         <h2 className="mb-12 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
           {title}
@@ -330,7 +332,7 @@ function FeaturesSection({
   features: RegionalFeature[];
 }) {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-20">
       <Container>
         <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
           {title}
@@ -361,7 +363,7 @@ function IndustrySection({
   industries: RegionalIndustry[];
 }) {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-20">
       <Container>
         <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
           {title}
@@ -398,7 +400,7 @@ function TestimonialsSection({
   testimonials: RegionalTestimonial[];
 }) {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-20">
       <Container>
         <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
           {title}
@@ -431,11 +433,11 @@ function TestimonialsSection({
 }
 
 // FAQ Section
-function FaqSection({ faq }: { faq: RegionalConfig["faq"] }) {
+function FaqSection({ faq }: { faq: { title: string; items: RegionalFaq[] } }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-20">
       <Container>
         <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
           {faq.title}
@@ -476,7 +478,7 @@ function FaqSection({ faq }: { faq: RegionalConfig["faq"] }) {
 // Final CTA Section
 function FinalCtaSection({ finalCta }: { finalCta: RegionalConfig["finalCta"] }) {
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
+    <section className="py-12 sm:py-16 lg:py-20">
       <Container>
         <div className="neon-frame gradient-stroke relative overflow-hidden rounded-[1.75rem] px-6 py-12 text-center sm:px-10 sm:py-16">
           <GlowField intensity="strong" />
@@ -516,7 +518,6 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
             telephone: "+971-55-672-7803",
             email: "team@twoapps.com",
             areaServed: config.schema.areaServed,
-            ...(config.schema.priceRange ? { priceRange: config.schema.priceRange } : {}),
           },
         ]}
       />
@@ -524,40 +525,42 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
       {/* Hero */}
       <RegionalHero hero={config.hero} />
 
-      {/* Pain Points */}
-      <PainPointsSection
-        title={config.painPoints.title}
-        items={config.painPoints.items}
-      />
+      {config.painPoints && (
+        <PainPointsSection
+          title={config.painPoints.title}
+          items={config.painPoints.items}
+        />
+      )}
 
-      {/* How It Works */}
       {config.howItWorks && (
         <HowItWorksSection
-          title={config.howItWorksTitle || "How It Works"}
+          title={config.howItWorksTitle || "How it works"}
           steps={config.howItWorks}
         />
       )}
 
-      {/* Features */}
-      <FeaturesSection
-        title={config.featuresTitle || config.features.title}
-        features={config.features.items}
-      />
+      {config.features && (
+        <FeaturesSection
+          title={config.featuresTitle || config.features.title}
+          features={config.features.items}
+        />
+      )}
 
-      {/* Industries */}
-      <IndustrySection
-        title={config.industriesTitle || config.industries.title}
-        industries={config.industries.items}
-      />
+      {config.industries && (
+        <IndustrySection
+          title={config.industriesTitle || config.industries.title}
+          industries={config.industries.items}
+        />
+      )}
 
-      {/* Testimonials */}
-      <TestimonialsSection
-        title={config.testimonialsTitle || config.testimonials.title}
-        testimonials={config.testimonials.items}
-      />
+      {config.testimonials && (
+        <TestimonialsSection
+          title={config.testimonialsTitle || config.testimonials.title}
+          testimonials={config.testimonials.items}
+        />
+      )}
 
-      {/* FAQ */}
-      <FaqSection faq={config.faq} />
+      {config.faq && <FaqSection faq={config.faq} />}
 
       {/* Final CTA */}
       <FinalCtaSection finalCta={config.finalCta} />

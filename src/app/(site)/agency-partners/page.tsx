@@ -24,7 +24,7 @@ const partnerFrames: StickySceneFrame[] = [
   },
   {
     label: "Fit",
-    headline: "Best for software houses already shipping web/mobile work",
+    headline: "Best for agencies already shipping product work",
     subline: "Add AI implementation capacity before hiring a full in-house AI team."
   },
   {
@@ -57,9 +57,9 @@ export default function AgencyPartnersPage() {
     <>
       <PageHero
         eyebrow="Agency Partners"
-        title="White-label AI delivery your agency can sell with confidence"
-        description="Start with the partnership model in the scenes below. Open the detail panels only when you need the operational specifics."
-        chips={["UAE-based / global", "White-label friendly", ...globalPartnerRegions]}
+        title="White-label AI your agency can ship"
+        description="You own the client. We ship the AI layer. Resell with confidence."
+        chips={["White-label", "Co-delivery", "UAE-based / global"]}
       />
 
       <StickyScene
@@ -118,11 +118,10 @@ export default function AgencyPartnersPage() {
 
       <DetailPanelsSection
         eyebrow="Partner Details"
-        title="Open the partnership details by topic"
-        subtitle="This keeps the top of the page readable while preserving the operational specifics your team needs."
+        title="Partnership details"
         items={[
           {
-            title: "What agencies can resell with TwoApps behind the scenes",
+            title: "What you can resell",
             summary: "Core white-label AI delivery capabilities",
             content: (
               <ul className="space-y-2 text-sm text-ink/78">
@@ -160,7 +159,7 @@ export default function AgencyPartnersPage() {
             )
           },
           {
-            title: "Commercial positioning that attracts better clients",
+            title: "How to position the partnership",
             summary: "How to position the partnership",
             content: (
               <p className="text-sm leading-relaxed text-ink/78">
@@ -172,7 +171,7 @@ export default function AgencyPartnersPage() {
             )
           },
           {
-            title: "Target partner regions",
+            title: "Where this works best",
             summary: "Strong fit for this operating model",
             content: (
               <div className="flex flex-wrap gap-2">
@@ -191,12 +190,12 @@ export default function AgencyPartnersPage() {
       />
 
       <CtaBand
-        title="Explore a white-label pilot or AI capability sprint"
-        copy="If your agency has client demand for AI but limited implementation capacity, start with one pilot and build a repeatable model from there."
+        title="Start with one pilot"
+        copy="Bring us a real client workflow. We'll deliver it white-label and you'll have a repeatable model after one engagement."
         primaryHref="/contact"
-        primaryLabel="Talk partnership"
+        primaryLabel="Book a call"
         secondaryHref="/regions/white-label-ai-partner-software-houses"
-        secondaryLabel="View partner region page"
+        secondaryLabel="See partner region"
       />
     </>
   );

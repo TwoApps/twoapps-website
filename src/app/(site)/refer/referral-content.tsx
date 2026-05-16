@@ -7,6 +7,7 @@ import { PageHero } from "@/components/common/page-hero";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
+import { CtaBand } from "@/components/common/cta-band";
 
 // Form state types
 type ReferralFormState = {
@@ -40,8 +41,8 @@ const inputClassName =
 const benefits = [
   {
     title: "For You",
-    value: "$500",
-    description: "Credit toward your next AI workflow project",
+    value: "Project credit",
+    description: "Toward your next AI automation project",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -50,8 +51,8 @@ const benefits = [
   },
   {
     title: "For Them",
-    value: "$2,000",
-    description: "Free workflow audit to identify automation opportunities",
+    value: "Free audit",
+    description: "Workflow audit to spot automation wins",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -80,12 +81,12 @@ const steps = [
   {
     number: "02",
     title: "They Book",
-    description: "Your referral books their free workflow audit ($2,000 value)."
+    description: "Your referral books a free workflow audit."
   },
   {
     number: "03",
     title: "You Both Win",
-    description: "Once they complete their audit, you get $500 credit. They get automation insights."
+    description: "They get automation insights. You get a credit toward your next project."
   }
 ];
 
@@ -197,8 +198,8 @@ export default function ReferralPage() {
       <PageHero
         eyebrow="Referral Program"
         title="Share AI automation. You both win."
-        description="Refer a business to TwoApps. You get $500 credit toward your next project. They get a free $2,000 workflow audit. No limits on referrals."
-        chips={["$500 for you", "$2,000 audit for them", "Unlimited referrals"]}
+        description="Refer a business and you both win. They get a free audit, you get a credit on your next project."
+        chips={["Credit for you", "Free audit for them", "No limits"]}
       />
 
       {/* Benefits Section */}
@@ -222,8 +223,8 @@ export default function ReferralPage() {
       {/* How It Works */}
       <Section className="pt-10">
         <div className="mb-8 text-center">
-          <h2 className="text-2xl font-semibold text-ink mb-2">How It Works</h2>
-          <p className="text-ink/70">Three simple steps to earn credits</p>
+          <h2 className="text-2xl font-semibold text-ink mb-2">How it works</h2>
+          <p className="text-ink/70">Three steps. Both sides win.</p>
         </div>
         <div className="grid gap-6 md:grid-cols-3">
           {steps.map((step, idx) => (
@@ -247,7 +248,7 @@ export default function ReferralPage() {
       <Section className="pt-10 pb-16">
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <Card className="p-6 sm:p-8">
-            <h2 className="text-xl font-semibold text-ink mb-1">Submit a Referral</h2>
+            <h2 className="text-xl font-semibold text-ink mb-1">Refer a business</h2>
             <p className="text-sm text-ink/70 mb-6">
               Know a business that could benefit from AI automation? Connect them with us.
             </p>
@@ -255,10 +256,10 @@ export default function ReferralPage() {
             {submitted ? (
               <div className="space-y-4">
                 <div className="rounded-xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-4">
-                  <p className="text-sm text-emerald-200 font-medium mb-1">Referral submitted successfully!</p>
+                  <p className="text-sm text-emerald-200 font-medium mb-1">Referral sent. Thanks.</p>
                   <p className="text-sm text-emerald-200/80">
-                    We&apos;ll reach out to your contact. Once they complete their free workflow audit, 
-                    your $500 credit will be activated.
+                    We&apos;ll reach out to your contact. Once they complete their free workflow audit,
+                    your project credit will be activated.
                   </p>
                   {referralCode && (
                     <div className="mt-3 p-3 rounded-lg bg-white/5 border border-white/10">
@@ -268,7 +269,7 @@ export default function ReferralPage() {
                   )}
                 </div>
                 <Button onClick={() => setSubmitted(false)} variant="secondary">
-                  Submit another referral
+                  Send another referral
                 </Button>
               </div>
             ) : (
@@ -365,20 +366,20 @@ export default function ReferralPage() {
                 )}
 
                 <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
-                  {isPending ? "Submitting..." : "Submit Referral"}
+                  {isPending ? "Sending..." : "Send referral"}
                 </Button>
               </form>
             )}
           </Card>
 
-          {/* Sidebar Info */}
+          {/* Sidebar — FAQ only */}
           <div className="space-y-4">
             <Card className="p-5">
               <h3 className="text-sm font-medium text-ink mb-3">FAQ</h3>
               <div className="space-y-4 text-sm text-ink/75">
                 <div>
                   <p className="font-medium text-ink mb-1">When do I get my credit?</p>
-                  <p>Once your referral completes their free workflow audit, your $500 credit is activated immediately.</p>
+                  <p>Once your referral completes their free workflow audit, your project credit is activated immediately.</p>
                 </div>
                 <div>
                   <p className="font-medium text-ink mb-1">Can I stack credits?</p>
@@ -394,38 +395,18 @@ export default function ReferralPage() {
                 </div>
               </div>
             </Card>
-
-            <Card className="p-5">
-              <h3 className="text-sm font-medium text-ink mb-3">Questions?</h3>
-              <p className="text-sm text-ink/75 mb-3">
-                Reach out to our team for clarification on the referral program.
-              </p>
-              <a
-                href="mailto:team@twoapps.com"
-                className="text-sm text-accent-1 hover:text-accent-1/80 transition-colors"
-              >
-                team@twoapps.com
-              </a>
-            </Card>
-
-            <Card className="p-5 border-accent-1/20">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-accent-1/10 flex items-center justify-center text-accent-1">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-ink">Free Workflow Audit</p>
-                  <p className="text-xs text-ink/60 mt-1">
-                    Your referral gets a $2,000 value assessment to identify their biggest automation opportunities.
-                  </p>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
       </Section>
+
+      <CtaBand
+        title="Have someone in mind?"
+        copy="Send us their details and we'll handle the rest. You both win."
+        primaryHref="/book"
+        primaryLabel="Book a call"
+        secondaryHref="/contact"
+        secondaryLabel="Talk to us"
+      />
     </>
   );
 }

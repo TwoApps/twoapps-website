@@ -10,7 +10,7 @@ import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 export const metadata = buildMetadata({
   title: "Work",
   description:
-    "Representative case-style summaries showing how TwoApps scopes and delivers AI workflows, compliance operations improvements, and internal product tooling.",
+    "Representative summaries showing how we scope and deliver AI workflows and internal tooling.",
   canonicalPath: "/work",
   keywords: ["ai automation case studies", "claude code workflow implementation examples", "aml kyc automation examples"],
   ogImage: "/og-default.svg"
@@ -28,7 +28,7 @@ export default function WorkPage() {
       <PageHero
         eyebrow="Work"
         title="Proof first, details on demand"
-        description="Start with the case patterns below, then expand any summary to review the problem, approach, outcomes, and tools used."
+        description="Start with the patterns below. Expand any summary for problem, approach, and outcomes."
         chips={["Founder-backed", "Implementation-focused", "Representative summaries"]}
       />
 
@@ -50,7 +50,7 @@ export default function WorkPage() {
       <DetailPanelsSection
         eyebrow="Case Details"
         title="Expand a case summary"
-        subtitle="These are honest, representative summaries designed to show how TwoApps thinks and delivers before full client case studies are published."
+        subtitle="Honest, representative summaries — full client case studies coming soon."
         items={caseStudies.map((item) => ({
           title: item.title,
           summary: item.context,
@@ -87,10 +87,10 @@ export default function WorkPage() {
       />
 
       <CtaBand
-        title="Want to turn one of your workflows into a measured pilot?"
-        copy="We can start with a short discovery call and define the smallest pilot that proves value quickly."
+        title="Turn a workflow into a measured pilot."
+        copy="Start with a short discovery call. Define the smallest pilot that proves value."
         primaryHref="/contact"
-        primaryLabel="Start a pilot discussion"
+        primaryLabel="Book a pilot call"
       />
     </>
   );

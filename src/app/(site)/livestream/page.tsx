@@ -4,6 +4,7 @@ import { LivestreamRegistrationForm } from "@/components/livestream/registration
 import { PageHero } from "@/components/common/page-hero";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
+import { FaqSection } from "@/components/common/faq-section";
 
 export const metadata = buildMetadata({
   title: "Live AI Workflow Demo",
@@ -16,7 +17,7 @@ export const metadata = buildMetadata({
 
 const whatToExpectItems = [
   {
-    title: "Real workflow, built live",
+    title: "A real workflow, built live",
     description: "Watch a production-ready AI workflow take shape from blank canvas to working system in 30 minutes."
   },
   {
@@ -30,10 +31,6 @@ const whatToExpectItems = [
   {
     title: "Live Q&A",
     description: "Get your questions answered during and after the build. No slides, no theory—just practical answers."
-  },
-  {
-    title: "Take-home resources",
-    description: "All attendees get the workflow template, diagrams, and implementation checklist after the session."
   }
 ];
 
@@ -42,8 +39,8 @@ export default function LivestreamPage() {
     <>
       <PageHero
         eyebrow="Live Demo"
-        title="Watch an AI workflow get built in 30 minutes"
-        description="No slides. No theory. Just real building. See exactly how we deliver production automation in weeks, not months."
+        title="Watch us build an AI workflow live"
+        description="No slides. No theory. Thirty minutes of real building, end-to-end."
         chips={["30 minutes", "Live Q&A", "Free resources"]}
       />
 
@@ -54,7 +51,7 @@ export default function LivestreamPage() {
             <div>
               <h2 className="text-2xl font-semibold text-ink">What you&apos;ll see</h2>
               <p className="mt-2 text-ink/70">
-                A complete walkthrough of building a customer support ticket triage system—the same pattern we&apos;ve used with fintech, SaaS, and e-commerce clients.
+                We build a customer-support ticket triage system — the exact pattern we ship to fintech, SaaS, and e-commerce teams.
               </p>
             </div>
 
@@ -86,7 +83,7 @@ export default function LivestreamPage() {
                 <div>
                   <p className="font-medium text-ink">Based on real client work</p>
                   <p className="mt-1 text-sm text-ink/60">
-                    This demo showcases the exact patterns we used to help a fintech client reduce support response time by 60%.
+                    Same patterns we used to cut a fintech client&apos;s support response time by 60%.
                   </p>
                 </div>
               </div>
@@ -94,7 +91,7 @@ export default function LivestreamPage() {
           </div>
 
           {/* Registration form */}
-          <div className="lg:sticky lg:top-8 lg:self-start">
+          <div id="register" className="lg:sticky lg:top-8 lg:self-start">
             <Card className="p-6 sm:p-8">
               <div className="mb-6">
                 <h2 className="text-xl font-semibold text-ink">Reserve your spot</h2>
@@ -103,7 +100,7 @@ export default function LivestreamPage() {
                 </p>
               </div>
               <LivestreamRegistrationForm sourcePage="/livestream" />
-              
+
               {/* Trust signals */}
               <div className="mt-6 border-t border-white/10 pt-5">
                 <div className="flex items-center gap-2 text-xs text-ink/50">
@@ -125,69 +122,27 @@ export default function LivestreamPage() {
       </Section>
 
       {/* FAQ Section */}
-      <Section className="pt-12 pb-16">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="mb-8 text-center text-2xl font-semibold text-ink">Common questions</h2>
-          
-          <div className="space-y-4">
-            <details className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-ink">
-                Do I need technical knowledge to benefit from this?
-                <span className="ml-4 shrink-0 rounded-full bg-white/5 p-1 text-ink/60 group-open:rotate-45">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                </span>
-              </summary>
-              <p className="mt-4 text-sm text-ink/60">
-                No. The demo is designed for both technical and non-technical viewers. We explain what we&apos;re doing at each step and why it matters for business outcomes.
-              </p>
-            </details>
-
-            <details className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-ink">
-                Will there be a recording?
-                <span className="ml-4 shrink-0 rounded-full bg-white/5 p-1 text-ink/60 group-open:rotate-45">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                </span>
-              </summary>
-              <p className="mt-4 text-sm text-ink/60">
-                Yes. Everyone who registers will receive the recording and resources via email. But attending live means you can ask questions and get immediate answers.
-              </p>
-            </details>
-
-            <details className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-ink">
-                What tools will you use?
-                <span className="ml-4 shrink-0 rounded-full bg-white/5 p-1 text-ink/60 group-open:rotate-45">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                </span>
-              </summary>
-              <p className="mt-4 text-sm text-ink/60">
-                We&apos;ll use n8n for workflow automation, integrate with common tools like Slack and email, and show AI patterns that work with various LLM providers. The concepts apply regardless of your specific tech stack.
-              </p>
-            </details>
-
-            <details className="group rounded-2xl border border-white/10 bg-white/[0.02] p-5">
-              <summary className="flex cursor-pointer items-center justify-between font-medium text-ink">
-                Is this a sales pitch disguised as a demo?
-                <span className="ml-4 shrink-0 rounded-full bg-white/5 p-1 text-ink/60 group-open:rotate-45">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                </span>
-              </summary>
-              <p className="mt-4 text-sm text-ink/60">
-                No. This is 30 minutes of real building. At the end, we&apos;ll mention how TwoApps can help if you want to implement something similar—but the focus is on teaching you practical patterns you can use yourself.
-              </p>
-            </details>
-          </div>
-        </div>
-      </Section>
+      <FaqSection
+        title="Questions"
+        items={[
+          {
+            question: "Do I need technical knowledge?",
+            answer: "No. We explain each step in plain language."
+          },
+          {
+            question: "Will there be a recording?",
+            answer: "Yes — everyone registered gets the recording plus the resources."
+          },
+          {
+            question: "What tools will you use?",
+            answer: "n8n for orchestration, Slack/email integrations, and standard LLM providers."
+          },
+          {
+            question: "Is this a sales pitch?",
+            answer: "No. Thirty minutes of building. We'll mention how to engage TwoApps at the end if useful."
+          }
+        ]}
+      />
     </>
   );
 }

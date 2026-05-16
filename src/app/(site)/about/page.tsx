@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "About TwoApps: a UAE-based AI automation and software delivery partner combining practical AI workflows, product engineering, and founder-led execution.",
+    "UAE-based AI automation and software delivery partner. Practical AI workflows, product engineering, founder-led execution.",
   canonicalPath: "/about",
   keywords: ["about twoapps uae ai company", "ai automation partner uae"],
   ogImage: "/og-default.svg"
@@ -20,17 +20,17 @@ const aboutFrames: StickySceneFrame[] = [
   {
     label: "Studio",
     headline: "UAE-based team built for practical delivery",
-    subline: "TwoApps is positioned as a company that ships real work. Founder depth helps speed up scoping and reduce delivery risk."
+    subline: "We ship real work. Founder depth shortens scoping and reduces delivery risk."
   },
   {
     label: "Execution",
     headline: "AI workflows, internal tools, and delivery support in one path",
-    subline: "The model combines AI workflow implementation, product engineering, and white-label support without splitting work across multiple vendors."
+    subline: "AI workflows, product engineering, and white-label support — one partner, no handoffs."
   },
   {
     label: "Markets",
     headline: "UAE-based, serving businesses and agencies globally",
-    subline: "Local UAE access is available, and the delivery model is built to work well with remote teams worldwide."
+    subline: "Local UAE access. Delivery model built for remote teams worldwide."
   }
 ];
 
@@ -39,8 +39,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About TwoApps"
-        title="A UAE-based AI delivery partner built to execute"
-        description="Start with the overview below, then open the panels for founder proof, delivery capability, and fit details."
+        title="UAE-based AI delivery partner built to execute"
+        description="Overview below. Open panels for founder proof, delivery capability, and fit."
         chips={["UAE-based", "Founder-led execution", "AI workflows + product delivery"]}
       />
 
@@ -74,7 +74,7 @@ export default function AboutPage() {
       <DetailPanelsSection
         eyebrow="Details"
         title="Open the company and founder proof details"
-        subtitle="This keeps the page easy to scan at first glance while still showing the depth behind the work."
+        subtitle="Scan first. Expand for depth."
         items={[
           {
             title: "What we do",
@@ -149,10 +149,10 @@ export default function AboutPage() {
       />
 
       <CtaBand
-        title="Want to see if TwoApps is a fit for your workflow or delivery model?"
-        copy="The first step is usually a short scoping conversation to identify the highest-value workflow, pilot, or client opportunity."
+        title="See if TwoApps fits your workflow."
+        copy="Start with a short scoping call to pick the highest-value workflow or pilot."
         primaryHref="/contact"
-        primaryLabel="Talk to TwoApps"
+        primaryLabel="Book a call"
       />
     </>
   );

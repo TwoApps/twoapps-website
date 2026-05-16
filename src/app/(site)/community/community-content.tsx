@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PageHero } from "@/components/common/page-hero";
 import { FaqSection } from "@/components/common/faq-section";
+import { CtaBand } from "@/components/common/cta-band";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
@@ -15,13 +16,13 @@ const benefits = [
     icon: "🤝",
     title: "Peer Learning",
     description:
-      "Connect with operations leaders, automation specialists, and agency founders who are solving the same challenges you face."
+      "Connect with operators and agency founders solving the same problems you are."
   },
   {
     icon: "📚",
-    title: "Exclusive Content",
+    title: "Templates & playbooks",
     description:
-      "Access workflow templates, automation playbooks, and industry insights not available anywhere else."
+      "Workflow templates and automation playbooks you can't get anywhere else."
   },
   {
     icon: "🚀",
@@ -31,7 +32,7 @@ const benefits = [
   },
   {
     icon: "💬",
-    title: "Direct Support",
+    title: "Team support",
     description:
       "Get quick answers from the TwoApps team and experienced community members in real-time."
   }
@@ -55,32 +56,13 @@ const steps = [
   }
 ];
 
-const testimonials = [
-  {
-    quote:
-      "The TwoApps community helped us identify three automation opportunities we hadn't considered. The peer insights alone were worth it.",
-    name: "Sarah Chen",
-    role: "Operations Director",
-    company: "Fintech Startup, Singapore",
-    avatar: "/avatars/sarah-chen.jpg"
-  },
-  {
-    quote:
-      "Being part of this community gave us confidence to pitch AI projects to clients. The white-label tips from other agencies were game-changing.",
-    name: "James Mitchell",
-    role: "Founder",
-    company: "Digital Agency, Australia",
-    avatar: "/avatars/james-mitchell.jpg"
-  },
-  {
-    quote:
-      "Direct access to the TwoApps team means I get answers fast. It's like having an extended support team on demand.",
-    name: "Fatima Al-Rashid",
-    role: "Digital Transformation Lead",
-    company: "Healthcare Provider, UAE",
-    avatar: "/avatars/fatima-al-rashid.jpg"
-  }
-];
+const featuredTestimonial = {
+  quote:
+    "The TwoApps community helped us identify three automation opportunities we hadn't considered. The peer insights alone were worth it.",
+  name: "Sarah Chen",
+  role: "Operations Director",
+  company: "Fintech Startup, Singapore"
+};
 
 const faqs = [
   {
@@ -91,7 +73,7 @@ const faqs = [
   {
     question: "Is there a cost to join?",
     answer:
-      "No — the community is free for TwoApps clients and approved partners. We believe in building long-term relationships, and the community is part of how we support our network."
+      "It's open at no cost to TwoApps clients and approved partners. We believe in building long-term relationships, and the community is part of how we support our network."
   },
   {
     question: "What platform does the community use?",
@@ -154,16 +136,16 @@ export default function CommunityPage() {
     <>
       <PageHero
         eyebrow="Client Community"
-        title="Join the TwoApps Community"
-        description="Connect with peers building AI automation. Get exclusive content, early access, and direct support — all in one place."
-        chips={["Peer Learning", "Exclusive Content", "Early Access", "Direct Support"]}
+        title="The TwoApps client community"
+        description="Peer learning, templates, and direct team support — for operators building AI automation."
+        chips={["Peer learning", "Templates", "Early access", "Direct support"]}
       />
 
       {/* Benefits Section */}
       <Section className="pt-12 pb-16">
         <Container>
           <div className="text-center mb-12">
-            <Tag>Why Join</Tag>
+            <Tag>Benefits</Tag>
             <Heading title="What You Get" align="center" className="mt-4" />
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -182,8 +164,8 @@ export default function CommunityPage() {
       <Section className="py-16 bg-cyan-field">
         <Container>
           <div className="text-center mb-12">
-            <Tag>Simple Process</Tag>
-            <Heading title="How It Works" align="center" className="mt-4" />
+            <Tag>Process</Tag>
+            <Heading title="How it works" align="center" className="mt-4" />
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             {steps.map((step, index) => (
@@ -196,53 +178,38 @@ export default function CommunityPage() {
               </div>
             ))}
           </div>
-        </Container>
-      </Section>
 
-      {/* Testimonials Section */}
-      <Section className="py-16">
-        <Container>
-          <div className="text-center mb-12">
-            <Tag>Member Stories</Tag>
-            <Heading title="What Members Say" align="center" className="mt-4" />
-          </div>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="p-6 glass-panel">
-                <p className="text-ink/80 text-sm leading-relaxed mb-6 italic">
-                  &quot;{testimonial.quote}&quot;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-accent-1/20 flex items-center justify-center text-accent-1 font-semibold">
-                    {testimonial.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
-                  <div>
-                    <p className="text-ink font-semibold text-sm">{testimonial.name}</p>
-                    <p className="text-ink/60 text-xs">
-                      {testimonial.role}, {testimonial.company}
-                    </p>
-                  </div>
+          {/* Inline testimonial */}
+          <div className="mx-auto mt-12 max-w-2xl">
+            <Card className="p-6 glass-panel">
+              <p className="text-ink/80 text-sm leading-relaxed mb-6 italic">
+                &quot;{featuredTestimonial.quote}&quot;
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent-1/20 flex items-center justify-center text-accent-1 font-semibold">
+                  {featuredTestimonial.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
                 </div>
-              </Card>
-            ))}
+                <div>
+                  <p className="text-ink font-semibold text-sm">{featuredTestimonial.name}</p>
+                  <p className="text-ink/60 text-xs">
+                    {featuredTestimonial.role}, {featuredTestimonial.company}
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </Container>
       </Section>
 
-      {/* FAQ Section */}
-      <FaqSection
-        title="Frequently Asked Questions"
-        
-        items={faqs}
-      />
-
-      {/* Request Access Form */}
+      {/* FAQ + Request Access */}
       <Section className="py-16 bg-cyan-field">
         <Container>
-          <div className="max-w-2xl mx-auto">
+          <FaqSection title="Common questions" items={faqs} />
+
+          <div className="max-w-2xl mx-auto mt-16">
             <div className="text-center mb-8">
               <Tag>Join Now</Tag>
               <Heading title="Request Access" align="center" className="mt-4" />
@@ -256,7 +223,7 @@ export default function CommunityPage() {
                 <div className="text-center py-8">
                   <div className="text-5xl mb-4">✓</div>
                   <h3 className="text-xl font-semibold text-ink mb-2">
-                    Request Submitted!
+                    Application received
                   </h3>
                   <p className="text-ink/70 text-sm">
                     We&apos;ll review your application and send you a Slack invite within 24-48 hours.
@@ -384,25 +351,15 @@ export default function CommunityPage() {
         </Container>
       </Section>
 
-      {/* Final CTA */}
-      <Section className="py-16">
-        <Container>
-          <div className="text-center">
-            <p className="text-ink/60 text-sm mb-4">
-              Questions? Reach out directly at{" "}
-              <a
-                href="mailto:team@twoapps.com"
-                className="text-accent-1 hover:text-accent-1/80 transition-colors"
-              >
-                team@twoapps.com
-              </a>
-            </p>
-            <p className="text-ink/50 text-xs">
-              TwoApps — AI workflow automation for businesses and agencies worldwide.
-            </p>
-          </div>
-        </Container>
-      </Section>
+      {/* CTA Band */}
+      <CtaBand
+        title="Have a question first?"
+        copy="Tell us what you're trying to do and we'll point you in the right direction."
+        primaryHref="/contact"
+        primaryLabel="Talk to us"
+        secondaryHref="mailto:team@twoapps.com"
+        secondaryLabel="Email the team"
+      />
     </>
   );
 }

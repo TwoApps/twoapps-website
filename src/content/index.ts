@@ -33,9 +33,9 @@ export const services: Service[] = [
   {
     slug: "agentic-ai-automation",
     title: "Agentic AI Automation",
-    tagline: "Turn repetitive work into AI-powered workflows with clear checks, approvals, and human oversight.",
+    tagline: "Turn repeat work into AI workflows with human checks where they matter.",
     summary:
-      "We build practical AI workflows for support, operations, finance ops, onboarding, reporting, and back-office work so your team spends less time on repeat tasks.",
+      "We build AI workflows for support, ops, finance, onboarding, and reporting so your team stops doing the work software should be doing.",
     audiences: ["business", "agency"],
     benefits: [
       "Reduce manual work and turnaround time on repeat tasks",
@@ -90,9 +90,9 @@ export const services: Service[] = [
   {
     slug: "claude-code-automation",
     title: "Claude / Claude Code Automation",
-    tagline: "Turn Claude and Claude Code into repeatable team workflows instead of one-off prompts.",
+    tagline: "Make Claude a team workflow, not a personal trick.",
     summary:
-      "We help teams use Claude and Claude Code in a structured way for coding, QA, reviews, and delivery tasks so results are faster and more consistent.",
+      "We turn Claude and Claude Code into structured workflows for coding, QA, and delivery so your output is faster and consistent across the team.",
     audiences: ["business", "agency"],
     benefits: [
       "Speed up engineering and delivery work with repeatable AI-assisted steps",
@@ -147,9 +147,9 @@ export const services: Service[] = [
   {
     slug: "white-label-ai-delivery",
     title: "White-Label AI Delivery for Software Houses",
-    tagline: "Offer AI projects without hiring a full in-house AI team first.",
+    tagline: "Sell AI projects today. Skip the AI hiring delay.",
     summary:
-      "TwoApps works behind the scenes as a white-label implementation partner for software houses and agencies that want to deliver AI workflows, AI features, and internal tools.",
+      "We work behind your brand as the AI implementation team — so you ship AI workflows, features, and internal tools without standing up an AI practice first.",
     audiences: ["agency"],
     benefits: [
       "Start selling AI projects faster without delaying on hiring",
@@ -208,7 +208,7 @@ export const industries: Industry[] = [
     slug: "fintech-aml-kyc-automation",
     title: "Fintech / AML / KYC Automation",
     summary:
-      "AI-assisted workflow design for compliance-heavy teams that need faster processing, fewer errors, and a clear audit trail.",
+      "Faster AML and KYC reviews with fewer errors and a clean audit trail.",
     painPoints: [
       "Manual review queues that slow down onboarding and case handling",
       "Repetitive document checks that consume analyst time",
@@ -265,7 +265,7 @@ export const regions: RegionPage[] = [
     slug: "dubai-uae-gcc-ai-automation",
     title: "AI Automation Partner in Dubai, UAE & GCC",
     summary:
-      "TwoApps is a UAE-based AI automation and software delivery partner helping teams in Dubai, the UAE, and the GCC reduce manual work and launch practical AI systems.",
+      "A UAE-based AI partner helping Dubai and GCC teams cut manual work and launch real systems.",
     marketFocus: [
       "UAE/GCC businesses with slow, manual operational workflows",
       "Founders and operators who need a real pilot, not an AI demo",
@@ -279,7 +279,7 @@ export const regions: RegionPage[] = [
     ],
     engagementModel: [
       "Automation audit and priority sprint",
-      "30-day pilot for one workflow or internal tool",
+      "Pilot one workflow or internal tool",
       "Production rollout and ongoing optimization support"
     ],
     faq: [
@@ -317,7 +317,7 @@ export const regions: RegionPage[] = [
     slug: "white-label-ai-partner-software-houses",
     title: "White-Label AI Partner for Software Houses (Global)",
     summary:
-      "TwoApps supports software houses and agencies as a white-label AI implementation partner, with strong demand fit across the Middle East, Eastern Europe, South America, Australia, and New Zealand.",
+      "White-label AI implementation for agencies — Middle East, Eastern Europe, LATAM, Australia, New Zealand.",
     marketFocus: [
       "Software houses adding AI services to existing web/mobile delivery",
       "Agencies that need implementation support for AI workflows and AI features",
@@ -332,7 +332,7 @@ export const regions: RegionPage[] = [
     engagementModel: [
       "Capability sprint for your agency team",
       "White-label pilot on one client project",
-      "Monthly delivery capacity / retainer model",
+      "Ongoing delivery capacity for AI work",
       "Escalation support for AI-heavy backlog items"
     ],
     faq: [

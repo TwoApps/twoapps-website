@@ -29,13 +29,13 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="Practical AI services that help teams ship faster"
-        description="Start with the service stack for a quick view, then open any panel for the full scope, deliverables, and starting points."
+        title="AI services that pay back in weeks, not quarters."
+        description="Three offerings, one delivery model. Open any panel for scope, deliverables, and how a pilot starts."
         chips={["UAE-based", "Businesses + agencies", "Global delivery"]}
       />
 
       <StickyScene
-        eyebrow="Service Stack"
+        eyebrow="What we do"
         frames={serviceFrames}
         heightMultiplier={3.2}
         visual={
@@ -55,9 +55,9 @@ export default function ServicesPage() {
       />
 
       <DetailPanelsSection
-        eyebrow="All Services"
-        title="Expand a service for benefits, deliverables, and starting points"
-        subtitle="Each panel stays concise at first view and opens into the implementation detail."
+        eyebrow="Services"
+        title="Open a service for full scope"
+        subtitle="Each panel opens into deliverables, process, and the typical starting point."
         items={services.map((service) => ({
           title: service.title,
           summary: service.tagline,
@@ -92,63 +92,18 @@ export default function ServicesPage() {
                 href={`/services/${service.slug}`}
                 className="focus-ring inline-flex items-center gap-2 rounded-full border border-accent-1/15 bg-accent-1/[0.04] px-3 py-1.5 text-sm text-accent-1 hover:bg-accent-1/[0.08]"
               >
-                Open service page <span aria-hidden>↗</span>
+                See full service <span aria-hidden>↗</span>
               </Link>
             </div>
           )
         }))}
       />
 
-      <DetailPanelsSection
-        eyebrow="Offers"
-        title="Productized ways to start"
-        subtitle="Start with a focused pilot or setup instead of a long, vague discovery process."
-        className="pt-0"
-        items={[
-          {
-            title: "Starting offers",
-            summary: "Fast entry points for direct businesses and agency partners",
-            content: (
-              <ul className="space-y-2 text-sm text-ink/78">
-                {[
-                  "AI Automation Audit (1-2 weeks)",
-                  "30-Day AI Workflow Pilot (one workflow end-to-end)",
-                  "Claude Code Team Acceleration Setup",
-                  "White-Label AI Capability Sprint for agencies"
-                ].map((offer) => (
-                  <li key={offer} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
-                    {offer}
-                  </li>
-                ))}
-              </ul>
-            )
-          },
-          {
-            title: "Outcomes we optimize for",
-            summary: "What successful projects typically improve first",
-            content: (
-              <ul className="space-y-2 text-sm text-ink/78">
-                {[
-                  "Reduced manual ops time",
-                  "Faster turnaround and response times",
-                  "Lower execution inconsistency across recurring work",
-                  "Faster AI project delivery without in-house AI hiring delays"
-                ].map((item) => (
-                  <li key={item} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            )
-          }
-        ]}
-      />
-
       <CtaBand
-        title="Need help picking the right starting service?"
-        copy="Start with the highest-friction workflow or the next AI project your team is expected to deliver. We can scope the right pilot."
+        title="Not sure which service fits?"
+        copy="Tell us the workflow or backlog item. We'll point at the right starting move."
         primaryHref="/contact"
-        primaryLabel="Discuss scope"
+        primaryLabel="Talk to us"
       />
     </>
   );

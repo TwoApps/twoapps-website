@@ -8,7 +8,7 @@ import { Section } from "@/components/ui/section";
 export const metadata = buildMetadata({
   title: "Free Guide: 5 AI Workflows That Save 10+ Hours/Week",
   description:
-    "Download our free guide featuring 5 practical AI workflows that are already saving real businesses 10+ hours per week. No fluff, just proven automation.",
+    "Download 5 practical AI workflows that save businesses 10+ hours per week.",
   canonicalPath: "/guide",
   keywords: ["ai workflows guide", "automation guide", "ai productivity guide", "business automation workflows"],
   ogImage: "/og-default.svg"
@@ -19,9 +19,9 @@ export default function GuidePage() {
     <>
       <PageHero
         eyebrow="Free Download"
-        title="Free Guide: 5 AI Workflows That Save 10+ Hours/Week"
-        description="A practical guide for business owners. No futuristic hype — just proven workflows that are saving real businesses time today."
-        chips={["PDF Download", "5 Proven Workflows", "Real Examples", "ROI Breakdown"]}
+        title="5 AI workflows that save 10+ hours weekly"
+        description="A practical guide for business owners. Proven workflows saving real businesses time today."
+        chips={["PDF download", "5 proven workflows", "Real examples", "Time-saved breakdown"]}
       />
 
       <Section className="pt-6">
@@ -29,20 +29,19 @@ export default function GuidePage() {
           <Card className="p-6 sm:p-8 lg:p-10">
             <div className="mb-8 text-center">
               <h2 className="text-xl font-semibold text-ink sm:text-2xl">
-                Get the guide delivered to your inbox
+                Get the guide by email
               </h2>
               <p className="mt-2 text-sm text-ink/65">
-                Enter your details below and we&apos;ll send you the PDF immediately.
+                Enter your details. We&apos;ll send the PDF immediately.
               </p>
             </div>
             <GuideDownloadForm sourcePage="/guide" />
           </Card>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {[
               { number: "10+", label: "Hours saved per week" },
-              { number: "5", label: "Proven workflows" },
-              { number: "$3K-$10K", label: "Setup cost range" }
+              { number: "5", label: "Proven workflows" }
             ].map((stat) => (
               <div
                 key={stat.label}

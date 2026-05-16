@@ -14,28 +14,28 @@ type HomeCinematicExperienceProps = {
 
 const homeServices = [
   {
-    eyebrow: "For business teams",
-    title: "AI Workflow Automation",
+    eyebrow: "For operators",
+    title: "Automate the repeat work",
     description:
-      "We automate the repetitive parts of your marketing, analytics, and operations work — lead routing, weekly reports, onboarding checks, ticket triage. Your team stops doing the boring half and gets time back for real work.",
+      "Lead routing, weekly reports, onboarding checks, ticket triage — handed to AI with human approvals where it matters.",
     href: "/services",
-    cta: "See what we automate"
+    cta: "See the playbook"
   },
   {
     eyebrow: "For founders",
-    title: "Fast MVP Development",
+    title: "Ship an AI-powered v1",
     description:
-      "Need a working product before your next pitch? We build clean, AI-powered v1s in 4 to 6 weeks. Fixed price, fixed timeline, built by senior engineers — not handed off to a junior team.",
+      "Senior engineers build your working product end to end. Clean code, fast handover, no junior teams.",
     href: "/services",
-    cta: "Scope your MVP"
+    cta: "Talk to us"
   },
   {
-    eyebrow: "For agencies & software houses",
-    title: "AI Delivery, Behind Your Brand",
+    eyebrow: "For agencies",
+    title: "Deliver AI under your brand",
     description:
-      "Your client. Our build. We deliver AI projects under your agency's name so you can sell AI work without hiring a full AI team. You keep the relationship, we handle the implementation.",
+      "Your client, your relationship. We build the AI layer in the background and disappear at handover.",
     href: "/agency-partners",
-    cta: "See partnership terms"
+    cta: "See partner playbook"
   }
 ];
 
@@ -45,26 +45,21 @@ function HomeHero({ bookingHref }: { bookingHref: string }) {
       <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/[0.015] px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-28">
         <GlowField intensity="soft" />
         <div className="relative mx-auto max-w-4xl text-center">
-          <Tag>UAE-based · serving teams worldwide</Tag>
+          <Tag>UAE-based AI automation partner</Tag>
           <h1 className="mt-8 text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl">
-            Automate the work your team shouldn&apos;t be doing.
+            Give your team back the hours AI should be handling.
           </h1>
           <p className="mx-auto mt-7 max-w-2xl text-balance text-lg leading-relaxed text-ink/75 sm:text-xl">
-            We use AI to take the repetitive work off your team&apos;s plate —
-            from marketing and analytics to operations and back-office tasks —
-            so the people you hired can focus on the work only humans can do.
+            We build AI workflows that quietly run the repeat work — so your people focus on the calls, decisions, and customers only humans can handle.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Button href={bookingHref} size="lg">
-              Book a 25-min call
+              Book a call
             </Button>
             <Button href="/services" variant="secondary" size="lg">
-              See what we automate
+              See the playbook
             </Button>
           </div>
-          <p className="mt-8 text-sm text-ink/55">
-            Pilots start at $8,000 · Live in 2 to 4 weeks · No long contracts
-          </p>
         </div>
       </div>
     </Section>
@@ -77,8 +72,8 @@ function HomeServices() {
       <div className="mx-auto max-w-3xl text-center">
         <Heading
           eyebrow="What we do"
-          title="Three ways we help teams move faster"
-          subtitle="Pick the one that matches where you are. Each starts with a small, focused pilot so you can see the work before you commit."
+          title="Three ways we plug in"
+          subtitle="Trusted by operators across the UAE and GCC. Pick the track that fits today — we start with one workflow, prove it, then expand."
           align="center"
         />
       </div>
@@ -114,13 +109,13 @@ function HomeProcess() {
       <div className="mx-auto max-w-3xl text-center">
         <Heading
           eyebrow="How we work"
-          title="A simple way to start"
-          subtitle="Four steps, four to six weeks. We focus on one real workflow first, prove it works, then expand from there."
+          title="How a project runs"
+          subtitle="One workflow, proven first. Then the next. No multi-month discovery loops."
           align="center"
         />
       </div>
-      <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-        {processSteps.map((step, index) => (
+      <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+        {processSteps.slice(0, 3).map((step, index) => (
           <Card key={step.title} className="h-full p-7 sm:p-8">
             <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-accent-1/20 bg-accent-1/[0.06] font-display text-xl text-accent-1">
               {index + 1}
@@ -145,19 +140,17 @@ function HomeClosingCta({ bookingHref }: { bookingHref: string }) {
         <GlowField intensity="soft" />
         <div className="relative mx-auto max-w-2xl">
           <h2 className="text-balance font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl lg:text-5xl">
-            Tell us the workflow you hate most.
+            Tell us the workflow that wastes most time.
           </h2>
           <p className="mx-auto mt-6 text-balance text-base leading-relaxed text-ink/75 sm:text-lg">
-            We&apos;ll show you what an automated version looks like, what it
-            would cost, and how long it would take. No pitch deck. Just a
-            useful conversation.
+            We&apos;ll show you what the automated version looks like and what it would take to ship. No deck. Useful conversation.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <Button href={bookingHref} size="lg">
-              Book a 25-min call
+              Book a call
             </Button>
             <Button href="/contact" variant="secondary" size="lg">
-              Send us a message
+              Talk to us
             </Button>
           </div>
         </div>

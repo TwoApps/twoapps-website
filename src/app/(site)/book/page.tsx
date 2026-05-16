@@ -4,8 +4,6 @@ import { getBookingUrl, getCalendlyEmbedUrl } from "@/lib/site-config";
 import { CalendlyEmbed } from "@/components/book/calendly-embed";
 import { PageHero } from "@/components/common/page-hero";
 import { ExpandableDetailPanel } from "@/components/common/expandable-detail-panel";
-import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
-import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
@@ -13,24 +11,11 @@ import { Section } from "@/components/ui/section";
 export const metadata = buildMetadata({
   title: "Book Discovery Call",
   description:
-    "Book a discovery call with TwoApps to discuss AI workflow automation, internal tools, or white-label AI delivery support.",
+    "Book a discovery call about AI workflow automation, internal tools, or white-label delivery.",
   canonicalPath: "/book",
   keywords: ["book ai automation consultation", "book discovery call twoapps"],
   ogImage: "/og-default.svg"
 });
-
-const bookingFrames: StickySceneFrame[] = [
-  {
-    label: "Goal",
-    headline: "Use a short call to define the right pilot",
-    subline: "Discovery calls are for choosing scope, constraints, and the fastest measurable starting point."
-  },
-  {
-    label: "Fallback",
-    headline: "No booking link? The contact flow still works",
-    subline: "Submit the contact form with availability and context. The team can coordinate from there."
-  }
-];
 
 export default function BookPage() {
   const bookingUrl = getBookingUrl();
@@ -43,33 +28,10 @@ export default function BookPage() {
         title={bookingUrl ? "Book a discovery call" : "Booking link coming soon"}
         description={
           bookingUrl
-            ? "Use the live booking link for direct business projects or white-label agency partnerships."
+            ? "Pick a time below. Direct projects and agency partnerships welcome."
             : "The public booking link is not live yet. Use the contact form and share availability for a discovery call."
         }
         chips={["Direct clients", "Agency partners", "UAE-based / global support"]}
-      />
-
-      <StickyScene
-        eyebrow="Booking Flow"
-        frames={bookingFrames}
-        heightMultiplier={2.2}
-        visual={
-          <StackedVisualCards
-            items={[
-              {
-                title: bookingUrl ? "Booking link is live" : "Placeholder flow active",
-                body: bookingUrl
-                  ? "The primary CTA opens the live booking page. You can still use the contact form if you want to share context before the call."
-                  : "This page intentionally acts as a CTA fallback until NEXT_PUBLIC_BOOKING_URL is configured."
-              },
-              {
-                title: "Typical call outcomes",
-                body: "Define the workflow bottleneck, choose the pilot scope, and confirm timeline, collaboration model, and constraints.",
-                meta: ["Scope", "Timeline", "Constraints"]
-              }
-            ]}
-          />
-        }
       />
 
       {calendlyEmbedUrl && (
@@ -95,33 +57,33 @@ export default function BookPage() {
         <Card className="mx-auto max-w-3xl p-4 sm:p-5">
           <ExpandableDetailPanel
             title={bookingUrl ? (calendlyEmbedUrl ? "Or use the link" : "Open the booking link") : "Use the contact fallback"}
-            summary={bookingUrl ? "Primary CTA now points to your live scheduler" : "Booking URL is not configured yet"}
+            summary={bookingUrl ? "Live scheduler — book direct" : "Booking URL is not configured yet"}
             defaultOpen={!calendlyEmbedUrl}
           >
             <div className="space-y-4 text-sm text-ink/78 sm:text-base">
               <p>
                 {bookingUrl
                   ? calendlyEmbedUrl
-                    ? "Schedule above or use the link to open Calendly in a new tab. You can also use the contact form to share context before the call."
-                    : "Use the button below to schedule. If you need to share background before the call, you can still use the contact form."
-                  : "Use the contact page and mention your preferred times. This keeps the website flow working until a live booking tool is added."}
+                    ? "Schedule above, or open Calendly in a new tab. Prefer to share context first? Use the contact form."
+                    : "Use the button below to schedule. Need to share context first? Use the contact form."
+                  : "Use the contact form and share your preferred times."}
               </p>
               <div className="flex flex-wrap gap-3">
                 {bookingUrl ? (
-                  <Button href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                  <Button href={bookingUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                     {calendlyEmbedUrl ? "Open in new tab" : "Open booking link"}
                   </Button>
                 ) : (
-                  <Button href="/contact">Use contact form</Button>
+                  <Button href="/contact" className="w-full sm:w-auto">Use contact form</Button>
                 )}
-                <Button href="/contact" variant="secondary">
+                <Button href="/contact" variant="secondary" className="w-full sm:w-auto">
                   Contact instead
                 </Button>
               </div>
             </div>
           </ExpandableDetailPanel>
           <div className="mt-3">
-            <ExpandableDetailPanel title="Typical discovery call goals" summary="What gets decided in the first call">
+            <ExpandableDetailPanel title="Typical discovery call goals" summary="What we decide in the first call">
               <ul className="space-y-2 text-sm text-ink/78">
                 <li>Define the workflow or delivery bottleneck</li>
                 <li>Choose the right pilot scope</li>

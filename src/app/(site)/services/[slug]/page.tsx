@@ -50,12 +50,12 @@ export default async function ServiceDetailPage({ params }: Props) {
     },
     {
       label: "Outcomes",
-      headline: "Built for real workflows, not demos",
+      headline: "Built for real work, not demos",
       subline: service.benefits[0] ?? service.summary
     },
     {
       label: "Process",
-      headline: "Pilot first, then stabilize and scale",
+      headline: "Pilot first, then scale",
       subline: service.process[0] ?? "Start with a bounded pilot and scale after measurable results."
     }
   ];
@@ -78,9 +78,9 @@ export default async function ServiceDetailPage({ params }: Props) {
         title={service.title}
         description={service.tagline}
         chips={[
-          service.audiences.includes("business") ? "Business" : "Agency",
-          service.audiences.includes("agency") && service.audiences.includes("business") ? "Agency" : "Specialized",
-          "Production-oriented implementation"
+          service.audiences.includes("business") ? "For businesses" : "For agencies",
+          ...(service.audiences.includes("business") && service.audiences.includes("agency") ? ["For agencies"] : []),
+          "UAE-based"
         ]}
       />
 
@@ -89,25 +89,25 @@ export default async function ServiceDetailPage({ params }: Props) {
       </Section>
 
       <StickyScene
-        eyebrow="Service Summary"
+        eyebrow="Snapshot"
         frames={serviceFrames}
         heightMultiplier={2.8}
         visual={
           <StackedVisualCards
             items={[
               {
-                title: "What this service covers",
+                title: "What it covers",
                 body: service.summary,
                 meta: service.audiences.map((audience) => audience.toUpperCase())
               },
               {
-                title: "Typical deliverables",
+                title: "What you get",
                 body: service.deliverables[0] ?? "Workflow discovery and implementation",
                 meta: service.deliverables.slice(1, 3)
               },
               {
-                title: "How engagements start",
-                body: "Audit or pilot on one workflow / delivery stream, then expand after proving value.",
+                title: "How it starts",
+                body: "Bounded pilot on one workflow. Expand once it works.",
                 meta: [service.process[0] ?? "Audit", service.process[1] ?? "Pilot"]
               }
             ]}
@@ -116,13 +116,13 @@ export default async function ServiceDetailPage({ params }: Props) {
       />
 
       <DetailPanelsSection
-        eyebrow="Service Details"
-        title="Expand the implementation detail"
-        subtitle="All long-form service detail stays crawlable and server-rendered while the top of the page stays focused."
+        eyebrow="Detail"
+        title="Open the full scope"
+        subtitle="Everything below stays crawlable. Open what's relevant."
         items={[
           {
-            title: "Overview and benefits",
-            summary: "What this service improves first",
+            title: "Overview & benefits",
+            summary: "What this fixes first",
             content: (
               <div className="space-y-4 text-sm text-ink/78">
                 <p className="leading-relaxed">{service.summary}</p>
@@ -139,7 +139,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           },
           {
             title: "Deliverables",
-            summary: "What a typical engagement includes",
+            summary: "What you walk away with",
             content: (
               <ul className="space-y-2 text-sm text-ink/78">
                 {service.deliverables.map((item) => (
@@ -151,8 +151,8 @@ export default async function ServiceDetailPage({ params }: Props) {
             )
           },
           {
-            title: "Delivery process",
-            summary: "Pilot-first engagement sequence",
+            title: "How a project runs",
+            summary: "Pilot first, then scale",
             content: (
               <ol className="space-y-2 text-sm text-ink/78">
                 {service.process.map((step, index) => (
@@ -165,44 +165,16 @@ export default async function ServiceDetailPage({ params }: Props) {
                 ))}
               </ol>
             )
-          },
-          {
-            title: "Best fit and delivery mode",
-            summary: "Audience, starting point, and execution style",
-            content: (
-              <div className="space-y-4 text-sm text-ink/78">
-                <div>
-                  <p className="font-medium text-ink">Audience</p>
-                  <p className="mt-1">
-                    {service.audiences.includes("business") && service.audiences.includes("agency")
-                      ? "Direct businesses and agency/software house partners"
-                      : "Agency/software house partners"}
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium text-ink">Typical starting point</p>
-                  <p className="mt-1">
-                    Audit or pilot on one workflow / delivery stream, then expand after proving value.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-medium text-ink">Delivery mode</p>
-                  <p className="mt-1">
-                    Remote-first, with structured handoff, review, and reliability improvements as the workflow scales.
-                  </p>
-                </div>
-              </div>
-            )
           }
         ]}
       />
 
       <FaqSection items={service.faq} />
       <CtaBand
-        title={`Discuss ${service.title}`}
-        copy="We can scope a pilot, define constraints, and map the fastest path to a measurable result."
+        title={`Talk to us about ${service.title}`}
+        copy="We'll scope a pilot, name the constraints, and map the fastest path to a measurable result."
         primaryHref="/contact"
-        primaryLabel="Start a conversation"
+        primaryLabel="Talk to us"
         secondaryHref="/book"
         secondaryLabel="Book a call"
       />

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { buildMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/common/page-hero";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
+import { CtaBand } from "@/components/common/cta-band";
+import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { AcademyEnrollForm } from "@/components/academy/academy-enroll-form";
 
 // Course definitions
@@ -131,12 +132,12 @@ const quizQuestions = [
   },
   {
     id: "budget",
-    question: "What's your budget range for automation?",
+    question: "What scale of automation are you considering?",
     options: [
-      { label: "Looking for DIY / low-cost options", value: 1, score: 1 },
-      { label: "$5K - $25K for key projects", value: 2, score: 2 },
-      { label: "$25K - $100K for comprehensive automation", value: 3, score: 3 },
-      { label: "$100K+ for enterprise-scale transformation", value: 4, score: 4 }
+      { label: "Just exploring what's possible", value: 1, score: 1 },
+      { label: "Targeted automation projects", value: 2, score: 2 },
+      { label: "Comprehensive automation programme", value: 3, score: 3 },
+      { label: "Enterprise-scale transformation", value: 4, score: 4 }
     ]
   },
   {
@@ -160,7 +161,7 @@ function getRecommendation(answers: Record<string, number>): {
 } {
   const totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
   const painPoint = answers.pain_points;
-  
+
   // Pain point driven recommendations
   if (painPoint === 1) {
     return {
@@ -170,7 +171,7 @@ function getRecommendation(answers: Record<string, number>): {
       cta: "Start with the Workflow Audit course"
     };
   }
-  
+
   if (painPoint === 3) {
     return {
       primary: courses[2], // Compliance-First AI
@@ -179,7 +180,7 @@ function getRecommendation(answers: Record<string, number>): {
       cta: "Start with the Compliance-First AI course"
     };
   }
-  
+
   // Score-based recommendations
   if (totalScore <= 8) {
     return {
@@ -189,7 +190,7 @@ function getRecommendation(answers: Record<string, number>): {
       cta: "Start with the Workflow Audit course"
     };
   }
-  
+
   if (totalScore <= 12) {
     return {
       primary: courses[1], // First Automation
@@ -198,7 +199,7 @@ function getRecommendation(answers: Record<string, number>): {
       cta: "Start with the First Automation course"
     };
   }
-  
+
   if (totalScore <= 16) {
     return {
       primary: courses[3], // Sales Pipeline
@@ -207,7 +208,7 @@ function getRecommendation(answers: Record<string, number>): {
       cta: "Start with the AI-Powered Sales Pipeline course"
     };
   }
-  
+
   return {
     primary: courses[4], // Compliance-Ready Stack
     secondary: courses[3], // Sales Pipeline
@@ -216,16 +217,66 @@ function getRecommendation(answers: Record<string, number>): {
   };
 }
 
+const BEGINNER_IDS = ["ai-workflow-audit", "build-first-automation", "compliance-first-ai"];
+const ADVANCED_IDS = ["ai-sales-pipeline", "compliance-ready-stack"];
+
+const outcomes = [
+  { title: "Spot what to automate first", body: "Identify the manual work that's costing you the most." },
+  { title: "Build without breaking compliance", body: "Stay on the right side of GDPR, MAS, and PDPA from day one." },
+  { title: "Use it the same day", body: "Practical frameworks you can apply to a real workflow today." }
+];
+
+function CoursePanelBody({
+  course,
+  onEnroll
+}: {
+  course: typeof courses[0];
+  onEnroll: () => void;
+}) {
+  return (
+    <div className="space-y-5">
+      <p className="text-sm leading-relaxed text-ink/78">{course.description}</p>
+      <div>
+        <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink/50">
+          What you&apos;ll learn
+        </h4>
+        <ul className="space-y-2">
+          {course.topics.map((topic, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm text-ink/80">
+              <svg
+                className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              {topic}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Button onClick={onEnroll}>Enroll</Button>
+    </div>
+  );
+}
+
 export default function AcademyPage() {
   const [selectedCourse, setSelectedCourse] = useState<typeof courses[0] | null>(null);
   const [quizStep, setQuizStep] = useState<number>(0);
   const [quizAnswers, setQuizAnswers] = useState<Record<string, number>>({});
   const [showResult, setShowResult] = useState<boolean>(false);
   const [quizStarted, setQuizStarted] = useState<boolean>(false);
+  const [level, setLevel] = useState<"beginner" | "advanced">("beginner");
 
   const handleAnswerSelect = (questionId: string, value: number) => {
     setQuizAnswers(prev => ({ ...prev, [questionId]: value }));
-    
+
     if (quizStep < quizQuestions.length - 1) {
       setTimeout(() => setQuizStep(prev => prev + 1), 300);
     } else {
@@ -242,18 +293,39 @@ export default function AcademyPage() {
 
   const recommendation = showResult ? getRecommendation(quizAnswers) : null;
 
+  const visibleCourses = courses.filter((c) =>
+    (level === "beginner" ? BEGINNER_IDS : ADVANCED_IDS).includes(c.id)
+  );
+
   return (
     <>
       <PageHero
         eyebrow="TwoApps Academy"
-        title="Learn AI Automation — Free Courses for Modern Teams"
-        description="Practical mini-courses to help you identify automation opportunities, build your first workflows, and stay compliant. No fluff — just actionable guides you can use today."
-        chips={["Free PDF Downloads", "No LMS Required", "Self-Paced", "Practical Frameworks"]}
+        title="Free AI automation courses for operators"
+        description="Practical mini-courses that show you what to automate, how to build it, and how to stay compliant. Pick a course and start in five minutes."
+        chips={["Free PDF downloads", "Self-paced", "Practical frameworks", "No sign-up wall"]}
       />
 
-      <Section className="pt-8 pb-16">
-        {/* Lead Assessment Quiz Section */}
-        <div className="mx-auto max-w-3xl mb-16">
+      {/* Outcomes strip */}
+      <Section className="pt-8 pb-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+            {outcomes.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5"
+              >
+                <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
+                <p className="mt-2 text-sm text-ink/65">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Course finder (quiz, collapsed by default) */}
+      <Section className="pt-4 pb-8">
+        <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl border border-accent-1/30 bg-gradient-to-br from-accent-1/10 to-transparent p-6 sm:p-8">
             {!quizStarted ? (
               <div className="text-center">
@@ -263,13 +335,13 @@ export default function AcademyPage() {
                   </svg>
                 </div>
                 <h3 className="mb-2 text-xl font-semibold text-ink">
-                  Not Sure Which Course Is Right for You?
+                  Not sure where to start?
                 </h3>
                 <p className="mb-6 text-sm text-ink/70">
-                  Answer 5 quick questions and we&apos;ll recommend the perfect starting point for your automation journey.
+                  Answer five quick questions. We&apos;ll point you at the right course.
                 </p>
                 <Button onClick={() => setQuizStarted(true)}>
-                  Take the Assessment — 2 Minutes
+                  Get a course recommendation in 2 minutes
                 </Button>
               </div>
             ) : showResult && recommendation ? (
@@ -279,20 +351,20 @@ export default function AcademyPage() {
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    Your Personalized Recommendation
+                    Your recommended course
                   </div>
                 </div>
-                
+
                 <div className="mb-6 rounded-xl bg-white/5 p-5 border border-white/10">
                   <p className="text-sm text-ink/80 leading-relaxed mb-4">
                     {recommendation.message}
                   </p>
                 </div>
-                
+
                 <div className="grid gap-4 sm:grid-cols-2 mb-6">
                   <Card className="p-4 border-accent-1/50 bg-accent-1/5">
                     <div className="mb-2 text-xs font-medium uppercase tracking-wider text-accent-1">
-                      Primary Recommendation
+                      Start here
                     </div>
                     <h4 className="text-base font-semibold text-ink mb-1">
                       {recommendation.primary.title}
@@ -300,17 +372,17 @@ export default function AcademyPage() {
                     <p className="text-xs text-ink/60 mb-3">
                       {recommendation.primary.subtitle}
                     </p>
-                    <Button 
+                    <Button
                       onClick={() => setSelectedCourse(recommendation.primary)}
                       className="w-full text-sm"
                     >
-                      Enroll Free
+                      Enroll
                     </Button>
                   </Card>
-                  
+
                   <Card className="p-4 border-white/10">
                     <div className="mb-2 text-xs font-medium uppercase tracking-wider text-ink/50">
-                      Also Recommended
+                      Then this
                     </div>
                     <h4 className="text-base font-semibold text-ink mb-1">
                       {recommendation.secondary.title}
@@ -318,16 +390,16 @@ export default function AcademyPage() {
                     <p className="text-xs text-ink/60 mb-3">
                       {recommendation.secondary.subtitle}
                     </p>
-                    <Button 
-                      variant="secondary" 
+                    <Button
+                      variant="secondary"
                       onClick={() => setSelectedCourse(recommendation.secondary)}
                       className="w-full text-sm"
                     >
-                      Enroll Free
+                      Enroll
                     </Button>
                   </Card>
                 </div>
-                
+
                 <div className="text-center">
                   <Button variant="ghost" onClick={resetQuiz} className="text-sm">
                     Retake Assessment
@@ -351,11 +423,11 @@ export default function AcademyPage() {
                     ))}
                   </div>
                 </div>
-                
+
                 <h3 className="mb-6 text-lg font-semibold text-ink">
                   {quizQuestions[quizStep].question}
                 </h3>
-                
+
                 <div className="space-y-3">
                   {quizQuestions[quizStep].options.map((option, idx) => (
                     <button
@@ -371,7 +443,7 @@ export default function AcademyPage() {
                     </button>
                   ))}
                 </div>
-                
+
                 {quizStep > 0 && (
                   <button
                     onClick={() => setQuizStep(prev => prev - 1)}
@@ -384,76 +456,48 @@ export default function AcademyPage() {
             )}
           </div>
         </div>
-
-        {/* Courses Grid */}
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-8 flex items-center justify-between">
-            <h2 className="text-2xl font-semibold text-ink">All Courses</h2>
-            <div className="flex gap-2 text-xs">
-              <span className="rounded-full bg-accent-1/20 px-3 py-1 text-accent-1">Beginner</span>
-              <span className="rounded-full bg-accent-2/20 px-3 py-1 text-accent-2">Intermediate</span>
-              <span className="rounded-full bg-white/10 px-3 py-1 text-ink/70">Advanced</span>
-            </div>
-          </div>
-          <div className="grid gap-8 lg:grid-cols-3">
-            {courses.map((course) => (
-              <CourseCard
-                key={course.id}
-                course={course}
-                onSelect={setSelectedCourse}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Trust Signals */}
-        <div className="mx-auto mt-16 max-w-3xl">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-            <h3 className="mb-4 text-center text-lg font-semibold text-ink">
-              Why Learn with TwoApps Academy?
-            </h3>
-            <div className="grid gap-6 sm:grid-cols-3">
-              <div className="text-center">
-                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-1/20">
-                  <svg className="h-5 w-5 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <h4 className="text-sm font-medium text-ink">Practical Content</h4>
-                <p className="mt-1 text-xs text-ink/60">Real frameworks, not theory</p>
-              </div>
-              <div className="text-center">
-                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-1/20">
-                  <svg className="h-5 w-5 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h4 className="text-sm font-medium text-ink">Compliance-Ready</h4>
-                <p className="mt-1 text-xs text-ink/60">GDPR, MAS, PDPA aligned</p>
-              </div>
-              <div className="text-center">
-                <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent-1/20">
-                  <svg className="h-5 w-5 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h4 className="text-sm font-medium text-ink">Immediate Value</h4>
-                <p className="mt-1 text-xs text-ink/60">Use it today, see results</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Band */}
-        <div className="mx-auto mt-12 max-w-3xl text-center">
-          <p className="text-sm text-ink/60">
-            Want personalized help implementing these frameworks?{" "}
-            <Button href="/book" variant="ghost" className="px-0">
-              Book a free workflow audit
-            </Button>
-          </p>
-        </div>
       </Section>
+
+      {/* Curriculum (panels with beginner/advanced toggle) */}
+      <div id="courses">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-6 flex flex-wrap gap-2">
+            <Button
+              variant={level === "beginner" ? "primary" : "ghost"}
+              size="sm"
+              onClick={() => setLevel("beginner")}
+            >
+              Beginner
+            </Button>
+            <Button
+              variant={level === "advanced" ? "primary" : "ghost"}
+              size="sm"
+              onClick={() => setLevel("advanced")}
+            >
+              Advanced
+            </Button>
+          </div>
+        </div>
+        <DetailPanelsSection
+          eyebrow="Curriculum"
+          title="Five courses, ordered by where you are"
+          items={visibleCourses.map((c) => ({
+            title: c.title,
+            summary: `${c.level} · ${c.duration} · ${c.subtitle}`,
+            content: <CoursePanelBody course={c} onEnroll={() => setSelectedCourse(c)} />
+          }))}
+        />
+      </div>
+
+      {/* CTA band */}
+      <CtaBand
+        title="Want us to build it with you?"
+        copy="Book a call and we'll map the highest-ROI automations in your stack."
+        primaryHref="/book"
+        primaryLabel="Book a call"
+        secondaryHref="/contact"
+        secondaryLabel="Talk to us"
+      />
 
       {/* Enrollment Modal */}
       {selectedCourse && (
@@ -463,84 +507,6 @@ export default function AcademyPage() {
         />
       )}
     </>
-  );
-}
-
-function CourseCard({ 
-  course, 
-  onSelect 
-}: { 
-  course: typeof courses[0];
-  onSelect: (course: typeof courses[0]) => void;
-}) {
-  const levelColor = {
-    "Beginner": "bg-accent-1/20 text-accent-1",
-    "Intermediate": "bg-accent-2/20 text-accent-2",
-    "Advanced": "bg-white/10 text-ink/70"
-  }[course.level || "Beginner"];
-
-  return (
-    <Card className="flex flex-col p-6 sm:p-8">
-      {/* Course Header */}
-      <div className="mb-6">
-        <div className="mb-2 flex items-center gap-2">
-          <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-ink/70">
-            {course.duration}
-          </span>
-          {course.level && (
-            <span className={`rounded-full px-3 py-1 text-xs font-medium ${levelColor}`}>
-              {course.level}
-            </span>
-          )}
-        </div>
-        <h3 className="text-xl font-semibold text-ink sm:text-2xl">
-          {course.title}
-        </h3>
-        <p className="mt-1 text-base text-accent-1">
-          {course.subtitle}
-        </p>
-      </div>
-
-      {/* Course Description */}
-      <p className="mb-6 text-sm leading-relaxed text-ink/70">
-        {course.description}
-      </p>
-
-      {/* Topics List */}
-      <div className="mb-6 flex-1">
-        <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink/50">
-          What You&apos;ll Learn
-        </h4>
-        <ul className="space-y-2">
-          {course.topics.map((topic, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-ink/80">
-              <svg
-                className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              {topic}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* CTA Button */}
-      <Button
-        onClick={() => onSelect(course)}
-        className="w-full"
-      >
-        Enroll Free — Get PDF
-      </Button>
-    </Card>
   );
 }
 

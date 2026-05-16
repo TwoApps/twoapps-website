@@ -57,7 +57,7 @@ export default async function RegionDetailPage({ params }: Props) {
     },
     {
       label: "Model",
-      headline: isGcc ? "Pilot-first direct engagement model" : "Capability sprint + pilot + retainer partnership model",
+      headline: isGcc ? "Pilot-first direct engagement model" : "Sprint, pilot, then ongoing delivery",
       subline: region.engagementModel[0] ?? "Start with one bounded engagement and expand."
     }
   ];
@@ -84,8 +84,8 @@ export default async function RegionDetailPage({ params }: Props) {
         description={region.summary}
         chips={
           isGcc
-            ? ["Dubai", "UAE", "GCC", "Direct delivery"]
-            : ["White-label", "Middle East", "Eastern Europe", "Australia / New Zealand"]
+            ? ["Dubai", "GCC", "Direct delivery"]
+            : ["White-label", "Global agencies", "AI implementation"]
         }
       />
 
@@ -122,8 +122,8 @@ export default async function RegionDetailPage({ params }: Props) {
 
       <DetailPanelsSection
         eyebrow="Region Detail"
-        title="Expand market fit, positioning, and engagement model"
-        subtitle="All regional detail stays crawlable and readable, while the page opens with a low-text cinematic summary."
+        title="Market fit, positioning, engagement"
+        subtitle="Open a panel for market focus, positioning, and how we engage."
         items={[
           {
             title: "Market focus",
@@ -166,9 +166,8 @@ export default async function RegionDetailPage({ params }: Props) {
                 </div>
                 {!isGcc ? (
                   <p className="leading-relaxed text-ink/70">
-                    This partner model is especially relevant for agencies in the Middle East, Eastern Europe, South
-                    America, Australia, and New Zealand that need specialized AI implementation capacity without
-                    immediately expanding headcount.
+                    A fit for agencies in the Middle East, Eastern Europe, LATAM, Australia, and New Zealand that need
+                    AI capacity without new hires.
                   </p>
                 ) : null}
               </div>
@@ -179,14 +178,14 @@ export default async function RegionDetailPage({ params }: Props) {
 
       <FaqSection items={region.faq} />
       <CtaBand
-        title={isGcc ? "Discuss a UAE/GCC automation project" : "Discuss a white-label agency partnership"}
+        title={isGcc ? "Ready to fix a workflow in Dubai or the GCC?" : "Want a white-label AI partner?"}
         copy={
           isGcc
-            ? "Start with one workflow or internal tool pilot and build a roadmap from measurable operational gains."
-            : "Start with one client pilot or a capability sprint to establish a repeatable white-label delivery model."
+            ? "Start with one pilot. Measure the gain. Then scale."
+            : "Start with one client pilot or a capability sprint. Build from there."
         }
         primaryHref="/contact"
-        primaryLabel="Talk to TwoApps"
+        primaryLabel="Book a call"
       />
     </>
   );

@@ -50,14 +50,13 @@ export default async function IndustryDetailPage({ params }: Props) {
     },
     {
       label: "Approach",
-      headline: "Automation with human control points",
+      headline: "Humans stay in control",
       subline: industry.solutions[0] ?? "AI-assisted workflow design with approval gates."
     },
     {
       label: "Pilot",
-      headline: "Choose a bounded operational pilot",
-      subline:
-        "The right pilot is operationally real, but safe enough to implement with clear ownership and approval checkpoints."
+      headline: "Start with one bounded pilot",
+      subline: "One real workflow, clear ownership, approval gates baked in."
     }
   ];
 
@@ -78,7 +77,7 @@ export default async function IndustryDetailPage({ params }: Props) {
         eyebrow="Industry Focus"
         title={industry.title}
         description={industry.summary}
-        chips={["Compliance-aware", "Workflow automation", "Human-in-the-loop design"]}
+        chips={["AML / KYC", "Workflow automation", "Human-in-the-loop"]}
       />
 
       <Section className="pb-0 pt-6 sm:pt-8">
@@ -114,8 +113,8 @@ export default async function IndustryDetailPage({ params }: Props) {
 
       <DetailPanelsSection
         eyebrow="Industry Detail"
-        title="Expand pain points, solutions, and pilot ideas"
-        subtitle="Top-of-page visuals stay minimal while the operational detail remains visible to users and search engines."
+        title="Pain points, solutions, pilots"
+        subtitle="Tap a panel to see how we approach AML and KYC operations."
         items={[
           {
             title: "Pain points",
@@ -162,10 +161,10 @@ export default async function IndustryDetailPage({ params }: Props) {
 
       <FaqSection items={industry.faq} />
       <CtaBand
-        title="Discuss an AML/KYC or compliance workflow pilot"
-        copy="We can map the workflow and identify where AI assistance and automation can improve speed while keeping humans in control."
+        title="Ready to fix your AML or KYC bottleneck?"
+        copy="We map the workflow, then build the pilot. Humans stay in control throughout."
         primaryHref="/contact"
-        primaryLabel="Discuss compliance workflow"
+        primaryLabel="Book a call"
       />
     </>
   );

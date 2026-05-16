@@ -36,20 +36,6 @@ export interface RegionalProcessStep {
   duration: string;
 }
 
-export interface RegionalPricingTier {
-  title: string;
-  price: string;
-  features: string[];
-  cta: string;
-  popular?: boolean;
-}
-
-export interface RegionalPricing {
-  free: RegionalPricingTier;
-  pilot: RegionalPricingTier;
-  note?: string;
-}
-
 export interface RegionalConfig {
   slug: string;
   meta: {
@@ -69,29 +55,28 @@ export interface RegionalConfig {
     trustBar: string;
     trustMarks?: string[];
   };
-  painPoints: {
+  painPoints?: {
     title: string;
     items: RegionalPainPoint[];
   };
   howItWorksTitle?: string;
   howItWorks?: RegionalProcessStep[];
   featuresTitle?: string;
-  features: {
+  features?: {
     title: string;
     items: RegionalFeature[];
   };
   industriesTitle?: string;
-  industries: {
+  industries?: {
     title: string;
     items: RegionalIndustry[];
   };
   testimonialsTitle?: string;
-  testimonials: {
+  testimonials?: {
     title: string;
     items: RegionalTestimonial[];
   };
-  pricing?: RegionalPricing;
-  faq: {
+  faq?: {
     title: string;
     items: RegionalFaq[];
   };
@@ -109,6 +94,5 @@ export interface RegionalConfig {
     name: string;
     description: string;
     areaServed: string[];
-    priceRange?: string;
   };
 }

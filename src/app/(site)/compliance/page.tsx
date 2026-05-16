@@ -2,6 +2,7 @@ import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/json-ld";
 import { PageHero } from "@/components/common/page-hero";
 import { CtaBand } from "@/components/common/cta-band";
+import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { Button } from "@/components/ui/button";
 
 export const metadata = buildMetadata({
@@ -45,49 +46,36 @@ const COMPARISON_DATA = [
   { feature: "Dedicated Compliance Partner", audit: false, caas: true, both: true }
 ];
 
-function ServiceCard({
-  title,
+const PAIN_POINTS = [
+  {
+    title: "Regulators want answers fast",
+    body: "Auditors don't accept 'we'll get to it'. You need a paper trail today."
+  },
+  {
+    title: "AI moves faster than policy",
+    body: "Models change weekly. Your governance has to keep up without blocking the team."
+  },
+  {
+    title: "One slip costs client trust",
+    body: "A single data incident undoes a year of credibility. Get ahead of it."
+  }
+];
+
+function ServiceBody({
   description,
-  timeline,
   deliverables,
-  featured,
   ctaText,
   ctaHref
 }: {
-  title: string;
   description: string;
-  timeline: string;
   deliverables: string[];
-  featured?: boolean;
   ctaText: string;
   ctaHref: string;
 }) {
   return (
-    <div
-      className={`group relative flex flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 sm:p-8 ${
-        featured
-          ? "border-accent-1/30 bg-gradient-to-b from-accent-1/[0.06] to-transparent"
-          : "border-white/10 bg-white/[0.02] hover:border-accent-1/15 hover:bg-accent-1/[0.02]"
-      }`}
-    >
-      {featured && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="rounded-full bg-accent-1 px-4 py-1 text-xs font-medium uppercase tracking-wider text-[#020406]">
-            Recommended
-          </span>
-        </div>
-      )}
-
-      <div className="mb-6">
-        <h3 className="text-xl font-semibold text-ink sm:text-2xl">{title}</h3>
-        <p className="mt-2 text-sm text-ink/65">{description}</p>
-      </div>
-
-      <div className="mb-6">
-        <p className="text-sm text-ink/55">Timeline: {timeline}</p>
-      </div>
-
-      <div className="mb-6 flex-1">
+    <div className="flex flex-col gap-5">
+      <p className="text-sm text-ink/75">{description}</p>
+      <div>
         <p className="mb-3 text-xs font-medium uppercase tracking-wider text-accent-1">
           What&apos;s Included
         </p>
@@ -100,8 +88,7 @@ function ServiceCard({
           ))}
         </ul>
       </div>
-
-      <Button href={ctaHref} variant={featured ? "primary" : "secondary"} className="w-full">
+      <Button href={ctaHref} className="w-full sm:w-auto">
         {ctaText}
       </Button>
     </div>
@@ -195,117 +182,31 @@ export default function CompliancePage() {
       <main>
         <PageHero
           eyebrow="Compliance Services"
-          title="AI Governance Built for Regulated Industries"
-          description="Stay ahead of AI regulations with compliance services designed for fintech and regulated companies. Full audit in 3 weeks, or ongoing partnership for continuous coverage."
+          title="AI compliance, handled."
+          description="For fintech and regulated teams who need defensible AI governance without slowing the roadmap."
           chips={["GDPR", "MAS TRM", "PDPA", "DIFC", "ADGM"]}
         />
 
-        {/* Service Cards */}
+        {/* Three pain points */}
         <section className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
-            <ServiceCard
-              title="AI Governance Audit"
-              description="Comprehensive review of your AI systems for regulatory compliance"
-              timeline="3 weeks"
-              deliverables={[
-                "Full AI system review across all frameworks",
-                "Executive summary for board reporting",
-                "Risk matrix (severity × likelihood)",
-                "Regulation-by-regulation gap analysis",
-                "Prioritized remediation roadmap",
-                "Certification recommendations (ISO, SOC 2)"
-              ]}
-              ctaText="Request Audit"
-              ctaHref="/contact?service=compliance-audit"
-            />
-            <ServiceCard
-              title="Compliance-as-a-Service"
-              description="Ongoing compliance partner for continuous coverage"
-              timeline="6-month minimum"
-              deliverables={[
-                "Monthly system audit + compliance scorecard",
-                "Quarterly full review + regulatory briefing",
-                "Ad-hoc policy review and guidance",
-                "Incident response support",
-                "Regulator liaison assistance",
-                "Annual certification preparation"
-              ]}
-              featured
-              ctaText="Start Partnership"
-              ctaHref="/contact?service=compliance-retainer"
-            />
-            <ServiceCard
-              title="Full Partnership"
-              description="Start with audit, then ongoing coverage"
-              timeline="Immediate start"
-              deliverables={[
-                "Everything in AI Governance Audit",
-                "Everything in Compliance-as-a-Service",
-                "Seamless audit → ongoing transition",
-                "Dedicated compliance partner",
-                "Priority response (24 hours)",
-                "Custom quarterly strategy sessions"
-              ]}
-              ctaText="Get Full Coverage"
-              ctaHref="/contact?service=compliance-full"
-            />
+          <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+            {PAIN_POINTS.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+              >
+                <h3 className="text-base font-semibold text-ink">{item.title}</h3>
+                <p className="mt-2 text-sm text-ink/65">{item.body}</p>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Frameworks Covered */}
+        {/* How it works */}
         <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
           <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold text-ink sm:text-3xl">Regulatory Frameworks We Cover</h2>
-            <p className="mt-3 text-ink/60">Multi-jurisdiction expertise for global operations</p>
-          </div>
-          <FrameworkGrid />
-        </section>
-
-        {/* Comparison Table */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold text-ink sm:text-3xl">Compare Service Options</h2>
-            <p className="mt-3 text-ink/60">Choose the right level of coverage for your needs</p>
-          </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
-            <ComparisonTable />
-          </div>
-        </section>
-
-        {/* What's Included */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center sm:p-12">
-            <h3 className="text-xl font-semibold text-ink sm:text-2xl">All Services Include</h3>
-            <div className="mt-6 flex flex-wrap justify-center gap-6 text-ink/70">
-              <div className="flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                <span>Senior compliance consultant</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                <span>AI/ML expertise</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                <span>Full documentation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                <span>Audit-ready deliverables</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="block h-1.5 w-1.5 rounded-full bg-accent-1" />
-                <span>Implementation roadmap</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Process */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl font-semibold text-ink sm:text-3xl">Our Process</h2>
-            <p className="mt-3 text-ink/60">From engagement to audit-ready in 3 weeks</p>
+            <h2 className="text-2xl font-semibold text-ink sm:text-3xl">How it works</h2>
+            <p className="mt-3 text-ink/60">Three weeks to audit-ready.</p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center">
@@ -338,14 +239,89 @@ export default function CompliancePage() {
           </div>
         </section>
 
+        {/* What we deliver */}
+        <DetailPanelsSection
+          eyebrow="Deliverables"
+          title="What we deliver"
+          items={[
+            {
+              title: "AI Governance Audit",
+              summary: "Comprehensive review of your AI systems",
+              content: (
+                <ServiceBody
+                  description="Comprehensive review of your AI systems for regulatory compliance."
+                  deliverables={[
+                    "Full AI system review across all frameworks",
+                    "Executive summary for board reporting",
+                    "Risk matrix (severity × likelihood)",
+                    "Regulation-by-regulation gap analysis",
+                    "Prioritized remediation roadmap",
+                    "Certification recommendations (ISO, SOC 2)"
+                  ]}
+                  ctaText="Book a call"
+                  ctaHref="/contact?service=compliance-audit"
+                />
+              )
+            },
+            {
+              title: "Compliance-as-a-Service",
+              summary: "Recommended — ongoing compliance partner",
+              content: (
+                <ServiceBody
+                  description="Ongoing compliance partner for continuous coverage."
+                  deliverables={[
+                    "Monthly system audit + compliance scorecard",
+                    "Quarterly full review + regulatory briefing",
+                    "Ad-hoc policy review and guidance",
+                    "Incident response support",
+                    "Regulator liaison assistance",
+                    "Annual certification preparation"
+                  ]}
+                  ctaText="Book a call"
+                  ctaHref="/contact?service=compliance-retainer"
+                />
+              )
+            },
+            {
+              title: "Full Partnership",
+              summary: "Audit plus ongoing coverage",
+              content: (
+                <ServiceBody
+                  description="Start with audit, then ongoing coverage."
+                  deliverables={[
+                    "Everything in AI Governance Audit",
+                    "Everything in Compliance-as-a-Service",
+                    "Seamless audit → ongoing transition",
+                    "Dedicated compliance partner",
+                    "Priority response (24 hours)",
+                    "Custom quarterly strategy sessions"
+                  ]}
+                  ctaText="Book a call"
+                  ctaHref="/contact?service=compliance-full"
+                />
+              )
+            },
+            {
+              title: "Frameworks we cover",
+              summary: "GDPR, MAS, PDPA, DIFC, ADGM",
+              content: <FrameworkGrid />
+            },
+            {
+              title: "Compare options",
+              summary: "Feature-by-feature comparison of the three options",
+              content: <ComparisonTable />
+            }
+          ]}
+        />
+
         {/* CTA Band */}
         <CtaBand
-          title="Ready for compliance clarity?"
-          copy="Start with an AI Governance Audit or discuss ongoing compliance partnership."
+          title="Get compliance clarity"
+          copy="Tell us about your AI stack. We'll come back with a defensible path forward."
           primaryHref="/contact?service=compliance"
-          primaryLabel="Get started"
+          primaryLabel="Book a call"
           secondaryHref="/book"
-          secondaryLabel="Book a call"
+          secondaryLabel="Talk to us"
         />
       </main>
     </>

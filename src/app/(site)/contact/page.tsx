@@ -4,8 +4,6 @@ import { getBookingUrl, getContactPhone } from "@/lib/site-config";
 import { ContactForm } from "@/components/contact/contact-form";
 import { PageHero } from "@/components/common/page-hero";
 import { ExpandableDetailPanel } from "@/components/common/expandable-detail-panel";
-import { StickyScene, type StickySceneFrame } from "@/components/motion/sticky-scene";
-import { StackedVisualCards } from "@/components/scenes/stacked-visual-cards";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
@@ -13,24 +11,11 @@ import { Section } from "@/components/ui/section";
 export const metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact TwoApps to discuss AI workflow automation, internal tools, Claude/Claude Code workflows, or white-label AI delivery support.",
+    "Contact TwoApps about AI workflow automation, internal tools, or white-label AI delivery.",
   canonicalPath: "/contact",
   keywords: ["contact ai automation partner uae", "white label ai partner contact"],
   ogImage: "/og-default.svg"
 });
-
-const contactFrames: StickySceneFrame[] = [
-  {
-    label: "Businesses",
-    headline: "Describe the workflow problem first",
-    subline: "The fastest way to a useful response is to explain the current bottleneck, target outcome, and constraints."
-  },
-  {
-    label: "Agencies",
-    headline: "White-label opportunities are welcome",
-    subline: "Mention whether this is a pilot, client feature delivery, or ongoing AI capacity request."
-  }
-];
 
 export default function ContactPage() {
   const bookingHref = getBookingUrl() ?? "/book";
@@ -41,30 +26,8 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Tell us what you need to ship"
-        description="One brief form for direct business automation projects and white-label agency partnerships."
+        description="One brief form. Direct projects or agency partnerships."
         chips={["Businesses", "Agencies / software houses", "UAE-based / global delivery"]}
-      />
-
-      <StickyScene
-        eyebrow="How to Start"
-        frames={contactFrames}
-        heightMultiplier={2.3}
-        visual={
-          <StackedVisualCards
-            items={[
-              {
-                title: "Direct business project",
-                body: "Share the current workflow, desired outcome, and where delays or manual work are happening.",
-                meta: ["Ops automation", "Internal tools", "Pilot scope"]
-              },
-              {
-                title: "Agency / software house partnership",
-                body: "Share the client scope, white-label expectations, and whether you need sprint, pilot, or retainer support.",
-                meta: ["White-label", "Capacity", "Co-delivery"]
-              }
-            ]}
-          />
-        }
       />
 
       <Section className="pt-6">
@@ -75,7 +38,7 @@ export default function ContactPage() {
           <div className="space-y-3">
             <ExpandableDetailPanel
               title="What to include"
-              summary="Make the first reply faster and more useful"
+              summary="Faster, more useful first reply"
               defaultOpen
             >
               <ul className="space-y-2 text-sm text-ink/78">
@@ -85,7 +48,7 @@ export default function ContactPage() {
                 <li>Whether this is direct business work or a white-label agency opportunity</li>
               </ul>
             </ExpandableDetailPanel>
-            <ExpandableDetailPanel title="Prefer a call?" summary="Booking CTA with fallback flow">
+            <ExpandableDetailPanel title="Prefer a call?" summary="Call, WhatsApp, or book a discovery slot">
               <div className="space-y-4 text-sm text-ink/78">
                 {contactPhone && (
                   <>
@@ -110,10 +73,9 @@ export default function ContactPage() {
                   </>
                 )}
                 <p>
-                  Use the booking CTA if a booking link is live. Until then, submit the form and mention that you
-                  prefer a discovery call.
+                  Or submit the form and mention you&apos;d prefer a call.
                 </p>
-                <Button href={bookingHref} variant="secondary">
+                <Button href={bookingHref} variant="secondary" className="w-full sm:w-auto">
                   Book discovery call
                 </Button>
               </div>

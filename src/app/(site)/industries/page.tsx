@@ -21,18 +21,18 @@ export const metadata = buildMetadata({
 const industryFrames: StickySceneFrame[] = [
   {
     label: "Focus",
-    headline: "Operations-heavy environments are the best starting point",
+    headline: "Start where queues create friction",
     subline: "AI automation works best where queue pressure, repeatable tasks, and cross-tool coordination create real friction."
   },
   {
     label: "Launch",
-    headline: "Lead with one high-signal industry page",
-    subline: "Start with fintech / AML / KYC and expand into adjacent operational verticals as proof grows."
+    headline: "Begin with compliance — AML and KYC",
+    subline: "Fintech compliance is our wedge: high stakes, repeatable steps, clear ROI."
   },
   {
     label: "Expand",
-    headline: "Build vertical pages from workflow patterns, not generic AI copy",
-    subline: "Each industry page should map pain points, pilot automations, and operational constraints."
+    headline: "Expand into adjacent ops workflows",
+    subline: "From compliance we move into ops-heavy verticals with the same playbook."
   }
 ];
 
@@ -41,9 +41,9 @@ export default function IndustriesPage() {
     <>
       <PageHero
         eyebrow="Industries"
-        title="Industry pages should show fit, not just keywords"
-        description="Use the scenes for the top-level positioning and open the detail panels to see the current launch focus and expansion targets."
-        chips={["UAE-based, global", "Ops-heavy teams", "Compliance-aware workflows"]}
+        title="AI automation built for ops-heavy industries"
+        description="We focus on industries where queues, approvals, and repetitive work are slowing your team down."
+        chips={["Ops-heavy teams", "Compliance-aware", "Human-in-the-loop"]}
       />
 
       <StickyScene
@@ -75,8 +75,8 @@ export default function IndustriesPage() {
 
       <DetailPanelsSection
         eyebrow="Industry Pages"
-        title="Current and planned industry positioning"
-        subtitle="The top of the page stays cinematic; the operational detail remains server-rendered and crawlable here."
+        title="Industries we serve"
+        subtitle="Open a panel to see pain points and pilot ideas for each vertical."
         items={[
           ...industries.map((industry) => ({
             title: industry.title,
@@ -94,11 +94,11 @@ export default function IndustriesPage() {
             )
           })),
           {
-            title: "Expansion targets",
-            summary: "High-fit verticals for future landing pages and outreach",
+            title: "Other industries we fit",
+            summary: "Adjacent verticals where the same playbook applies",
             content: (
               <div className="grid gap-2 sm:grid-cols-2">
-                {featuredIndustries.map((industry) => (
+                {featuredIndustries.slice(0, 4).map((industry) => (
                   <div key={industry} className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-ink/78">
                     {industry}
                   </div>
@@ -110,10 +110,10 @@ export default function IndustriesPage() {
       />
 
       <CtaBand
-        title="Have an operations-heavy industry with repetitive workflows?"
-        copy="We can map the workflow first and identify where AI workflows, AI copilots, or internal tools will create the fastest impact."
+        title="Got a workflow that should be automated?"
+        copy="We map the workflow, then build the pilot that proves value fastest."
         primaryHref="/contact"
-        primaryLabel="Discuss an industry workflow"
+        primaryLabel="Book a call"
       />
     </>
   );

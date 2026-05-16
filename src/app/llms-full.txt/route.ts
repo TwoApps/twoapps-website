@@ -125,17 +125,6 @@ export async function GET() {
     lines.push("");
   }
 
-  lines.push("## Pricing (USD)");
-  lines.push("");
-  lines.push("- Workflow Assessment — $8,000 — 2 weeks — First-time automation buyers");
-  lines.push("- Lead Qualification Workflow — $10,000 — 1 week");
-  lines.push("- Customer Support Automation — $12,000 — 2 weeks — Most popular");
-  lines.push("- Finance Reporting Automation — $15,000 — 2 weeks");
-  lines.push("- AI Governance Audit — $20,000 — 3 weeks");
-  lines.push("- Compliance-as-a-Service — $5,000 / month — 6-month minimum");
-  lines.push(`Full pricing: ${siteUrl}/pricing`);
-  lines.push("");
-
   lines.push("## Contact");
   lines.push("");
   lines.push(`Contact form: ${siteUrl}/contact`);

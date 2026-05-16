@@ -21,7 +21,7 @@ export const metadata = buildMetadata({
 const regionFrames: StickySceneFrame[] = [
   {
     label: "Direct",
-    headline: "Dubai / UAE / GCC for direct automation projects",
+    headline: "Direct delivery in UAE and GCC",
     subline: "A strong fit for teams that need practical implementation and measurable workflow improvements, not just AI demos."
   },
   {
@@ -37,8 +37,8 @@ export default function RegionsPage() {
       <PageHero
         eyebrow="Regions"
         title="Two regional tracks, one delivery model"
-        description="Direct business automation in UAE/GCC and white-label AI delivery for agencies globally, with regional pages to support search and fit messaging."
-        chips={["Dubai, UAE, GCC", ...globalPartnerRegions]}
+        description="Direct delivery in UAE and the GCC, white-label AI partnership for agencies worldwide."
+        chips={["Dubai / UAE / GCC", "White-label global", "Two tracks"]}
       />
 
       <StickyScene
@@ -65,8 +65,8 @@ export default function RegionsPage() {
 
       <DetailPanelsSection
         eyebrow="Region Pages"
-        title="Open a region page by delivery track"
-        subtitle="Each region page keeps the cinematic intro and moves the deeper positioning into expandable sections."
+        title="Pick your delivery track"
+        subtitle="Open a panel to see how we work in each region."
         items={regions.map((region) => ({
           title: region.title,
           summary: region.summary,
@@ -92,10 +92,10 @@ export default function RegionsPage() {
       />
 
       <CtaBand
-        title="Need direct delivery in UAE/GCC or a white-label AI partner for your agency?"
-        copy="TwoApps supports both paths with one delivery model: practical pilots, workflow stabilization, and ongoing iteration."
+        title="Direct project or white-label partnership?"
+        copy="One delivery model for both tracks: pilot, stabilize, scale."
         primaryHref="/contact"
-        primaryLabel="Discuss your case"
+        primaryLabel="Book a call"
       />
     </>
   );
