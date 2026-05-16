@@ -5,20 +5,6 @@ export interface RegionalPainPoint {
   stat: string;
 }
 
-export interface RegionalPricingTier {
-  title: string;
-  price: string;
-  features: string[];
-  cta: string;
-  popular?: boolean;
-}
-
-export interface RegionalPricing {
-  free: RegionalPricingTier;
-  pilot: RegionalPricingTier;
-  note: string;
-}
-
 export interface RegionalFeature {
   icon: string;
   title: string;
@@ -90,7 +76,6 @@ export interface RegionalConfig {
     title: string;
     items: RegionalTestimonial[];
   };
-  pricing: RegionalPricing;
   faq: {
     title: string;
     items: RegionalFaq[];
@@ -109,6 +94,5 @@ export interface RegionalConfig {
     name: string;
     description: string;
     areaServed: string[];
-    priceRange: string;
   };
 }

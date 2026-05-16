@@ -42,17 +42,75 @@
     ]
   },
   "hooks": {
-    "postToolUse": {
-      "run": [
-        "npm run lint -- --fix"
-      ],
-      "when": "on_success"
-    }
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json; d=json.load(sys.stdin); fp=d.get('tool_input',{}).get('file_path',''); exit(print('BLOCKED: data/*.json contains real production lead data — only API routes should modify these files.') or 2) if '/data/' in fp and fp.endswith('.json') else exit(0)\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json; d=json.load(sys.stdin); cmd=d.get('tool_input',{}).get('command',''); exit(print('Note: git push origin main deploys to thetwoapps.com immediately — confirm typecheck and build pass first.') or 1) if 'git push' in cmd and 'origin main' in cmd else exit(0)\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "npm run lint -- --fix 2>&1 | tail -5"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json,os; d=json.load(sys.stdin); fp=d.get('tool_input',{}).get('file_path',''); c=open(fp).read() if os.path.isfile(fp) else ''; exit(print('Missing runtime=nodejs declaration — required for data/*.json file access in API routes.') or 1) if '/app/api/' in fp and fp.endswith('.ts') and 'runtime' not in c else exit(0)\""
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import sys,json; d=json.load(sys.stdin); fp=d.get('tool_input',{}).get('file_path',''); exit(print('content/index.ts updated — verify src/app/sitemap.ts covers any new routes.') or 1) if fp.endswith('content/index.ts') else exit(0)\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git status --short 2>/dev/null | grep -q '.' && echo 'Note: uncommitted changes — run /commit when ready.' || true"
+          }
+        ]
+      }
+    ]
   },
   "mcpServers": {
     "context7": {
       "command": "npx",
       "args": ["-y", "@context7/mcp-server-context7"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
     }
   },
   "skills": {

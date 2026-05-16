@@ -5,16 +5,17 @@ import { JsonLd } from "@/components/json-ld";
 import { CinematicHomeExperience } from "@/components/home/cinematic-home";
 
 export const metadata = buildMetadata({
-  title: "UAE-Based AI Automation & Software Delivery",
+  title: "AI Automation for Marketing, Analytics & Operations Teams",
   description:
-    "TwoApps is a UAE-based AI automation and software delivery partner serving clients worldwide. We help businesses reduce manual work and help agencies deliver AI projects faster.",
+    "TwoApps is a UAE-based AI automation partner. We help business teams cut 20+ hours of manual work every week by automating marketing, analytics, and operations workflows.",
   canonicalPath: "/",
   keywords: [
-    "uae ai automation partner",
-    "middle east ai automation company",
-    "claude code automation partner",
-    "white label ai delivery partner",
-    "global ai workflow implementation"
+    "ai automation uae",
+    "marketing automation dubai",
+    "analytics automation gcc",
+    "ai workflow automation middle east",
+    "ai delivery for agencies",
+    "mvp development uae"
   ],
   ogImage: "/og-default.svg"
 });

@@ -32,7 +32,7 @@ export const sgConfig: RegionalConfig = {
     primaryCta: "Book a 30-minute workflow audit",
     secondaryCta: "How it works",
     trustBar: "Trusted by Singapore businesses",
-    trustMarks: ["Production-grade", "MAS compliant", "SGD pricing"]
+    trustMarks: ["Production-grade", "MAS compliant", "Senior delivery"]
   },
   painPoints: {
     title: "The Singapore Business Challenge",
@@ -110,9 +110,9 @@ export const sgConfig: RegionalConfig = {
         description: "See results in weeks, not months."
       },
       {
-        icon: "dollarSign",
-        title: "SGD Pricing",
-        description: "Transparent pricing in Singapore dollars."
+        icon: "zap",
+        title: "Singapore Timezone",
+        description: "Async-friendly delivery with overlapping hours."
       },
       {
         icon: "users",
@@ -158,13 +158,13 @@ export const sgConfig: RegionalConfig = {
         quote: "The MAS compliance requirements were our biggest concern. TwoApps built automation with audit trails and approval chains built in. Our compliance team signed off without changes.",
         name: "Sarah Tan",
         title: "Operations Director, FinServe Pte Ltd",
-        stat: "40% cost reduction • MAS compliant"
+        stat: "Audit-ready • MAS compliant"
       },
       {
         quote: "We needed to scale fast but couldn't hire fast enough. TwoApps automated our customer onboarding and support workflows. We handle 3x the volume with the same team.",
         name: "Michael Lim",
         title: "CTO, LogiTech Solutions",
-        stat: "3x throughput • SGD 200K saved annually"
+        stat: "3x throughput • same team size"
       }
     ]
   },

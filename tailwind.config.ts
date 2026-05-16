@@ -10,7 +10,8 @@ const config: Config = {
         accent: {
           1: "rgb(var(--accent-1) / <alpha-value>)",
           2: "rgb(var(--accent-2) / <alpha-value>)",
-          3: "rgb(var(--accent-3) / <alpha-value>)"
+          3: "rgb(var(--accent-3) / <alpha-value>)",
+          4: "rgb(var(--accent-4) / <alpha-value>)"
         },
         line: "rgb(var(--line) / <alpha-value>)",
         muted: "rgb(var(--muted) / <alpha-value>)"

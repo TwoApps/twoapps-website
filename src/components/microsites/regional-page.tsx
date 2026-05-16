@@ -430,58 +430,6 @@ function TestimonialsSection({
   );
 }
 
-// Pricing Section
-function PricingSection({ pricing }: { pricing: RegionalConfig["pricing"] }) {
-  return (
-    <section className="py-16 sm:py-20 lg:py-24">
-      <Container>
-        <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
-          Investment
-        </h2>
-        <div className="mx-auto grid max-w-4xl gap-6 lg:grid-cols-2">
-          {/* Free Tier */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8">
-            <h3 className="mb-2 font-display text-xl font-semibold">{pricing.free.title}</h3>
-            <p className="mb-6 text-3xl font-bold text-accent-1">{pricing.free.price}</p>
-            <ul className="mb-8 space-y-3">
-              {pricing.free.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-ink/70">
-                  <span className="mt-0.5 text-accent-1">{getIcon("checkCircle")}</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Button href="/book" variant="secondary" className="w-full">
-              {pricing.free.cta}
-            </Button>
-          </div>
-
-          {/* Pilot Tier */}
-          <div className="relative rounded-2xl border-2 border-accent-1/30 bg-accent-1/[0.02] p-8">
-            <div className="absolute -top-3 left-6 rounded-full bg-accent-1 px-3 py-1 text-xs font-semibold text-[#021111]">
-              ★ Most Popular
-            </div>
-            <h3 className="mb-2 font-display text-xl font-semibold">{pricing.pilot.title}</h3>
-            <p className="mb-6 text-3xl font-bold text-accent-1">{pricing.pilot.price}</p>
-            <ul className="mb-8 space-y-3">
-              {pricing.pilot.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-ink/70">
-                  <span className="mt-0.5 text-accent-1">{getIcon("checkCircle")}</span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Button href="/book" className="w-full">
-              {pricing.pilot.cta}
-            </Button>
-          </div>
-        </div>
-        <p className="mt-8 text-center text-sm text-ink/50">{pricing.note}</p>
-      </Container>
-    </section>
-  );
-}
-
 // FAQ Section
 function FaqSection({ faq }: { faq: RegionalConfig["faq"] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -568,7 +516,6 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
             telephone: "+971-55-672-7803",
             email: "team@twoapps.com",
             areaServed: config.schema.areaServed,
-            priceRange: config.schema.priceRange,
           },
         ]}
       />
@@ -607,9 +554,6 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
         title={config.testimonialsTitle || config.testimonials.title}
         testimonials={config.testimonials.items}
       />
-
-      {/* Pricing */}
-      <PricingSection pricing={config.pricing} />
 
       {/* FAQ */}
       <FaqSection faq={config.faq} />
