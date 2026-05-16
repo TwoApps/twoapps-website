@@ -516,6 +516,7 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
             telephone: "+971-55-672-7803",
             email: "team@twoapps.com",
             areaServed: config.schema.areaServed,
+            ...(config.schema.priceRange ? { priceRange: config.schema.priceRange } : {}),
           },
         ]}
       />
