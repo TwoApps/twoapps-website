@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 function EyebrowRow() {
   return (
     <div
-      className="flex animate-hero-in items-center gap-4"
+      className="flex animate-hero-in flex-wrap items-center gap-x-4 gap-y-2"
       style={{ animationDelay: "0.05s" }}
     >
       <span className="h-[7px] w-[7px] shrink-0 animate-soft-pulse rounded-full bg-blue" />
@@ -12,7 +12,7 @@ function EyebrowRow() {
         AI Automation Studio — Dubai, UAE
       </span>
       <span className="hidden h-px flex-1 bg-ink/14 sm:block" />
-      <span className="whitespace-nowrap font-mono text-[11.5px] uppercase tracking-[0.16em] text-ink/40">
+      <span className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-ink/40 sm:whitespace-nowrap">
         Typical first win: 20+ hours back per week
       </span>
     </div>
