@@ -17,7 +17,7 @@ export const metadata = buildMetadata({
     "Get in touch with TwoApps. Tell us what you're trying to automate or ship, and we'll reply with a clear next step — usually within one business day.",
   canonicalPath: "/contact",
   keywords: ["contact ai automation partner uae", "white label ai partner contact"],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const whatHappensNext = [

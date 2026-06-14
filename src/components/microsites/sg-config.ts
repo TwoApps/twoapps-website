@@ -13,7 +13,7 @@ export const sgConfig: RegionalConfig = {
       "PDPA compliant",
       "Singapore business automation"
     ],
-    ogImage: "/og-default.svg",
+    ogImage: "/og-default.png",
     canonicalPath: "/sg",
     alternates: [
       { hreflang: "en-sg", href: "https://thetwoapps.com/sg" },

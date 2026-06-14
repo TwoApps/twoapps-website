@@ -66,20 +66,7 @@ export const baseMetadata: Metadata = {
     follow: true
   },
   icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' },
-      { url: '/icon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
-      { url: '/icon-128x128.png', sizes: '128x128', type: 'image/png' },
-      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-256x256.png', sizes: '256x256', type: 'image/png' },
-      { url: '/icon-384x384.png', sizes: '384x384', type: 'image/png' },
-      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
-    ],
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' }]
   },
   manifest: '/manifest.json',
   openGraph: {
@@ -91,7 +78,7 @@ export const baseMetadata: Metadata = {
     description: defaultDescription,
     images: [
       {
-        url: "/og-default.svg",
+        url: "/og-default.png",
         width: 1200,
         height: 630,
         alt: siteName
@@ -102,7 +89,7 @@ export const baseMetadata: Metadata = {
     card: "summary_large_image",
     title: `${siteName} | Agentic AI Software House`,
     description: defaultDescription,
-    images: ["/og-default.svg"]
+    images: ["/og-default.png"]
   },
   verification: getGscVerification()
     ? {
@@ -126,7 +113,7 @@ export function buildMetadata(seo: SeoMeta): Metadata {
       type: "website",
       images: [
         {
-          url: seo.ogImage || "/og-default.svg",
+          url: seo.ogImage || "/og-default.png",
           width: 1200,
           height: 630,
           alt: seo.title
@@ -137,7 +124,7 @@ export function buildMetadata(seo: SeoMeta): Metadata {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
-      images: [seo.ogImage || "/og-default.svg"]
+      images: [seo.ogImage || "/og-default.png"]
     }
   };
 }
@@ -310,7 +297,7 @@ export function makeArticleSchema(input: ArticleInput, siteUrl = getSiteUrl()) {
     headline: input.title,
     description: input.description,
     url: `${siteUrl}${input.path}`,
-    image: input.image ? `${siteUrl}${input.image}` : `${siteUrl}/og-default.svg`,
+    image: input.image ? `${siteUrl}${input.image}` : `${siteUrl}/og-default.png`,
     datePublished: input.datePublished,
     dateModified: input.dateModified ?? input.datePublished,
     author: {
@@ -324,7 +311,7 @@ export function makeArticleSchema(input: ArticleInput, siteUrl = getSiteUrl()) {
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/twoapps-logo-mark-2k.png`
+        url: `${siteUrl}/favicon.svg`
       }
     }
   };

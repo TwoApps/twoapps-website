@@ -20,7 +20,7 @@ export const metadata = buildMetadata({
     "AI automation Slack community",
     "agency automation peer network"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const joinSteps = [

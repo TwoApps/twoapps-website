@@ -29,7 +29,7 @@ export const metadata = buildMetadata({
     "fintech aml kyc automation",
     "compliance automation industries"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const otherIndustries = featuredIndustries.filter(

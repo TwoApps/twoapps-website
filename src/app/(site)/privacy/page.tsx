@@ -19,7 +19,7 @@ export const metadata = buildMetadata({
     "AI automation privacy",
     "website privacy policy"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const lastUpdated = "June 14, 2026";

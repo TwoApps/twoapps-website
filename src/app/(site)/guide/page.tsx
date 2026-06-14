@@ -21,7 +21,7 @@ export const metadata = buildMetadata({
     "business automation workflows",
     "free ai automation pdf"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const workflows = [

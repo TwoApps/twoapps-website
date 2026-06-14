@@ -20,7 +20,7 @@ export const metadata = buildMetadata({
     "learn ai automation",
     "twoapps academy"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const enrollmentSteps = [

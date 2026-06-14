@@ -17,7 +17,7 @@ export const metadata = buildMetadata({
     "ai delivery for agencies",
     "mvp development uae"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 export default function HomePage() {

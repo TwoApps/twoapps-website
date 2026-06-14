@@ -16,7 +16,7 @@ export const aeConfig: RegionalConfig = {
       "SAMA compliance automation",
       "GCC digital transformation"
     ],
-    ogImage: "/og-default.svg",
+    ogImage: "/og-default.png",
     canonicalPath: "/ae",
     alternates: [
       { hreflang: "en-ae", href: "https://thetwoapps.com/ae" },

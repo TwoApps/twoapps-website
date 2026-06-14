@@ -13,7 +13,7 @@ export const metadata = buildMetadata({
     "The plain-English rules for using the TwoApps website: what we cover, who can use it, what you can expect from us, and how we handle disputes.",
   canonicalPath: "/terms",
   keywords: ["twoapps terms of use", "twoapps legal", "website terms"],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const TERMS_SECTIONS = [

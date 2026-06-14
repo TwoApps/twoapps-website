@@ -19,7 +19,7 @@ export const metadata = buildMetadata({
     "agency ai implementation partner",
     "software house AI delivery partner"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const whyPartnerCards = [

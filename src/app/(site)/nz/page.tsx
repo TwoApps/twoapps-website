@@ -24,7 +24,7 @@ export const metadata = {
       "business process automation NZ",
       "remote automation New Zealand"
     ],
-    ogImage: "/og-default.svg"
+    ogImage: "/og-default.png"
   }),
   alternates: {
     canonical: "/nz",

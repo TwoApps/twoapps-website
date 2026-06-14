@@ -14,7 +14,7 @@ export const nzConfig: RegionalConfig = {
       "Kiwi business automation",
       "team productivity"
     ],
-    ogImage: "/og-default.svg",
+    ogImage: "/og-default.png",
     canonicalPath: "/nz",
     alternates: [
       { hreflang: "en-nz", href: "https://thetwoapps.com/nz" },

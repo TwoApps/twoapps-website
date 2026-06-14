@@ -30,7 +30,7 @@ export const metadata = buildMetadata({
     "compliance as a service",
     "fintech compliance"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const FRAMEWORKS = [

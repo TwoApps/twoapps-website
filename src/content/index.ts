@@ -85,7 +85,7 @@ export const services: Service[] = [
         "ai workflow implementation partner"
       ],
       canonicalPath: "/services/agentic-ai-automation",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   },
   {
@@ -142,7 +142,7 @@ export const services: Service[] = [
         "ai coding workflow setup"
       ],
       canonicalPath: "/services/claude-code-automation",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   },
   {
@@ -199,7 +199,7 @@ export const services: Service[] = [
         "agency ai implementation partner"
       ],
       canonicalPath: "/services/white-label-ai-delivery",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   }
 ];
@@ -256,7 +256,7 @@ export const industries: Industry[] = [
         "aml kyc process automation"
       ],
       canonicalPath: "/industries/fintech-aml-kyc-automation",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   }
 ];
@@ -311,7 +311,7 @@ export const regions: RegionPage[] = [
         "middle east ai automation partner"
       ],
       canonicalPath: "/regions/dubai-uae-gcc-ai-automation",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   },
   {
@@ -364,7 +364,7 @@ export const regions: RegionPage[] = [
         "ai partner software house middle east australia"
       ],
       canonicalPath: "/regions/white-label-ai-partner-software-houses",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   }
 ];
@@ -454,7 +454,7 @@ export const blogPosts: BlogPost[] = [
         "ai automation implementation"
       ],
       canonicalPath: "/blog/from-chatgpt-prompts-to-production-why-most-ai-pilots-stall",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   },
   {
@@ -490,7 +490,7 @@ export const blogPosts: BlogPost[] = [
         "agentic ai implementation"
       ],
       canonicalPath: "/blog/what-agentic-ai-actually-means-for-operations-teams",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   },
   {
@@ -526,7 +526,7 @@ export const blogPosts: BlogPost[] = [
         "ship faster with claude code"
       ],
       canonicalPath: "/blog/how-we-use-claude-code-to-ship-faster-at-twoapps",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   },
   {
@@ -563,7 +563,7 @@ export const blogPosts: BlogPost[] = [
         "aml kyc automation roi"
       ],
       canonicalPath: "/blog/the-real-roi-of-ai-automation-in-regulated-industries",
-      ogImage: "/og-default.svg"
+      ogImage: "/og-default.png"
     }
   }
 ];

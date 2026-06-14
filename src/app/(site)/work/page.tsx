@@ -22,7 +22,7 @@ export const metadata = buildMetadata({
     'ai workflow implementation partner',
     'fintech automation case study'
   ],
-  ogImage: '/og-default.svg'
+  ogImage: '/og-default.png'
 });
 
 const resultPatterns = [

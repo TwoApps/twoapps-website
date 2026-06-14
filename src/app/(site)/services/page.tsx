@@ -27,7 +27,7 @@ export const metadata = buildMetadata({
     "claude code automation consulting",
     "white label ai delivery",
   ],
-  ogImage: "/og-default.svg",
+  ogImage: "/og-default.png",
 });
 
 const jsonLdData = [

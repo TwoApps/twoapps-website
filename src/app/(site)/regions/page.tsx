@@ -30,7 +30,7 @@ export const metadata = buildMetadata({
     "white label ai partner global agencies",
     "gcc ai workflow automation"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const jsonLdData = [

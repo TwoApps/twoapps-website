@@ -14,7 +14,7 @@ export const euConfig: RegionalConfig = {
       "European AI solutions",
       "privacy-first automation"
     ],
-    ogImage: "/og-default.svg",
+    ogImage: "/og-default.png",
     canonicalPath: "/eu",
     alternates: [
       { hreflang: "en-eu", href: "https://thetwoapps.com/eu" },

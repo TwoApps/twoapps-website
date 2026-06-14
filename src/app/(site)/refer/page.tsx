@@ -20,7 +20,7 @@ export const metadata = buildMetadata({
     "business referral credit",
     "earn project credit twoapps"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const referralSteps = [

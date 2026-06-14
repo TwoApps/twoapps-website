@@ -26,7 +26,7 @@ export const metadata = buildMetadata({
     "free ai workflow audit",
     "uae ai automation partner consultation"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const howItWorks = [

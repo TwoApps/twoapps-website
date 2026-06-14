@@ -34,7 +34,7 @@ const pageSeo = buildMetadata({
     "Singapore business automation",
     "AI workflow automation Singapore",
   ],
-  ogImage: "/og-default.svg",
+  ogImage: "/og-default.png",
 });
 
 export const metadata: Metadata = {

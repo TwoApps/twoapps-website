@@ -24,7 +24,7 @@ export const metadata = buildMetadata({
     "ai workflow implementation",
     "ai strategy uae",
   ],
-  ogImage: "/og-default.svg",
+  ogImage: "/og-default.png",
 });
 
 const jsonLdData = [

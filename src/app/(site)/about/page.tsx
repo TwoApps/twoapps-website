@@ -21,7 +21,7 @@ export const metadata = buildMetadata({
     "founder-led ai delivery",
     "claude code implementation partner"
   ],
-  ogImage: "/og-default.svg"
+  ogImage: "/og-default.png"
 });
 
 const storyCards = [

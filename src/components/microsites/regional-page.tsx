@@ -525,7 +525,7 @@ export function BuildMetadata(config: RegionalConfig) {
     openGraph: {
       title: config.meta.title,
       description: config.meta.description,
-      images: [config.meta.ogImage || "/og-default.svg"],
+      images: [config.meta.ogImage || "/og-default.png"],
     },
     alternates: {
       canonical: config.meta.canonicalPath || `/${config.slug}`,

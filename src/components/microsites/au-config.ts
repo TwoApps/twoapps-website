@@ -14,7 +14,7 @@ export const auConfig: RegionalConfig = {
       "compliance automation Australia",
       "mid-market automation Australia"
     ],
-    ogImage: "/og-default.svg",
+    ogImage: "/og-default.png",
     canonicalPath: "/au",
     alternates: [
       { hreflang: "en-au", href: "https://thetwoapps.com/au" },
