@@ -76,14 +76,14 @@ export default function ContactPage() {
       <div
         data-bot-stop
         data-bot-fx="0.12"
-        data-bot-say="Drop a message — I usually reply before your coffee gets cold."
-        data-bot-icons="inbox,spark"
+        data-bot-say="Drop a message — I usually reply before your coffee gets cold." data-bot-short="Drop a message"
       >
         <PageHero
           eyebrow="Contact"
           title="Tell us what’s eating your team’s time"
           description="One short message is enough. We read every inquiry, reply fast, and only propose work that actually fits your workflow."
           chips={["UAE-based", "Reply within 24 hours", "Pilot-first approach"]}
+          mobileChips={["Based in the UAE", "Replies within 24 hours", "Pilot-first project approach"]}
         />
       </div>
 
@@ -107,8 +107,7 @@ export default function ContactPage() {
             className="order-1 p-6 sm:p-8"
             data-bot-stop
             data-bot-fx="0.88"
-            data-bot-say="More detail now = a useful answer faster."
-            data-bot-icons="chat,check"
+            data-bot-say="More detail now = a useful answer faster." data-bot-short="More detail, faster answer"
           >
             <ContactForm sourcePage="/contact" />
           </Card>
@@ -116,8 +115,7 @@ export default function ContactPage() {
             className="order-2 space-y-4"
             data-bot-stop
             data-bot-fx="0.5"
-            data-bot-say="Rather talk? WhatsApp or book a slot — I'm around."
-            data-bot-icons="chat,calendar"
+            data-bot-say="Rather talk? WhatsApp or book a slot — I'm around." data-bot-short="WhatsApp or book a slot"
           >
             <ExpandableDetailPanel
               title="Help us help you faster"

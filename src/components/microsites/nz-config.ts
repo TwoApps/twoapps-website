@@ -33,7 +33,8 @@ export const nzConfig: RegionalConfig = {
     primaryCta: "Book a call",
     secondaryCta: "How it works",
     trustBar: "Supporting Kiwi teams",
-    trustMarks: ["Remote-friendly", "NZ timezone", "Flexible engagement"]
+    trustMarks: ["NZ timezone support", "Remote delivery", "No lock-in contracts"],
+    mobileTrustMarks: ["New Zealand timezone support", "Fully remote delivery model", "No lock-in contracts"]
   },
   painPoints: {
     title: "The NZ business reality",

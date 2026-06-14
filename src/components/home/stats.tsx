@@ -10,7 +10,7 @@ const stats = [
     copy: "hours saved per team each week — usually from a single workflow.",
     bot: {
       say: "Reclaim a full day every week — your team will think it's a typo.",
-      icons: "clock,arrowR,person",
+      short: "Reclaim a full day weekly",
       fx: "0.15"
     }
   },
@@ -26,7 +26,7 @@ const stats = [
     copy: "workflow is proven with real numbers before we ever expand.",
     bot: {
       say: "One workflow proven first. Then we scale without the theater.",
-      icons: "target,chart,check",
+      short: "One workflow, proven first",
       fx: "0.5"
     }
   },
@@ -35,7 +35,7 @@ const stats = [
     copy: "handoffs to junior teams. You work directly with the builders.",
     bot: {
       say: "Zero layers between you and the person shipping your workflow.",
-      icons: "shield,person,code",
+      short: "Zero layers, direct access",
       fx: "0.85"
     }
   }
@@ -54,7 +54,7 @@ export function HomeStats() {
                 ? {
                     "data-bot-stop": "1",
                     "data-bot-say": stat.bot.say,
-                    "data-bot-icons": stat.bot.icons,
+                    "data-bot-short": stat.bot.short,
                     "data-bot-fx": stat.bot.fx
                   }
                 : {})}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type CommonProps = {
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "orange";
   size?: "sm" | "md" | "lg";
   className?: string;
 };
@@ -26,7 +26,9 @@ const variants: Record<NonNullable<CommonProps["variant"]>, string> = {
     "bg-ink text-cream shadow-[0_1px_2px_rgba(22,21,15,0.08)] hover:bg-blue hover:shadow-[0_12px_35px_rgba(39,66,206,0.22)]",
   secondary:
     "border border-ink/25 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04]",
-  ghost: "text-ink/80 hover:bg-ink/[0.05] hover:text-ink"
+  ghost: "text-ink/80 hover:bg-ink/[0.05] hover:text-ink",
+  orange:
+    "bg-orange text-white shadow-[0_1px_2px_rgba(255,106,26,0.18)] hover:bg-orange/92 hover:shadow-[0_12px_35px_rgba(255,106,26,0.28)]"
 };
 
 const sizes: Record<NonNullable<CommonProps["size"]>, string> = {

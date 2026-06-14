@@ -148,8 +148,7 @@ function HeroSection() {
       className="relative pt-8 sm:pt-10 lg:pt-12"
       data-bot-stop
       data-bot-fx="0.15"
-      data-bot-say="Same AI delivery team, dialed in for your GCC market."
-      data-bot-icons="spark,target"
+      data-bot-say="Same AI delivery team, dialed in for your GCC market." data-bot-short="Tuned for the GCC"
     >
       <Container>
         <div className="relative overflow-hidden rounded-[22px] border border-ink/10 bg-white px-4 py-8 shadow-[0_18px_70px_rgba(22,21,15,0.08)] sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-12 lg:py-16">
@@ -174,11 +173,26 @@ function HeroSection() {
           {hero.trustMarks && hero.trustMarks.length > 0 && (
             <div className="mt-10 border-t border-ink/10 pt-6">
               <p className="mb-3 text-xs uppercase tracking-[0.2em] text-ink/50">{hero.trustBar}</p>
-              <div className="flex flex-wrap gap-2">
-                {hero.trustMarks.map((mark) => (
+              <p className="hidden text-sm text-ink/70 sm:block">
+                {hero.trustMarks.map((mark, i, arr) => (
+                  <span key={`desktop-${mark}`} className="break-words">
+                    {mark}
+                    {i < arr.length - 1 && (
+                      <span className="mx-1.5 text-ink/40">·</span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              <div className="flex flex-col gap-1 sm:hidden">
+                {[
+                  "Dubai-based delivery team",
+                  "Arabic and English support",
+                  "Aligned with Vision 2030",
+                  "GCC compliance ready",
+                ].map((mark) => (
                   <span
-                    key={mark}
-                    className="max-w-full break-words rounded-full border border-ink/10 bg-cream px-3 py-1 text-xs text-ink/70"
+                    key={`mobile-${mark}`}
+                    className="text-sm text-ink/70"
                   >
                     {mark}
                   </span>
@@ -199,8 +213,7 @@ function PainPointsSection() {
     <Section
       data-bot-stop
       data-bot-fx="0.85"
-      data-bot-say="Tired of leads slipping through timezone cracks?"
-      data-bot-icons="clock,inbox"
+      data-bot-say="Tired of leads slipping through timezone cracks?" data-bot-short="No more timezone leaks"
     >
       <Heading title={painPoints.title} subtitle="We hear these from GCC teams every week." align="center" />
       <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:mt-12 lg:grid-cols-4 lg:gap-6">
@@ -225,8 +238,7 @@ function HowItWorksSection() {
       id="how-it-works"
       data-bot-stop
       data-bot-fx="0.5"
-      data-bot-say="Books, qualifies, and follows up — before your coffee gets cold."
-      data-bot-icons="calendar,chat"
+      data-bot-say="Books, qualifies, and follows up — before your coffee gets cold." data-bot-short="Books and qualifies leads"
     >
       <Heading
         title={howItWorksTitle || "How it works"}
@@ -256,8 +268,7 @@ function FeaturesSection() {
     <Section
       data-bot-stop
       data-bot-fx="0.3"
-      data-bot-say="Works in your language, your currency, your CRM."
-      data-bot-icons="target,check"
+      data-bot-say="Works in your language, your currency, your CRM." data-bot-short="Your language, currency, CRM"
     >
       <Heading
         title={features.title}
@@ -284,8 +295,7 @@ function IndustriesSection() {
     <Section
       data-bot-stop
       data-bot-fx="0.7"
-      data-bot-say="One playbook, tuned for every vertical you sell into."
-      data-bot-icons="box,check"
+      data-bot-say="One playbook, tuned for every vertical you sell into." data-bot-short="One playbook, every vertical"
     >
       <Heading
         title={industries.title}
@@ -312,8 +322,7 @@ function TestimonialsSection() {
     <Section
       data-bot-stop
       data-bot-fx="0.25"
-      data-bot-say="Local teams are already hitting quota by Thursday."
-      data-bot-icons="chart,check"
+      data-bot-say="Local teams are already hitting quota by Thursday." data-bot-short="Quota by Thursday"
     >
       <Heading title={testimonials.title} subtitle="Real results from organizations in your market." align="center" />
       <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 lg:mt-12 lg:grid-cols-2 lg:gap-6">

@@ -1,4 +1,4 @@
-import { caseStudies, industries, regions, services } from "@/content";
+import { blogPosts, caseStudies, industries, regions, services } from "@/content";
 import { BRAND_NAME } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-config";
 
@@ -121,6 +121,23 @@ export async function GET() {
     lines.push(`Tech: ${study.tech.join(", ")}`);
     lines.push("");
     lines.push(`Note: ${study.disclaimer}`);
+    lines.push("---");
+    lines.push("");
+  }
+
+  lines.push("## Blog");
+  lines.push("");
+  for (const post of blogPosts) {
+    lines.push(`### ${post.title}`);
+    lines.push(`URL: ${siteUrl}${post.seo.canonicalPath}`);
+    lines.push("");
+    lines.push(`Summary: ${post.summary}`);
+    lines.push("");
+    lines.push(`Published: ${post.datePublished}`);
+    lines.push("");
+    lines.push("Tags:");
+    for (const tag of post.tags) lines.push(`- ${tag}`);
+    lines.push("");
     lines.push("---");
     lines.push("");
   }

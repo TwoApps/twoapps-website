@@ -116,8 +116,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="hero"
-        data-bot-say="Same AI sales rep, dialed in for the Australian market."
-        data-bot-icons="spark,target"
+        data-bot-say="Same AI sales rep, dialed in for the Australian market." data-bot-short="Tuned for Australia"
         data-bot-fx="0.15"
       >
         <PageHero
@@ -125,13 +124,13 @@ export default function AustraliaPage() {
           title={auConfig.hero.headline}
           description={auConfig.hero.subheadline}
           chips={auConfig.hero.trustMarks}
+          mobileChips={auConfig.hero.mobileTrustMarks}
         />
       </div>
 
       <div
         data-bot-stop="context"
-        data-bot-say="Australian teams face rising wages, compliance load, global competition, and skills pressure."
-        data-bot-icons="trendingUp,shield,building"
+        data-bot-say="Australian teams face rising wages, compliance load, global competition, and skills pressure." data-bot-short="Costs and compliance, rising"
         data-bot-fx="0.85"
       >
         <Section className="bg-cream/30">
@@ -162,8 +161,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="process"
-        data-bot-say="Audit, pilot, deploy. We prove one workflow first, then scale what works."
-        data-bot-icons="calendar,rocket,chart"
+        data-bot-say="Audit, pilot, deploy. We prove one workflow first, then scale what works." data-bot-short="Audit, pilot, deploy"
         data-bot-fx="0.5"
       >
         <Section>
@@ -183,8 +181,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="features"
-        data-bot-say="Works in your stack, stays compliant, tracks real ROI, and ships in your timezone."
-        data-bot-icons="code,shield,check"
+        data-bot-say="Works in your stack, stays compliant, tracks real ROI, and ships in your timezone." data-bot-short="Your stack, compliant, on time"
         data-bot-fx="0.3"
       >
         <Section className="bg-cream/30">
@@ -214,8 +211,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="testimonials"
-        data-bot-say="Local teams are already hitting quota by Thursday."
-        data-bot-icons="chart,check"
+        data-bot-say="Local teams are already hitting quota by Thursday." data-bot-short="Quota by Thursday"
         data-bot-fx="0.25"
       >
         <Section>
@@ -235,8 +231,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="details"
-        data-bot-say="Expand for details on compliance, tools, pricing, and delivery."
-        data-bot-icons="shield,file,box"
+        data-bot-say="Expand for details on compliance, tools, pricing, and delivery." data-bot-short="Expand for details"
         data-bot-fx="0.6"
       >
         <DetailPanelsSection
@@ -328,8 +323,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="faq"
-        data-bot-say="No hidden fees. No offshore handoffs. Just results."
-        data-bot-icons="shield,check"
+        data-bot-say="No hidden fees. No offshore handoffs. Just results." data-bot-short="No fees, just results"
         data-bot-fx="0.6"
       >
         <FaqSection title={faq.title} items={faq.items} eyebrow="FAQ" />
@@ -337,8 +331,7 @@ export default function AustraliaPage() {
 
       <div
         data-bot-stop="cta"
-        data-bot-say="Ready to see it sell in your market?"
-        data-bot-icons="person,arrowR"
+        data-bot-say="Ready to see it sell in your market?" data-bot-short="See it sell"
         data-bot-fx="0.8"
       >
         <CtaBand

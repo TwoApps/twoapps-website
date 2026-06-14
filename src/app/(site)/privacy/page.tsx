@@ -42,13 +42,14 @@ export default function PrivacyPage() {
       <div
         data-bot-stop="hero"
         data-bot-fx="0.5"
-        data-bot-say="Boring but important — your data stays yours."
-        data-bot-icons="shield,eyeoff"
+        data-bot-say="Boring but important — your data stays yours." data-bot-short="Your data stays yours"
       >
         <PageHero
           eyebrow="Legal"
           title="Your privacy, explained in plain English"
           description="This policy covers what we collect through the TwoApps website, how we use it, and the choices you have. No surprises, and we never sell your information."
+          chips={["Privacy-first", "No data selling", "GDPR-aware", "Clear data practices"]}
+          mobileChips={["Privacy-first design", "No selling your data", "GDPR-aware practices", "Clear data handling"]}
         />
       </div>
 
@@ -69,8 +70,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="scope"
               data-bot-fx="0.2"
-              data-bot-say="This policy covers the site, contact forms, guides, and events."
-              data-bot-icons="shield,target"
+              data-bot-say="This policy covers the site, contact forms, guides, and events." data-bot-short="What this policy covers"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -86,8 +86,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="collect"
               data-bot-fx="0.25"
-              data-bot-say="We only ask for what we actually need. No data-mining nonsense."
-              data-bot-icons="inbox,person"
+              data-bot-say="We only ask for what we actually need. No data-mining nonsense." data-bot-short="Only what we need"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -115,8 +114,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="use"
               data-bot-fx="0.4"
-              data-bot-say="We use your info to reply, deliver what you asked for, and improve the site."
-              data-bot-icons="chat,check"
+              data-bot-say="We use your info to reply, deliver what you asked for, and improve the site." data-bot-short="How we use info"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -143,8 +141,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="analytics"
               data-bot-fx="0.55"
-              data-bot-say="Privacy-friendly analytics. No creepy cross-site tracking."
-              data-bot-icons="chart,eyeoff"
+              data-bot-say="Privacy-friendly analytics. No creepy cross-site tracking." data-bot-short="Privacy-friendly analytics"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -161,8 +158,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="protect"
               data-bot-fx="0.7"
-              data-bot-say="Your data is stored securely and only kept as long as needed."
-              data-bot-icons="shield,check"
+              data-bot-say="Your data is stored securely and only kept as long as needed." data-bot-short="Stored securely, kept briefly"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -178,8 +174,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="share"
               data-bot-fx="0.8"
-              data-bot-say="We don't sell your info. Our lawyers made us say it twice."
-              data-bot-icons="shield,check"
+              data-bot-say="We don't sell your info. Our lawyers made us say it twice." data-bot-short="We don't sell your info"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -195,8 +190,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="rights"
               data-bot-fx="0.85"
-              data-bot-say="You can ask to see, update, or delete your data anytime."
-              data-bot-icons="person,check"
+              data-bot-say="You can ask to see, update, or delete your data anytime." data-bot-short="See, update, delete anytime"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -213,8 +207,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="updates"
               data-bot-fx="0.9"
-              data-bot-say="We'll update this page if our practices change."
-              data-bot-icons="chat,clock"
+              data-bot-say="We'll update this page if our practices change." data-bot-short="Updated as things change"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">
@@ -230,8 +223,7 @@ export default function PrivacyPage() {
             <section
               data-bot-stop="contact"
               data-bot-fx="0.95"
-              data-bot-say="Questions? Reach out through the contact page."
-              data-bot-icons="chat,inbox"
+              data-bot-say="Questions? Reach out through the contact page." data-bot-short="Reach out anytime"
               className="space-y-3"
             >
               <h2 className="font-display text-xl font-semibold text-balance text-ink sm:text-2xl md:text-3xl">

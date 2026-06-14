@@ -71,6 +71,12 @@ const config: Config = {
           "0%, 91%, 100%": { transform: "translateX(-50%) scaleY(1)" },
           "94%": { transform: "translateX(-50%) scaleY(0.12)" },
           "97%": { transform: "translateX(-50%) scaleY(1)" }
+        },
+        tarsFloat: {
+          "0%, 100%": { transform: "translate(0, 0) rotate(0deg)" },
+          "25%": { transform: "translate(1px, -2px) rotate(1deg)" },
+          "50%": { transform: "translate(0, -1px) rotate(0deg)" },
+          "75%": { transform: "translate(-1px, -2px) rotate(-1deg)" }
         }
       },
       transitionDuration: {
@@ -85,7 +91,8 @@ const config: Config = {
         marquee: "marqueeScroll 36s linear infinite",
         "pipe-dot": "pipeDot 5.5s linear infinite",
         "soft-pulse": "softPulse 2.4s ease-in-out infinite",
-        "bot-blink": "botBlink 4.6s ease-in-out infinite"
+        "bot-blink": "botBlink 4.6s ease-in-out infinite",
+        "tars-float": "tarsFloat 4s ease-in-out infinite"
       }
     }
   },

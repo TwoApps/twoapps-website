@@ -86,7 +86,7 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
               <Button href="/contact" variant="ghost" size="sm" className="hidden md:inline-flex">
                 Contact
               </Button>
-              <Button href={bookingHref} size="sm" className="hidden sm:inline-flex">
+              <Button href={bookingHref} variant="orange" size="sm" className="hidden sm:inline-flex">
                 Book a call
               </Button>
               <button
@@ -154,7 +154,7 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
               <Button href="/contact" variant="secondary" className="w-full">
                 Contact
               </Button>
-              <Button href={bookingHref} className="w-full">
+              <Button href={bookingHref} variant="orange" className="w-full">
                 Book a call
               </Button>
             </div>

@@ -69,22 +69,21 @@ export default function WorkPage() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="This is where we show our work. Scroll and I'll walk you through what actually gets built."
-        data-bot-icons="target,check"
+        data-bot-say="This is where we show our work. Scroll and I'll walk you through what actually gets built." data-bot-short="See our work"
       >
         <PageHero
           eyebrow="Work"
           title="Real workflows. Honest outcomes."
           description="No case-study theatre here — just the delivery patterns we use to help teams move faster, make fewer mistakes, and ship AI systems that actually run."
           chips={['Founder-led delivery', 'Pilot-first approach', 'Operations & compliance focus']}
+          mobileChips={['Delivery led by the founder', 'Pilot-first project approach', 'Focus on ops and compliance']}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.3"
-        data-bot-say="These are the three results our clients see most often."
-        data-bot-icons="chart,check,spark"
+        data-bot-say="These are the three results our clients see most often." data-bot-short="Three results clients see"
       >
         <Section>
           <Heading
@@ -111,8 +110,7 @@ export default function WorkPage() {
       <div
         data-bot-stop
         data-bot-fx="0.4"
-        data-bot-say="Four steps. No surprises. We keep the loop tight so you see value before committing to the next phase."
-        data-bot-icons="search,hammer,shield,arrowR"
+        data-bot-say="Four steps. No surprises. We keep the loop tight so you see value before committing to the next phase." data-bot-short="Four steps, no surprises"
       >
         <Section className="bg-cyan-field">
           <Heading
@@ -137,8 +135,7 @@ export default function WorkPage() {
       <div
         data-bot-stop
         data-bot-fx="0.6"
-        data-bot-say="Tap any card for the full problem, approach, outcomes, and tech stack."
-        data-bot-icons="eye,box,check"
+        data-bot-say="Tap any card for the full problem, approach, outcomes, and tech stack." data-bot-short="Tap any card"
       >
         <CaseStudyGrid caseStudies={caseStudies} showFeatured />
       </div>
@@ -146,8 +143,7 @@ export default function WorkPage() {
       <div
         data-bot-stop
         data-bot-fx="0.4"
-        data-bot-say="Like what you see? Let's build a pilot that proves value in your operation."
-        data-bot-icons="chat,calendar,spark"
+        data-bot-say="Like what you see? Let's build a pilot that proves value in your operation." data-bot-short="Let's build a pilot"
       >
         <CtaBand
           title="Ready to turn a workflow into a pilot?"

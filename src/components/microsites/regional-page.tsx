@@ -197,7 +197,7 @@ function RegionalHero({ hero }: { hero: RegionalConfig["hero"] }) {
   }, [motionDisabled]);
 
   return (
-    <section className="relative pt-8 sm:pt-10 lg:pt-12" data-bot-stop data-bot-fx="0.15" data-bot-say="Same AI sales rep, dialed in for your local market." data-bot-icons="spark,target">
+    <section className="relative pt-8 sm:pt-10 lg:pt-12" data-bot-stop data-bot-fx="0.15" data-bot-say="Same AI sales rep, dialed in for your local market." data-bot-short="Tuned for your market">
       <Container>
         <div
           ref={ref}
@@ -256,7 +256,7 @@ function PainPointsSection({
   items: RegionalPainPoint[];
 }) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.85" data-bot-say="Tired of leads slipping through timezone cracks?" data-bot-icons="clock,inbox">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.85" data-bot-say="Tired of leads slipping through timezone cracks?" data-bot-short="No more timezone leaks">
       <Container>
         <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
@@ -285,7 +285,7 @@ function HowItWorksSection({
   steps: RegionalProcessStep[];
 }) {
   return (
-    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.5" data-bot-say="Books, qualifies, and follows up — before your coffee gets cold." data-bot-icons="calendar,chat">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.5" data-bot-say="Books, qualifies, and follows up — before your coffee gets cold." data-bot-short="Books and qualifies leads">
       <Container>
         <h2 className="mb-10 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-12 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
@@ -320,7 +320,7 @@ function FeaturesSection({
   features: RegionalFeature[];
 }) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.3" data-bot-say="Works in your language, your currency, your CRM." data-bot-icons="target,check">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.3" data-bot-say="Works in your language, your currency, your CRM." data-bot-short="Your language, currency, CRM">
       <Container>
         <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
@@ -348,7 +348,7 @@ function IndustrySection({
   industries: RegionalIndustry[];
 }) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.7" data-bot-say="One playbook, tuned for every vertical you sell into." data-bot-icons="box,check">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.7" data-bot-say="One playbook, tuned for every vertical you sell into." data-bot-short="One playbook, every vertical">
       <Container>
         <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
@@ -382,7 +382,7 @@ function TestimonialsSection({
   testimonials: RegionalTestimonial[];
 }) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.25" data-bot-say="Local teams are already hitting quota by Thursday." data-bot-icons="chart,check">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.25" data-bot-say="Local teams are already hitting quota by Thursday." data-bot-short="Quota by Thursday">
       <Container>
         <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
@@ -414,7 +414,7 @@ function TestimonialsSection({
 // Final CTA Section
 function FinalCtaSection({ finalCta }: { finalCta: RegionalConfig["finalCta"] }) {
   return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.8" data-bot-say="Ready to see it sell in your market?" data-bot-icons="person,arrowR">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.8" data-bot-say="Ready to see it sell in your market?" data-bot-short="See it sell">
       <Container>
         <div className="relative overflow-hidden rounded-[22px] border border-ink/10 bg-white px-4 py-10 text-center shadow-card sm:px-8 sm:py-12 md:px-10 md:py-16">
           <div className="relative">

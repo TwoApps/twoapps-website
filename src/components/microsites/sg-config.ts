@@ -32,7 +32,8 @@ export const sgConfig: RegionalConfig = {
     primaryCta: "Book a call",
     secondaryCta: "How it works",
     trustBar: "Trusted by Singapore teams",
-    trustMarks: ["Production-grade", "MAS compliant", "Senior delivery"]
+    trustMarks: ["MAS-aware automation", "PDPA-ready data handling", "Singapore references", "Pilot in 3–5 weeks"],
+    mobileTrustMarks: ["MAS-aware automation built in", "PDPA-ready data handling", "Singapore client references", "Pilot ships in 3–5 weeks"]
   },
   painPoints: {
     title: "Why Singapore teams automate",

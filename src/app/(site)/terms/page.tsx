@@ -77,14 +77,14 @@ export default function TermsPage() {
       <div
         data-bot-stop="hero"
         data-bot-fx="0.5"
-        data-bot-say="The legal stuff — plain English version coming up."
-        data-bot-icons="shield,chat"
+        data-bot-say="The legal stuff — plain English version coming up." data-bot-short="The legal stuff"
       >
         <PageHero
           eyebrow="Legal"
           title="Terms of Use"
           description="The rules of the road for using the TwoApps website. Written in plain English so you know what to expect — no law degree required."
           chips={["Website use", "Intellectual property", "Liability limits", "Disputes"]}
+          mobileChips={["Website use terms", "Intellectual property protections", "Liability limit terms", "Dispute resolution terms"]}
         />
       </div>
 
@@ -103,11 +103,11 @@ export default function TermsPage() {
                       ? "As-is, but built with care. Read the fine print anyway."
                       : undefined
                 }
-                data-bot-icons={
+                data-bot-short={
                   section.number === "02"
-                    ? "target,check"
+                    ? "Lawful purposes only"
                     : section.number === "07"
-                      ? "shield,clock"
+                      ? "As-is, built with care"
                       : undefined
                 }
                 className={
@@ -134,8 +134,7 @@ export default function TermsPage() {
       <div
         data-bot-stop="cta"
         data-bot-fx="0.5"
-        data-bot-say="Questions? We would rather talk than hide behind fine print."
-        data-bot-icons="chat,person"
+        data-bot-say="Questions? We would rather talk than hide behind fine print." data-bot-short="We'd rather talk"
       >
         <CtaBand
           title="Questions about these terms?"

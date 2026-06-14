@@ -10,6 +10,7 @@ import {
 import { CtaBand } from "@/components/common/cta-band";
 import { FaqSection } from "@/components/common/faq-section";
 import { PageHero } from "@/components/common/page-hero";
+import { sgConfig } from "@/components/microsites/sg-config";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { JsonLd } from "@/components/json-ld";
 import { ScrollBot } from "@/components/shared/scroll-bot";
@@ -183,27 +184,21 @@ export default function SingaporePage() {
 
       <div
         data-bot-stop="hero"
-        data-bot-say="Same AI sales rep, dialed in for your local market."
-        data-bot-icons="spark,target"
+        data-bot-say="Same AI sales rep, dialed in for your local market." data-bot-short="Tuned for your market"
         data-bot-fx="0.15"
       >
         <PageHero
           eyebrow="Singapore & APAC"
           title="Run a leaner Singapore operation — without sacrificing compliance or speed"
           description="Singapore is the gateway to Asia, but rising wages, strict MAS/PDPA rules, and a tight talent market make scaling expensive. We build AI workflows that automate the repetitive work, keep auditors happy, and free your local team to focus on growth."
-          chips={[
-            "MAS-aware automation",
-            "PDPA-ready data handling",
-            "Singapore references",
-            "Pilot in 3–5 weeks",
-          ]}
+          chips={sgConfig.hero.trustMarks}
+          mobileChips={sgConfig.hero.mobileTrustMarks}
         />
       </div>
 
       <div
         data-bot-stop="opportunity"
-        data-bot-say="Three reasons Singapore is worth the effort — and why operating costs can make or break the move."
-        data-bot-icons="globe,shield,users"
+        data-bot-say="Three reasons Singapore is worth the effort — and why operating costs can make or break the move." data-bot-short="Why Singapore is worth it"
         data-bot-fx="0.5"
       >
         <Section className="bg-cream/30">
@@ -233,8 +228,7 @@ export default function SingaporePage() {
 
       <div
         data-bot-stop="pressures"
-        data-bot-say="Tired of leads slipping through timezone cracks?"
-        data-bot-icons="clock,inbox"
+        data-bot-say="Tired of leads slipping through timezone cracks?" data-bot-short="No more timezone leaks"
         data-bot-fx="0.85"
       >
         <Section>
@@ -267,8 +261,7 @@ export default function SingaporePage() {
 
       <div
         data-bot-stop="solution"
-        data-bot-say="Books, qualifies, and follows up — before your coffee gets cold."
-        data-bot-icons="calendar,chat"
+        data-bot-say="Books, qualifies, and follows up — before your coffee gets cold." data-bot-short="Books and qualifies leads"
         data-bot-fx="0.5"
       >
         <Section className="bg-cream/30">
@@ -305,8 +298,7 @@ export default function SingaporePage() {
       <div
         id="details"
         data-bot-stop="details"
-        data-bot-say="Works in your language, your currency, your CRM."
-        data-bot-icons="target,check"
+        data-bot-say="Works in your language, your currency, your CRM." data-bot-short="Your language, currency, CRM"
         data-bot-fx="0.3"
       >
         <DetailPanelsSection
@@ -403,8 +395,7 @@ export default function SingaporePage() {
 
       <div
         data-bot-stop="social"
-        data-bot-say="Local teams are already hitting quota by Thursday."
-        data-bot-icons="chart,check"
+        data-bot-say="Local teams are already hitting quota by Thursday." data-bot-short="Quota by Thursday"
         data-bot-fx="0.25"
       >
         <Section>
@@ -440,8 +431,7 @@ export default function SingaporePage() {
 
       <div
         data-bot-stop="faq"
-        data-bot-say="No hidden fees. No offshore handoffs. Just results."
-        data-bot-icons="shield,check"
+        data-bot-say="No hidden fees. No offshore handoffs. Just results." data-bot-short="No fees, just results"
         data-bot-fx="0.6"
       >
         <FaqSection
@@ -453,8 +443,7 @@ export default function SingaporePage() {
 
       <div
         data-bot-stop="cta"
-        data-bot-say="Ready to see it sell in your market?"
-        data-bot-icons="person,arrowR"
+        data-bot-say="Ready to see it sell in your market?" data-bot-short="See it sell"
         data-bot-fx="0.8"
       >
         <CtaBand

@@ -33,7 +33,8 @@ export const auConfig: RegionalConfig = {
     primaryCta: "Book a free audit",
     secondaryCta: "See how it works",
     trustBar: "Trusted by Australian businesses",
-    trustMarks: ["AUD pricing", "Local timezone", "Compliance-aware", "Pilot-first"]
+    trustMarks: ["AUD pricing", "Local timezone", "Compliance-aware", "Pilot-first"],
+    mobileTrustMarks: ["Pricing in Australian dollars", "Works in your timezone", "Compliance-aware delivery", "Pilot-first engagement model"]
   },
   painPoints: {
     title: "The pressure Australian teams are under",

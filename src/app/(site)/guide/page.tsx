@@ -87,22 +87,21 @@ export default function GuidePage() {
       <div
         data-bot-stop
         data-bot-fx="0.72"
-        data-bot-say="This guide is the cheat sheet we wish we had three years ago."
-        data-bot-icons="spark,target"
+        data-bot-say="This guide is the cheat sheet we wish we had three years ago." data-bot-short="The cheat sheet"
       >
         <PageHero
           eyebrow="Free guide"
           title="5 AI workflows that give you back 10+ hours a week"
           description="A practical, no-fluff PDF with real automations you can build this week — even if you're not technical."
           chips={["PDF download", "5 proven workflows", "Real examples", "Time-saved breakdown"]}
+          mobileChips={["Downloadable PDF guide", "Five proven workflow patterns", "Real client examples included", "Time savings breakdown included"]}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.18"
-        data-bot-say="Real examples, real time saved, zero fluff — these workflows pay for themselves in the first week."
-        data-bot-icons="check,chart"
+        data-bot-say="Real examples, real time saved, zero fluff — these workflows pay for themselves in the first week." data-bot-short="Real workflows, real savings"
       >
         <Section className="pt-6 sm:pt-8 lg:pt-10">
           <div className="mx-auto max-w-4xl">
@@ -165,8 +164,7 @@ export default function GuidePage() {
       <div
         data-bot-stop
         data-bot-fx="0.85"
-        data-bot-say="Pop your email in — your future self will thank you when the PDF lands in your inbox."
-        data-bot-icons="inbox,arrowR"
+        data-bot-say="Pop your email in — your future self will thank you when the PDF lands in your inbox." data-bot-short="Drop your email"
       >
         <Section className="pt-6 sm:pt-8 lg:pt-10">
           <div className="mx-auto max-w-3xl">
@@ -226,8 +224,7 @@ export default function GuidePage() {
       <div
         data-bot-stop
         data-bot-fx="0.35"
-        data-bot-say="Want help building your first workflow? We'll spot the highest-ROI move in 20 minutes."
-        data-bot-icons="calendar,spark"
+        data-bot-say="Want help building your first workflow? We'll spot the highest-ROI move in 20 minutes." data-bot-short="Find your highest-ROI move"
       >
         <CtaBand
           title="Want help building your first workflow?"

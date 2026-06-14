@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { industries, regions, services } from "@/content";
+import { blogPosts, industries, regions, services } from "@/content";
 import { getSiteUrl } from "@/lib/site-config";
 
 type StaticRoute = {
@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/compliance", priority: 0.85, changeFrequency: "monthly" },
     { path: "/guide", priority: 0.8, changeFrequency: "monthly" },
     { path: "/academy", priority: 0.85, changeFrequency: "weekly" },
+    { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
     { path: "/livestream", priority: 0.6, changeFrequency: "weekly" },
     { path: "/community", priority: 0.5, changeFrequency: "monthly" },
     { path: "/refer", priority: 0.5, changeFrequency: "monthly" },
@@ -53,6 +54,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...regions.map((region) => ({
       path: `/regions/${region.slug}`,
       priority: 0.8,
+      changeFrequency: "monthly" as const
+    })),
+    ...blogPosts.map((post) => ({
+      path: `/blog/${post.slug}`,
+      priority: 0.7,
       changeFrequency: "monthly" as const
     }))
   ];

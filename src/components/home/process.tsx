@@ -7,7 +7,7 @@ const steps = [
     copy: "We map the workflow — where it slows down, where it breaks, and where AI actually helps — then pick the highest-leverage starting point.",
     bot: {
       say: "First I map every leak — politely, but thoroughly.",
-      icons: "eye,arrowR,target",
+      short: "I map every leak",
       fx: "0.1"
     }
   },
@@ -17,7 +17,7 @@ const steps = [
     copy: "We build one real workflow with a clear goal, so you can measure the value in weeks instead of quarters.",
     bot: {
       say: "Then we ship one measurable win before anyone asks for a roadmap.",
-      icons: "target,chart,check",
+      short: "One measurable win first",
       fx: "0.5"
     }
   },
@@ -27,7 +27,7 @@ const steps = [
     copy: "Monitoring, guardrails, and fallback behavior — so the workflow keeps running reliably long after we step back.",
     bot: {
       say: "Then I run it 24/7 so your team can finally sleep in.",
-      icons: "pulse,shield,clock",
+      short: "I run it 24/7",
       fx: "0.9"
     }
   }
@@ -58,7 +58,7 @@ export function HomeProcess() {
               data-reveal={index * 80}
               data-bot-stop="1"
               data-bot-say={step.bot.say}
-              data-bot-icons={step.bot.icons}
+              data-bot-short={step.bot.short}
               data-bot-fx={step.bot.fx}
               className="grid grid-cols-1 items-baseline gap-6 border-t border-ink/12 py-11 transition-colors duration-300 hover:bg-blue/[0.025] sm:grid-cols-[120px_1fr] md:grid-cols-[180px_1fr_1.4fr] md:gap-10"
             >

@@ -187,12 +187,23 @@ function EuHero({ hero }: { hero: RegionalConfig["hero"] }) {
             <p className="mb-3 text-xs uppercase tracking-[0.2em] text-ink/50">
               {hero.trustBar}
             </p>
-            <div className="flex flex-wrap gap-3">
-              {hero.trustMarks?.map((mark, i) => (
-                <span
-                  key={i}
-                  className="rounded-full border border-ink/10 bg-ink/[0.03] px-3 py-1.5 text-xs text-ink/70"
-                >
+            <p className="hidden text-sm text-ink/70 sm:block">
+              {hero.trustMarks?.map((mark, i, arr) => (
+                <span key={i}>
+                  {mark}
+                  {i < arr.length - 1 && (
+                    <span className="mx-1.5 text-ink/40">·</span>
+                  )}
+                </span>
+              ))}
+            </p>
+            <div className="flex flex-col gap-1 sm:hidden">
+              {[
+                "GDPR compliance built in",
+                "EU-hosted data residency",
+                "DPO-ready documentation included",
+              ].map((mark, i) => (
+                <span key={i} className="text-sm text-ink/70">
                   {mark}
                 </span>
               ))}
@@ -379,8 +390,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="Same AI sales rep, dialed in for the European market."
-        data-bot-icons="shield,globe"
+        data-bot-say="Same AI sales rep, dialed in for the European market." data-bot-short="Tuned for Europe"
         data-bot-fx="0.12"
       >
         <EuHero hero={euConfig.hero} />
@@ -388,8 +398,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="Europe rewards teams that treat compliance as a feature, not a blocker."
-        data-bot-icons="shield,check"
+        data-bot-say="Europe rewards teams that treat compliance as a feature, not a blocker." data-bot-short="Compliance as a feature"
         data-bot-fx="0.5"
       >
         <Section>
@@ -417,8 +426,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="GDPR, data residency, and legacy systems are the three headaches we solve first."
-        data-bot-icons="shield,building"
+        data-bot-say="GDPR, data residency, and legacy systems are the three headaches we solve first." data-bot-short="Three headaches, solved first"
         data-bot-fx="0.5"
       >
         <Section className="bg-cream/40">
@@ -447,8 +455,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="Four principles guide every workflow we build for Europe."
-        data-bot-icons="shield,globe,check"
+        data-bot-say="Four principles guide every workflow we build for Europe." data-bot-short="Four guiding principles"
         data-bot-fx="0.5"
       >
         <DetailPanelsSection
@@ -462,8 +469,7 @@ export default function EuropePage() {
       <div
         id="how-it-works"
         data-bot-stop
-        data-bot-say="Audit, build, deploy — with DPO-ready docs at every step."
-        data-bot-icons="calendar,chat,check"
+        data-bot-say="Audit, build, deploy — with DPO-ready docs at every step." data-bot-short="Audit, build, deploy"
         data-bot-fx="0.5"
       >
         <Section className="bg-cream/40">
@@ -483,8 +489,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="European teams are already shipping compliant automation with TwoApps."
-        data-bot-icons="chart,check"
+        data-bot-say="European teams are already shipping compliant automation with TwoApps." data-bot-short="Compliant automation, shipping now"
         data-bot-fx="0.5"
       >
         <Section>
@@ -518,8 +523,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="No hidden fees. No offshore handoffs. Just clear answers."
-        data-bot-icons="shield,check"
+        data-bot-say="No hidden fees. No offshore handoffs. Just clear answers." data-bot-short="No hidden fees"
         data-bot-fx="0.5"
       >
         {euConfig.faq && (
@@ -533,8 +537,7 @@ export default function EuropePage() {
 
       <div
         data-bot-stop
-        data-bot-say="Ready to see it work inside your compliance rules?"
-        data-bot-icons="person,arrowR"
+        data-bot-say="Ready to see it work inside your compliance rules?" data-bot-short="See it work compliantly"
         data-bot-fx="0.35"
       >
         <CtaBand

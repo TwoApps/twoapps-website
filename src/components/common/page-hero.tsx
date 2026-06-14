@@ -11,6 +11,7 @@ type PageHeroProps = {
   title: string;
   description: string;
   chips?: string[];
+  mobileChips?: string[];
   align?: "left" | "center";
   actions?: React.ReactNode;
 };
@@ -20,6 +21,7 @@ export function PageHero({
   title,
   description,
   chips = [],
+  mobileChips,
   align = "left",
   actions
 }: PageHeroProps) {
@@ -51,6 +53,12 @@ export function PageHero({
     return () => ctx?.revert?.();
   }, [motionDisabled]);
 
+  const desktopChips = chips.slice(0, 5);
+  const resolvedMobileChips = (mobileChips?.length
+    ? mobileChips
+    : chips.map((chip) => chip.split(/\s+/).slice(0, 5).join(" "))
+  ).slice(0, 5);
+
   return (
     <section className="relative pt-8 sm:pt-10 lg:pt-12">
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-12">
@@ -73,23 +81,45 @@ export function PageHero({
                 {description}
               </p>
             </div>
-            {chips.length ? (
-              <div
+            {desktopChips.length ? (
+              <p
                 data-hero-rise
                 className={cn(
-                  "mt-6 flex flex-wrap gap-2 sm:mt-7 sm:gap-2.5",
-                  align === "center" && "justify-center"
+                  "mt-6 hidden text-sm leading-relaxed text-ink/70 sm:mt-7 sm:block",
+                  align === "center" && "text-center"
                 )}
               >
-                {chips.slice(0, 5).map((chip) => (
-                  <span
-                    key={chip}
-                    className="max-w-full break-words rounded-full border border-ink/10 bg-cream px-3 py-1 text-xs text-ink/70"
-                  >
+                {desktopChips.map((chip, index) => (
+                  <span key={chip}>
                     {chip}
+                    {index < desktopChips.length - 1 ? (
+                      <span aria-hidden="true" className="mx-1.5 text-ink/40">
+                        ·
+                      </span>
+                    ) : null}
                   </span>
                 ))}
-              </div>
+              </p>
+            ) : null}
+            {resolvedMobileChips.length ? (
+              <p
+                data-hero-rise
+                className={cn(
+                  "mt-6 block text-sm leading-relaxed text-ink/70 sm:hidden",
+                  align === "center" && "text-center"
+                )}
+              >
+                {resolvedMobileChips.map((chip, index) => (
+                  <span key={chip}>
+                    {chip}
+                    {index < resolvedMobileChips.length - 1 ? (
+                      <span aria-hidden="true" className="mx-1.5 text-ink/40">
+                        ·
+                      </span>
+                    ) : null}
+                  </span>
+                ))}
+              </p>
             ) : null}
             {actions ? (
               <div

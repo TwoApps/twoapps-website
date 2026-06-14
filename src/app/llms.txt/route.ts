@@ -1,4 +1,4 @@
-import { industries, regions, services } from "@/content";
+import { blogPosts, industries, regions, services } from "@/content";
 import { BRAND_NAME } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-config";
 
@@ -49,6 +49,12 @@ export async function GET() {
     `- [Free Guide: 5 AI Workflows That Save 10+ Hours/Week](${siteUrl}/guide)`,
     `- [TwoApps Academy — free courses](${siteUrl}/academy)`,
     `- [Live AI Workflow Demo](${siteUrl}/livestream)`,
+    "",
+    "## Blog",
+    "",
+    ...blogPosts.map(
+      (post) => `- [${post.title}](${siteUrl}${post.seo.canonicalPath})`
+    ),
     "",
     "## About",
     "",

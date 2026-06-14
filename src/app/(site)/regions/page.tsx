@@ -157,21 +157,21 @@ export default function RegionsPage() {
       <div
         data-bot-stop
         data-bot-fx="0.12"
-        data-bot-say="Find your region and the delivery track that fits you."
-        data-bot-icons="target,spark"
+        data-bot-say="Find your region and the delivery track that fits you." data-bot-short="Find your region"
       >
         <PageHero
           eyebrow="Regions"
           title="AI automation built for where you operate"
           description="We deliver directly across the UAE and GCC, and partner white-label with software houses around the world. Same team, same process, shaped to your region."
           chips={["Dubai / UAE / GCC", "White-label global", "Pilot-first"]}
+          mobileChips={["Covers Dubai, UAE, GCC", "White-label delivery worldwide", "Pilot-first rollout model"]}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.88"
-        data-bot-say="Two tracks: direct delivery where we are local, white-label capacity everywhere else."
+        data-bot-say="Two tracks: direct delivery where we are local, white-label capacity everywhere else." data-bot-short="Two delivery tracks"
       >
         <Section>
           <Heading
@@ -221,7 +221,7 @@ export default function RegionsPage() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Local context shapes better AI workflows."
+        data-bot-say="Local context shapes better AI workflows." data-bot-short="Local context, better workflows"
       >
         <Section className="bg-cream/30">
           <Heading
@@ -259,8 +259,7 @@ export default function RegionsPage() {
       <div
         data-bot-stop
         data-bot-fx="0.25"
-        data-bot-say="Open a panel to see market fit, engagement model, and what a pilot looks like in your region."
-        data-bot-icons="eye,arrowR"
+        data-bot-say="Open a panel to see market fit, engagement model, and what a pilot looks like in your region." data-bot-short="Market fit and pilots"
       >
         <DetailPanelsSection
           eyebrow="Region details"
@@ -277,7 +276,7 @@ export default function RegionsPage() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Not sure which track fits? Tell us where you are and what you're shipping."
+        data-bot-say="Not sure which track fits? Tell us where you are and what you're shipping." data-bot-short="Not sure? Tell us"
       >
         <CtaBand
           title="Not sure which track fits your team?"

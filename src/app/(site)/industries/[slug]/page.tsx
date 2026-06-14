@@ -1,7 +1,14 @@
 import { notFound } from "next/navigation";
 
-import { getIndustryBySlug, industries } from "@/content";
-import { buildMetadata, makeBreadcrumbSchema, serviceSchema } from "@/lib/seo";
+import { getIndustryBySlug, industries, processSteps } from "@/content";
+import {
+  buildMetadata,
+  makeBreadcrumbSchema,
+  organizationSchema,
+  serviceSchema,
+} from "@/lib/seo";
+
+import type { Industry } from "@/content/types";
 
 import { ScrollBot } from "@/components/shared/scroll-bot";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
@@ -29,6 +36,45 @@ export async function generateMetadata({ params }: Props) {
   return buildMetadata(industry.seo);
 }
 
+function getIndustryShortName(title: string): string {
+  return title.replace(/\s*\/\s*Automation\s*$/i, "").replace(/\s+Automation\s*$/i, "");
+}
+
+function getIndustryChips(industry: Industry): {
+  chips: string[];
+  mobileChips: string[];
+} {
+  const bySlug: Record<
+    string,
+    { chips: string[]; mobileChips: string[] }
+  > = {
+    "fintech-aml-kyc-automation": {
+      chips: ["AML / KYC", "Workflow automation", "Human-in-the-loop"],
+      mobileChips: ["AML and KYC ready", "Automated workflow routing", "Humans review every output"],
+    },
+  };
+  return (
+    bySlug[industry.slug] ?? {
+      chips: ["Workflow automation", "Human-in-the-loop", "UAE-based delivery"],
+      mobileChips: ["Workflow automation built in", "Humans review every output", "UAE-based delivery team"],
+    }
+  );
+}
+
+function getSnapshotTags(
+  industry: Industry,
+  category: "pain" | "solution" | "pilot",
+): string[] {
+  const bySlug: Record<string, Record<string, string[]>> = {
+    "fintech-aml-kyc-automation": {
+      pain: ["Queue pressure", "Document checks", "Handoff gaps"],
+      solution: ["AI routing", "Human checkpoints", "Ops dashboards"],
+      pilot: ["KYC triage", "Alert enrichment", "SLA monitoring"],
+    },
+  };
+  return bySlug[industry.slug]?.[category] ?? [getIndustryShortName(industry.title)];
+}
+
 export default async function IndustryDetailPage({ params }: Props) {
   const { slug } = await params;
   const industry = getIndustryBySlug(slug);
@@ -40,41 +86,126 @@ export default async function IndustryDetailPage({ params }: Props) {
   const breadcrumbItems = [
     { name: "Home", path: "/" },
     { name: "Industries", path: "/industries" },
-    { name: industry.title, path: `/industries/${industry.slug}` }
+    { name: industry.title, path: `/industries/${industry.slug}` },
   ];
 
-  const summaryItems = [
+  const shortName = getIndustryShortName(industry.title).toLowerCase();
+  const firstPain = industry.painPoints[0] ?? "manual, repetitive work";
+  const painCount = industry.painPoints.length;
+  const firstSolution = industry.solutions[0] ?? "AI-assisted workflow routing";
+  const firstExample =
+    industry.exampleAutomations[0] ?? "one bounded automation opportunity";
+
+  const { chips, mobileChips } = getIndustryChips(industry);
+
+  const snapshotCards = [
     {
-      label: "Pain",
-      title: "Common pain points",
-      body: industry.painPoints[0] ?? "Manual queue pressure and repetitive process handling.",
-      meta: industry.painPoints.slice(1, 3)
+      title: "The friction",
+      body: `Teams get slowed down by repeat work. The clearest signal is usually ${firstPain.toLowerCase()}${
+        painCount > 1
+          ? ` — and ${painCount - 1} more friction point${painCount > 2 ? "s" : ""} that stack on top of it`
+          : ""
+      }.`,
+      tags: getSnapshotTags(industry, "pain"),
     },
     {
-      label: "Approach",
-      title: "Typical solution pattern",
-      body: industry.solutions[0] ?? "AI-assisted workflow routing and operator support.",
-      meta: industry.solutions.slice(1, 3)
+      title: "The fix",
+      body: `We design AI-assisted workflows that handle the repeat steps while keeping humans in charge of judgment calls. That starts with ${firstSolution.toLowerCase()}.`,
+      tags: getSnapshotTags(industry, "solution"),
     },
     {
-      label: "Pilot",
-      title: "Pilot ideas",
-      body: industry.exampleAutomations[0] ?? "Start with one bounded automation opportunity.",
-      meta: industry.exampleAutomations.slice(1, 3)
-    }
+      title: "The first win",
+      body: `Start with one bounded workflow that already has measurable pain. A strong first pilot here is ${firstExample.toLowerCase()} — something you can measure in weeks.`,
+      tags: getSnapshotTags(industry, "pilot"),
+    },
+  ];
+
+  const detailItems = [
+    {
+      title: "What this industry faces",
+      summary: "The repeat work that drains speed and consistency",
+      content: (
+        <ul className="space-y-3 text-sm text-ink/80 sm:text-base">
+          {industry.painPoints.map((item) => (
+            <li
+              key={item}
+              className="rounded-[22px] border border-ink/10 bg-paper px-4 py-3"
+            >
+              <span className="font-medium text-ink/90">{item}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    {
+      title: "How TwoApps solves it",
+      summary: "AI-assisted workflows with human control points",
+      content: (
+        <ul className="space-y-3 text-sm text-ink/80 sm:text-base">
+          {industry.solutions.map((item) => (
+            <li
+              key={item}
+              className="flex items-start gap-3 rounded-[22px] border border-ink/10 bg-paper px-4 py-3"
+            >
+              <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-blue" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    {
+      title: "Real use cases to pilot",
+      summary: "Bounded automations that prove value fast",
+      content: (
+        <div className="grid grid-cols-1 gap-3 text-sm text-ink/80 sm:grid-cols-2 sm:gap-4 sm:text-base">
+          {industry.exampleAutomations.map((item) => (
+            <div
+              key={item}
+              className="rounded-[22px] border border-ink/10 bg-paper px-4 py-3"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      ),
+    },
+    {
+      title: "What happens next",
+      summary: "From first audit to scaled workflow",
+      content: (
+        <ol className="space-y-3 text-sm text-ink/80 sm:text-base">
+          {processSteps.map((step, index) => (
+            <li
+              key={step.title}
+              className="flex items-start gap-3 rounded-[22px] border border-ink/10 bg-paper px-4 py-3"
+            >
+              <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ink/10 text-xs font-medium text-ink/80">
+                {index + 1}
+              </span>
+              <div>
+                <p className="font-medium text-ink">{step.title}</p>
+                <p className="mt-0.5 text-ink/70">{step.copy}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      ),
+    },
   ];
 
   return (
     <>
       <JsonLd
         data={[
+          organizationSchema(),
           makeBreadcrumbSchema(breadcrumbItems),
           serviceSchema({
             name: industry.title,
             description: industry.summary,
             path: `/industries/${industry.slug}`,
-            serviceType: "Industry-specific AI automation consulting"
-          })
+            serviceType: "Industry-specific AI automation consulting",
+          }),
         ]}
       />
       <ScrollBot />
@@ -82,20 +213,21 @@ export default async function IndustryDetailPage({ params }: Props) {
       <div
         data-bot-stop
         data-bot-fx="0.15"
-        data-bot-say="Every industry has its own funnel quirks — here's how we solve yours."
+        data-bot-say="Every industry has its own funnel quirks — here's how we solve yours." data-bot-short="Every funnel, solved"
       >
         <PageHero
           eyebrow="Industry Focus"
           title={industry.title}
-          description={industry.summary}
-          chips={["AML / KYC", "Workflow automation", "Human-in-the-loop"]}
+          description={`${industry.summary} We build AI-assisted workflows that cut turnaround time, reduce errors, and keep your team in control.`}
+          chips={chips}
+          mobileChips={mobileChips}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.85"
-        data-bot-say="Drill into the pain points, solutions, and pilots we typically run in this space."
+        data-bot-say="Drill into the pain points, solutions, and pilots we typically run in this space." data-bot-short="Pain points and pilots"
       >
         <Section className="pb-0 pt-6 sm:pt-8">
           <Breadcrumbs items={breadcrumbItems} />
@@ -105,34 +237,36 @@ export default async function IndustryDetailPage({ params }: Props) {
       <div
         data-bot-stop
         data-bot-fx="0.3"
-        data-bot-say="Pain, approach, pilot — the pattern we use to keep scope tight and humans in control."
+        data-bot-say="Friction, fix, first win — the pattern we use to keep scope tight and humans in control." data-bot-short="Friction, fix, first win"
       >
         <Section>
           <Heading
-            eyebrow="Industry Summary"
-            title={`How we approach ${industry.title}`}
-            subtitle="A practical AI automation pattern: identify the pain, keep humans in control, and prove value with one bounded pilot."
+            eyebrow="At a glance"
+            title={`Built for the pressure ${shortName} teams face`}
+            subtitle="See where time gets lost, how we tighten the workflow, and what a first pilot looks like — all before scaling further."
           />
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
-            {summaryItems.map((item) => (
-              <Card key={item.label} className="h-full rounded-[22px] p-5 sm:p-6">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">{item.label}</p>
-                <h3 className="mt-2 font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">
-                  {item.title}
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:mt-12 lg:grid-cols-3">
+            {snapshotCards.map((card) => (
+              <Card
+                key={card.title}
+                className="flex h-full flex-col p-6 sm:p-7 md:p-8"
+              >
+                <h3 className="font-display text-xl font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-2xl">
+                  {card.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">{item.body}</p>
-                {item.meta.length ? (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {item.meta.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-ink/10 bg-ink/[0.04] px-2.5 py-1 text-xs text-ink/70"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                ) : null}
+                <p className="mb-7 mt-3 text-[15px] leading-[1.6] text-ink/58 sm:mb-8">
+                  {card.body}
+                </p>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {card.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-ink/10 bg-ink/[0.03] px-2.5 py-1 text-xs text-ink/55"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </Card>
             ))}
           </div>
@@ -142,75 +276,40 @@ export default async function IndustryDetailPage({ params }: Props) {
       <div
         data-bot-stop
         data-bot-fx="0.65"
-        data-bot-say="Pain points, solutions, pilots. Open a panel to see what a first workflow could look like."
+        data-bot-say="Pain points, solutions, pilots. Open a panel to see what a first workflow could look like." data-bot-short="Pain points and pilots"
       >
         <DetailPanelsSection
           eyebrow="Industry Detail"
-          title="Pain points, solutions, pilots"
-          subtitle="Tap a panel to see how we approach operations in this space."
-          items={[
-            {
-              title: "Pain points",
-              summary: "Where teams lose time and consistency",
-              content: (
-                <ul className="space-y-2 text-sm text-ink/80">
-                  {industry.painPoints.map((item) => (
-                    <li key={item} className="rounded-xl border border-ink/10 bg-white px-4 py-3">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              )
-            },
-            {
-              title: "What we usually implement",
-              summary: "Workflow and tooling patterns for this industry",
-              content: (
-                <ul className="space-y-2 text-sm text-ink/80">
-                  {industry.solutions.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-blue" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              )
-            },
-            {
-              title: "Example automations",
-              summary: "Pilot candidates and workflow launch ideas",
-              content: (
-                <div className="grid grid-cols-1 gap-4 text-sm text-ink/80 sm:grid-cols-2 sm:gap-5">
-                  {industry.exampleAutomations.map((item) => (
-                    <div key={item} className="rounded-xl border border-ink/10 bg-white px-4 py-3">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              )
-            }
-          ]}
+          title="The full picture, one section at a time"
+          subtitle="Open any panel to see what this industry faces, how we solve it, what a pilot looks like, and what happens next."
+          items={detailItems}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.25"
-        data-bot-say="Still unsure? These are the questions we hear most — answered straight."
+        data-bot-say="Still unsure? These are the questions we hear most — answered straight." data-bot-short="Questions we hear most"
       >
-        <FaqSection items={industry.faq} />
+        <FaqSection
+          items={industry.faq}
+          title="Questions we hear a lot"
+          eyebrow="FAQ"
+        />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Ready to fix the bottleneck? Book a call and we'll map your workflow."
+        data-bot-say="Ready to fix the bottleneck? Book a call and we'll map your workflow." data-bot-short="Fix the bottleneck"
       >
         <CtaBand
-          title="Ready to fix your AML or KYC bottleneck?"
-          copy="We map the workflow, then build the pilot. Humans stay in control throughout."
+          title={`Ready to fix your ${shortName} workflow?`}
+          copy="Tell us which workflow is hurting most. We'll map a bounded pilot, name the constraints, and show you the fastest path to a measurable result."
           primaryHref="/contact"
-          primaryLabel="Book a call"
+          primaryLabel="Start the conversation"
+          secondaryHref="/book"
+          secondaryLabel="Book a call"
         />
       </div>
     </>

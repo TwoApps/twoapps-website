@@ -77,7 +77,7 @@ export default function BookPage() {
       <div
         data-bot-stop
         data-bot-fx="0.2"
-        data-bot-say="Pick a time — I'll bring the pipeline audit."
+        data-bot-say="Pick a time — I'll bring the pipeline audit." data-bot-short="Pick a time"
       >
         <PageHero
           eyebrow="Free 30-minute strategy call"
@@ -96,6 +96,12 @@ export default function BookPage() {
             "Direct clients",
             "Agency partners",
             "UAE / global support"
+          ]}
+          mobileChips={[
+            "Thirty-minute discovery call",
+            "Open to direct clients",
+            "Open to agency partners",
+            "UAE and global support"
           ]}
         />
       </div>
@@ -133,7 +139,7 @@ export default function BookPage() {
         <div
           data-bot-stop
           data-bot-fx="0.8"
-          data-bot-say="Show up with your biggest bottleneck — leave with a pilot plan."
+          data-bot-say="Show up with your biggest bottleneck — leave with a pilot plan." data-bot-short="Leave with a pilot plan"
         >
           <Section className="pt-4 sm:pt-6 lg:pt-8">
             <div className="mx-auto max-w-4xl">
@@ -157,7 +163,7 @@ export default function BookPage() {
       <div
         data-bot-stop
         data-bot-fx="0.15"
-        data-bot-say="Still on the fence? We'll map the first win before any invoice."
+        data-bot-say="Still on the fence? We'll map the first win before any invoice." data-bot-short="We'll map the first win"
       >
         <Section className="pt-6 sm:pt-8 lg:pt-10">
           <Card className="mx-auto max-w-3xl p-5 sm:p-6 md:p-7">

@@ -51,7 +51,7 @@ export function Header({ bookingHref }: { bookingHref: string }) {
               <Button href="/contact" variant="secondary" size="sm" className="hidden sm:inline-flex">
                 Contact
               </Button>
-              <Button href={bookingHref} size="sm">
+              <Button href={bookingHref} variant="orange" size="sm">
                 Book Call
               </Button>
             </div>

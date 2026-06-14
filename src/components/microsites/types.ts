@@ -54,6 +54,7 @@ export interface RegionalConfig {
     secondaryCta: string;
     trustBar: string;
     trustMarks?: string[];
+    mobileTrustMarks?: string[];
   };
   painPoints?: {
     title: string;

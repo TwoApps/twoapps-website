@@ -107,14 +107,14 @@ export default function LivestreamPage() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Join live — I'll demo pipelines in real time and answer the awkward questions."
-        data-bot-icons="spark,person"
+        data-bot-say="Join live — I'll demo pipelines in real time and answer the awkward questions." data-bot-short="Join the live demo"
       >
         <PageHero
           eyebrow="Live Demo"
           title="See a real AI workflow built in 30 minutes — live"
           description="No slides. No theory. Just a production-ready workflow built from scratch while you watch, with live Q&A all the way through."
           chips={["30 minutes", "Live Q&A", "Recording + files"]}
+          mobileChips={["Thirty-minute live session", "Live question and answer", "Recording and files included"]}
         />
       </div>
 
@@ -136,8 +136,7 @@ export default function LivestreamPage() {
       <div
         data-bot-stop
         data-bot-fx="0.3"
-        data-bot-say="If repetitive work is slowing you down, this is for you."
-        data-bot-icons="person,chat"
+        data-bot-say="If repetitive work is slowing you down, this is for you." data-bot-short="For repetitive-work teams"
       >
         <Section className="pt-6 sm:pt-8 lg:pt-10">
           <Heading
@@ -169,8 +168,7 @@ export default function LivestreamPage() {
             className="space-y-6 sm:space-y-8"
             data-bot-stop
             data-bot-fx="0.2"
-            data-bot-say="Thirty minutes, no slides. Just a workflow built from scratch while you watch."
-            data-bot-icons="pulse,chat"
+            data-bot-say="Thirty minutes, no slides. Just a workflow built from scratch while you watch." data-bot-short="Thirty minutes, no slides"
           >
             <div>
               <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-blue">What you&apos;ll learn</p>
@@ -232,8 +230,7 @@ export default function LivestreamPage() {
             className="lg:sticky lg:top-8 lg:self-start"
             data-bot-stop
             data-bot-fx="0.1"
-            data-bot-say="Save your spot and I'll send you the recording plus the exact workflow file."
-            data-bot-icons="calendar,check"
+            data-bot-say="Save your spot and I'll send you the recording plus the exact workflow file." data-bot-short="Save your spot"
           >
             <Card className="p-5 sm:p-6 md:p-8">
               <div className="mb-5 sm:mb-6">
@@ -275,8 +272,7 @@ export default function LivestreamPage() {
       <div
         data-bot-stop
         data-bot-fx="0.4"
-        data-bot-say="Register once. Get the link, the recording, and the workflow file."
-        data-bot-icons="check,inbox"
+        data-bot-say="Register once. Get the link, the recording, and the workflow file." data-bot-short="Register once"
       >
         <Section>
           <Heading
@@ -304,8 +300,7 @@ export default function LivestreamPage() {
       <div
         data-bot-stop
         data-bot-fx="0.4"
-        data-bot-say="Got a question that feels too basic? Bring it. Q&A is the best part."
-        data-bot-icons="chat,check"
+        data-bot-say="Got a question that feels too basic? Bring it. Q&A is the best part." data-bot-short="No question too basic"
       >
         <FaqSection
           title="Questions"

@@ -155,20 +155,25 @@ export default function IndustriesPage() {
       <div
         data-bot-stop
         data-bot-fx="0.12"
-        data-bot-say="AI automation lands hardest where ops teams are already drowning in queues."
+        data-bot-say="AI automation lands hardest where ops teams are already drowning in queues." data-bot-short="Start where queues hurt"
       >
         <PageHero
           eyebrow="Industries"
           title="Built for the industries that run on queues, approvals, and repeat work"
           description="We help fintech, compliance, and operations-heavy teams turn slow manual workflows into fast, reliable AI systems — without ripping out the tools they already use."
           chips={["UAE-based", "Compliance-aware", "Pilot-first"]}
+          mobileChips={[
+            "Based in the UAE",
+            "Built for compliance workflows",
+            "Pilot-first, then scale",
+          ]}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.75"
-        data-bot-say="Start where the queue pressure is real — that's where ROI shows up first."
+        data-bot-say="Start where the queue pressure is real — that's where ROI shows up first." data-bot-short="Start where ROI shows"
       >
         <Section>
           <Heading
@@ -209,7 +214,7 @@ export default function IndustriesPage() {
       <div
         data-bot-stop
         data-bot-fx="0.35"
-        data-bot-say="Every vertical has its own friction. Open a panel to see the pain points and how we design the fix."
+        data-bot-say="Every vertical has its own friction. Open a panel to see the pain points and how we design the fix." data-bot-short="Friction, fixed per vertical"
       >
         <DetailPanelsSection
           eyebrow="Industries we serve"
@@ -245,7 +250,7 @@ export default function IndustriesPage() {
       <div
         data-bot-stop
         data-bot-fx="0.55"
-        data-bot-say="Four steps: audit, pilot, stabilize, scale. No roadmap theater."
+        data-bot-say="Four steps: audit, pilot, stabilize, scale. No roadmap theater." data-bot-short="Audit, pilot, stabilize, scale"
       >
         <Section className="bg-cyan-field">
           <Heading
@@ -275,7 +280,7 @@ export default function IndustriesPage() {
       <div
         data-bot-stop
         data-bot-fx="0.6"
-        data-bot-say="Got a workflow that should be automated? Let's map it and build the pilot."
+        data-bot-say="Got a workflow that should be automated? Let's map it and build the pilot." data-bot-short="Let's map your workflow"
       >
         <CtaBand
           title="Have a workflow that slows your team down?"

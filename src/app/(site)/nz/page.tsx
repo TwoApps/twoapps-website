@@ -2,6 +2,7 @@ import { buildMetadata, organizationSchema, makeBreadcrumbSchema, serviceSchema 
 import { JsonLd } from "@/components/json-ld";
 import { ScrollBot } from "@/components/shared/scroll-bot";
 import { PageHero } from "@/components/common/page-hero";
+import { nzConfig } from "@/components/microsites/nz-config";
 import { CtaBand } from "@/components/common/cta-band";
 import { FaqSection } from "@/components/common/faq-section";
 import { StickyScene } from "@/components/motion/sticky-scene";
@@ -93,7 +94,8 @@ export default function NewZealandPage() {
         eyebrow="Kiwi Business, Global Capability"
         title="AI automation that helps your NZ team punch above its weight"
         description="Hiring is tough, margins are tight, and the admin never stops. We build practical AI workflows that let your existing team do more of the work that actually grows the business — without the burnout."
-        chips={["NZ timezone support", "Remote delivery", "No lock-in contracts"]}
+        chips={nzConfig.hero.trustMarks}
+        mobileChips={nzConfig.hero.mobileTrustMarks}
       />
 
       <StickyScene

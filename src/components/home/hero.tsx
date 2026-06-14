@@ -41,8 +41,7 @@ function PipelineStrip() {
     <div
       className="animate-hero-in border-t border-ink/14 pb-16 pt-7"
       data-bot-stop="1"
-      data-bot-say="This pipeline turns cold leads into booked calls — while you sleep."
-      data-bot-icons="inbox,spark,check"
+      data-bot-say="This pipeline turns cold leads into booked calls — while you sleep." data-bot-short="Cold leads to booked calls"
       data-bot-fx="0.06"
       style={{ animationDelay: "0.45s" }}
     >

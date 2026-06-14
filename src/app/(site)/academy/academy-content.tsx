@@ -381,13 +381,14 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.15"
-        data-bot-say="This academy turns your team into AI operators in a weekend."
+        data-bot-say="This academy turns your team into AI operators in a weekend." data-bot-short="Become AI operators"
       >
         <PageHero
           eyebrow="TwoApps Academy"
           title="Free AI automation courses built from real client work"
           description="Practical mini-courses that show you what to automate, how to build it, and how to stay compliant — even if you're not technical."
           chips={["Free PDF downloads", "Self-paced", "Real frameworks", "No sign-up wall"]}
+          mobileChips={["Free downloadable PDF guides", "Learn at your own pace", "Real-world frameworks included", "No sign-up required"]}
         />
       </div>
 
@@ -395,7 +396,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.3"
-        data-bot-say="Know exactly what to automate first — and what it's worth."
+        data-bot-say="Know exactly what to automate first — and what it's worth." data-bot-short="Know what to automate"
       >
         <Section className="py-8 sm:py-10">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
@@ -413,7 +414,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.35"
-        data-bot-say="Built for operators, founders, and compliance-minded teams."
+        data-bot-say="Built for operators, founders, and compliance-minded teams." data-bot-short="Built for operators"
       >
         <Section className="bg-cream/30">
           <Heading
@@ -440,7 +441,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.4"
-        data-bot-say="Pick, enroll, download. That's the whole process."
+        data-bot-say="Pick, enroll, download. That's the whole process." data-bot-short="Pick, enroll, download"
       >
         <Section>
           <Heading
@@ -472,7 +473,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.7"
-        data-bot-say="Not sure where to start? The quiz finds your fastest win."
+        data-bot-say="Not sure where to start? The quiz finds your fastest win." data-bot-short="Take the quiz"
       >
         <Section className="py-8 sm:py-10">
           <div className="mx-auto max-w-3xl">
@@ -638,7 +639,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Every course is built from real builds, not theory."
+        data-bot-say="Every course is built from real builds, not theory." data-bot-short="Real builds, not theory"
       >
         <Section id="courses">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4 sm:mb-8">
@@ -687,7 +688,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.45"
-        data-bot-say="Got questions? Most answers are here."
+        data-bot-say="Got questions? Most answers are here." data-bot-short="Most answers are here"
       >
         <FaqSection
           title="Questions about the Academy"
@@ -700,7 +701,7 @@ export default function AcademyContent() {
       <div
         data-bot-stop
         data-bot-fx="0.85"
-        data-bot-say="If you want it done for you, we build with you."
+        data-bot-say="If you want it done for you, we build with you." data-bot-short="We build with you"
       >
         <CtaBand
           title="Want us to build it with you?"

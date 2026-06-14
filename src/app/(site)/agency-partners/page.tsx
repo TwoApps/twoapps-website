@@ -190,20 +190,25 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Partner with us and your clients get an AI delivery arm that shows up ready to ship."
+        data-bot-say="Partner with us and your clients get an AI delivery arm that shows up ready to ship." data-bot-short="Your AI delivery arm"
       >
         <PageHero
           eyebrow="Agency Partners"
           title="Add an AI delivery arm to your agency — without hiring a team"
           description="White-label AI implementation for software houses and digital agencies. You keep the client relationship; we ship the AI workflows, features, and internal tools behind the scenes."
           chips={["White-label", "Co-delivery", "UAE-based / global"]}
+          mobileChips={[
+              "White-label delivery available",
+              "Co-delivery with partners",
+              "UAE-based and global delivery"
+            ]}
         />
       </div>
 
       <div
         data-bot-stop
         data-bot-fx="0.25"
-        data-bot-say="Keep the client, keep the credit, and keep the margin. We just make you look like the AI expert."
+        data-bot-say="Keep the client, keep the credit, and keep the margin. We just make you look like the AI expert." data-bot-short="Keep client, credit, margin"
       >
         <Section>
           <Heading
@@ -222,7 +227,7 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.75"
-        data-bot-say="If clients are asking for AI and your team is stretched, you're exactly who this is for."
+        data-bot-say="If clients are asking for AI and your team is stretched, you're exactly who this is for." data-bot-short="Built for stretched agencies"
       >
         <Section className="bg-cream/30">
           <Heading
@@ -241,7 +246,7 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.6"
-        data-bot-say="Sprint, pilot, scale. One proven path from first conversation to recurring AI revenue."
+        data-bot-say="Sprint, pilot, scale. One proven path from first conversation to recurring AI revenue." data-bot-short="Sprint, pilot, scale"
       >
         <Section>
           <Heading
@@ -260,7 +265,7 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.4"
-        data-bot-say="Open any panel to see what you can resell, who it's for, and how the commercial model works."
+        data-bot-say="Open any panel to see what you can resell, who it's for, and how the commercial model works." data-bot-short="What you can resell"
       >
         <DetailPanelsSection
           eyebrow="Details"
@@ -340,7 +345,7 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="One pilot. One repeatable model. One new revenue line by next quarter."
+        data-bot-say="One pilot. One repeatable model. One new revenue line by next quarter." data-bot-short="One pilot, new revenue"
       >
         <CtaBand
           title="Ready to add an AI delivery arm?"

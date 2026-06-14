@@ -11,7 +11,7 @@ const tracks = [
     cta: "See the playbook",
     bot: {
       say: "Repeat work goes to me; your people keep the decisions that matter.",
-      icons: "inbox,arrowR,check",
+      short: "Repeat work, handled",
       fx: "0.15"
     }
   },
@@ -23,7 +23,7 @@ const tracks = [
     cta: "Talk to us",
     bot: {
       say: "From idea to working v1 — no junior team, no six-month deck.",
-      icons: "code,arrowR,box",
+      short: "Idea to working v1",
       fx: "0.5"
     }
   },
@@ -35,7 +35,7 @@ const tracks = [
     cta: "Partner playbook",
     bot: {
       say: "Your brand, your client, my backend — invisible partner mode.",
-      icons: "box,arrowR,eyeoff",
+      short: "Invisible partner mode",
       fx: "0.85"
     }
   }
@@ -74,7 +74,7 @@ export function HomeTracks() {
               data-reveal={index * 120}
               data-bot-stop="1"
               data-bot-say={track.bot.say}
-              data-bot-icons={track.bot.icons}
+              data-bot-short={track.bot.short}
               data-bot-fx={track.bot.fx}
               className="focus-ring group flex flex-col rounded-[22px] border border-ink/10 bg-white p-8 shadow-[0_1px_2px_rgba(22,21,15,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:border-blue/55 hover:shadow-[0_18px_44px_rgba(22,21,15,0.10)] sm:p-10"
             >

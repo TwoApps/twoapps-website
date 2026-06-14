@@ -2,53 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
-const ICONS: Record<string, string> = {
-  inbox: svg(
-    '<rect x="4" y="4" width="16" height="16" rx="3.5"/><path d="M12 8v5"/><path d="M9.5 11l2.5 2.5 2.5-2.5"/>'
-  ),
-  spark:
-    '<svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 3 L13.6 10.4 L21 12 L13.6 13.6 L12 21 L10.4 13.6 L3 12 L10.4 10.4 Z" fill="#FF6A1A"/></svg>',
-  check: svg('<polyline points="4 12.5 9.5 18 20 6.5"/>'),
-  clock: svg(
-    '<circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/>'
-  ),
-  arrowR:
-    '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(247,245,239,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13"/><path d="M12 7l5 5-5 5"/></svg>',
-  code: svg(
-    '<polyline points="9 8 4.5 12 9 16"/><polyline points="15 8 19.5 12 15 16"/>'
-  ),
-  box: svg(
-    '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/>'
-  ),
-  eyeoff:
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F5EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6"/><line x1="3" y1="3" x2="21" y2="21" stroke="#FF6A1A"/></svg>',
-  eye: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F5EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="2.6" fill="#FF6A1A" stroke="none"/></svg>',
-  target:
-    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F5EF" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.9" fill="#FF6A1A" stroke="none"/></svg>',
-  chart: svg(
-    '<path d="M4 20h16"/><path d="M7.5 20v-5"/><path d="M12 20V6"/><path d="M16.5 20v-9"/>'
-  ),
-  pulse: svg(
-    '<polyline points="2 12 7 12 10 5 14 19 17 12 22 12"/>'
-  ),
-  shield: svg(
-    '<path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>'
-  ),
-  chat: svg(
-    '<rect x="3" y="5" width="18" height="12" rx="3.5"/><path d="M8 21l4-4"/>'
-  ),
-  calendar: svg(
-    '<rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 9.5h16"/><path d="M8.5 3v4"/><path d="M15.5 3v4"/>'
-  ),
-  person: svg(
-    '<circle cx="12" cy="8" r="3.4"/><path d="M5.5 19a6.5 6.5 0 0 1 13 0"/>'
-  ),
-  _default:
-    '<svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.6" fill="#F7F5EF"/></svg>'
-};
-
-function svg(body: string, size = 18) {
-  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="#F7F5EF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</svg>`;
+function shorten(s: string) {
+  const w = s.trim().split(/\s+/).filter(Boolean);
+  return w.length <= 5 ? s.trim() : w.slice(0, 5).join(" ") + "…";
 }
 
 function clamp(v: number, a: number, b: number) {
@@ -60,7 +16,6 @@ export function ScrollBot() {
   const bodyRef = useRef<HTMLDivElement>(null);
   const bubbleRef = useRef<HTMLDivElement>(null);
   const bubbleTextRef = useRef<HTMLSpanElement>(null);
-  const bubbleIconRef = useRef<HTMLSpanElement>(null);
   const bubbleTipRef = useRef<HTMLSpanElement>(null);
   const slabsRef = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef = useRef<number | null>(null);
@@ -70,12 +25,11 @@ export function ScrollBot() {
     const body = bodyRef.current;
     const bubble = bubbleRef.current;
     const bubbleText = bubbleTextRef.current;
-    const bubbleIcon = bubbleIconRef.current;
     const bubbleTip = bubbleTipRef.current;
     const slabs = slabsRef.current.filter(Boolean) as HTMLDivElement[];
     const stops = Array.from(document.querySelectorAll("[data-bot-stop]"));
 
-    if (!bot || !body || !bubble || !bubbleText || !bubbleIcon || stops.length === 0) {
+    if (!bot || !body || !bubble || !bubbleText || stops.length === 0) {
       return;
     }
 
@@ -196,36 +150,19 @@ export function ScrollBot() {
       });
 
       const say = active.getAttribute("data-bot-say") || "";
-      const iconSeq = active.getAttribute("data-bot-icons") || "";
+      const short = active.getAttribute("data-bot-short") || "";
+      const text = isMobile ? short || shorten(say) : say;
       const settled = Math.abs(tx - x) < 3 && Math.abs(ty - y) < 3;
-      const hasContent = isMobile ? !!iconSeq : !!say;
+      const hasContent = !!text;
 
       if (settled && hasContent) {
-        if (isMobile) {
-          bubbleText.style.display = "none";
-          bubbleIcon.style.display = "flex";
-          bubbleIcon.style.gap = "9px";
-          bubbleIcon.style.alignItems = "center";
-          bubble.style.width = "auto";
-          bubble.style.whiteSpace = "nowrap";
-          bubble.style.padding = "9px 13px";
-          if (currentSay !== iconSeq) {
-            currentSay = iconSeq;
-            bubbleIcon.innerHTML = iconSeq
-              .split(",")
-              .map((k) => ICONS[k.trim()] || ICONS._default)
-              .join("");
-          }
-        } else {
-          bubbleText.style.display = "";
-          bubbleIcon.style.display = "none";
-          bubble.style.width = "200px";
-          bubble.style.whiteSpace = "normal";
-          bubble.style.padding = "9px 14px";
-          if (currentSay !== say) {
-            currentSay = say;
-            bubbleText.textContent = say;
-          }
+        bubble.style.width = isMobile ? "auto" : "200px";
+        bubble.style.maxWidth = isMobile ? "170px" : "";
+        bubble.style.whiteSpace = "normal";
+        bubble.style.padding = isMobile ? "8px 12px" : "9px 14px";
+        if (currentSay !== text) {
+          currentSay = text;
+          bubbleText.textContent = text;
         }
 
         const hw = bubble.offsetWidth / 2;
@@ -266,7 +203,6 @@ export function ScrollBot() {
           transition: "opacity 0.35s ease, transform 0.35s ease"
         }}
       >
-        <span ref={bubbleIconRef} className="hidden items-center justify-center text-cream" />
         <span ref={bubbleTextRef} />
         <span
           ref={bubbleTipRef}

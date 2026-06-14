@@ -290,14 +290,20 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.5"
-          data-bot-say="Compliance isn't sexy — but fines are worse. We handle both."
-          data-bot-icons="shield,check"
+          data-bot-say="Compliance isn't sexy — but fines are worse. We handle both." data-bot-short="We handle compliance"
         >
           <PageHero
             eyebrow="Compliance Services"
             title="Sleep better. Stay audit-ready."
             description="We turn AI governance from a boardroom worry into a checked box — with practical audits and ongoing compliance support that keeps pace with your product."
             chips={["GDPR", "MAS TRM", "PDPA", "DIFC", "ADGM"]}
+            mobileChips={[
+              "GDPR compliance built in",
+              "MAS TRM guidelines followed",
+              "PDPA-compliant data handling",
+              "DIFC regulatory alignment",
+              "ADGM regulatory alignment"
+            ]}
           />
         </div>
 
@@ -305,8 +311,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.2"
-          data-bot-say="We turn regulatory fire drills into a 20-minute board update."
-          data-bot-icons="pulse,shield"
+          data-bot-say="We turn regulatory fire drills into a 20-minute board update." data-bot-short="Fire drills, handled fast"
         >
           <Section>
             <Heading
@@ -333,8 +338,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.8"
-          data-bot-say="Audit-ready in three weeks. Not three quarters."
-          data-bot-icons="clock,arrowR"
+          data-bot-say="Audit-ready in three weeks. Not three quarters." data-bot-short="Audit-ready in three weeks"
         >
           <HowItWorksSection />
         </div>
@@ -343,8 +347,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.35"
-          data-bot-say="You get a roadmap, not a PDF that sits in a drawer."
-          data-bot-icons="box,target"
+          data-bot-say="You get a roadmap, not a PDF that sits in a drawer." data-bot-short="A roadmap, not PDF"
         >
           <DetailPanelsSection
             eyebrow="What you get"
@@ -416,8 +419,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.55"
-          data-bot-say="GDPR, MAS, PDPA, DIFC, ADGM — we speak the languages your regulators use."
-          data-bot-icons="shield,check"
+          data-bot-say="GDPR, MAS, PDPA, DIFC, ADGM — we speak the languages your regulators use." data-bot-short="We speak regulator languages"
         >
           <Section>
             <Heading
@@ -435,8 +437,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.45"
-          data-bot-say="Open the comparison to see exactly what each option includes."
-          data-bot-icons="chart,check"
+          data-bot-say="Open the comparison to see exactly what each option includes." data-bot-short="Compare the options"
         >
           <Section>
             <Heading
@@ -454,8 +455,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.3"
-          data-bot-say="Still have questions? These usually cover it."
-          data-bot-icons="chat,person"
+          data-bot-say="Still have questions? These usually cover it." data-bot-short="Still have questions?"
         >
           <FaqSection
             eyebrow="FAQ"
@@ -468,8 +468,7 @@ export default function CompliancePage() {
         <div
           data-bot-stop
           data-bot-fx="0.65"
-          data-bot-say="Let's make your next compliance conversation boring."
-          data-bot-icons="chat,person"
+          data-bot-say="Let's make your next compliance conversation boring." data-bot-short="Make compliance boring"
         >
           <CtaBand
             title="Let's make compliance the easy part"

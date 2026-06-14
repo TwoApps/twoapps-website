@@ -175,7 +175,7 @@ export default function ServicesPage() {
 
       <div
         data-bot-stop
-        data-bot-say="These are the services that replace your most expensive manual workflows."
+        data-bot-say="These are the services that replace your most expensive manual workflows." data-bot-short="Replace manual workflows"
         data-bot-fx="0.12"
       >
         <PageHero
@@ -183,12 +183,13 @@ export default function ServicesPage() {
           title="AI services that replace your most expensive manual workflows."
           description="From agentic automation to Claude Code playbooks to white-label delivery, we help teams in the UAE and GCC ship AI that actually saves time."
           chips={["UAE-based", "Pilot-first", "Businesses + agencies"]}
+          mobileChips={["UAE-based delivery team", "Pilot-first engagement model", "For businesses and agencies"]}
         />
       </div>
 
       <div
         data-bot-stop
-        data-bot-say="Pick a service. Every one starts with a bounded pilot, not a six-month contract."
+        data-bot-say="Pick a service. Every one starts with a bounded pilot, not a six-month contract." data-bot-short="Pick a service"
         data-bot-fx="0.88"
       >
         <Section>
@@ -207,7 +208,7 @@ export default function ServicesPage() {
 
       <div
         data-bot-stop
-        data-bot-say="We don't start with a long roadmap. We prove one workflow first, then build from there."
+        data-bot-say="We don't start with a long roadmap. We prove one workflow first, then build from there." data-bot-short="One workflow first"
         data-bot-fx="0.5"
       >
         <Section className="bg-cream/30">
@@ -231,7 +232,7 @@ export default function ServicesPage() {
 
       <div
         data-bot-stop
-        data-bot-say="Open any panel to see deliverables, process, and how a pilot starts."
+        data-bot-say="Open any panel to see deliverables, process, and how a pilot starts." data-bot-short="Deliverables and process"
         data-bot-fx="0.5"
       >
         <DetailPanelsSection
@@ -248,7 +249,7 @@ export default function ServicesPage() {
 
       <div
         data-bot-stop
-        data-bot-say="Not sure which fits? Tell us one workflow and we'll point you at the right move."
+        data-bot-say="Not sure which fits? Tell us one workflow and we'll point you at the right move." data-bot-short="Tell us one workflow"
         data-bot-fx="0.35"
       >
         <CtaBand

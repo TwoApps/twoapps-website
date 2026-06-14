@@ -74,8 +74,7 @@ export default function AboutPage() {
 
       <div
         data-bot-stop="hero"
-        data-bot-say="TwoApps — built in the UAE to actually ship AI, not just pitch it."
-        data-bot-icons="spark,target,shield"
+        data-bot-say="TwoApps — built in the UAE to actually ship AI, not just pitch it." data-bot-short="Built in the UAE"
         data-bot-fx="0.5"
       >
         <PageHero
@@ -83,13 +82,13 @@ export default function AboutPage() {
           title="We ship AI workflows, not slide decks"
           description="A founder-led UAE team that designs, builds, and runs practical AI automation for businesses and agency partners."
           chips={["UAE-based", "Founder-led execution", "AI workflows", "Agency-ready"]}
+          mobileChips={["UAE-based delivery team", "Founder-led project execution", "Builds practical AI workflows", "Ready for agency partners"]}
         />
       </div>
 
       <div
         data-bot-stop="story"
-        data-bot-say="Three beats: who we are, why we exist, and how we actually help."
-        data-bot-icons="person,target,box"
+        data-bot-say="Three beats: who we are, why we exist, and how we actually help." data-bot-short="Who, why, and how"
         data-bot-fx="0.2"
       >
         <Section>
@@ -118,8 +117,7 @@ export default function AboutPage() {
 
       <div
         data-bot-stop="beliefs"
-        data-bot-say="We don't do roadmap theater. We wire the workflow, then prove the hours back."
-        data-bot-icons="shield,check,chart"
+        data-bot-say="We don't do roadmap theater. We wire the workflow, then prove the hours back." data-bot-short="No roadmap theater"
         data-bot-fx="0.8"
       >
         <Section className="bg-cream/40">
@@ -146,8 +144,7 @@ export default function AboutPage() {
 
       <div
         data-bot-stop="details"
-        data-bot-say="Founder-led means no handoffs. One brain from scoping to production."
-        data-bot-icons="person,code,chart"
+        data-bot-say="Founder-led means no handoffs. One brain from scoping to production." data-bot-short="Founder-led, no handoffs"
         data-bot-fx="0.8"
       >
         <DetailPanelsSection
@@ -246,8 +243,7 @@ export default function AboutPage() {
 
       <div
         data-bot-stop="cta"
-        data-bot-say="Book the call. I'll even prep the first workflow idea before we talk."
-        data-bot-icons="chat,calendar,arrowR"
+        data-bot-say="Book the call. I'll even prep the first workflow idea before we talk." data-bot-short="Book the call"
         data-bot-fx="0.5"
       >
         <CtaBand

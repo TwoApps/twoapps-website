@@ -28,8 +28,7 @@ export function HomeMarquee() {
   return (
     <section
       data-bot-stop="1"
-      data-bot-say="These are the repeat jobs I was built to eliminate — nicely."
-      data-bot-icons="inbox,spark,check"
+      data-bot-say="These are the repeat jobs I was built to eliminate — nicely." data-bot-short="Repeat jobs, eliminated"
       data-bot-fx="0.85"
       className="overflow-hidden border-y border-ink/12 bg-cream-dark py-5"
     >

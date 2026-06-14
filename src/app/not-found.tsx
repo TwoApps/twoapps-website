@@ -34,8 +34,7 @@ export default function NotFound() {
         <Container>
           <div
             data-bot-stop="hero"
-            data-bot-say="Looks like this page is a dead lead. Let me walk you back to the pipeline."
-            data-bot-icons="spark,target,arrowR"
+            data-bot-say="Looks like this page is a dead lead. Let me walk you back to the pipeline." data-bot-short="Let's get you back"
             data-bot-fx="0.5"
           >
             <Card className="mx-auto max-w-3xl px-6 py-10 text-center sm:px-10 sm:py-14 md:px-12 md:py-16">
@@ -49,8 +48,7 @@ export default function NotFound() {
               <div
                 className="mt-8 flex flex-col justify-center gap-3 sm:flex-row"
                 data-bot-stop="cta"
-                data-bot-say="Home or contact — either way, I'll route you to a real human."
-                data-bot-icons="chat,person,arrowR"
+                data-bot-say="Home or contact — either way, I'll route you to a real human." data-bot-short="Back to a human"
                 data-bot-fx="0.5"
               >
                 <Button href="/">Back to homepage</Button>
@@ -68,8 +66,7 @@ export default function NotFound() {
             <div
               className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
               data-bot-stop="next-steps"
-              data-bot-say="Services, work, or contact — pick the path that fits your project."
-              data-bot-icons="box,eye,chat"
+              data-bot-say="Services, work, or contact — pick the path that fits your project." data-bot-short="Pick your path"
               data-bot-fx="0.5"
             >
               {nextSteps.map((step) => (

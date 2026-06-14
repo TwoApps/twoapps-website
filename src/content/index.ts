@@ -1,4 +1,4 @@
-import type { CaseStudySummary, Industry, RegionPage, Service } from "@/content/types";
+import type { BlogPost, CaseStudySummary, Industry, RegionPage, Service } from "@/content/types";
 
 export const siteNav = [
   { href: "/", label: "Home" },
@@ -6,6 +6,7 @@ export const siteNav = [
   { href: "/agency-partners", label: "Agency Partners" },
   { href: "/industries", label: "Industries" },
   { href: "/work", label: "Work" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" }
 ] as const;
@@ -419,6 +420,154 @@ export const caseStudies: CaseStudySummary[] = [
   }
 ];
 
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "from-chatgpt-prompts-to-production-why-most-ai-pilots-stall",
+    title: "From ChatGPT Prompts to Production: Why Most AI Pilots Stall",
+    summary:
+      "Most AI pilots never reach production. The gap is not the model. It is the workflow, the guardrails, and the handoff plan that turns a prompt into a reliable system.",
+    content:
+      "Every week we speak with teams that have built impressive ChatGPT demos. They can generate emails, summarize documents, draft code, or answer support questions. The demo feels magical. Then they try to put it in front of real users, and the magic fades. Outputs become inconsistent, edge cases multiply, and someone has to manually check every result. The pilot stalls not because the model is bad, but because a prompt is not a product.\n\n" +
+      "The first trap is treating the prompt as the whole system. A prompt works beautifully in a notebook when the inputs are clean and the user is patient. In production, inputs are messy. A customer ticket arrives with missing context. A PDF is scanned upside down. A spreadsheet column is named differently this month. A prompt that assumes perfect inputs will fail silently or produce confident nonsense. Production AI needs input validation, fallback logic, and a way to surface uncertainty instead of hiding it.\n\n" +
+      "The second trap is skipping the human checkpoint. Teams either keep humans entirely out of the loop, which creates risk, or they keep humans in every step, which defeats the purpose. The right design is selective involvement. Let the AI handle the routine cases with clear confidence thresholds, and route exceptions to a person who can decide. That routing logic is where most pilots fall short. It requires understanding the real cost of being wrong in each scenario.\n\n" +
+      "The third trap is measuring the wrong thing. Pilot teams often optimize for how smart the output looks instead of how much time or money it saves. They celebrate a beautiful summary while ignoring that the person still has to copy it between three tools. Real value comes from end-to-end workflow improvement: fewer clicks, shorter queues, less rework, and faster handoffs.\n\n" +
+      "A fourth trap is underestimating integration and maintenance. A model that works today may drift as data formats, user behavior, or business rules change. Production systems need logging, versioning, and a clear owner who watches for degradation. Without that, the pilot becomes a fragile demo that breaks the first time something real changes.\n\n" +
+      "There is also a people challenge. Teams sometimes resist AI workflows because they fear replacement or because the tool does not match how they actually work. Successful rollout includes the people who use the output from day one. Their feedback shapes the checkpoints, the escalation rules, and the user interface. If the workflow makes their job harder, they will work around it.\n\n" +
+      "Finally, be realistic about timelines. A useful pilot can often be built in weeks, but turning it into a production system that runs reliably for months takes longer. The goal of the pilot is to prove value and learn constraints, not to eliminate all future work. Teams that promise overnight transformation usually disappoint. Teams that plan for iteration usually win.\n\n" +
+      "The good news is that once the first workflow is in production, the next one is easier. You have the patterns, the tooling, and the trust. The real transformation is not a single AI feature. It is the organizational muscle to keep building useful workflows over time.\n\n" +
+      "At TwoApps, we approach production differently. We start with one repeatable process, not a broad AI strategy. We map the inputs, the decisions, the errors, and the approvals. We build the workflow so the AI handles what it should and humans stay where they matter. Then we add monitoring, so the team can see when drift happens and fix it before it becomes a problem.\n\n" +
+      "If your pilot is stalling, the fix is usually not a better prompt. It is a better workflow around the prompt. That is the difference between a demo and a system that actually runs your business.",
+    authorName: "Zain Hassan",
+    authorRole: "Founder & AI Implementation Engineer",
+    datePublished: "2026-06-01",
+    tags: ["AI automation", "Agentic AI", "AI strategy"],
+    featured: true,
+    estimatedReadTime: "6 min read",
+    seo: {
+      title: "From ChatGPT Prompts to Production: Why Most AI Pilots Stall | TwoApps",
+      description:
+        "Most AI pilots stall because teams confuse prompts with production systems. Learn why workflow design, guardrails, and human checkpoints matter more than the model.",
+      keywords: [
+        "chatgpt pilot production",
+        "ai pilot stall",
+        "ai workflow production",
+        "ai automation implementation"
+      ],
+      canonicalPath: "/blog/from-chatgpt-prompts-to-production-why-most-ai-pilots-stall",
+      ogImage: "/og-default.svg"
+    }
+  },
+  {
+    slug: "what-agentic-ai-actually-means-for-operations-teams",
+    title: "What Agentic AI Actually Means for Operations Teams",
+    summary:
+      "Agentic AI is not about replacing people. It is about giving operations teams small, autonomous agents that handle routine steps and ask for help when the situation changes.",
+    content:
+      "The term agentic AI is everywhere right now, and like most buzzwords, it means different things to different people. For some it conjures images of fully autonomous digital workers. For others it sounds like chatbots with extra branding. For operations teams, the reality is more practical and more useful than either extreme.\n\n" +
+      "Agentic AI, at its core, is software that can take a goal, plan a sequence of actions, use tools, observe results, and adjust. It is not one giant brain that runs your company. It is a set of focused agents that handle specific workflows: checking a queue, drafting a response, gathering data, routing an exception, or updating a record. Each agent has a narrow scope, clear boundaries, and a defined way to escalate.\n\n" +
+      "This matters for operations because most operational work is not one task. It is a chain of tasks. A refund request might require verifying the order, checking policy, fetching transaction data, drafting a response, and routing for approval. Traditionally, a person does every step. With agentic AI, an agent can do the verification, data gathering, and draft, then hand the decision to a person at the approval step. The person still controls the outcome, but the boring parts disappear.\n\n" +
+      "The design challenge is deciding where autonomy ends and human judgment begins. This is not a technical decision alone. It is a business decision about risk, compliance, and customer trust. A good agentic workflow makes those boundaries explicit. It logs what the agent did, why it did it, and what it was unsure about. That transparency is what makes the system acceptable in regulated or customer-facing environments.\n\n" +
+      "Another common misconception is that agentic AI requires replacing your current tools. In practice, the best agents usually work through the APIs and interfaces you already have. They read from your CRM, write to your ERP, send emails through your existing provider, and update the same dashboards your team uses. The value is in orchestration, not replacement.\n\n" +
+      "The tooling landscape is also maturing quickly. There are now frameworks for building agents, observing their behavior, and managing their memory and state. But tooling alone does not guarantee success. The hard part is still the design: defining the goal, choosing the right tools, setting the confidence thresholds, and planning for failure. A poorly designed agent will cause more work than it saves.\n\n" +
+      "Common starting points include ticket triage, invoice processing, refund routing, lead enrichment, and compliance checks. These workflows share three traits: they happen often, they follow a pattern, and the cost of a mistake is manageable with the right checkpoints. They are also unglamorous, which is exactly why people stop doing them manually once they see a better way.\n\n" +
+      "Measuring agent performance is different from measuring traditional software. You need to track accuracy, escalation rate, human override rate, and latency. You also need a feedback loop so the agent improves as it sees more examples. Without measurement, you cannot tell whether the agent is helping or just adding complexity.\n\n" +
+      "In the end, agentic AI is best understood as a way to extend your operations team. It handles the predictable work, escalates the uncertain work, and keeps a record of everything it tried. That combination is what makes it practical for real businesses today.\n\n" +
+      "For operations leaders, the right question is not whether to adopt agentic AI. It is which workflows are repeatable enough to delegate and important enough to improve. Start with one workflow that is well understood, has measurable pain, and has a clear owner. Build a small agent around it, measure the results, and expand from there. That is how agentic AI becomes real operations leverage instead of another slide in a strategy deck.",
+    authorName: "Zain Hassan",
+    authorRole: "Founder & AI Implementation Engineer",
+    datePublished: "2026-06-05",
+    tags: ["Agentic AI", "AI automation", "Operations"],
+    featured: false,
+    estimatedReadTime: "6 min read",
+    seo: {
+      title: "What Agentic AI Actually Means for Operations Teams | TwoApps",
+      description:
+        "Agentic AI gives operations teams focused autonomous agents for routine workflow steps. Learn how to design boundaries, escalation rules, and real ROI.",
+      keywords: [
+        "agentic ai operations",
+        "ai agents operations teams",
+        "autonomous workflow agents",
+        "agentic ai implementation"
+      ],
+      canonicalPath: "/blog/what-agentic-ai-actually-means-for-operations-teams",
+      ogImage: "/og-default.svg"
+    }
+  },
+  {
+    slug: "how-we-use-claude-code-to-ship-faster-at-twoapps",
+    title: "How We Use Claude Code to Ship Faster at TwoApps",
+    summary:
+      "Claude Code is not a replacement for engineering judgment. It is a multiplier when paired with clear tasks, review rules, and a workflow that keeps humans in control.",
+    content:
+      "We build a lot of software at TwoApps. Internal tools, client workflows, dashboards, integrations, and AI features all move through the same delivery pipeline. Over the last year, Claude Code has become a core part of how we ship faster without lowering our standards. The key has been treating it as a workflow tool, not a magic button.\n\n" +
+      "The first thing we learned is that context matters more than the prompt. Claude Code works best when it understands the codebase, the conventions, and the goal. We keep our project structure consistent, document our patterns, and break tasks into small, well-defined pieces. A task like refactor the auth helper to use the new error format and add tests is a good fit. A task like improve the app is not.\n\n" +
+      "The second thing we learned is that review is non-negotiable. Claude Code can write code quickly, but it is still our responsibility to verify it. We run the same checks we would for human-written code: tests, type checks, lint, and a manual review of the diff. The difference is that the starting point is much further along. Instead of staring at a blank file, we are editing a solid first draft.\n\n" +
+      "We also built a set of reusable patterns around common tasks. For example, when we add a new API endpoint, we have a standard file structure, naming convention, and test pattern. Claude Code can generate that boilerplate in seconds, which lets us focus on the business logic that is different this time. Those patterns are written down and kept current, so the tool does not drift from how we actually work.\n\n" +
+      "Another important practice is keeping risky changes small. We prefer ten small, reviewable changes over one large diff. This reduces the chance of subtle errors slipping through and makes rollbacks easier. Claude Code helps here because generating small changes is fast. The bottleneck becomes our review process, which is exactly where we want human attention.\n\n" +
+      "Finally, we measure outcomes, not activity. We track cycle time, defect rate, and rework. The goal is not to produce more code. It is to produce the right code faster and with fewer bugs. In our experience, Claude Code delivers the biggest gains when the team has clear standards, a good review habit, and a culture of asking whether the generated code is correct, not just whether it runs.\n\n" +
+      "We also use Claude Code as an onboarding and knowledge-sharing tool. New team members can ask questions about the codebase in natural language and get pointed to the right files, conventions, and examples. It does not replace mentorship, but it shortens the time it takes for someone to become productive in an unfamiliar project. That is especially valuable for agencies and software houses that move people between client codebases.\n\n" +
+      "It is also important to know what Claude Code is not good for. It does not replace architecture decisions, security reviews, or deep debugging of complex concurrency issues. It can suggest, draft, and accelerate, but the final responsibility stays with the engineer. Teams that pretend otherwise usually pay for it later in subtle bugs and architectural drift.\n\n" +
+      "Security and context management matter too. We are careful about what code and data we feed into any AI tool, especially for client projects. We keep sensitive credentials, customer data, and proprietary algorithms out of prompts. We also organize context so the tool understands the relevant files without being overwhelmed by irrelevant ones. Good context hygiene is what separates useful assistance from expensive guessing.\n\n" +
+      "For teams considering Claude Code, my advice is simple. Start with one repeatable task. Document your conventions. Require review. Measure what improves. Done right, it is a genuine force multiplier. Done carelessly, it is a fast way to accumulate technical debt.",
+    authorName: "Zain Hassan",
+    authorRole: "Founder & AI Implementation Engineer",
+    datePublished: "2026-06-10",
+    tags: ["Claude Code", "AI automation", "Engineering"],
+    featured: false,
+    estimatedReadTime: "6 min read",
+    seo: {
+      title: "How We Use Claude Code to Ship Faster at TwoApps",
+      description:
+        "A practical look at how TwoApps uses Claude Code for faster delivery, including task design, review rules, patterns, and measuring real engineering outcomes.",
+      keywords: [
+        "claude code workflow",
+        "claude code engineering",
+        "ai coding assistant implementation",
+        "ship faster with claude code"
+      ],
+      canonicalPath: "/blog/how-we-use-claude-code-to-ship-faster-at-twoapps",
+      ogImage: "/og-default.svg"
+    }
+  },
+  {
+    slug: "the-real-roi-of-ai-automation-in-regulated-industries",
+    title: "The Real ROI of AI Automation in Regulated Industries",
+    summary:
+      "Regulated industries measure ROI differently. The payoff comes from fewer errors, cleaner audits, faster onboarding, and a team that can finally focus on judgment work.",
+    content:
+      "When we talk to fintech, healthcare, and compliance teams about AI automation, the first question is often about return on investment. Leaders want a number: how much will this save? The honest answer is that the biggest returns in regulated industries are usually risk reduction and throughput, not headcount reduction.\n\n" +
+      "In a regulated environment, the cost of an error is not just the time to fix it. It is the audit finding, the regulatory notice, the customer complaint, and the reputational damage. A workflow that reduces manual transcription, standardizes triage, and logs every decision creates value that is hard to capture in a simple hourly savings calculation. The ROI shows up as fewer incidents, faster audits, and calmer operations teams.\n\n" +
+      "Take AML and KYC operations as an example. Analysts spend huge portions of their day on repetitive checks: is the document complete, does the name match, is the address valid, has this case been seen before. These are perfect tasks for AI-assisted automation, but only if the system is designed with checkpoints. A well-built workflow can handle the routine cases, prepare summaries for the analyst, and route exceptions for human review. The analyst handles more cases per day and spends more time on the ones that actually need judgment.\n\n" +
+      "The same pattern applies to onboarding, claims processing, contract review, and supplier checks. The value is not replacing the expert. It is removing the friction that keeps experts from doing expert work. When a compliance officer can focus on real risks instead of formatting reports, the whole program improves.\n\n" +
+      "There is also a less obvious ROI: retention. Operational teams in regulated industries often burn out on repetitive work. Automation that removes the worst parts of the job makes the work more interesting and reduces turnover. That saves recruiting and training costs, but more importantly, it preserves institutional knowledge.\n\n" +
+      "To measure ROI well, track a mix of operational and risk metrics. Time per case, error rate, rework rate, audit findings, queue length, and employee satisfaction all matter. The best automation projects improve several of these at once. The worst ones optimize one metric while quietly making others worse.\n\n" +
+      "Implementation approach also affects ROI. The safest path is to start with a narrow, well-documented workflow, run it in parallel with the existing process, and compare results. This builds confidence, surfaces edge cases early, and gives you real numbers before a wider rollout. Big-bang deployments in regulated environments are risky because they combine process change, technology change, and compliance exposure all at once.\n\n" +
+      "Stakeholder alignment is another factor that is often overlooked. Finance, compliance, operations, and IT each care about different parts of the outcome. A strong business case speaks to all of them in their own language: cost savings for finance, control and auditability for compliance, throughput and experience for operations, and maintainability and security for IT. When everyone sees the value, the project survives the inevitable bumps.\n\n" +
+      "Choosing the right partner also affects ROI. Look for a team that asks about your process before proposing technology, that designs checkpoints into the workflow, and that can explain what happens when something goes wrong. The best partners make the pilot safer and the production system easier to own. The worst ones deliver a demo and leave you to figure out the rest.\n\n" +
+      "When done well, AI automation in regulated industries does not feel like a gamble. It feels like finally having the bandwidth to do the work that always deserved more attention. That is the return that matters most.\n\n" +
+      "If you are evaluating AI automation in a regulated industry, look for a partner who understands compliance as part of the design, not an afterthought. The goal is a system that is faster and safer, not faster at the expense of safety. That is the ROI that holds up under scrutiny.",
+    authorName: "Zain Hassan",
+    authorRole: "Founder & AI Implementation Engineer",
+    datePublished: "2026-06-13",
+    tags: ["AI automation", "Compliance", "Fintech"],
+    featured: false,
+    estimatedReadTime: "7 min read",
+    seo: {
+      title: "The Real ROI of AI Automation in Regulated Industries | TwoApps",
+      description:
+        "AI automation ROI in regulated industries comes from risk reduction, audit readiness, and throughput. Learn how to measure value beyond headcount savings.",
+      keywords: [
+        "ai automation regulated industries",
+        "compliance automation roi",
+        "fintech ai automation value",
+        "aml kyc automation roi"
+      ],
+      canonicalPath: "/blog/the-real-roi-of-ai-automation-in-regulated-industries",
+      ogImage: "/og-default.svg"
+    }
+  }
+];
+
 export const processSteps = [
   {
     title: "Audit",
@@ -464,4 +613,8 @@ export function getIndustryBySlug(slug: string) {
 
 export function getRegionBySlug(slug: string) {
   return regions.find((region) => region.slug === slug) ?? null;
+}
+
+export function getBlogPostBySlug(slug: string) {
+  return blogPosts.find((post) => post.slug === slug) ?? null;
 }

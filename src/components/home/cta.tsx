@@ -7,8 +7,7 @@ export function HomeCta({ bookingHref }: { bookingHref: string }) {
         <div
           data-reveal="0"
           data-bot-stop="1"
-          data-bot-say="Book a call — I'll route it to the right human before you finish your coffee."
-          data-bot-icons="chat,spark,calendar"
+          data-bot-say="Book a call — I'll route it to the right human before you finish your coffee." data-bot-short="Book a call"
           data-bot-fx="0.5"
           className="relative overflow-hidden rounded-[28px] bg-blue px-6 py-[clamp(72px,9vw,130px)] text-center sm:px-12"
         >

@@ -52,3 +52,19 @@ export type CaseStudySummary = {
   tech: string[];
   disclaimer: string;
 };
+
+export type BlogPost = {
+  slug: string;
+  title: string;
+  summary: string;
+  content: string;
+  authorName: string;
+  authorRole: string;
+  datePublished: string; // ISO date, e.g. "2026-06-01"
+  dateModified?: string;
+  tags: string[];
+  featured: boolean;
+  coverImage?: string;
+  estimatedReadTime: string; // e.g. "6 min read"
+  seo: SeoMeta;
+};
