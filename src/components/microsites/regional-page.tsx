@@ -6,11 +6,11 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
-import { GlowField } from "@/components/motion/glow-field";
-import { LightBeams } from "@/components/motion/light-beams";
 import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
 import { cn } from "@/lib/utils";
+import { ScrollBot } from "@/components/shared/scroll-bot";
 import type {
   RegionalConfig,
   RegionalFeature,
@@ -197,51 +197,45 @@ function RegionalHero({ hero }: { hero: RegionalConfig["hero"] }) {
   }, [motionDisabled]);
 
   return (
-    <section className="relative pt-8 sm:pt-10 lg:pt-12">
+    <section className="relative pt-8 sm:pt-10 lg:pt-12" data-bot-stop data-bot-fx="0.15" data-bot-say="Same AI sales rep, dialed in for your local market." data-bot-icons="spark,target">
       <Container>
         <div
           ref={ref}
-          className="neon-frame gradient-stroke relative overflow-hidden rounded-[1.75rem] px-6 py-10 sm:px-8 sm:py-12 lg:px-16 lg:py-16"
+          className="relative overflow-hidden rounded-[2.5rem] border border-ink/10 bg-white px-4 py-8 shadow-card sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-16 lg:py-16"
         >
-          <GlowField intensity="strong" />
-          <LightBeams count={12} className="opacity-45" />
-          <div className="noise-overlay" />
-          <div className="absolute -right-8 top-0 h-64 w-64 rounded-full bg-accent-1/12 blur-3xl" />
-          <div className="absolute bottom-0 left-1/4 h-48 w-48 rounded-full bg-accent-3/12 blur-3xl" />
-
           <div className="relative max-w-4xl">
             <div data-hero-rise>
               <Tag className="mb-5">{hero.eyebrow}</Tag>
             </div>
             <h1
               data-hero-rise
-              className="font-display text-4xl font-bold leading-[1.1] tracking-[-0.02em] sm:text-5xl lg:text-6xl"
+              className="font-display text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-ink sm:text-4xl md:text-5xl lg:text-6xl"
             >
               {hero.headline}
             </h1>
             <p
               data-hero-rise
-              className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/70 sm:text-xl"
+              className="mt-5 max-w-2xl text-base leading-relaxed text-ink/70 sm:text-lg md:text-xl"
             >
               {hero.subheadline}
             </p>
-            <div data-hero-rise className="mt-8 flex flex-wrap gap-3">
-              <Button href="/book" size="lg">
+            <div data-hero-rise className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/book" size="lg" className="w-full sm:w-auto">
                 {hero.primaryCta}
               </Button>
-              <Button href="#how-it-works" variant="secondary" size="lg">
+              <Button href="#how-it-works" variant="secondary" size="lg" className="w-full sm:w-auto">
                 {hero.secondaryCta}
               </Button>
             </div>
           </div>
 
-          <div data-hero-rise className="mt-10 border-t border-white/10 pt-6">
+          <div data-hero-rise className="mt-10 border-t border-ink/10 pt-6">
             <p className="mb-3 text-xs uppercase tracking-[0.2em] text-ink/50">
               {hero.trustBar}
             </p>
             <div className="flex flex-wrap gap-3">
               {hero.trustMarks?.map((mark, i) => (
-                <span key={i} className="rounded-full border border-accent-1/15 bg-accent-1/5 px-3 py-1.5 text-xs text-accent-1">
+                <span key={i} className="rounded-full border border-ink/10 bg-cream px-3 py-1.5 text-xs text-blue">
                   {mark}
                 </span>
               ))}
@@ -262,22 +256,19 @@ function PainPointsSection({
   items: RegionalPainPoint[];
 }) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.85" data-bot-say="Tired of leads slipping through timezone cracks?" data-bot-icons="clock,inbox">
       <Container>
-        <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+        <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {items.map((item, i) => (
-            <div
-              key={i}
-              className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-accent-1/20 hover:bg-accent-1/[0.02]"
-            >
-              <div className="mb-4 text-accent-1">{getIcon(item.icon)}</div>
-              <h3 className="mb-2 font-display text-lg font-semibold">{item.title}</h3>
+            <Card key={i} className="p-5 sm:p-6">
+              <div className="mb-4 text-blue">{getIcon(item.icon)}</div>
+              <h3 className="mb-2 font-display text-lg font-semibold text-ink sm:text-xl">{item.title}</h3>
               <p className="mb-4 text-sm leading-relaxed text-ink/60">{item.description}</p>
-              <p className="text-xs font-medium text-accent-1">→ {item.stat}</p>
-            </div>
+              <p className="text-xs font-medium text-blue">→ {item.stat}</p>
+            </Card>
           ))}
         </div>
       </Container>
@@ -294,26 +285,26 @@ function HowItWorksSection({
   steps: RegionalProcessStep[];
 }) {
   return (
-    <section id="how-it-works" className="py-12 sm:py-16 lg:py-20">
+    <section id="how-it-works" className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.5" data-bot-say="Books, qualifies, and follows up — before your coffee gets cold." data-bot-icons="calendar,chat">
       <Container>
-        <h2 className="mb-12 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+        <h2 className="mb-10 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-12 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
         </h2>
         <div className="mx-auto max-w-4xl">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
             {steps?.map((step, i) => (
               <div key={i} className="relative">
                 {i < steps.length - 1 && (
-                  <div className="absolute left-1/2 top-8 hidden h-px w-full bg-gradient-to-r from-accent-1/30 to-transparent lg:block" />
+                  <div className="absolute left-1/2 top-8 hidden h-px w-full bg-cream-dark lg:block" />
                 )}
-                <div className="relative rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center">
-                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent-1 text-lg font-bold text-[#021111]">
+                <Card className="relative p-5 text-center sm:p-6">
+                  <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-cream text-lg font-bold text-blue">
                     {i + 1}
                   </div>
-                  <h3 className="mb-1 font-display text-lg font-semibold">{step.title}</h3>
+                  <h3 className="mb-1 font-display text-lg font-semibold text-ink sm:text-xl">{step.title}</h3>
                   <p className="mb-3 text-sm text-ink/60">{step.subtitle}</p>
-                  <p className="text-xs text-accent-1">{step.duration}</p>
-                </div>
+                  <p className="text-xs text-blue">{step.duration}</p>
+                </Card>
               </div>
             ))}
           </div>
@@ -332,21 +323,18 @@ function FeaturesSection({
   features: RegionalFeature[];
 }) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.3" data-bot-say="Works in your language, your currency, your CRM." data-bot-icons="target,check">
       <Container>
-        <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+        <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {features.map((feature, i) => (
-            <div
-              key={i}
-              className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-accent-1/20 hover:bg-accent-1/[0.02]"
-            >
-              <div className="mb-4 text-accent-1">{getIcon(feature.icon)}</div>
-              <h3 className="mb-2 font-display text-lg font-semibold">{feature.title}</h3>
+            <Card key={i} className="p-5 sm:p-6">
+              <div className="mb-4 text-blue">{getIcon(feature.icon)}</div>
+              <h3 className="mb-2 font-display text-lg font-semibold text-ink sm:text-xl">{feature.title}</h3>
               <p className="text-sm leading-relaxed text-ink/60">{feature.description}</p>
-            </div>
+            </Card>
           ))}
         </div>
       </Container>
@@ -363,27 +351,24 @@ function IndustrySection({
   industries: RegionalIndustry[];
 }) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.7" data-bot-say="One playbook, tuned for every vertical you sell into." data-bot-icons="box,check">
       <Container>
-        <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+        <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
           {industries.map((industry, i) => (
-            <div
-              key={i}
-              className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all hover:border-accent-1/20 hover:bg-accent-1/[0.02]"
-            >
-              <div className="mb-4 text-accent-1">{getIcon(industry.icon)}</div>
-              <h3 className="mb-3 font-display text-xl font-semibold">{industry.title}</h3>
+            <Card key={i} className="p-5 sm:p-6">
+              <div className="mb-4 text-blue">{getIcon(industry.icon)}</div>
+              <h3 className="mb-3 font-display text-lg font-semibold text-ink sm:text-xl lg:text-2xl">{industry.title}</h3>
               <p className="mb-4 text-sm leading-relaxed text-ink/60">{industry.description}</p>
               <Link
                 href="/industries"
-                className="inline-flex items-center gap-1 text-sm font-medium text-accent-1 hover:underline"
+                className="inline-flex items-center gap-1 text-sm font-medium text-blue hover:underline"
               >
                 Learn more {getIcon("chevronRight")}
               </Link>
-            </div>
+            </Card>
           ))}
         </div>
       </Container>
@@ -400,31 +385,28 @@ function TestimonialsSection({
   testimonials: RegionalTestimonial[];
 }) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.25" data-bot-say="Local teams are already hitting quota by Thursday." data-bot-icons="chart,check">
       <Container>
-        <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+        <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {title}
         </h2>
-        <div className="grid gap-6 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2 lg:gap-6">
           {testimonials.map((testimonial, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-8"
-            >
-              <blockquote className="mb-6 text-lg leading-relaxed text-ink/80 italic">
+            <Card key={i} className="p-6 sm:p-8">
+              <blockquote className="mb-6 text-base italic leading-relaxed text-ink/80 sm:text-lg">
                 &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-1/20 text-lg font-bold text-accent-1">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue text-lg font-bold text-cream">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-semibold">{testimonial.name}</p>
+                  <p className="font-semibold text-ink">{testimonial.name}</p>
                   <p className="text-sm text-ink/60">{testimonial.title}</p>
-                  <p className="mt-1 text-xs text-accent-1">{testimonial.stat}</p>
+                  <p className="mt-1 text-xs text-blue">{testimonial.stat}</p>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       </Container>
@@ -437,25 +419,22 @@ function FaqSection({ faq }: { faq: { title: string; items: RegionalFaq[] } }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.6" data-bot-say="No hidden fees. No offshore handoffs. Just results." data-bot-icons="shield,check">
       <Container>
-        <h2 className="mb-10 text-center font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+        <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
           {faq.title}
         </h2>
-        <div className="mx-auto max-w-3xl space-y-4">
+        <div className="mx-auto max-w-3xl space-y-3 sm:space-y-4">
           {faq.items.map((item, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-white/10 bg-white/[0.02]"
-            >
+            <Card key={i} className="p-0">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between p-6 text-left"
+                className="flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
               >
-                <span className="font-semibold">{item.question}</span>
+                <span className="text-sm font-semibold text-ink sm:text-base">{item.question}</span>
                 <span
                   className={cn(
-                    "transition-transform",
+                    "shrink-0 text-ink/70 transition-transform",
                     openIndex === i && "rotate-180"
                   )}
                 >
@@ -463,11 +442,11 @@ function FaqSection({ faq }: { faq: { title: string; items: RegionalFaq[] } }) {
                 </span>
               </button>
               {openIndex === i && (
-                <div className="border-t border-white/10 px-6 pb-6 pt-4">
+                <div className="border-t border-ink/10 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
                   <p className="text-sm leading-relaxed text-ink/70">{item.answer}</p>
                 </div>
               )}
-            </div>
+            </Card>
           ))}
         </div>
       </Container>
@@ -478,22 +457,24 @@ function FaqSection({ faq }: { faq: { title: string; items: RegionalFaq[] } }) {
 // Final CTA Section
 function FinalCtaSection({ finalCta }: { finalCta: RegionalConfig["finalCta"] }) {
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.8" data-bot-say="Ready to see it sell in your market?" data-bot-icons="person,arrowR">
       <Container>
-        <div className="neon-frame gradient-stroke relative overflow-hidden rounded-[1.75rem] px-6 py-12 text-center sm:px-10 sm:py-16">
-          <GlowField intensity="strong" />
-          <LightBeams count={8} className="opacity-35" />
-          <div className="noise-overlay" />
+        <div className="relative overflow-hidden rounded-[2.5rem] border border-ink/10 bg-white px-4 py-10 text-center shadow-card sm:px-8 sm:py-12 md:px-10 md:py-16">
           <div className="relative">
-            <h2 className="mb-4 font-display text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
+            <h2 className="mb-4 font-display text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-4xl lg:text-5xl">
               {finalCta.headline}
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-ink/70">
+            <p className="mx-auto mb-8 max-w-2xl text-base text-ink/70 sm:text-lg">
               {finalCta.subheadline}
             </p>
-            <Button href="/book" size="lg">
-              {finalCta.cta}
-            </Button>
+            <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+              <Button href="/book" size="lg" className="w-full sm:w-auto">
+                {finalCta.cta}
+              </Button>
+              <Button href="/contact" variant="secondary" size="lg" className="w-full sm:w-auto">
+                Contact form
+              </Button>
+            </div>
             <p className="mt-6 text-sm text-ink/50">{finalCta.supporting}</p>
           </div>
         </div>
@@ -521,6 +502,8 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
           },
         ]}
       />
+
+      <ScrollBot />
 
       {/* Hero */}
       <RegionalHero hero={config.hero} />

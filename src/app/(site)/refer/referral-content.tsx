@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/common/cta-band";
+import { ScrollBot } from "@/components/shared/scroll-bot";
 
 // Form state types
 type ReferralFormState = {
@@ -35,7 +36,7 @@ const initialState: ReferralFormState = {
 };
 
 const inputClassName =
-  "focus-ring w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-ink placeholder:text-ink/40";
+  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white";
 
 // Referral benefits data
 const benefits = [
@@ -107,11 +108,11 @@ function FormField({
     <label className={cn("block", className)}>
       <span className="mb-2 block text-sm font-medium text-ink/90">
         {label}
-        {required ? <span className="ml-1 text-accent-2">*</span> : null}
+        {required ? <span className="ml-1 text-orange">*</span> : null}
       </span>
       {children}
       {error ? (
-        <span className="mt-1 block text-xs text-red-300" role="alert">
+        <span className="mt-1 block text-xs text-red-600" role="alert">
           {error}
         </span>
       ) : null}
@@ -195,218 +196,250 @@ export default function ReferralPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Referral Program"
-        title="Share AI automation. You both win."
-        description="Refer a business and you both win. They get a free audit, you get a credit on your next project."
-        chips={["Credit for you", "Free audit for them", "No limits"]}
-      />
+      <ScrollBot />
+
+      <div
+        data-bot-stop
+        data-bot-fx="0.2"
+        data-bot-say="Refer an agency, earn rewards, look like a hero. Easy math."
+      >
+        <PageHero
+          eyebrow="Referral Program"
+          title="Share AI automation. You both win."
+          description="Refer a business and you both win. They get a free audit, you get a credit on your next project."
+          chips={["Credit for you", "Free audit for them", "No limits"]}
+        />
+      </div>
 
       {/* Benefits Section */}
-      <Section className="pt-10">
-        <div className="grid gap-5 md:grid-cols-3">
-          {benefits.map((benefit, idx) => (
-            <Card key={idx} className="p-6 text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-1/10 text-accent-1">
-                {benefit.icon}
-              </div>
-              <p className="text-xs font-medium uppercase tracking-wider text-ink/60 mb-1">
-                {benefit.title}
-              </p>
-              <p className="text-3xl font-semibold text-ink mb-2">{benefit.value}</p>
-              <p className="text-sm text-ink/70">{benefit.description}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
+      <div
+        data-bot-stop
+        data-bot-fx="0.75"
+        data-bot-say="They get a free audit. You get project credit. Win-win isn't just a phrase here."
+      >
+        <Section className="pt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+            {benefits.map((benefit, idx) => (
+              <Card key={idx} className="p-5 sm:p-6 text-center">
+                <div className="mx-auto mb-4 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-blue/10 text-blue">
+                  {benefit.icon}
+                </div>
+                <p className="text-xs font-medium uppercase tracking-wider text-ink/60 mb-1">
+                  {benefit.title}
+                </p>
+                <p className="text-2xl sm:text-3xl font-semibold text-ink mb-2">{benefit.value}</p>
+                <p className="text-sm text-ink/70">{benefit.description}</p>
+              </Card>
+            ))}
+          </div>
+        </Section>
+      </div>
 
       {/* How It Works */}
-      <Section className="pt-10">
-        <div className="mb-8 text-center">
-          <h2 className="text-2xl font-semibold text-ink mb-2">How it works</h2>
-          <p className="text-ink/70">Three steps. Both sides win.</p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {steps.map((step, idx) => (
-            <div key={idx} className="relative">
-              {idx < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-1/2 w-full h-px bg-gradient-to-r from-accent-1/30 to-transparent" />
-              )}
-              <div className="relative z-10 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-1/10 border border-accent-1/20">
-                  <span className="text-xl font-bold text-accent-1">{step.number}</span>
+      <div
+        data-bot-stop
+        data-bot-fx="0.35"
+        data-bot-say="Share a name. They book. You both win. Three steps, zero catches."
+      >
+        <Section className="pt-10">
+          <div className="mb-8 sm:mb-10 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-ink mb-2">How it works</h2>
+            <p className="text-sm sm:text-base text-ink/70">Three steps. Both sides win.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+            {steps.map((step, idx) => (
+              <div key={idx} className="relative">
+                {idx < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-8 left-1/2 w-full h-px bg-ink/10" />
+                )}
+                <div className="relative z-10 text-center">
+                  <div className="mx-auto mb-4 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-blue/10 border border-blue/20">
+                    <span className="text-xl font-bold text-blue">{step.number}</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-ink mb-2">{step.title}</h3>
+                  <p className="text-sm text-ink/70">{step.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-ink mb-2">{step.title}</h3>
-                <p className="text-sm text-ink/70">{step.description}</p>
               </div>
-            </div>
-          ))}
-        </div>
-      </Section>
+            ))}
+          </div>
+        </Section>
+      </div>
 
       {/* Referral Form */}
-      <Section className="pt-10 pb-16">
-        <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-          <Card className="p-6 sm:p-8">
-            <h2 className="text-xl font-semibold text-ink mb-1">Refer a business</h2>
-            <p className="text-sm text-ink/70 mb-6">
-              Know a business that could benefit from AI automation? Connect them with us.
-            </p>
+      <div
+        data-bot-stop
+        data-bot-fx="0.5"
+        data-bot-say="Fill it in. We'll handle the outreach. You just wait for the credit."
+      >
+        <Section className="pt-10 pb-12 sm:pb-16">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+            <Card className="p-5 sm:p-6 md:p-8">
+              <h2 className="text-xl sm:text-2xl font-semibold text-ink mb-1">Refer a business</h2>
+              <p className="text-sm text-ink/70 mb-6">
+                Know a business that could benefit from AI automation? Connect them with us.
+              </p>
 
-            {submitted ? (
-              <div className="space-y-4">
-                <div className="rounded-xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-4">
-                  <p className="text-sm text-emerald-200 font-medium mb-1">Referral sent. Thanks.</p>
-                  <p className="text-sm text-emerald-200/80">
-                    We&apos;ll reach out to your contact. Once they complete their free workflow audit,
-                    your project credit will be activated.
-                  </p>
-                  {referralCode && (
-                    <div className="mt-3 p-3 rounded-lg bg-white/5 border border-white/10">
-                      <p className="text-xs text-ink/60 mb-1">Your referral code:</p>
-                      <p className="text-lg font-mono font-bold text-accent-1">{referralCode}</p>
-                    </div>
-                  )}
-                </div>
-                <Button onClick={() => setSubmitted(false)} variant="secondary">
-                  Send another referral
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-                {/* Your Details Section */}
+              {submitted ? (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-medium text-ink/80 uppercase tracking-wider">Your Details</h3>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <FormField label="Your Name" required error={fieldErrors.referrerName}>
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-4">
+                    <p className="text-sm text-emerald-700 font-medium mb-1">Referral sent. Thanks.</p>
+                    <p className="text-sm text-emerald-700/80">
+                      We&apos;ll reach out to your contact. Once they complete their free workflow audit,
+                      your project credit will be activated.
+                    </p>
+                    {referralCode && (
+                      <div className="mt-3 p-3 rounded-lg bg-white border border-ink/10">
+                        <p className="text-xs text-ink/60 mb-1">Your referral code:</p>
+                        <p className="text-lg font-mono font-bold text-blue">{referralCode}</p>
+                      </div>
+                    )}
+                  </div>
+                  <Button onClick={() => setSubmitted(false)} variant="secondary">
+                    Send another referral
+                  </Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                  {/* Your Details Section */}
+                  <div className="space-y-4">
+                    <h3 className="text-sm font-medium text-ink/80 uppercase tracking-wider">Your Details</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                      <FormField label="Your Name" required error={fieldErrors.referrerName}>
+                        <input
+                          className={inputClassName}
+                          value={values.referrerName}
+                          onChange={(e) => update("referrerName", e.target.value)}
+                          placeholder="Jane Smith"
+                        />
+                      </FormField>
+                      <FormField label="Your Email" required error={fieldErrors.referrerEmail}>
+                        <input
+                          className={inputClassName}
+                          type="email"
+                          value={values.referrerEmail}
+                          onChange={(e) => update("referrerEmail", e.target.value)}
+                          placeholder="jane@company.com"
+                        />
+                      </FormField>
+                    </div>
+                    <FormField label="Your Company">
                       <input
                         className={inputClassName}
-                        value={values.referrerName}
-                        onChange={(e) => update("referrerName", e.target.value)}
-                        placeholder="Jane Smith"
-                      />
-                    </FormField>
-                    <FormField label="Your Email" required error={fieldErrors.referrerEmail}>
-                      <input
-                        className={inputClassName}
-                        type="email"
-                        value={values.referrerEmail}
-                        onChange={(e) => update("referrerEmail", e.target.value)}
-                        placeholder="jane@company.com"
+                        value={values.referrerCompany}
+                        onChange={(e) => update("referrerCompany", e.target.value)}
+                        placeholder="Acme Inc."
                       />
                     </FormField>
                   </div>
-                  <FormField label="Your Company">
-                    <input
-                      className={inputClassName}
-                      value={values.referrerCompany}
-                      onChange={(e) => update("referrerCompany", e.target.value)}
-                      placeholder="Acme Inc."
-                    />
-                  </FormField>
-                </div>
 
-                {/* Their Details Section */}
-                <div className="space-y-4 pt-4 border-t border-white/10">
-                  <h3 className="text-sm font-medium text-ink/80 uppercase tracking-wider">Who You&apos;re Referring</h3>
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <FormField label="Contact Name" required error={fieldErrors.referredName}>
+                  {/* Their Details Section */}
+                  <div className="space-y-4 pt-4 border-t border-ink/10">
+                    <h3 className="text-sm font-medium text-ink/80 uppercase tracking-wider">Who You&apos;re Referring</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+                      <FormField label="Contact Name" required error={fieldErrors.referredName}>
+                        <input
+                          className={inputClassName}
+                          value={values.referredName}
+                          onChange={(e) => update("referredName", e.target.value)}
+                          placeholder="John Doe"
+                        />
+                      </FormField>
+                      <FormField label="Contact Email" required error={fieldErrors.referredEmail}>
+                        <input
+                          className={inputClassName}
+                          type="email"
+                          value={values.referredEmail}
+                          onChange={(e) => update("referredEmail", e.target.value)}
+                          placeholder="john@business.com"
+                        />
+                      </FormField>
+                    </div>
+                    <FormField label="Company">
                       <input
                         className={inputClassName}
-                        value={values.referredName}
-                        onChange={(e) => update("referredName", e.target.value)}
-                        placeholder="John Doe"
+                        value={values.referredCompany}
+                        onChange={(e) => update("referredCompany", e.target.value)}
+                        placeholder="Their Company"
                       />
                     </FormField>
-                    <FormField label="Contact Email" required error={fieldErrors.referredEmail}>
-                      <input
-                        className={inputClassName}
-                        type="email"
-                        value={values.referredEmail}
-                        onChange={(e) => update("referredEmail", e.target.value)}
-                        placeholder="john@business.com"
+                    <FormField label="Why you're referring them (optional)">
+                      <textarea
+                        className={cn(inputClassName, "min-h-32 sm:min-h-36 resize-y")}
+                        value={values.message}
+                        onChange={(e) => update("message", e.target.value)}
+                        placeholder="Tell us about their business and what they might need help with..."
                       />
                     </FormField>
                   </div>
-                  <FormField label="Company">
-                    <input
-                      className={inputClassName}
-                      value={values.referredCompany}
-                      onChange={(e) => update("referredCompany", e.target.value)}
-                      placeholder="Their Company"
-                    />
-                  </FormField>
-                  <FormField label="Why you're referring them (optional)">
-                    <textarea
-                      className={cn(inputClassName, "min-h-24 resize-y")}
-                      value={values.message}
-                      onChange={(e) => update("message", e.target.value)}
-                      placeholder="Tell us about their business and what they might need help with..."
-                    />
-                  </FormField>
-                </div>
 
-                {/* Honeypot */}
-                <div className="hidden" aria-hidden>
-                  <label>
-                    Leave this field empty
-                    <input
-                      tabIndex={-1}
-                      autoComplete="off"
-                      value={values.honeypot}
-                      onChange={(e) => update("honeypot", e.target.value)}
-                    />
-                  </label>
-                </div>
+                  {/* Honeypot */}
+                  <div className="hidden" aria-hidden>
+                    <label>
+                      Leave this field empty
+                      <input
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={values.honeypot}
+                        onChange={(e) => update("honeypot", e.target.value)}
+                      />
+                    </label>
+                  </div>
 
-                {submitError && (
-                  <p className="rounded-xl border border-red-300/20 bg-red-300/10 px-4 py-3 text-sm text-red-200" role="alert">
-                    {submitError}
-                  </p>
-                )}
+                  {submitError && (
+                    <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">
+                      {submitError}
+                    </p>
+                  )}
 
-                <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
-                  {isPending ? "Sending..." : "Send referral"}
-                </Button>
-              </form>
-            )}
-          </Card>
-
-          {/* Sidebar — FAQ only */}
-          <div className="space-y-4">
-            <Card className="p-5">
-              <h3 className="text-sm font-medium text-ink mb-3">FAQ</h3>
-              <div className="space-y-4 text-sm text-ink/75">
-                <div>
-                  <p className="font-medium text-ink mb-1">When do I get my credit?</p>
-                  <p>Once your referral completes their free workflow audit, your project credit is activated immediately.</p>
-                </div>
-                <div>
-                  <p className="font-medium text-ink mb-1">Can I stack credits?</p>
-                  <p>Yes! Refer multiple businesses and combine credits for larger projects.</p>
-                </div>
-                <div>
-                  <p className="font-medium text-ink mb-1">How long are credits valid?</p>
-                  <p>Credits are valid for 12 months from the date they&apos;re earned.</p>
-                </div>
-                <div>
-                  <p className="font-medium text-ink mb-1">What if they&apos;re already a client?</p>
-                  <p>Referrals must be new to TwoApps. Existing clients don&apos;t qualify, but we appreciate the thought!</p>
-                </div>
-              </div>
+                  <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
+                    {isPending ? "Sending..." : "Send referral"}
+                  </Button>
+                </form>
+              )}
             </Card>
-          </div>
-        </div>
-      </Section>
 
-      <CtaBand
-        title="Have someone in mind?"
-        copy="Send us their details and we'll handle the rest. You both win."
-        primaryHref="/book"
-        primaryLabel="Book a call"
-        secondaryHref="/contact"
-        secondaryLabel="Talk to us"
-      />
+            {/* Sidebar — FAQ only */}
+            <div className="space-y-4">
+              <Card className="p-5 sm:p-6">
+                <h3 className="text-sm font-medium text-ink mb-3">FAQ</h3>
+                <div className="space-y-4 text-sm text-ink/75">
+                  <div>
+                    <p className="font-medium text-ink mb-1">When do I get my credit?</p>
+                    <p>Once your referral completes their free workflow audit, your project credit is activated immediately.</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-ink mb-1">Can I stack credits?</p>
+                    <p>Yes! Refer multiple businesses and combine credits for larger projects.</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-ink mb-1">How long are credits valid?</p>
+                    <p>Credits are valid for 12 months from the date they&apos;re earned.</p>
+                  </div>
+                  <div>
+                    <p className="font-medium text-ink mb-1">What if they&apos;re already a client?</p>
+                    <p>Referrals must be new to TwoApps. Existing clients don&apos;t qualify, but we appreciate the thought!</p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </Section>
+      </div>
+
+      <div
+        data-bot-stop
+        data-bot-fx="0.85"
+        data-bot-say="Have someone in mind? This is the button that pays you back."
+      >
+        <CtaBand
+          title="Have someone in mind?"
+          copy="Send us their details and we'll handle the rest. You both win."
+          primaryHref="/book"
+          primaryLabel="Book a call"
+          secondaryHref="/contact"
+          secondaryLabel="Talk to us"
+        />
+      </div>
     </>
   );
 }

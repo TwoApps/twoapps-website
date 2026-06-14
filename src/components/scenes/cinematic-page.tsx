@@ -1,9 +1,6 @@
 import type { StickySceneFrame } from "@/components/motion/sticky-scene";
 
 import { ExpandableDetailPanel } from "@/components/common/expandable-detail-panel";
-import { GlowField } from "@/components/motion/glow-field";
-import { LightBeams } from "@/components/motion/light-beams";
-import { StickyScene } from "@/components/motion/sticky-scene";
 import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
@@ -17,38 +14,32 @@ export function CinematicStickySummary({
   frames: StickySceneFrame[];
   cards: Array<{ title: string; copy: string; chips?: string[] }>;
 }) {
+  const title = frames[0]?.headline ?? "";
+
   return (
-    <StickyScene
-      eyebrow={eyebrow}
-      frames={frames}
-      heightMultiplier={Math.max(2.5, Math.min(3.5, 1.8 + frames.length * 0.55))}
-      visual={
-        <div data-scene-visual-root className="relative h-full min-h-[420px]">
-          <div className="absolute inset-0 overflow-hidden rounded-3xl">
-            <GlowField intensity="soft" />
-            <LightBeams count={6} className="opacity-35" />
-          </div>
-          {cards.map((card, index) => (
-            <Card key={card.title} data-scene-visual-card className="absolute inset-x-4 top-4 p-5 sm:inset-x-6 sm:p-6">
-              <p className="font-display text-2xl font-semibold">{card.title}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink/68">{card.copy}</p>
-              {card.chips?.length ? (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {card.chips.map((chip) => (
-                    <span
-                      key={chip}
-                      className="rounded-full border border-accent-1/12 bg-accent-1/[0.04] px-2.5 py-1 text-xs text-ink/70"
-                    >
-                      {chip}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-            </Card>
-          ))}
-        </div>
-      }
-    />
+    <Section className="py-12 sm:py-16 md:py-20 lg:py-24">
+      <Heading eyebrow={eyebrow} title={title} />
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-3">
+        {cards.map((card) => (
+          <Card key={card.title} className="p-5 sm:p-6">
+            <p className="font-display text-lg font-semibold text-ink sm:text-xl lg:text-2xl">{card.title}</p>
+            <p className="mt-3 text-sm leading-relaxed text-ink/68">{card.copy}</p>
+            {card.chips?.length ? (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {card.chips.map((chip) => (
+                  <span
+                    key={chip}
+                    className="rounded-full border border-ink/10 bg-ink/[0.04] px-2.5 py-1 text-xs text-ink/70"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </Card>
+        ))}
+      </div>
+    </Section>
   );
 }
 

@@ -24,24 +24,24 @@ export function ExpandableDetailPanel({
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-[inset_0_1px_0_rgba(255,255,255,.03)]",
+        "group relative overflow-hidden rounded-[22px] border border-ink/10 bg-white shadow-[0_1px_2px_rgba(22,21,15,0.04)] transition-all duration-300 hover:border-ink/15 hover:shadow-[0_18px_44px_rgba(22,21,15,0.06)]",
         className
       )}
     >
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className="focus-ring flex w-full items-start justify-between gap-4 px-4 py-4 text-left sm:px-5"
+        className="focus-ring flex w-full items-start justify-between gap-3 px-4 py-4 text-left sm:gap-4 sm:px-5"
         aria-expanded={open}
       >
-        <div>
-          <p className="font-display text-xl font-semibold leading-tight text-ink">{title}</p>
-          {summary ? <p className="mt-1 text-sm text-ink/65">{summary}</p> : null}
+        <div className="min-w-0 flex-1">
+          <p className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl">{title}</p>
+          {summary ? <p className="mt-1 text-sm text-ink/60">{summary}</p> : null}
         </div>
         <span
           aria-hidden
           className={cn(
-            "mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-ink/70 transition-transform",
+            "mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-ink/[0.04] text-ink/70 transition-transform",
             open && "rotate-45"
           )}
         >
@@ -55,7 +55,7 @@ export function ExpandableDetailPanel({
         )}
       >
         <div className="overflow-hidden">
-          <div className="border-t border-white/10 px-4 py-4 sm:px-5">{children}</div>
+          <div className="border-t border-ink/10 px-4 py-4 sm:px-5">{children}</div>
         </div>
       </div>
     </div>

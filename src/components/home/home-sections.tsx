@@ -20,7 +20,7 @@ export function AudienceSplitSection() {
           className="max-w-4xl"
         />
       </AnimatedReveal>
-      <div className="mt-10 grid gap-5 lg:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2">
         <AnimatedReveal delay={0.05}>
           <SplitPanel
             title={audienceTracks.business.title}
@@ -56,14 +56,14 @@ export function ServicesOverviewSection() {
           subtitle="AI workflows, internal tools, and white-label AI delivery support that solve real operational bottlenecks."
         />
       </AnimatedReveal>
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {services.map((service, index) => (
           <AnimatedReveal key={service.slug} delay={0.04 * index}>
-            <Card className="h-full p-5">
+            <Card className="h-full p-5 sm:p-6">
               <div className="mb-3">
                 <Tag>{service.audiences.includes("agency") && service.audiences.includes("business") ? "Business + Agency" : "Agency"}</Tag>
               </div>
-              <h3 className="font-display text-2xl font-semibold leading-tight">{service.title}</h3>
+              <h3 className="font-display text-lg font-semibold leading-tight sm:text-xl lg:text-2xl">{service.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink/75">{service.tagline}</p>
               <ul className="mt-4 space-y-2 text-sm text-ink/85">
                 {service.benefits.slice(0, 2).map((item) => (
@@ -88,17 +88,17 @@ export function FounderProofSection() {
   return (
     <Section className="pt-6">
       <AnimatedReveal>
-        <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-[1.15fr_0.85fr]">
           <Card className="p-6 sm:p-8">
             <Tag className="mb-4">Founder Proof</Tag>
-            <h2 className="text-balance font-display text-3xl font-semibold sm:text-4xl">
+            <h2 className="text-balance font-display text-2xl font-semibold sm:text-3xl md:text-4xl">
               Founder-led delivery that makes scoping and execution faster
             </h2>
             <p className="mt-4 max-w-[62ch] text-sm leading-relaxed text-ink/75 sm:text-base">
               TwoApps is company-led, but founder depth is a major trust advantage. Clients get practical experience across
               AI workflows, product engineering, Claude/Claude Code workflows, and compliance-aware process design.
             </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[
                 "Claude / Claude Code workflow setup",
                 "AI workflow design with guardrails",
@@ -110,18 +110,18 @@ export function FounderProofSection() {
                 </div>
               ))}
             </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button href="/about" variant="secondary">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href="/about" variant="secondary" className="w-full sm:w-auto">
                 About TwoApps
               </Button>
-              <Button href="https://zainhthegreat.github.io/my_cv_zain/" variant="ghost" target="_blank" rel="noreferrer">
+              <Button href="https://zainhthegreat.github.io/my_cv_zain/" variant="ghost" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
                 View founder CV
               </Button>
             </div>
           </Card>
           <Card className="p-6">
             <Tag className="mb-4">Target Markets</Tag>
-            <h3 className="font-display text-2xl font-semibold">UAE-based, serving globally</h3>
+            <h3 className="font-display text-lg font-semibold sm:text-xl lg:text-2xl">UAE-based, serving globally</h3>
             <div className="mt-4 space-y-3">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                 <p className="font-medium">Direct business clients</p>
@@ -157,12 +157,12 @@ export function WorkPreviewSection() {
           subtitle="These case-style summaries show how TwoApps scopes and delivers work. They can later expand into formal case studies as client approvals grow."
         />
       </AnimatedReveal>
-      <div className="mt-8 grid gap-4 lg:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
         {caseStudies.slice(0, 2).map((item, index) => (
           <AnimatedReveal key={item.slug} delay={0.05 * index}>
-            <Card className="h-full p-5">
+            <Card className="h-full p-5 sm:p-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink/55">{item.context}</p>
-              <h3 className="mt-2 text-xl font-display font-semibold leading-tight">{item.title}</h3>
+              <h3 className="mt-2 font-display text-lg font-semibold leading-tight sm:text-xl">{item.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink/75">{item.approach}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {item.tech.slice(0, 3).map((tech) => (
@@ -188,10 +188,10 @@ export function IndustriesAndRegionsSection() {
   return (
     <Section className="pt-6">
       <AnimatedReveal>
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
           <Card className="p-6">
             <Tag className="mb-4">Industries</Tag>
-            <h2 className="font-display text-2xl font-semibold sm:text-3xl">Operationally heavy teams benefit first</h2>
+            <h2 className="font-display text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">Operationally heavy teams benefit first</h2>
             <p className="mt-3 text-sm leading-relaxed text-ink/75">
               TwoApps focuses on teams where manual workflows create delays, errors, and too much back-and-forth.
             </p>
@@ -209,7 +209,7 @@ export function IndustriesAndRegionsSection() {
           </Card>
           <Card className="p-6">
             <Tag className="mb-4">Geography</Tag>
-            <h2 className="font-display text-2xl font-semibold sm:text-3xl">UAE-based with global delivery</h2>
+            <h2 className="font-display text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">UAE-based with global delivery</h2>
             <p className="mt-3 text-sm leading-relaxed text-ink/75">
               We serve clients worldwide. UAE location helps with local collaboration, while delivery is built for remote teams and agency partnerships.
             </p>
@@ -243,14 +243,14 @@ export function ProcessSection() {
           subtitle="A simple delivery model for both direct business projects and white-label agency work."
         />
       </AnimatedReveal>
-      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
         {processSteps.map((step, index) => (
           <AnimatedReveal key={step.title} delay={0.05 * index}>
-            <Card className="relative h-full p-5">
+            <Card className="relative h-full p-5 sm:p-6">
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-white/10 bg-white/5 font-display text-lg">
                 {index + 1}
               </div>
-              <h3 className="font-display text-2xl font-semibold">{step.title}</h3>
+              <h3 className="font-display text-lg font-semibold sm:text-xl lg:text-2xl">{step.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink/75">{step.copy}</p>
             </Card>
           </AnimatedReveal>

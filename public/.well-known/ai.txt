@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Contact: mailto:team@thetwoapps.com
+Catalog: https://thetwoapps.com/api/catalog
+Citation: https://thetwoapps.com/llms-full.txt

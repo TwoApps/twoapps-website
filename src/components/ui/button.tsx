@@ -19,20 +19,20 @@ type NativeButtonProps = CommonProps &
   };
 
 const base =
-  "focus-ring relative inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50";
+  "focus-ring relative inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<NonNullable<CommonProps["variant"]>, string> = {
   primary:
-    "text-[#021111] bg-[linear-gradient(90deg,rgba(0,228,212,.95),rgba(82,255,239,.9),rgba(0,205,194,.95))] shadow-[0_0_0_1px_rgba(255,255,255,.08),0_12px_35px_rgba(0,228,212,.2)] hover:shadow-[0_0_0_1px_rgba(255,255,255,.1),0_16px_45px_rgba(0,228,212,.28)]",
+    "bg-ink text-cream shadow-[0_1px_2px_rgba(22,21,15,0.08)] hover:bg-blue hover:shadow-[0_12px_35px_rgba(39,66,206,0.22)]",
   secondary:
-    "border border-white/10 bg-white/[0.035] text-ink hover:border-accent-1/20 hover:bg-accent-1/5 [box-shadow:0_0_0_1px_rgba(0,228,212,.04)]",
-  ghost: "text-ink/90 hover:bg-accent-1/6 hover:text-accent-1"
+    "border border-ink/25 bg-transparent text-ink hover:border-ink hover:bg-ink/[0.04]",
+  ghost: "text-ink/80 hover:bg-ink/[0.05] hover:text-ink"
 };
 
 const sizes: Record<NonNullable<CommonProps["size"]>, string> = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-5 py-3 text-sm sm:text-base",
-  lg: "px-6 py-3.5 text-base sm:text-lg"
+  sm: "px-5 py-2.5 text-[13px]",
+  md: "px-6 py-3.5 text-sm",
+  lg: "px-8 py-4 text-base"
 };
 
 function classes({ variant = "primary", size = "md", className }: CommonProps) {

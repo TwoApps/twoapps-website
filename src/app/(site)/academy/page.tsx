@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { CtaBand } from "@/components/common/cta-band";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { AcademyEnrollForm } from "@/components/academy/academy-enroll-form";
+import { ScrollBot } from "@/components/shared/scroll-bot";
 
 // Course definitions
 const courses = [
@@ -235,16 +236,16 @@ function CoursePanelBody({
 }) {
   return (
     <div className="space-y-5">
-      <p className="text-sm leading-relaxed text-ink/78">{course.description}</p>
+      <p className="text-sm sm:text-base leading-relaxed text-ink/78">{course.description}</p>
       <div>
         <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink/50">
           What you&apos;ll learn
         </h4>
         <ul className="space-y-2">
           {course.topics.map((topic, i) => (
-            <li key={i} className="flex items-start gap-2 text-sm text-ink/80">
+            <li key={i} className="flex items-start gap-2 text-sm sm:text-base text-ink/80">
               <svg
-                className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent-1"
+                className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -261,7 +262,7 @@ function CoursePanelBody({
           ))}
         </ul>
       </div>
-      <Button onClick={onEnroll}>Enroll</Button>
+      <Button onClick={onEnroll} className="w-full sm:w-auto">Enroll</Button>
     </div>
   );
 }
@@ -299,55 +300,62 @@ export default function AcademyPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="TwoApps Academy"
-        title="Free AI automation courses for operators"
-        description="Practical mini-courses that show you what to automate, how to build it, and how to stay compliant. Pick a course and start in five minutes."
-        chips={["Free PDF downloads", "Self-paced", "Practical frameworks", "No sign-up wall"]}
-      />
+      <ScrollBot />
+
+      <div data-bot-stop data-bot-fx="0.15" data-bot-say="This academy turns your team into AI operators in a weekend.">
+        <PageHero
+          eyebrow="TwoApps Academy"
+          title="Free AI automation courses for operators"
+          description="Practical mini-courses that show you what to automate, how to build it, and how to stay compliant. Pick a course and start in five minutes."
+          chips={["Free PDF downloads", "Self-paced", "Practical frameworks", "No sign-up wall"]}
+        />
+      </div>
 
       {/* Outcomes strip */}
-      <Section className="pt-8 pb-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
-            {outcomes.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-5"
-              >
-                <h3 className="text-sm font-semibold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm text-ink/65">{item.body}</p>
-              </div>
-            ))}
+      <div data-bot-stop data-bot-fx="0.3" data-bot-say="Know exactly what to automate first — and what it's worth.">
+        <Section className="pt-8 sm:pt-10 pb-8 sm:pb-10">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+              {outcomes.map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-2xl border border-ink/10 bg-white p-5 sm:p-6"
+                >
+                  <h3 className="text-base sm:text-lg font-semibold text-ink">{item.title}</h3>
+                  <p className="mt-2 text-sm sm:text-base text-ink/70">{item.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      </div>
 
       {/* Course finder (quiz, collapsed by default) */}
-      <Section className="pt-4 pb-8">
-        <div className="mx-auto max-w-3xl">
-          <div className="rounded-2xl border border-accent-1/30 bg-gradient-to-br from-accent-1/10 to-transparent p-6 sm:p-8">
+      <div data-bot-stop data-bot-fx="0.7" data-bot-say="Not sure where to start? The quiz finds your fastest win.">
+        <Section className="pt-4 pb-8">
+          <div className="mx-auto max-w-3xl">
+            <div className="rounded-[22px] border border-ink/10 bg-white p-5 sm:p-6 md:p-8 shadow-[0_1px_2px_rgba(22,21,15,0.04)]">
             {!quizStarted ? (
               <div className="text-center">
-                <div className="mb-4 inline-flex items-center justify-center rounded-full bg-accent-1/20 p-3">
-                  <svg className="h-6 w-6 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="mb-4 inline-flex items-center justify-center rounded-full border border-ink/10 bg-cream p-3">
+                  <svg className="h-6 w-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
-                <h3 className="mb-2 text-xl font-semibold text-ink">
+                <h3 className="mb-2 text-xl sm:text-2xl font-semibold text-ink">
                   Not sure where to start?
                 </h3>
-                <p className="mb-6 text-sm text-ink/70">
+                <p className="mb-6 text-sm sm:text-base text-ink/70">
                   Answer five quick questions. We&apos;ll point you at the right course.
                 </p>
-                <Button onClick={() => setQuizStarted(true)}>
+                <Button onClick={() => setQuizStarted(true)} className="w-full sm:w-auto">
                   Get a course recommendation in 2 minutes
                 </Button>
               </div>
             ) : showResult && recommendation ? (
               <div>
                 <div className="mb-6 text-center">
-                  <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-accent-1/20 px-4 py-1.5 text-sm font-medium text-accent-1">
+                  <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-ink/10 bg-cream px-4 py-1.5 text-sm font-medium text-blue">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -355,21 +363,21 @@ export default function AcademyPage() {
                   </div>
                 </div>
 
-                <div className="mb-6 rounded-xl bg-white/5 p-5 border border-white/10">
+                <div className="mb-6 rounded-xl bg-cream border border-ink/10 p-5">
                   <p className="text-sm text-ink/80 leading-relaxed mb-4">
                     {recommendation.message}
                   </p>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2 mb-6">
-                  <Card className="p-4 border-accent-1/50 bg-accent-1/5">
-                    <div className="mb-2 text-xs font-medium uppercase tracking-wider text-accent-1">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-6">
+                  <Card className="p-4 sm:p-5 bg-cream border-blue/30">
+                    <div className="mb-2 text-xs font-medium uppercase tracking-wider text-blue">
                       Start here
                     </div>
-                    <h4 className="text-base font-semibold text-ink mb-1">
+                    <h4 className="text-base sm:text-lg font-semibold text-ink mb-1">
                       {recommendation.primary.title}
                     </h4>
-                    <p className="text-xs text-ink/60 mb-3">
+                    <p className="text-xs sm:text-sm text-ink/60 mb-3">
                       {recommendation.primary.subtitle}
                     </p>
                     <Button
@@ -380,14 +388,14 @@ export default function AcademyPage() {
                     </Button>
                   </Card>
 
-                  <Card className="p-4 border-white/10">
+                  <Card className="p-4 sm:p-5">
                     <div className="mb-2 text-xs font-medium uppercase tracking-wider text-ink/50">
                       Then this
                     </div>
-                    <h4 className="text-base font-semibold text-ink mb-1">
+                    <h4 className="text-base sm:text-lg font-semibold text-ink mb-1">
                       {recommendation.secondary.title}
                     </h4>
-                    <p className="text-xs text-ink/60 mb-3">
+                    <p className="text-xs sm:text-sm text-ink/60 mb-3">
                       {recommendation.secondary.subtitle}
                     </p>
                     <Button
@@ -408,23 +416,23 @@ export default function AcademyPage() {
               </div>
             ) : (
               <div>
-                <div className="mb-6 flex items-center justify-between">
-                  <span className="text-sm text-ink/60">
+                <div className="mb-6 flex items-center justify-between gap-3">
+                  <span className="text-xs sm:text-sm text-ink/60">
                     Question {quizStep + 1} of {quizQuestions.length}
                   </span>
                   <div className="flex gap-1">
                     {quizQuestions.map((_, idx) => (
                       <div
                         key={idx}
-                        className={`h-1.5 w-8 rounded-full transition-colors ${
-                          idx < quizStep ? "bg-accent-1" : idx === quizStep ? "bg-accent-1/50" : "bg-white/10"
+                        className={`h-1.5 w-6 sm:w-8 rounded-full transition-colors ${
+                          idx < quizStep ? "bg-blue" : idx === quizStep ? "bg-blue/50" : "bg-ink/10"
                         }`}
                       />
                     ))}
                   </div>
                 </div>
 
-                <h3 className="mb-6 text-lg font-semibold text-ink">
+                <h3 className="mb-6 text-lg sm:text-xl font-semibold text-ink">
                   {quizQuestions[quizStep].question}
                 </h3>
 
@@ -433,13 +441,13 @@ export default function AcademyPage() {
                     <button
                       key={idx}
                       onClick={() => handleAnswerSelect(quizQuestions[quizStep].id, option.score)}
-                      className={`w-full rounded-lg border p-4 text-left transition-all hover:border-accent-1/50 hover:bg-white/5 ${
+                      className={`w-full min-h-12 rounded-2xl border bg-white p-4 text-left transition-all hover:border-blue/55 hover:bg-cream ${
                         quizAnswers[quizQuestions[quizStep].id] === option.score
-                          ? "border-accent-1 bg-accent-1/10"
-                          : "border-white/10"
+                          ? "border-blue bg-cream"
+                          : "border-ink/10"
                       }`}
                     >
-                      <span className="text-sm text-ink">{option.label}</span>
+                      <span className="text-sm sm:text-base text-ink">{option.label}</span>
                     </button>
                   ))}
                 </div>
@@ -447,57 +455,62 @@ export default function AcademyPage() {
                 {quizStep > 0 && (
                   <button
                     onClick={() => setQuizStep(prev => prev - 1)}
-                    className="mt-4 text-sm text-ink/50 hover:text-ink transition-colors"
+                    className="mt-4 inline-flex min-h-11 items-center text-sm text-ink/50 hover:text-ink transition-colors"
                   >
                     ← Previous question
                   </button>
                 )}
               </div>
             )}
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      </div>
 
       {/* Curriculum (panels with beginner/advanced toggle) */}
-      <div id="courses">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex flex-wrap gap-2">
-            <Button
-              variant={level === "beginner" ? "primary" : "ghost"}
-              size="sm"
-              onClick={() => setLevel("beginner")}
-            >
-              Beginner
-            </Button>
-            <Button
-              variant={level === "advanced" ? "primary" : "ghost"}
-              size="sm"
-              onClick={() => setLevel("advanced")}
-            >
-              Advanced
-            </Button>
+      <div data-bot-stop data-bot-fx="0.5" data-bot-say="Every course is built from real builds, not theory.">
+        <div id="courses">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-6 flex flex-wrap gap-2 sm:gap-3">
+              <Button
+                variant={level === "beginner" ? "primary" : "ghost"}
+                size="sm"
+                onClick={() => setLevel("beginner")}
+              >
+                Beginner
+              </Button>
+              <Button
+                variant={level === "advanced" ? "primary" : "ghost"}
+                size="sm"
+                onClick={() => setLevel("advanced")}
+              >
+                Advanced
+              </Button>
+            </div>
           </div>
+          <DetailPanelsSection
+            eyebrow="Curriculum"
+            title="Five courses, ordered by where you are"
+            items={visibleCourses.map((c) => ({
+              title: c.title,
+              summary: `${c.level} · ${c.duration} · ${c.subtitle}`,
+              content: <CoursePanelBody course={c} onEnroll={() => setSelectedCourse(c)} />
+            }))}
+          />
         </div>
-        <DetailPanelsSection
-          eyebrow="Curriculum"
-          title="Five courses, ordered by where you are"
-          items={visibleCourses.map((c) => ({
-            title: c.title,
-            summary: `${c.level} · ${c.duration} · ${c.subtitle}`,
-            content: <CoursePanelBody course={c} onEnroll={() => setSelectedCourse(c)} />
-          }))}
-        />
       </div>
 
       {/* CTA band */}
-      <CtaBand
-        title="Want us to build it with you?"
-        copy="Book a call and we'll map the highest-ROI automations in your stack."
-        primaryHref="/book"
-        primaryLabel="Book a call"
-        secondaryHref="/contact"
-        secondaryLabel="Talk to us"
-      />
+      <div data-bot-stop data-bot-fx="0.85" data-bot-say="If you want it done for you, we build with you.">
+        <CtaBand
+          title="Want us to build it with you?"
+          copy="Book a call and we'll map the highest-ROI automations in your stack."
+          primaryHref="/book"
+          primaryLabel="Book a call"
+          secondaryHref="/contact"
+          secondaryLabel="Talk to us"
+        />
+      </div>
 
       {/* Enrollment Modal */}
       {selectedCourse && (
@@ -518,34 +531,34 @@ function EnrollmentModal({
   onClose: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative z-10 w-full max-w-md">
-        <Card className="p-6 sm:p-8">
+      <div className="relative z-10 w-full max-w-md max-h-[90vh] overflow-y-auto">
+        <Card className="p-5 sm:p-6 md:p-8">
           {/* Header */}
-          <div className="mb-6">
+          <div className="mb-6 pr-10">
             <button
               onClick={onClose}
-              className="absolute right-4 top-4 rounded-lg p-2 text-ink/50 hover:text-ink hover:bg-white/10 transition-colors"
+              className="absolute right-3 top-3 inline-flex h-11 w-11 items-center justify-center rounded-lg text-ink/50 hover:text-ink hover:bg-ink/[0.06] transition-colors"
               aria-label="Close"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <span className="mb-2 inline-block rounded-full bg-accent-1/20 px-3 py-1 text-xs font-medium text-accent-1">
+            <span className="mb-2 inline-block rounded-full border border-ink/10 bg-cream px-3 py-1 text-xs font-medium text-blue">
               Free Course
             </span>
-            <h3 className="text-xl font-semibold text-ink sm:text-2xl">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-ink">
               {course.title}
             </h3>
-            <p className="mt-1 text-sm text-ink/60">
+            <p className="mt-1 text-sm sm:text-base text-ink/60">
               {course.subtitle}
             </p>
           </div>

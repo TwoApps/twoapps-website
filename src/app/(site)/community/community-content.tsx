@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { ScrollBot } from "@/components/shared/scroll-bot";
 import { PageHero } from "@/components/common/page-hero";
 import { FaqSection } from "@/components/common/faq-section";
 import { CtaBand } from "@/components/common/cta-band";
@@ -97,6 +99,9 @@ const faqs = [
   }
 ];
 
+const inputClassName =
+  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white";
+
 export default function CommunityPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -134,25 +139,40 @@ export default function CommunityPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Client Community"
-        title="The TwoApps client community"
-        description="Peer learning, templates, and direct team support — for operators building AI automation."
-        chips={["Peer learning", "Templates", "Early access", "Direct support"]}
-      />
+      <ScrollBot />
+
+      <div
+        data-bot-stop
+        data-bot-say="This is where agencies trade playbooks that actually move revenue."
+        data-bot-fx="0.25"
+        data-bot-icons="spark,chat"
+      >
+        <PageHero
+          eyebrow="Client Community"
+          title="The TwoApps client community"
+          description="Peer learning, templates, and direct team support — for operators building AI automation."
+          chips={["Peer learning", "Templates", "Early access", "Direct support"]}
+        />
+      </div>
 
       {/* Benefits Section */}
-      <Section className="pt-12 pb-16">
+      <Section
+        className="pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-24"
+        data-bot-stop
+        data-bot-say="Members get templates and workflows that aren't in any public library."
+        data-bot-fx="0.75"
+        data-bot-icons="box,chart"
+      >
         <Container>
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 sm:mb-12">
             <Tag>Benefits</Tag>
             <Heading title="What You Get" align="center" className="mt-4" />
           </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
             {benefits.map((benefit, index) => (
-              <Card key={index} className="p-6">
+              <Card key={index} className="p-5 sm:p-6">
                 <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-ink mb-2">{benefit.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-ink mb-2">{benefit.title}</h3>
                 <p className="text-ink/70 text-sm leading-relaxed">{benefit.description}</p>
               </Card>
             ))}
@@ -161,32 +181,38 @@ export default function CommunityPage() {
       </Section>
 
       {/* How It Works Section */}
-      <Section className="py-16 bg-cyan-field">
+      <Section
+        className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white"
+        data-bot-stop
+        data-bot-say="Request access today and you'll be inside the Slack within 48 hours."
+        data-bot-fx="0.15"
+        data-bot-icons="clock,arrowR"
+      >
         <Container>
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 sm:mb-12">
             <Tag>Process</Tag>
             <Heading title="How it works" align="center" className="mt-4" />
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
             {steps.map((step, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-1/10 text-accent-1 text-2xl font-bold mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue/10 text-blue text-2xl font-bold mb-4">
                   {step.number}
                 </div>
-                <h3 className="text-xl font-semibold text-ink mb-2">{step.title}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-ink mb-2">{step.title}</h3>
                 <p className="text-ink/70 text-sm">{step.description}</p>
               </div>
             ))}
           </div>
 
           {/* Inline testimonial */}
-          <div className="mx-auto mt-12 max-w-2xl">
-            <Card className="p-6 glass-panel">
+          <div className="mx-auto mt-10 sm:mt-12 max-w-2xl">
+            <Card className="p-5 sm:p-6">
               <p className="text-ink/80 text-sm leading-relaxed mb-6 italic">
                 &quot;{featuredTestimonial.quote}&quot;
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-accent-1/20 flex items-center justify-center text-accent-1 font-semibold">
+                <div className="w-10 h-10 rounded-full bg-blue/10 flex items-center justify-center text-blue font-semibold">
                   {featuredTestimonial.name
                     .split(" ")
                     .map((n) => n[0])
@@ -205,12 +231,25 @@ export default function CommunityPage() {
       </Section>
 
       {/* FAQ + Request Access */}
-      <Section className="py-16 bg-cyan-field">
+      <Section className="py-12 sm:py-16 md:py-20 lg:py-24">
         <Container>
-          <FaqSection title="Common questions" items={faqs} />
+          <div
+            data-bot-stop
+            data-bot-say="Every question here came from real applicants. Yours is probably already answered."
+            data-bot-fx="0.85"
+            data-bot-icons="chat,check"
+          >
+            <FaqSection title="Common questions" items={faqs} />
+          </div>
 
-          <div className="max-w-2xl mx-auto mt-16">
-            <div className="text-center mb-8">
+          <div
+            className="max-w-2xl mx-auto mt-12 sm:mt-16"
+            data-bot-stop
+            data-bot-say="Spots are reviewed weekly. A complete application gets you in faster."
+            data-bot-fx="0.5"
+            data-bot-icons="shield,person"
+          >
+            <div className="text-center mb-6 sm:mb-8">
               <Tag>Join Now</Tag>
               <Heading title="Request Access" align="center" className="mt-4" />
               <p className="mt-4 text-ink/70">
@@ -218,10 +257,10 @@ export default function CommunityPage() {
               </p>
             </div>
 
-            <Card className="p-8">
+            <Card className="p-5 sm:p-6 md:p-8">
               {submitStatus === "success" ? (
                 <div className="text-center py-8">
-                  <div className="text-5xl mb-4">✓</div>
+                  <div className="text-5xl mb-4 text-emerald-600">✓</div>
                   <h3 className="text-xl font-semibold text-ink mb-2">
                     Application received
                   </h3>
@@ -244,7 +283,7 @@ export default function CommunityPage() {
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-paper border border-white/10 text-ink focus:border-accent-1 focus:ring-1 focus:ring-accent-1 transition-colors"
+                      className={inputClassName}
                       placeholder="Jane Doe"
                     />
                   </div>
@@ -262,7 +301,7 @@ export default function CommunityPage() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-paper border border-white/10 text-ink focus:border-accent-1 focus:ring-1 focus:ring-accent-1 transition-colors"
+                      className={inputClassName}
                       placeholder="jane@company.com"
                     />
                   </div>
@@ -280,7 +319,7 @@ export default function CommunityPage() {
                       required
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-paper border border-white/10 text-ink focus:border-accent-1 focus:ring-1 focus:ring-accent-1 transition-colors"
+                      className={inputClassName}
                       placeholder="Acme Inc."
                     />
                   </div>
@@ -294,7 +333,7 @@ export default function CommunityPage() {
                       required
                       value={formData.role}
                       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-paper border border-white/10 text-ink focus:border-accent-1 focus:ring-1 focus:ring-accent-1 transition-colors"
+                      className={cn(inputClassName, "appearance-none")}
                     >
                       <option value="">Select your role...</option>
                       <option value="Operations / COO">Operations / COO</option>
@@ -320,13 +359,13 @@ export default function CommunityPage() {
                       rows={4}
                       value={formData.goals}
                       onChange={(e) => setFormData({ ...formData, goals: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-paper border border-white/10 text-ink focus:border-accent-1 focus:ring-1 focus:ring-accent-1 transition-colors resize-none"
+                      className={cn(inputClassName, "min-h-32 resize-y")}
                       placeholder="e.g., Learn from peers, get support with automation, stay updated on AI trends..."
                     />
                   </div>
 
                   {submitStatus === "error" && (
-                    <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
+                    <div className="p-4 rounded-lg bg-red-50 border border-red-200 text-red-600 text-sm">
                       Something went wrong. Please try again or contact us directly at team@twoapps.com
                     </div>
                   )}
@@ -352,14 +391,21 @@ export default function CommunityPage() {
       </Section>
 
       {/* CTA Band */}
-      <CtaBand
-        title="Have a question first?"
-        copy="Tell us what you're trying to do and we'll point you in the right direction."
-        primaryHref="/contact"
-        primaryLabel="Talk to us"
-        secondaryHref="mailto:team@twoapps.com"
-        secondaryLabel="Email the team"
-      />
+      <div
+        data-bot-stop
+        data-bot-say="Not ready to apply? Ping the team - we usually reply the same day."
+        data-bot-fx="0.35"
+        data-bot-icons="inbox,pulse"
+      >
+        <CtaBand
+          title="Have a question first?"
+          copy="Tell us what you're trying to do and we'll point you in the right direction."
+          primaryHref="/contact"
+          primaryLabel="Talk to us"
+          secondaryHref="mailto:team@twoapps.com"
+          secondaryLabel="Email the team"
+        />
+      </div>
     </>
   );
 }

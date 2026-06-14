@@ -27,7 +27,7 @@ const initialState: FormState = {
 };
 
 const inputClassName =
-  "focus-ring w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-ink placeholder:text-ink/40 transition-colors hover:border-white/15 focus:border-accent-1/30 focus:bg-white/[0.07]";
+  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white";
 
 function FormField({
   label,
@@ -46,11 +46,11 @@ function FormField({
     <label className={cn("block", className)}>
       <span className="mb-2 block text-sm font-medium text-ink/90">
         {label}
-        {required ? <span className="ml-1 text-accent-2">*</span> : null}
+        {required ? <span className="ml-1 text-orange">*</span> : null}
       </span>
       {children}
       {error ? (
-        <span className="mt-1 block text-xs text-red-300" role="alert">
+        <span className="mt-1 block text-xs text-red-600" role="alert">
           {error}
         </span>
       ) : null}
@@ -156,11 +156,11 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
     return (
       <div className="space-y-4">
         <div
-          className="rounded-2xl border border-accent-1/20 bg-accent-1/10 p-6 text-center"
+          className="rounded-2xl border border-ink/10 bg-cream p-6 text-center"
           role="status"
         >
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent-1/20">
-            <svg className="h-6 w-6 text-accent-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue/10">
+            <svg className="h-6 w-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
@@ -176,7 +176,7 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
         </div>
         <p className="text-center text-xs text-ink/50">
           Questions? Email us at{" "}
-          <a href="mailto:team@twoapps.com" className="text-accent-1 hover:underline">
+          <a href="mailto:team@twoapps.com" className="text-blue hover:underline">
             team@twoapps.com
           </a>
         </p>
@@ -186,7 +186,7 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         <FormField label="Name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
@@ -202,6 +202,7 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
             className={inputClassName}
             autoComplete="email"
             type="email"
+            inputMode="email"
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
             placeholder="you@company.com"
@@ -210,7 +211,7 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
         </FormField>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         <FormField label="Company" error={fieldErrors.company}>
           <input
             className={inputClassName}
@@ -243,7 +244,7 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
       </div>
 
       {submitError ? (
-        <p className="rounded-xl border border-red-300/20 bg-red-300/10 px-4 py-3 text-sm text-red-200" role="alert">
+        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">
           {submitError}
         </p>
       ) : null}

@@ -114,7 +114,7 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
                 <span className="block" data-hero-title-line>
                   TwoApps helps teams
                 </span>
-                <span className="block bg-gradient-to-r from-accent-1 via-white to-accent-2 bg-clip-text text-transparent" data-hero-title-line>
+                <span className="block text-blue" data-hero-title-line>
                   automate real work
                 </span>
                 <span className="block text-ink/92" data-hero-title-line>
@@ -155,8 +155,8 @@ export function AnimatedHero({ bookingHref }: AnimatedHeroProps) {
             </div>
 
             <div data-hero-panel className="relative">
-              <div className="glass-panel gradient-stroke relative overflow-hidden rounded-3xl p-5 sm:p-6">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-1/70 to-transparent" />
+              <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white p-5 sm:p-6">
+                <div className="absolute inset-x-0 top-0 h-px bg-blue" />
                 <div className="mb-4 flex items-center justify-between">
                   <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent-1">Pick your path</p>
                   <span className="rounded-full border border-white/10 px-2 py-1 text-[10px] uppercase tracking-[0.2em] text-ink/60">

@@ -164,7 +164,7 @@ export function CaseStudyCard({
         onClick={onClick}
         className={`
           group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300
-          ${isDark ? 'bg-gradient-to-br from-[#0A1012] to-[#020406]' : 'bg-white'}
+          ${isDark ? 'bg-ink' : 'bg-white'}
           shadow-xl hover:shadow-2xl
           ${className}
         `}

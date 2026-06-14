@@ -30,7 +30,7 @@ const initialState: FormState = {
 };
 
 const inputClassName =
-  "focus-ring w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-ink placeholder:text-ink/40";
+  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white";
 
 function FormField({
   label,
@@ -49,11 +49,11 @@ function FormField({
     <label className={cn("block", className)}>
       <span className="mb-2 block text-sm font-medium text-ink/90">
         {label}
-        {required ? <span className="ml-1 text-accent-2">*</span> : null}
+        {required ? <span className="ml-1 text-orange">*</span> : null}
       </span>
       {children}
       {error ? (
-        <span className="mt-1 block text-xs text-red-300" role="alert">
+        <span className="mt-1 block text-xs text-red-600" role="alert">
           {error}
         </span>
       ) : null}
@@ -145,7 +145,7 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
         <FormField label="Name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
@@ -168,7 +168,7 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
         </FormField>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
         <FormField label="Company" error={fieldErrors.company}>
           <input
             className={inputClassName}
@@ -187,9 +187,9 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
         </FormField>
       </div>
 
-      <fieldset className="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <fieldset className="rounded-2xl border border-ink/10 bg-cream p-4">
         <legend className="px-1 text-sm font-medium text-ink/90">I am contacting you as</legend>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+        <div className="mt-3 grid gap-3 md:grid-cols-2">
           {[
             { key: "business", label: "Business team", hint: "I need help improving operations or building an AI workflow" },
             { key: "agency", label: "Agency / software house", hint: "I need a white-label AI delivery partner" }
@@ -197,8 +197,8 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
             <label
               key={option.key}
               className={cn(
-                "focus-within:ring-accent-1/60 relative rounded-xl border border-white/10 p-3 transition-colors focus-within:ring-2",
-                values.audience === option.key ? "bg-white/10" : "bg-white/5"
+                "focus-within:ring-blue/40 relative rounded-xl border border-ink/10 p-3 transition-colors focus-within:ring-2",
+                values.audience === option.key ? "bg-white" : "bg-cream"
               )}
             >
               <input
@@ -209,12 +209,12 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
                 onChange={() => update("audience", option.key as FormState["audience"])}
                 className="absolute inset-0 opacity-0"
               />
-              <span className="block text-sm font-medium">{option.label}</span>
+              <span className="block text-sm font-medium text-ink">{option.label}</span>
               <span className="mt-1 block text-xs text-ink/65">{option.hint}</span>
             </label>
           ))}
         </div>
-        {fieldErrors.audience ? <p className="mt-2 text-xs text-red-300">{fieldErrors.audience}</p> : null}
+        {fieldErrors.audience ? <p className="mt-2 text-xs text-red-600">{fieldErrors.audience}</p> : null}
       </fieldset>
 
       <FormField label="Service interest" error={fieldErrors.serviceInterest}>
@@ -236,7 +236,7 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
 
       <FormField label="Project details" required error={fieldErrors.message}>
         <textarea
-          className={cn(inputClassName, "min-h-36 resize-y")}
+          className={cn(inputClassName, "min-h-32 resize-y sm:min-h-36")}
           placeholder="Describe the problem in simple words: what is slowing the team down, and what outcome do you want?"
           value={values.message}
           onChange={(e) => update("message", e.target.value)}
@@ -257,22 +257,22 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
       </div>
 
       {submitError ? (
-        <p className="rounded-xl border border-red-300/20 bg-red-300/10 px-4 py-3 text-sm text-red-200" role="alert">
+        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">
           {submitError}
         </p>
       ) : null}
 
       {submitted ? (
         <p
-          className="rounded-xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm text-emerald-200"
+          className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
           role="status"
         >
           Inquiry sent. You should receive a response after review.
         </p>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-3">
-        <Button type="submit" disabled={isPending}>
+      <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
           {isPending ? "Sending..." : "Send inquiry"}
         </Button>
         <p className="text-xs text-ink/60">

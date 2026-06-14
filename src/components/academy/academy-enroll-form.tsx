@@ -23,7 +23,7 @@ type FormState = AcademyEnrollPayload;
 type FieldErrors = Partial<Record<keyof AcademyEnrollPayload, string>>;
 
 const inputClassName =
-  "focus-ring w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-ink placeholder:text-ink/40";
+  "focus-ring w-full min-h-11 rounded-2xl border border-ink/10 bg-cream px-4 py-3 text-base text-ink placeholder:text-ink/40";
 
 function FormField({
   label,
@@ -40,13 +40,13 @@ function FormField({
 }) {
   return (
     <label className={cn("block", className)}>
-      <span className="mb-2 block text-sm font-medium text-ink/90">
+      <span className="mb-2 block text-sm sm:text-base font-medium text-ink/90">
         {label}
         {required ? <span className="ml-1 text-accent-2">*</span> : null}
       </span>
       {children}
       {error ? (
-        <span className="mt-1 block text-xs text-red-300" role="alert">
+        <span className="mt-1 block text-xs text-red-600" role="alert">
           {error}
         </span>
       ) : null}
@@ -162,10 +162,10 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
   if (submitted) {
     return (
       <div className="space-y-4 text-center">
-        <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-6 py-6">
-          <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-300/20">
+        <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-6 py-6">
+          <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20">
             <svg
-              className="h-5 w-5 text-emerald-300"
+              className="h-5 w-5 text-emerald-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -173,8 +173,8 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-base font-semibold text-emerald-200">You&apos;re enrolled!</h3>
-          <p className="mt-2 text-sm text-emerald-200/80">
+          <h3 className="text-base font-semibold text-emerald-800">You&apos;re enrolled!</h3>
+          <p className="mt-2 text-sm text-emerald-700/80">
             Check your inbox — we&apos;ve sent you the course PDF.
           </p>
         </div>
@@ -184,7 +184,7 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div className="grid gap-3">
+      <div className="grid gap-4">
         <FormField label="Name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
@@ -230,7 +230,7 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
       </div>
 
       {submitError ? (
-        <p className="rounded-xl border border-red-300/20 bg-red-300/10 px-4 py-3 text-sm text-red-200" role="alert">
+        <p className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-700" role="alert">
           {submitError}
         </p>
       ) : null}

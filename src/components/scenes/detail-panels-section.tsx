@@ -1,6 +1,7 @@
 import { ExpandableDetailPanel } from "@/components/common/expandable-detail-panel";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { cn } from "@/lib/utils";
 
 type DetailPanelItem = {
   title: string;
@@ -25,9 +26,9 @@ export function DetailPanelsSection({
   if (!items.length) return null;
 
   return (
-    <Section className={className}>
+    <Section className={cn("py-12 sm:py-16 md:py-20 lg:py-24", className)}>
       <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
-      <div className="mt-8 space-y-3">
+      <div className="mt-6 space-y-3 sm:mt-8">
         {items.map((item, index) => (
           <ExpandableDetailPanel
             key={item.title}

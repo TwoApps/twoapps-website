@@ -14,10 +14,10 @@ export function Header({ bookingHref }: { bookingHref: string }) {
   return (
     <header className="sticky top-0 z-40">
       <div className="mx-auto mt-3 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="glass-panel gradient-stroke relative rounded-2xl px-3 py-2 sm:px-4">
+        <div className="glass-panel relative rounded-2xl px-3 py-2 sm:px-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="focus-ring inline-flex items-center gap-3 rounded-xl px-2 py-2">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-accent-1/80 via-accent-3/70 to-accent-2/80 text-sm font-semibold text-paper shadow-glow">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue text-sm font-semibold text-white">
                 TA
               </span>
               <span className="hidden sm:block">

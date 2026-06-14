@@ -28,8 +28,8 @@ export function FaqSection({
         title={title}
         subtitle="Questions are collapsed by default to keep the page readable while preserving all the detail."
       />
-      <Card className="mt-8 p-3 sm:p-4">
-        <div className="space-y-3">
+      <Card className="mt-8 p-3 sm:p-4 md:p-5">
+        <div className="space-y-3 sm:space-y-4">
           {items.map((item, index) => (
             <ExpandableDetailPanel
               key={item.question}
@@ -37,7 +37,7 @@ export function FaqSection({
               summary="Expand to view answer"
               defaultOpen={index === 0}
             >
-              <p className="text-sm leading-relaxed text-ink/78 sm:text-base">{item.answer}</p>
+              <p className="text-sm leading-relaxed text-ink/80 sm:text-base">{item.answer}</p>
             </ExpandableDetailPanel>
           ))}
         </div>

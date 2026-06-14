@@ -30,7 +30,7 @@ const initialState: FormState = {
 };
 
 const inputClassName =
-  "focus-ring w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-ink placeholder:text-ink/40";
+  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3.5 text-base text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white sm:py-3 sm:text-sm";
 
 function FormField({
   label,
@@ -49,11 +49,11 @@ function FormField({
     <label className={cn("block", className)}>
       <span className="mb-2 block text-sm font-medium text-ink/90">
         {label}
-        {required ? <span className="ml-1 text-accent-2">*</span> : null}
+        {required ? <span className="ml-1 text-orange">*</span> : null}
       </span>
       {children}
       {error ? (
-        <span className="mt-1 block text-xs text-red-300" role="alert">
+        <span className="mt-1 block text-xs text-red-600" role="alert">
           {error}
         </span>
       ) : null}
@@ -152,11 +152,11 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
 
   if (submitted) {
     return (
-      <div className="space-y-6 text-center">
-        <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-6 py-8">
-          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-300/20">
+      <div className="space-y-5 text-center sm:space-y-6">
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-6 sm:px-6 sm:py-8">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
             <svg
-              className="h-6 w-6 text-emerald-300"
+              className="h-6 w-6 text-emerald-600"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -164,8 +164,8 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-emerald-200">Guide downloading!</h3>
-          <p className="mt-2 text-sm text-emerald-200/80">
+          <h3 className="text-lg font-semibold text-emerald-700">Guide downloading!</h3>
+          <p className="mt-2 text-sm text-emerald-700/80">
             Your PDF should open in a new tab. If it doesn&apos;t,{" "}
             <a 
               href="/downloads/5-ai-workflows-guide.pdf" 
@@ -178,12 +178,12 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+        <div className="rounded-2xl border border-ink/10 bg-cream p-5 sm:p-6">
           <h4 className="text-sm font-medium text-ink/90">Want to take the next step?</h4>
           <p className="mt-1 text-sm text-ink/60">
             Book a free 20-minute workflow audit to identify your highest-ROI automation opportunities.
           </p>
-          <Button href="/book" className="mt-4">
+          <Button href="/book" className="mt-4 w-full sm:w-auto">
             Book Free Audit
           </Button>
         </div>
@@ -192,8 +192,8 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      <div className="grid gap-3 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5" noValidate>
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
         <FormField label="Name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
@@ -241,16 +241,16 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
       </div>
 
       {submitError ? (
-        <p className="rounded-xl border border-red-300/20 bg-red-300/10 px-4 py-3 text-sm text-red-200" role="alert">
+        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600" role="alert">
           {submitError}
         </p>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-3 pt-2">
-        <Button type="submit" disabled={isPending} size="lg">
+      <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
+        <Button type="submit" disabled={isPending} size="lg" className="w-full sm:w-auto">
           {isPending ? "Sending..." : "Send Me The Guide"}
         </Button>
-        <p className="text-xs text-ink/60">
+        <p className="text-center text-xs text-ink/60 sm:text-left">
           Free PDF. No spam. Unsubscribe anytime.
         </p>
       </div>

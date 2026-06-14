@@ -7,16 +7,19 @@ import { useEffect, useState } from "react";
 import { siteNav } from "@/content";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/site/logo";
 
 export function FloatingNav({ bookingHref }: { bookingHref: string }) {
   const pathname = usePathname();
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     let lastY = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY;
+      setScrolled(y > 24);
       if (y < 40) {
         setHidden(false);
       } else if (y > lastY + 6) {
@@ -28,6 +31,7 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -43,19 +47,21 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
           hidden ? "-translate-y-[115%]" : "translate-y-0"
         )}
       >
-        <div className="mx-auto mt-3 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="nav-shell relative flex items-center justify-between rounded-2xl px-3 py-2 sm:px-4">
-            <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded-xl px-2 py-2">
-              <img src="/twoapps-logo-mark.svg" alt="" className="h-8 w-auto shrink-0 sm:h-9" />
-              <span className="hidden sm:block">
-                <span className="block font-display text-lg font-semibold leading-none">TwoApps</span>
-                <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-accent-1/70">
-                  UAE-based | Global delivery
-                </span>
-              </span>
+        <div className="mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-12">
+          <nav
+            className={cn(
+              "mt-3 flex items-center justify-between rounded-2xl border border-transparent px-3 py-2.5 transition-all duration-400 sm:px-4",
+              scrolled
+                ? "border-ink/10 bg-cream/80 backdrop-blur-[18px]"
+                : "bg-transparent"
+            )}
+            aria-label="Primary"
+          >
+            <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded-xl px-1 py-1">
+              <Logo />
             </Link>
 
-            <nav className="hidden items-center gap-1 xl:flex" aria-label="Primary">
+            <div className="hidden items-center gap-8 xl:flex">
               {siteNav.map((item) => {
                 const active =
                   item.href === "/"
@@ -66,29 +72,27 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "focus-ring rounded-full px-3 py-2 text-sm transition-colors",
-                      active
-                        ? "bg-accent-1/12 text-accent-1 shadow-[inset_0_0_0_1px_rgba(0,228,212,.2)]"
-                        : "text-ink/70 hover:bg-white/5 hover:text-ink"
+                      "focus-ring rounded-full px-1 py-1 text-[13.5px] font-medium tracking-[0.01em] transition-colors",
+                      active ? "text-ink" : "text-ink/58 hover:text-ink"
                     )}
                   >
                     {item.label}
                   </Link>
                 );
               })}
-            </nav>
+            </div>
 
             <div className="flex items-center gap-2">
-              <Button href="/contact" variant="secondary" size="sm" className="hidden md:inline-flex">
+              <Button href="/contact" variant="ghost" size="sm" className="hidden md:inline-flex">
                 Contact
               </Button>
-              <Button href={bookingHref} size="sm">
-                Book Call
+              <Button href={bookingHref} size="sm" className="hidden sm:inline-flex">
+                Book a call
               </Button>
               <button
                 type="button"
                 onClick={() => setMobileOpen((v) => !v)}
-                className="focus-ring inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 xl:hidden"
+                className="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink/10 bg-ink/[0.04] xl:hidden"
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileOpen}
               >
@@ -114,18 +118,18 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
                 </span>
               </button>
             </div>
-          </div>
+          </nav>
         </div>
       </header>
 
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-[#030507]/92 backdrop-blur-xl transition-opacity xl:hidden",
+          "fixed inset-0 z-40 bg-cream/96 backdrop-blur-xl transition-opacity xl:hidden",
           mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         )}
       >
-        <div className="mx-auto mt-24 max-w-7xl px-4 sm:px-6">
-          <div className="rounded-3xl border border-white/10 bg-black/50 p-4 shadow-[0_0_0_1px_rgba(0,228,212,.06),0_20px_80px_rgba(0,0,0,.45)]">
+        <div className="mx-auto mt-20 max-w-[1320px] px-4 sm:mt-24 sm:px-6">
+          <div className="max-h-[calc(100vh-100px)] overflow-y-auto rounded-3xl border border-ink/10 bg-white p-4 shadow-[0_18px_60px_rgba(22,21,15,0.10)]">
             <nav className="grid gap-2" aria-label="Mobile primary">
               {siteNav.map((item) => {
                 const active =
@@ -137,8 +141,8 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
                     key={`m-${item.href}`}
                     href={item.href}
                     className={cn(
-                      "focus-ring rounded-2xl px-4 py-3 text-base",
-                      active ? "bg-accent-1/12 text-accent-1" : "bg-white/5 text-ink/85"
+                      "focus-ring rounded-2xl px-4 py-3 text-base leading-relaxed transition-colors",
+                      active ? "bg-blue/[0.06] text-blue" : "bg-ink/[0.03] text-ink/85"
                     )}
                   >
                     {item.label}
@@ -146,6 +150,14 @@ export function FloatingNav({ bookingHref }: { bookingHref: string }) {
                 );
               })}
             </nav>
+            <div className="mt-4 flex flex-col gap-2 border-t border-ink/10 pt-4">
+              <Button href="/contact" variant="secondary" className="w-full">
+                Contact
+              </Button>
+              <Button href={bookingHref} className="w-full">
+                Book a call
+              </Button>
+            </div>
           </div>
         </div>
       </div>

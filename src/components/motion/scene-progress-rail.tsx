@@ -18,13 +18,13 @@ export function SceneProgressRail({
           <div key={step} className="flex items-center gap-3">
             <span
               className={cn(
-                "relative h-2 w-2 rounded-full border border-white/20 transition-all",
-                active && "scale-125 border-accent-1 bg-accent-1 shadow-[0_0_16px_rgba(0,228,212,.45)]",
-                passed && "border-accent-1/60 bg-accent-1/60",
+                "relative h-2 w-2 rounded-full border border-ink/15 transition-all",
+                active && "scale-125 border-blue bg-blue",
+                passed && "border-blue/60 bg-blue/60",
                 !active && !passed && "bg-transparent"
               )}
             />
-            <span className={cn("text-xs uppercase tracking-[0.18em] text-ink/45", active && "text-accent-1/90")}>
+            <span className={cn("text-xs uppercase tracking-[0.18em] text-ink/45", active && "text-blue")}>
               {step}
             </span>
           </div>
