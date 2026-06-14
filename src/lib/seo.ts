@@ -249,11 +249,7 @@ export function makeBreadcrumbSchema(
 
 export function organizationSchema(siteUrl = getSiteUrl()) {
   const ids = schemaIds(siteUrl);
-  const sameAs = [
-    getLinkedInCompanyUrl(),
-    getLinkedInFounderUrl(),
-    "https://zainhthegreat.github.io/my_cv_zain/"
-  ].filter((url): url is string => Boolean(url));
+  const sameAs = [getLinkedInCompanyUrl()].filter((url): url is string => Boolean(url));
 
   return {
     "@context": SCHEMA_CONTEXT,

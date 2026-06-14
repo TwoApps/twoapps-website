@@ -58,9 +58,12 @@ export function getLinkedInCompanyUrl() {
   );
 }
 
-/** Founder (Zain Hassan) LinkedIn URL — wired into Person `sameAs`. Set via env when available. */
+/** Founder (Zain Hassan) LinkedIn URL — wired into the Person `sameAs`. */
 export function getLinkedInFounderUrl() {
-  return process.env.NEXT_PUBLIC_LINKEDIN_FOUNDER_URL?.trim() || null;
+  return (
+    process.env.NEXT_PUBLIC_LINKEDIN_FOUNDER_URL?.trim() ||
+    "https://www.linkedin.com/in/zain-hassan-18b845216"
+  );
 }
 
 /** GA4 measurement id. Defaults to the live TwoApps property; override per-env if needed. */
