@@ -7,6 +7,7 @@ import { Analytics } from "@/components/analytics";
 import { JsonLd } from "@/components/json-ld";
 import { PlausibleScript } from "@/components/plausible-script";
 import { baseMetadata, siteGraph } from "@/lib/seo";
+import { getGa4MeasurementId } from "@/lib/site-config";
 
 export const metadata: Metadata = baseMetadata;
 
@@ -50,12 +51,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Warm the analytics origins early so the deferred (lazyOnload) gtag fetch is
+  // cheaper. Only emit hints for origins actually used, to stay within the
+  // recommended ≤4 preconnects and avoid speculative connections.
+  const preconnectGa4 = Boolean(getGa4MeasurementId()) && process.env.NODE_ENV === "production";
+  const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+
   return (
     <html
       lang="en"
       suppressHydrationWarning
       className={`${fontDisplay.variable} ${fontBody.variable} ${fontSerifAccent.variable} ${fontMono.variable}`}
     >
+      <head>
+        {preconnectGa4 ? (
+          <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        ) : null}
+        {plausibleDomain ? (
+          <link rel="preconnect" href="https://plausible.io" crossOrigin="anonymous" />
+        ) : null}
+      </head>
       <body className="font-body antialiased">
         <PlausibleScript />
         <Analytics />

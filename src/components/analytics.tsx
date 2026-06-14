@@ -39,17 +39,23 @@ export function Analytics() {
 
   return (
     <>
-      <Script
-        id="ga4-src"
-        src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
-        strategy="afterInteractive"
-      />
+      {/*
+        Define the lightweight gtag() queue early so events (incl. the AI-referral
+        event fired from the effect above) are buffered, but defer the heavy ~156 KiB
+        remote gtag bundle to lazyOnload so it stays off the LCP/FCP critical path.
+        gtag replays queued dataLayer pushes once the remote script arrives.
+      */}
       <Script id="ga4-init" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${ga4Id}');`}
       </Script>
+      <Script
+        id="ga4-src"
+        src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+        strategy="lazyOnload"
+      />
     </>
   );
 }
