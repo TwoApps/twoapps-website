@@ -41,17 +41,26 @@ export function ExpandableDetailPanel({
         <span
           aria-hidden
           className={cn(
-            "mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-ink/[0.04] text-ink/70 transition-transform",
+            "self-start mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 bg-ink/[0.04] text-ink/70 transition-transform",
             open && "rotate-45"
           )}
         >
-          +
+          <svg
+            className="h-4 w-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <path d="M8 2v12M2 8h12" />
+          </svg>
         </span>
       </button>
       <div
         className={cn(
           "grid transition-[grid-template-rows,opacity] duration-300 ease-out",
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-95"
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         )}
       >
         <div className="overflow-hidden">

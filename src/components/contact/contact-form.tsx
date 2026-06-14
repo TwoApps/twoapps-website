@@ -62,7 +62,11 @@ function FormField({
 }
 
 export function ContactForm({ sourcePage, defaultAudience = "business" }: ContactFormProps) {
-  const [values, setValues] = useState<FormState>({ ...initialState, audience: defaultAudience, sourcePage });
+  const [values, setValues] = useState<FormState>({
+    ...initialState,
+    audience: defaultAudience,
+    sourcePage
+  });
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -145,22 +149,24 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
-        <FormField label="Name" required error={fieldErrors.name}>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <FormField label="Your name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
             autoComplete="name"
+            placeholder="e.g. Sarah Chen"
             value={values.name}
             onChange={(e) => update("name", e.target.value)}
             aria-invalid={Boolean(fieldErrors.name)}
             aria-describedby={fieldErrors.name ? "name-error" : undefined}
           />
         </FormField>
-        <FormField label="Email" required error={fieldErrors.email}>
+        <FormField label="Work email" required error={fieldErrors.email}>
           <input
             className={inputClassName}
             autoComplete="email"
             type="email"
+            placeholder="sarah@company.com"
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
             aria-invalid={Boolean(fieldErrors.email)}
@@ -168,19 +174,20 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
         </FormField>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-1 md:grid-cols-2">
-        <FormField label="Company" error={fieldErrors.company}>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <FormField label="Company or team" error={fieldErrors.company}>
           <input
             className={inputClassName}
             autoComplete="organization"
+            placeholder="e.g. Acme Operations"
             value={values.company}
             onChange={(e) => update("company", e.target.value)}
           />
         </FormField>
-        <FormField label="Region" error={fieldErrors.region}>
+        <FormField label="Where are you based?" error={fieldErrors.region}>
           <input
             className={inputClassName}
-            placeholder="e.g. UAE, Saudi Arabia, Poland, Australia, Brazil"
+            placeholder="e.g. UAE, Saudi Arabia, UK, Australia"
             value={values.region}
             onChange={(e) => update("region", e.target.value)}
           />
@@ -188,11 +195,19 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
       </div>
 
       <fieldset className="rounded-2xl border border-ink/10 bg-cream p-4">
-        <legend className="px-1 text-sm font-medium text-ink/90">I am contacting you as</legend>
-        <div className="mt-3 grid gap-3 md:grid-cols-2">
+        <legend className="px-1 text-sm font-medium text-ink/90">You are...</legend>
+        <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
           {[
-            { key: "business", label: "Business team", hint: "I need help improving operations or building an AI workflow" },
-            { key: "agency", label: "Agency / software house", hint: "I need a white-label AI delivery partner" }
+            {
+              key: "business",
+              label: "A business team",
+              hint: "I want to automate operations or ship an AI workflow"
+            },
+            {
+              key: "agency",
+              label: "An agency / software house",
+              hint: "I need a white-label AI delivery partner"
+            }
           ].map((option) => (
             <label
               key={option.key}
@@ -217,27 +232,34 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
         {fieldErrors.audience ? <p className="mt-2 text-xs text-red-600">{fieldErrors.audience}</p> : null}
       </fieldset>
 
-      <FormField label="Service interest" error={fieldErrors.serviceInterest}>
-        <select
-          className={cn(inputClassName, "appearance-none")}
-          value={values.serviceInterest}
-          onChange={(e) => update("serviceInterest", e.target.value)}
-        >
-          <option value="">Select a focus area (optional)</option>
-          {services.map((service) => (
-            <option key={service.slug} value={service.title}>
-              {service.title}
-            </option>
-          ))}
-          <option value="AI-enabled product engineering">AI-enabled product engineering</option>
-          <option value="Automation audit / pilot">Automation audit / pilot</option>
-        </select>
+      <FormField label="What brought you here?" error={fieldErrors.serviceInterest}>
+        <div className="relative">
+          <select
+            className={cn(inputClassName, "appearance-none pr-10")}
+            value={values.serviceInterest}
+            onChange={(e) => update("serviceInterest", e.target.value)}
+          >
+            <option value="">Pick a focus area (optional)</option>
+            {services.map((service) => (
+              <option key={service.slug} value={service.title}>
+                {service.title}
+              </option>
+            ))}
+            <option value="AI-enabled product engineering">AI-enabled product engineering</option>
+            <option value="Automation audit / pilot">Automation audit / pilot</option>
+          </select>
+          <span className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-ink/50">
+            <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m19 9-7 7-7-7" />
+            </svg>
+          </span>
+        </div>
       </FormField>
 
-      <FormField label="Project details" required error={fieldErrors.message}>
+      <FormField label="What should we know?" required error={fieldErrors.message}>
         <textarea
           className={cn(inputClassName, "min-h-32 resize-y sm:min-h-36")}
-          placeholder="Describe the problem in simple words: what is slowing the team down, and what outcome do you want?"
+          placeholder="In plain words: what’s slowing the team down, and what would ‘done’ look like?"
           value={values.message}
           onChange={(e) => update("message", e.target.value)}
           aria-invalid={Boolean(fieldErrors.message)}
@@ -267,16 +289,20 @@ export function ContactForm({ sourcePage, defaultAudience = "business" }: Contac
           className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
           role="status"
         >
-          Inquiry sent. You should receive a response after review.
+          Message sent. We&apos;ll be in touch within one business day — usually much sooner.
         </p>
       ) : null}
 
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <Button type="submit" disabled={isPending} className="w-full sm:w-auto">
-          {isPending ? "Sending..." : "Send inquiry"}
+          {isPending ? "Sending..." : "Send message"}
         </Button>
         <p className="text-xs text-ink/60">
-          By submitting, you agree to our <a href="/privacy" className="underline hover:text-ink">privacy policy</a>.
+          By submitting, you agree to our{" "}
+          <a href="/privacy" className="underline hover:text-ink">
+            privacy policy
+          </a>
+          .
         </p>
       </div>
     </form>

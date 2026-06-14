@@ -7,8 +7,9 @@ export function CtaBand({
   copy,
   primaryHref,
   primaryLabel,
-  secondaryHref = "/contact",
-  secondaryLabel = "Contact us"
+  secondaryHref,
+  secondaryLabel,
+  className
 }: {
   title: string;
   copy: string;
@@ -16,18 +17,19 @@ export function CtaBand({
   primaryLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
+  className?: string;
 }) {
   return (
-    <SceneViewport pad="spacious" className="pt-8">
+    <SceneViewport pad="spacious" className={className}>
       <div className="relative overflow-hidden rounded-[22px] bg-blue p-5 sm:p-7 md:p-10 lg:p-12">
-        <div className="relative flex min-h-[220px] flex-col justify-between gap-6 sm:min-h-[260px] sm:gap-8 lg:min-h-[340px]">
+        <div className="relative flex flex-col justify-between gap-6 sm:gap-8">
           <div className="max-w-3xl">
             <SceneCaption
               eyebrow="Next Step"
               title={title}
               subline={copy}
               titleClassName="text-cream"
-              sublineClassName="text-cream/80"
+              sublineClassName="text-cream/80 max-w-2xl"
               tagClassName="border-cream/30 bg-cream/10 text-cream/90"
             />
           </div>
@@ -35,13 +37,15 @@ export function CtaBand({
             <Button href={primaryHref} className="w-full sm:w-auto">
               {primaryLabel}
             </Button>
-            <Button
-              href={secondaryHref}
-              variant="secondary"
-              className="w-full border-cream/30 bg-transparent text-cream hover:border-cream hover:bg-cream/10 sm:w-auto"
-            >
-              {secondaryLabel}
-            </Button>
+            {secondaryHref && secondaryLabel ? (
+              <Button
+                href={secondaryHref}
+                variant="secondary"
+                className="w-full border-cream/30 bg-transparent text-cream hover:border-cream hover:bg-cream/10 sm:w-auto"
+              >
+                {secondaryLabel}
+              </Button>
+            ) : null}
           </div>
         </div>
       </div>

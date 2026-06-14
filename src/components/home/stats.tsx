@@ -7,7 +7,7 @@ const stats = [
         20<span className="text-blue">+</span>
       </>
     ),
-    copy: "hours of manual work handed back to each team, every week.",
+    copy: "hours saved per team each week — usually from a single workflow.",
     bot: {
       say: "Reclaim a full day every week — your team will think it's a typo.",
       icons: "clock,arrowR,person",
@@ -23,7 +23,7 @@ const stats = [
         </span>
       </>
     ),
-    copy: "workflow proven with real numbers before we ever expand.",
+    copy: "workflow is proven with real numbers before we ever expand.",
     bot: {
       say: "One workflow proven first. Then we scale without the theater.",
       icons: "target,chart,check",
@@ -32,9 +32,9 @@ const stats = [
   },
   {
     value: "0",
-    copy: "slide decks, discovery loops, or junior teams. Senior builders only.",
+    copy: "handoffs to junior teams. You work directly with the builders.",
     bot: {
-      say: "Zero decks, zero junior teams — just automations that ship.",
+      say: "Zero layers between you and the person shipping your workflow.",
       icons: "shield,person,code",
       fx: "0.85"
     }

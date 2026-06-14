@@ -6,7 +6,7 @@ const tracks = [
   {
     eyebrow: "For operators",
     title: "Automate the repeat work",
-    copy: "Lead routing, weekly reports, onboarding checks, ticket triage — handed to AI, with human approvals where it matters.",
+    copy: "Lead routing, weekly reports, onboarding checks, ticket triage — handed to AI, with human approvals exactly where you want them.",
     href: "/services",
     cta: "See the playbook",
     bot: {
@@ -18,7 +18,7 @@ const tracks = [
   {
     eyebrow: "For founders",
     title: "Ship an AI-powered v1",
-    copy: "Senior engineers build your working product end to end. Clean code, fast handover, no junior teams.",
+    copy: "From idea to working product with senior engineers. Clean code, fast handover, and no borrowed junior team.",
     href: "/services",
     cta: "Talk to us",
     bot: {
@@ -30,7 +30,7 @@ const tracks = [
   {
     eyebrow: "For agencies",
     title: "Deliver AI under your brand",
-    copy: "Your client, your relationship. We build the AI layer in the background and disappear at handover.",
+    copy: "Your client, your relationship. We build the AI layer in the background and hand it over cleanly when it's ready.",
     href: "/agency-partners",
     cta: "Partner playbook",
     bot: {
@@ -43,7 +43,7 @@ const tracks = [
 
 export function HomeTracks() {
   return (
-    <section id="tracks" className="pb-28 pt-12 sm:pb-32 lg:pb-36">
+    <section id="tracks" className="pb-28 pt-16 sm:pb-32 sm:pt-20 lg:pb-36 lg:pt-24">
       <Container>
         <div
           data-reveal="0"
@@ -55,14 +55,14 @@ export function HomeTracks() {
             </div>
             <h2 className="font-display text-[clamp(38px,4.4vw,68px)] font-medium leading-[1.02] tracking-[-0.035em] text-ink">
               Three ways we{" "}
-              <em className="font-serif-accent italic font-normal not-italic text-blue">
+              <em className="font-serif-accent italic font-normal text-blue">
                 plug in
               </em>
             </h2>
           </div>
           <p className="max-w-[380px] text-base leading-[1.6] text-ink/58">
             Trusted by operators across the UAE and GCC. We start with one
-            workflow, prove it, then expand.
+            workflow, prove it works, then expand.
           </p>
         </div>
 

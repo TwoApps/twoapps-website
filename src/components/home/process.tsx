@@ -4,7 +4,7 @@ const steps = [
   {
     number: "01",
     title: "Audit",
-    copy: "We map the workflow — bottlenecks, approvals, and every system it touches — and choose the highest-leverage starting point.",
+    copy: "We map the workflow — where it slows down, where it breaks, and where AI actually helps — then pick the highest-leverage starting point.",
     bot: {
       say: "First I map every leak — politely, but thoroughly.",
       icons: "eye,arrowR,target",
@@ -14,7 +14,7 @@ const steps = [
   {
     number: "02",
     title: "Pilot",
-    copy: "We build one real workflow with a clear goal, so you can measure the value in weeks — not quarters.",
+    copy: "We build one real workflow with a clear goal, so you can measure the value in weeks instead of quarters.",
     bot: {
       say: "Then we ship one measurable win before anyone asks for a roadmap.",
       icons: "target,chart,check",
@@ -35,7 +35,7 @@ const steps = [
 
 export function HomeProcess() {
   return (
-    <section id="process" className="border-t border-ink/12 bg-white py-28 sm:py-32 lg:py-36">
+    <section id="process" className="border-t border-ink/12 bg-white py-24 sm:py-28 lg:py-32">
       <Container>
         <div data-reveal="0" className="mb-16 lg:mb-20">
           <div className="mb-4 font-mono text-[11.5px] uppercase tracking-[0.18em] text-blue">
@@ -43,7 +43,7 @@ export function HomeProcess() {
           </div>
           <h2 className="font-display text-[clamp(38px,4.4vw,68px)] font-medium leading-[1.02] tracking-[-0.035em] text-ink">
             One workflow,{" "}
-            <em className="font-serif-accent italic font-normal not-italic text-blue">
+            <em className="font-serif-accent italic font-normal text-blue">
               proven first.
             </em>
             <br />

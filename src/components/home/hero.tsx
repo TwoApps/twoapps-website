@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container";
+import { Button } from "@/components/ui/button";
 
 function EyebrowRow() {
   return (
@@ -12,7 +13,7 @@ function EyebrowRow() {
       </span>
       <span className="hidden h-px flex-1 bg-ink/14 sm:block" />
       <span className="whitespace-nowrap font-mono text-[11.5px] uppercase tracking-[0.16em] text-ink/40">
-        Est. weekly savings: 20+ hrs
+        Typical first win: 20+ hours back per week
       </span>
     </div>
   );
@@ -25,10 +26,10 @@ function Headline() {
       style={{ animationDelay: "0.16s" }}
     >
       Give your team back the{" "}
-      <em className="font-serif-accent italic font-normal not-italic text-blue">
+      <em className="font-serif-accent italic font-normal text-blue">
         hours
       </em>{" "}
-      AI should be handling.
+      that grow your business.
     </h1>
   );
 }
@@ -64,7 +65,7 @@ function PipelineStrip() {
 
 export function HomeHero({ bookingHref }: { bookingHref: string }) {
   return (
-    <section id="top" className="relative pt-[88px] sm:pt-[72px]">
+    <section id="top" className="relative pt-10 sm:pt-12 lg:pt-14">
       <Container>
         <EyebrowRow />
 
@@ -75,25 +76,19 @@ export function HomeHero({ bookingHref }: { bookingHref: string }) {
           style={{ animationDelay: "0.3s" }}
         >
           <p className="max-w-[540px] text-[clamp(17px,1.5vw,21px)] leading-[1.6] text-ink/62">
-            We build AI workflows that quietly run the repeat work — so your
-            people focus on the calls, decisions, and customers only humans can
-            handle.
+            TwoApps builds AI workflows that quietly run the repeat work — lead
+            routing, reports, onboarding, triage — so your people stay focused on
+            customers, decisions, and the work only they can do.
           </p>
 
           <div className="flex flex-wrap items-center justify-start gap-3.5 lg:justify-end">
-            <a
-              href={bookingHref}
-              className="focus-ring inline-flex items-center gap-2.5 rounded-full bg-ink px-8 py-4 text-[15px] font-semibold text-cream transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue hover:shadow-[0_12px_35px_rgba(39,66,206,0.22)]"
-            >
-              Book a call
+            <Button href={bookingHref} size="lg">
+              Book a free call
               <span className="text-[17px] leading-none">→</span>
-            </a>
-            <a
-              href="#process"
-              className="focus-ring inline-flex items-center rounded-full border border-ink/25 px-7 py-[15px] text-[15px] font-medium text-ink transition-all duration-300 hover:border-ink hover:bg-ink/[0.04]"
-            >
+            </Button>
+            <Button href="#process" variant="secondary" size="lg">
               See how we work
-            </a>
+            </Button>
           </div>
         </div>
 

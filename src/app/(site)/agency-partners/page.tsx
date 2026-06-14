@@ -1,10 +1,9 @@
-import { Fragment } from "react";
-
 import { globalPartnerRegions } from "@/content";
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, makeBreadcrumbSchema, organizationSchema } from "@/lib/seo";
 
 import { CtaBand } from "@/components/common/cta-band";
 import { PageHero } from "@/components/common/page-hero";
+import { JsonLd } from "@/components/json-ld";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { ScrollBot } from "@/components/shared/scroll-bot";
 import { Heading } from "@/components/ui/heading";
@@ -13,130 +12,117 @@ import { Section } from "@/components/ui/section";
 export const metadata = buildMetadata({
   title: "Agency Partners",
   description:
-    "UAE-based white-label AI implementation partner for software houses and agencies. TwoApps helps teams deliver AI workflows, AI features, and internal tools without hiring a full AI team first.",
+    "White-label AI implementation partner for software houses and agencies. TwoApps helps you deliver AI workflows, AI features, and internal tools under your brand — without hiring a full AI team.",
   canonicalPath: "/agency-partners",
-  keywords: ["white label ai partner", "agency ai implementation partner", "software house AI delivery partner"],
+  keywords: [
+    "white label ai partner",
+    "agency ai implementation partner",
+    "software house AI delivery partner"
+  ],
   ogImage: "/og-default.svg"
 });
 
-const partnerPairs = [
+const whyPartnerCards = [
   {
-    frame: {
-      label: "Model",
-      headline: "Your agency owns the client. TwoApps ships the AI layer.",
-      subline:
-        "White-label or co-delivery support for AI workflows, AI features, and delivery systems your team can reuse."
-    },
-    visual: {
-      title: "White-label implementation",
-      body: "TwoApps executes the AI automation and AI feature layer while your team keeps client ownership and account continuity.",
-      meta: ["White-label", "Co-delivery", "NDA-friendly"]
-    }
+    label: "Ownership",
+    title: "Keep the client. Keep the credit. Keep the margin.",
+    body:
+      "Your brand stays front and center. We work behind the scenes — or as a named extension of your team — so you keep the relationship and the P&L.",
+    meta: ["White-label", "NDA-friendly", "Co-branded option"]
   },
   {
-    frame: {
-      label: "Fit",
-      headline: "Best for agencies already shipping product work",
-      subline: "Add AI implementation capacity before hiring a full in-house AI team."
-    },
-    visual: {
-      title: "Claude / Claude Code workflow support",
-      body: "Claude and Claude Code workflow setup, playbooks, and repeatable delivery patterns for your team.",
-      meta: ["Claude Code", "Playbooks", "Acceleration"]
-    }
+    label: "Capacity",
+    title: "Add senior AI delivery overnight",
+    body:
+      "Skip the six-month hiring cycle. Get Claude, Claude Code, AI workflows, and product features shipped by a team that already does this every day.",
+    meta: ["Claude / Claude Code", "AI workflows", "AI features"]
   },
   {
-    frame: {
-      label: "Commercial",
-      headline: "Lead with specialized execution, not cheap outsourcing",
-      subline: "Position the partnership as cost-efficient senior AI delivery and faster time-to-value."
-    },
-    visual: {
-      title: "AI capability expansion",
-      body: "Use pilots and retainers to add AI services without immediate hiring pressure or risky overpromising.",
-      meta: ["Pilot first", "Retainer model", "Client growth"]
-    }
+    label: "Growth",
+    title: "Turn AI requests into a repeatable revenue line",
+    body:
+      "Start with one pilot. Prove the model with a real client workflow, then package it into a service you can sell again and again.",
+    meta: ["Pilot first", "Retainer scale", "New revenue"]
   }
 ];
 
-const offerPairs = [
+const whoItsForCards = [
   {
-    frame: {
-      label: "Sprint",
-      headline: "AI Capability Sprint",
-      subline: "Define your partner model, offers, and first delivery patterns in one focused week."
-    },
-    visual: {
-      title: "Capability Sprint",
-      body: "One week setup to define partner model, offers, and first AI delivery patterns.",
-      meta: ["1 week", "Enablement", "Packaging"]
-    }
+    label: "Software houses",
+    title: "Product teams under AI feature pressure",
+    body:
+      "You're shipping web and mobile products, and clients now expect AI inside them. We build the AI layer while your team owns the roadmap.",
+    meta: ["Web / mobile products", "AI feature delivery", "Internal tooling"]
   },
   {
-    frame: {
-      label: "Pilot",
-      headline: "White-Label Pilot",
-      subline: "Deliver one real client workflow or feature to prove the model."
-    },
-    visual: {
-      title: "White-Label Pilot",
-      body: "2-4 week pilot on a real client workflow or AI feature implementation.",
-      meta: ["2-4 weeks", "Proof", "Repeatability"]
-    }
+    label: "Digital agencies",
+    title: "Agencies with clients asking for AI",
+    body:
+      "Marketing, ops, and service agencies that want to offer automation, AI assistants, and workflow acceleration without learning it all from scratch.",
+    meta: ["Automation", "AI assistants", "Workflow acceleration"]
   },
   {
-    frame: {
-      label: "Retainer",
-      headline: "Monthly AI Delivery Capacity",
-      subline: "Ongoing implementation bandwidth for AI-heavy backlogs and client expansion."
-    },
-    visual: {
-      title: "Monthly Retainer",
-      body: "Ongoing AI implementation capacity for backlog, escalation support, and new client work.",
-      meta: ["Capacity", "Backlog", "Expansion"]
-    }
+    label: "Teams scaling carefully",
+    title: "Not ready to hire AI engineers full-time?",
+    body:
+      "Hire the capability before you hire the headcount. We act as your specialist AI bench until the volume justifies an in-house team.",
+    meta: ["Specialist bench", "Flexible capacity", "Lower risk"]
   }
 ];
 
-function FrameCard({
+const howItWorksSteps = [
+  {
+    step: "01",
+    label: "Sprint",
+    title: "AI Capability Sprint",
+    body:
+      "In one focused week we define your partner model, package your first offer, and set up the delivery patterns your team will reuse.",
+    meta: ["1 week", "Enablement", "Packaging"]
+  },
+  {
+    step: "02",
+    label: "Pilot",
+    title: "White-Label Pilot",
+    body:
+      "We deliver one real client workflow or AI feature under your brand. You see the quality, the process, and the client reaction before committing.",
+    meta: ["2-4 weeks", "Real client work", "Proof of model"]
+  },
+  {
+    step: "03",
+    label: "Scale",
+    title: "Monthly Delivery Capacity",
+    body:
+      "Move to a retainer for ongoing AI backlog, escalation support, and new client work — without adding permanent headcount.",
+    meta: ["Ongoing capacity", "Backlog support", "Client expansion"]
+  }
+];
+
+function ValueCard({
   label,
-  headline,
-  subline
-}: {
-  label: string;
-  headline: string;
-  subline: string;
-}) {
-  return (
-    <div className="flex flex-col rounded-[22px] border border-ink/10 bg-white p-5 shadow-[0_1px_2px_rgba(22,21,15,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-blue/55 hover:shadow-[0_18px_44px_rgba(22,21,15,0.10)] sm:p-6">
-      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-blue/80">{label}</p>
-      <h3 className="mt-2 font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">
-        {headline}
-      </h3>
-      {subline ? <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">{subline}</p> : null}
-    </div>
-  );
-}
-
-function VisualCard({
   title,
   body,
   meta = []
 }: {
+  label?: string;
   title: string;
   body: string;
   meta?: string[];
 }) {
   return (
-    <div className="flex flex-col rounded-[22px] border border-ink/10 bg-white p-5 shadow-[0_1px_2px_rgba(22,21,15,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-blue/55 hover:shadow-[0_18px_44px_rgba(22,21,15,0.10)] sm:p-6">
-      <p className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">{title}</p>
-      <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-ink/70">{body}</p>
+    <div className="flex h-full flex-col rounded-[22px] border border-ink/10 bg-white p-7 shadow-[0_1px_2px_rgba(22,21,15,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:border-blue/55 hover:shadow-[0_18px_44px_rgba(22,21,15,0.10)] sm:p-10">
+      {label ? (
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-blue">{label}</p>
+      ) : null}
+      <h3 className="font-display text-[25px] font-semibold leading-[1.12] tracking-[-0.02em] text-ink sm:text-[27px]">
+        {title}
+      </h3>
+      <p className="mt-3.5 text-[15px] leading-[1.6] text-ink/58">{body}</p>
       {meta.length ? (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-auto flex flex-wrap gap-2 pt-7">
           {meta.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-ink/10 bg-ink/[0.04] px-2.5 py-1 text-xs text-ink/70"
+              className="rounded-full border border-ink/10 bg-ink/[0.03] px-2.5 py-1 text-xs text-ink/55"
             >
               {tag}
             </span>
@@ -147,20 +133,69 @@ function VisualCard({
   );
 }
 
+function StepCard({
+  step,
+  label,
+  title,
+  body,
+  meta
+}: {
+  step: string;
+  label: string;
+  title: string;
+  body: string;
+  meta: string[];
+}) {
+  return (
+    <div className="relative flex h-full flex-col rounded-[22px] border border-ink/10 bg-white p-7 shadow-[0_1px_2px_rgba(22,21,15,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:border-blue/55 hover:shadow-[0_18px_44px_rgba(22,21,15,0.10)] sm:p-10">
+      <div className="flex items-center justify-between gap-4">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-blue">{label}</p>
+        <span className="font-display text-3xl font-semibold leading-none text-ink/10 sm:text-4xl">
+          {step}
+        </span>
+      </div>
+      <h3 className="mt-4 font-display text-[25px] font-semibold leading-[1.12] tracking-[-0.02em] text-ink sm:text-[27px]">
+        {title}
+      </h3>
+      <p className="mt-3.5 text-[15px] leading-[1.6] text-ink/58">{body}</p>
+      <div className="mt-auto flex flex-wrap gap-2 pt-7">
+        {meta.map((tag) => (
+          <span
+            key={tag}
+            className="rounded-full border border-ink/10 bg-ink/[0.03] px-2.5 py-1 text-xs text-ink/55"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function AgencyPartnersPage() {
   return (
-    <Fragment>
+    <>
+      <JsonLd
+        data={[
+          organizationSchema(),
+          makeBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Agency Partners", path: "/agency-partners" }
+          ])
+        ]}
+      />
+
       <ScrollBot />
 
       <div
         data-bot-stop
         data-bot-fx="0.5"
-        data-bot-say="Partner with us and your clients get an AI sales rep that never calls in sick."
+        data-bot-say="Partner with us and your clients get an AI delivery arm that shows up ready to ship."
       >
         <PageHero
           eyebrow="Agency Partners"
-          title="White-label AI your agency can ship"
-          description="You own the client. We ship the AI layer. Resell with confidence."
+          title="Add an AI delivery arm to your agency — without hiring a team"
+          description="White-label AI implementation for software houses and digital agencies. You keep the client relationship; we ship the AI workflows, features, and internal tools behind the scenes."
           chips={["White-label", "Co-delivery", "UAE-based / global"]}
         />
       </div>
@@ -168,20 +203,17 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.25"
-        data-bot-say="White-label AI means your margins stay yours—and your clients think you're the genius."
+        data-bot-say="Keep the client, keep the credit, and keep the margin. We just make you look like the AI expert."
       >
         <Section>
           <Heading
-            eyebrow="Partner Model"
-            title="Your agency owns the client. TwoApps ships the AI layer."
-            subtitle="White-label or co-delivery support for AI workflows, AI features, and delivery systems your team can reuse."
+            eyebrow="Why partner"
+            title="Ship AI work faster, protect your margins, keep the credit"
+            subtitle="Most agencies are being asked for AI but don't have the bench to deliver. We act as your invisible AI team — so you can say yes to more client work."
           />
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
-            {partnerPairs.map((pair) => (
-              <div key={pair.frame.label} className="flex flex-col gap-4">
-                <FrameCard {...pair.frame} />
-                <VisualCard {...pair.visual} />
-              </div>
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-3">
+            {whyPartnerCards.map((card) => (
+              <ValueCard key={card.title} {...card} />
             ))}
           </div>
         </Section>
@@ -190,20 +222,17 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.75"
-        data-bot-say="Start with a sprint, prove it with a pilot, then scale revenue without scaling headcount."
+        data-bot-say="If clients are asking for AI and your team is stretched, you're exactly who this is for."
       >
-        <Section>
+        <Section className="bg-cream/30">
           <Heading
-            eyebrow="Productized Offers"
-            title="Three ways to engage"
-            subtitle="Start with a focused sprint, prove the model with a pilot, then scale with ongoing capacity."
+            eyebrow="Who it's for"
+            title="Built for agencies already shipping product work"
+            subtitle="You don't need an AI department. You need a reliable partner that can slot into your delivery process."
           />
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
-            {offerPairs.map((pair) => (
-              <div key={pair.frame.label} className="flex flex-col gap-4">
-                <FrameCard {...pair.frame} />
-                <VisualCard {...pair.visual} />
-              </div>
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-3">
+            {whoItsForCards.map((card) => (
+              <ValueCard key={card.title} {...card} />
             ))}
           </div>
         </Section>
@@ -212,11 +241,31 @@ export default function AgencyPartnersPage() {
       <div
         data-bot-stop
         data-bot-fx="0.6"
-        data-bot-say="We handle the delivery complexity so your account team can focus on bigger retainers."
+        data-bot-say="Sprint, pilot, scale. One proven path from first conversation to recurring AI revenue."
+      >
+        <Section>
+          <Heading
+            eyebrow="How it works"
+            title="Sprint. Pilot. Scale."
+            subtitle="A simple three-step path from first conversation to recurring AI delivery capacity."
+          />
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:mt-16 lg:grid-cols-3">
+            {howItWorksSteps.map((step) => (
+              <StepCard key={step.title} {...step} />
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      <div
+        data-bot-stop
+        data-bot-fx="0.4"
+        data-bot-say="Open any panel to see what you can resell, who it's for, and how the commercial model works."
       >
         <DetailPanelsSection
-          eyebrow="Partner Details"
-          title="Partnership details"
+          eyebrow="Details"
+          title="What you can resell and how we work together"
+          subtitle="The practical stuff: capabilities, ideal fit, commercial terms, and where we operate."
           items={[
             {
               title: "What you can resell",
@@ -224,12 +273,12 @@ export default function AgencyPartnersPage() {
               content: (
                 <ul className="space-y-2 text-sm text-ink/78">
                   {[
-                    "White-label implementation",
-                    "Claude / Claude Code workflow setup",
+                    "White-label AI implementation under your brand",
+                    "Claude / Claude Code workflow setup and playbooks",
                     "AI feature delivery inside client products",
                     "Internal agency automation and delivery acceleration",
                     "AI pilot support for pre-sales and scope validation",
-                    "Retainer-based AI capacity for ongoing work"
+                    "Retainer-based AI capacity for ongoing client work"
                   ].map((item) => (
                     <li key={item} className="rounded-xl border border-ink/10 bg-cream px-4 py-3">
                       {item}
@@ -244,9 +293,9 @@ export default function AgencyPartnersPage() {
               content: (
                 <ul className="space-y-2 text-sm text-ink/78">
                   {[
-                    "Software houses already delivering web/mobile products",
-                    "Agencies with client demand for AI automation and AI features",
-                    "Teams that need a specialist partner before hiring AI engineers"
+                    "Software houses delivering web/mobile products",
+                    "Agencies with active client demand for AI automation and features",
+                    "Teams that need specialist AI delivery before hiring full-time"
                   ].map((item) => (
                     <li key={item} className="flex gap-2">
                       <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-accent-1" />
@@ -257,20 +306,20 @@ export default function AgencyPartnersPage() {
               )
             },
             {
-              title: "How to position the partnership",
-              summary: "How to position the partnership",
+              title: "Commercial model",
+              summary: "Pilot first, then scale with a retainer",
               content: (
                 <p className="text-sm leading-relaxed text-ink/78">
-                  Lead with <span className="text-ink">specialized AI implementation</span> and{" "}
-                  <span className="text-ink">cost-efficient senior delivery</span>, not “cheap outsourcing.” This
-                  protects pricing power and positions your agency as the client-facing operator with credible AI
-                  execution capacity.
+                  Every partnership starts with a paid pilot so both sides can validate fit, quality,
+                  and process. After a successful pilot, most partners move to a monthly retainer that
+                  gives predictable AI delivery capacity. You set the client price; we charge a
+                  transparent delivery fee. Your margin stays yours.
                 </p>
               )
             },
             {
               title: "Where this works best",
-              summary: "Strong fit for this operating model",
+              summary: "Regions we currently support for white-label delivery",
               content: (
                 <div className="flex flex-wrap gap-2">
                   {globalPartnerRegions.map((region) => (
@@ -290,18 +339,18 @@ export default function AgencyPartnersPage() {
 
       <div
         data-bot-stop
-        data-bot-fx="0.4"
+        data-bot-fx="0.5"
         data-bot-say="One pilot. One repeatable model. One new revenue line by next quarter."
       >
         <CtaBand
-          title="Start with one pilot"
-          copy="Bring us a real client workflow. We'll deliver it white-label and you'll have a repeatable model after one engagement."
+          title="Ready to add an AI delivery arm?"
+          copy="Book a 20-minute call. We'll map your first pilot and show you exactly how to position it with your clients."
           primaryHref="/contact"
           primaryLabel="Book a call"
-          secondaryHref="/regions/white-label-ai-partner-software-houses"
-          secondaryLabel="See partner region"
+          secondaryHref="/regions"
+          secondaryLabel="See our regions"
         />
       </div>
-    </Fragment>
+    </>
   );
 }

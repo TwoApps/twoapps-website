@@ -1,43 +1,75 @@
-import { buildMetadata } from "@/lib/seo";
+import { buildMetadata, makeBreadcrumbSchema, organizationSchema } from "@/lib/seo";
 
 import { CtaBand } from "@/components/common/cta-band";
 import { PageHero } from "@/components/common/page-hero";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
+import { JsonLd } from "@/components/json-ld";
 import { ScrollBot } from "@/components/shared/scroll-bot";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 
 export const metadata = buildMetadata({
-  title: "About",
+  title: "About TwoApps",
   description:
-    "UAE-based AI automation and software delivery partner. Practical AI workflows, product engineering, founder-led execution.",
+    "TwoApps is a UAE-based AI automation and software delivery partner. We help businesses and agencies turn AI ideas into working workflows — without the roadmap theater.",
   canonicalPath: "/about",
-  keywords: ["about twoapps uae ai company", "ai automation partner uae"],
+  keywords: [
+    "about twoapps uae ai company",
+    "ai automation partner uae",
+    "founder-led ai delivery",
+    "claude code implementation partner"
+  ],
   ogImage: "/og-default.svg"
 });
 
-const aboutCards = [
+const storyCards = [
   {
-    title: "What TwoApps builds",
-    body: "AI workflows, Claude/Claude Code delivery systems, and internal tools or product interfaces teams need to run them properly.",
-    meta: ["AI workflows", "Claude / Claude Code", "Product engineering"]
+    step: "01 / Who we are",
+    title: "A small team with serious shipping muscle",
+    body: "TwoApps is based in Dubai and built around founder-led execution. We design AI workflows, set up Claude delivery systems, and build the internal tools that make them stick."
   },
   {
-    title: "Founder execution depth",
-    body: "Product engineering, cloud/backend work, AI workflow execution, and compliance-aware operational process experience.",
-    meta: ["Flutter + AWS", "Claude Code", "AML/KYC fit"]
+    step: "02 / Why we exist",
+    title: "Most AI projects die before they ship",
+    body: "We started TwoApps because too many teams were stuck in strategy decks and proof-of-concept theater. Our job is to wire the workflow, prove the hours back, and hand you something that actually runs."
   },
   {
-    title: "Two customer paths",
-    body: "Direct business automation projects and white-label agency/software house delivery partnerships.",
-    meta: ["UAE-based", "Agencies", "White-label"]
+    step: "03 / How we help",
+    title: "Two paths, one delivery standard",
+    body: "We work directly with UAE/GCC businesses and white-label with agencies worldwide. Same hands-on approach, same obsession with measurable outcomes."
+  }
+];
+
+const beliefCards = [
+  {
+    title: "Start with the workflow",
+    body: "AI only matters if it changes how work gets done. We begin with the actual process, not the pitch deck."
+  },
+  {
+    title: "Prove it before you scale it",
+    body: "Every engagement starts with a small, measurable pilot. If it doesn't save hours or reduce risk, we don't expand it."
+  },
+  {
+    title: "Founder-led, end to end",
+    body: "No account managers hiding the builder. The same person who scopes your project runs the implementation."
   }
 ];
 
 export default function AboutPage() {
   return (
-    <div className="relative">
+    <>
+      <JsonLd
+        data={[
+          organizationSchema(),
+          makeBreadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About TwoApps", path: "/about" }
+          ])
+        ]}
+      />
+
       <ScrollBot />
 
       <div
@@ -48,49 +80,65 @@ export default function AboutPage() {
       >
         <PageHero
           eyebrow="About TwoApps"
-          title="UAE-based AI delivery partner built to execute"
-          description="Overview below. Open panels for founder proof, delivery capability, and fit."
-          chips={["UAE-based", "Founder-led execution", "AI workflows + product delivery"]}
+          title="We ship AI workflows, not slide decks"
+          description="A founder-led UAE team that designs, builds, and runs practical AI automation for businesses and agency partners."
+          chips={["UAE-based", "Founder-led execution", "AI workflows", "Agency-ready"]}
         />
       </div>
 
       <div
-        data-bot-stop="capabilities"
-        data-bot-say="We don't do roadmap theater. We wire the workflow, then prove the hours back."
-        data-bot-icons="code,box,check"
+        data-bot-stop="story"
+        data-bot-say="Three beats: who we are, why we exist, and how we actually help."
+        data-bot-icons="person,target,box"
         data-bot-fx="0.2"
       >
         <Section>
           <Heading
-            eyebrow="About"
-            title="UAE-based team built for practical delivery"
-            subtitle="We ship real work. Founder depth shortens scoping and reduces delivery risk."
-            className="mb-12"
+            eyebrow="Our story"
+            title="From AI promises to working systems"
+            subtitle="Three things to know about us before you decide if we're the right partner."
           />
-
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {aboutCards.map((card) => (
-              <div
-                key={card.title}
-                className="flex flex-col rounded-[22px] border border-ink/10 bg-white p-8 sm:p-10"
-              >
-                <h3 className="font-display text-[27px] font-semibold leading-[1.12] tracking-[-0.02em] text-ink">
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
+            {storyCards.map((card) => (
+              <Card key={card.title} className="h-full">
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-blue/80">
+                  {card.step}
+                </p>
+                <h3 className="mt-2 font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">
                   {card.title}
                 </h3>
-                <p className="mt-3.5 text-[15px] leading-[1.6] text-ink/58">
+                <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
                   {card.body}
                 </p>
-                <div className="mt-auto flex flex-wrap gap-2 pt-8">
-                  {card.meta.map((tag) => (
-                    <span
-                      key={tag}
-                      className="border border-ink/10 bg-ink/[0.03] rounded-full px-2.5 py-1 text-xs text-ink/55"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </Card>
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      <div
+        data-bot-stop="beliefs"
+        data-bot-say="We don't do roadmap theater. We wire the workflow, then prove the hours back."
+        data-bot-icons="shield,check,chart"
+        data-bot-fx="0.8"
+      >
+        <Section className="bg-cream/40">
+          <Heading
+            eyebrow="What we believe"
+            title="No roadmap theater. No black-box demos."
+            subtitle="A few principles that guide how we scope, build, and deliver every engagement."
+            align="center"
+          />
+          <div className="mt-8 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 md:grid-cols-3">
+            {beliefCards.map((card) => (
+              <Card key={card.title} className="h-full">
+                <h3 className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+                  {card.body}
+                </p>
+              </Card>
             ))}
           </div>
         </Section>
@@ -104,24 +152,28 @@ export default function AboutPage() {
       >
         <DetailPanelsSection
           eyebrow="Details"
-          title="Open the company and founder proof details"
-          subtitle="Scan first. Expand for depth."
+          title="The details that matter"
+          subtitle="Expand any section for capabilities, founder background, and who we serve best."
           items={[
             {
               title: "What we do",
               summary: "Implementation-first AI and product delivery support",
               content: (
-                <div className="grid gap-2 sm:grid-cols-2">
+                <div className="grid gap-3 sm:grid-cols-2">
                   {[
-                    "AI workflow design and implementation",
-                    "Claude / Claude Code workflow setup",
-                    "AI-enabled internal tools and dashboards",
-                    "Web/mobile product engineering support",
-                    "Compliance-aware automation patterns",
-                    "White-label agency delivery"
+                    "Design and implement AI workflows that run in your business",
+                    "Set up Claude and Claude Code delivery systems",
+                    "Build AI-enabled internal tools and dashboards",
+                    "Support web and mobile product engineering",
+                    "Apply compliance-aware automation patterns",
+                    "Deliver white-label AI work for agency partners"
                   ].map((item) => (
-                    <div key={item} className="rounded-[22px] border border-ink/10 bg-white px-4 py-3 text-sm text-ink/58">
-                      {item}
+                    <div
+                      key={item}
+                      className="flex items-start gap-3 rounded-[22px] border border-ink/10 bg-white p-4 text-sm text-ink/78"
+                    >
+                      <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-1" />
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -131,28 +183,28 @@ export default function AboutPage() {
               title: "Founder proof",
               summary: "Hands-on experience that strengthens scoping and execution",
               content: (
-                <div className="space-y-4 text-sm text-ink/58">
-                  <ul className="space-y-2">
+                <div className="space-y-5 text-sm text-ink/78 sm:text-[15px]">
+                  <ul className="space-y-2.5">
                     {[
-                      "Strong Claude / Claude Code workflow expertise",
+                      "Deep Claude and Claude Code workflow expertise",
                       "Flutter + AWS product engineering experience",
-                      "Figma/design-aware delivery capability",
+                      "Figma-aware delivery and design collaboration",
                       "Operational and compliance workflow awareness"
                     ].map((item) => (
                       <li key={item} className="flex gap-2">
-                        <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-blue" />
+                        <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-1" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col gap-3 sm:flex-row">
                     <Button
                       href="https://zainhthegreat.github.io/my_cv_zain/"
                       target="_blank"
                       rel="noreferrer"
                       className="w-full sm:w-auto"
                     >
-                      View founder CV
+                      See founder background
                     </Button>
                     <Button href="/work" variant="secondary" className="w-full sm:w-auto">
                       View work summaries
@@ -165,19 +217,26 @@ export default function AboutPage() {
               title: "Who we serve",
               summary: "Direct businesses + agency partners",
               content: (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-6 text-sm text-ink">
-                  <div className="rounded-[22px] border border-ink/10 bg-white p-4">
-                    <p className="font-display text-lg sm:text-xl lg:text-2xl font-semibold text-ink">Direct Businesses</p>
-                    <p className="mt-2 text-ink/58">
-                      Founder-led teams, operations-heavy SMEs, and product teams that need practical AI automation and execution support.
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+                  <Card className="h-full">
+                    <p className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">
+                      Direct Businesses
                     </p>
-                  </div>
-                  <div className="rounded-[22px] border border-ink/10 bg-white p-4">
-                    <p className="font-display text-lg sm:text-xl lg:text-2xl font-semibold text-ink">Agencies / Software Houses (Global)</p>
-                    <p className="mt-2 text-ink/58">
-                      Teams that need a white-label AI implementation capability. Common partner markets include Eastern Europe, South America, Australia, and New Zealand.
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+                      Founder-led teams, operations-heavy SMEs, and product teams that need
+                      practical AI automation and execution support — especially in the UAE and
+                      GCC.
                     </p>
-                  </div>
+                  </Card>
+                  <Card className="h-full">
+                    <p className="font-display text-lg font-semibold leading-tight text-ink sm:text-xl lg:text-2xl">
+                      Agencies & Software Houses
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-ink/70 sm:text-base">
+                      Teams that need a white-label AI implementation capability. Common partner
+                      markets include Eastern Europe, South America, Australia, and New Zealand.
+                    </p>
+                  </Card>
                 </div>
               )
             }
@@ -192,12 +251,14 @@ export default function AboutPage() {
         data-bot-fx="0.5"
       >
         <CtaBand
-          title="See if TwoApps fits your workflow."
-          copy="Start with a short scoping call to pick the highest-value workflow or pilot."
+          title="Let's see if TwoApps fits your workflow"
+          copy="Tell us what slows your team down. We'll map the first AI pilot and show you what 'shipped' actually looks like."
           primaryHref="/contact"
           primaryLabel="Book a call"
+          secondaryHref="/work"
+          secondaryLabel="See our work"
         />
       </div>
-    </div>
+    </>
   );
 }

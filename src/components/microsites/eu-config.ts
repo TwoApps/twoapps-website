@@ -5,7 +5,7 @@ export const euConfig: RegionalConfig = {
   meta: {
     title: "AI Workflow Automation Europe | GDPR-Compliant by Design | TwoApps",
     description:
-      "AI automation. GDPR-compliant by design. European businesses need automation that respects data protection. Request a compliance-ready proposal today.",
+      "Practical AI automation for European businesses — GDPR-aware, EU data residency, and DPO-ready documentation from day one. Book a compliance-first workflow review.",
     keywords: [
       "AI automation Europe",
       "GDPR compliant automation",
@@ -26,37 +26,37 @@ export const euConfig: RegionalConfig = {
     ]
   },
   hero: {
-    eyebrow: "Privacy-First • European-Ready",
-    headline: "AI automation. GDPR by design.",
+    eyebrow: "Built for Europe",
+    headline: "AI automation that respects EU rules — and actually ships",
     subheadline:
-      "European businesses can't compromise on data protection. We build AI workflows with GDPR, data residency, and audit trails baked in from day one.",
-    primaryCta: "Book a call",
-    secondaryCta: "How it works",
+      "European teams shouldn't have to choose between compliance and speed. We design GDPR-aware workflows with EU data residency, clear audit trails, and documentation your DPO will actually sign off on.",
+    primaryCta: "Book a compliance call",
+    secondaryCta: "See how it works",
     trustBar: "Trusted by European businesses",
-    trustMarks: ["GDPR-compliant", "Data residency", "Privacy by design"]
+    trustMarks: ["GDPR by design", "EU data residency", "DPO-ready docs"]
   },
   painPoints: {
     title: "The European challenge",
     items: [
       {
         icon: "shield",
-        title: "GDPR by default",
+        title: "GDPR isn't optional",
         description:
-          "Non-compliance means fines. Automation has to be compliant from line one.",
-        stat: "Compliant by design"
+          "Regulators across the EU expect privacy, consent, deletion, and auditability from day one. We treat compliance as a product requirement, not a last-minute checkbox.",
+        stat: "Compliant from day one"
       },
       {
         icon: "building",
-        title: "Data residency",
+        title: "Data must stay local",
         description:
-          "Data must stay in EU jurisdictions. We respect your sovereignty.",
+          "Your customers and security teams want to know exactly where data lives. EU-hosted infrastructure is our default, with on-premise options when you need them.",
         stat: "EU data residency"
       },
       {
-        icon: "building",
-        title: "Legacy infrastructure",
+        icon: "building2",
+        title: "Legacy systems don't disappear",
         description:
-          "European systems are layered and old. Automation has to integrate, not replace.",
+          "European enterprises run on layered, older systems. We integrate through APIs, RPA, and middleware — so you automate without ripping everything out.",
         stat: "Legacy-friendly integration"
       }
     ]
@@ -65,32 +65,37 @@ export const euConfig: RegionalConfig = {
   howItWorks: [
     {
       title: "Compliance review",
-      subtitle: "45-minute call. We map GDPR requirements and data residency needs.",
+      subtitle:
+        "A 45-minute call to map your GDPR requirements, data residency constraints, and the workflow with the clearest ROI.",
       duration: "45 min"
     },
     {
       title: "Design and build",
-      subtitle: "Workflows with GDPR built in — DPIA and ROPA ready.",
+      subtitle:
+        "We architect with privacy by design — DPIA-ready, ROPA-friendly, and built around the systems your team already uses.",
       duration: "4–6 weeks"
     },
     {
-      title: "Deploy and refine",
-      subtitle: "Live with your team. DPO-ready documentation included.",
+      title: "Deploy and hand over",
+      subtitle:
+        "Go live with DPO-ready documentation, deletion workflows, and monitoring. Your team stays in control.",
       duration: "2 weeks"
     }
   ],
-  testimonialsTitle: "Trusted by European Businesses",
+  testimonialsTitle: "What European teams say",
   testimonials: {
-    title: "Trusted by European Businesses",
+    title: "What European teams say",
     items: [
       {
-        quote: "GDPR was non-negotiable. TwoApps delivered privacy-by-design — data residency, deletion, audit trails. Our DPO signed off unchanged.",
+        quote:
+          "GDPR was non-negotiable for us. TwoApps delivered privacy-by-design with EU data residency, clear deletion flows, and audit trails our DPO signed off without a single change.",
         name: "Klaus Müller",
         title: "CTO, IndustrieTech GmbH (Germany)",
         stat: "Full GDPR compliance"
       },
       {
-        quote: "We needed EU-hosted automation that respected sovereignty. The compliance docs were comprehensive and clear.",
+        quote:
+          "We needed automation that respected data sovereignty and didn't force us into a full stack rebuild. The compliance documentation alone saved us weeks of internal work.",
         name: "Sophie Dubois",
         title: "Operations Director, LogiTrans SA (France)",
         stat: "EU data residency · 50% efficiency gain"
@@ -98,34 +103,40 @@ export const euConfig: RegionalConfig = {
     ]
   },
   faq: {
-    title: "Common Questions",
+    title: "Questions European businesses ask",
     items: [
       {
         question: "How do you handle GDPR?",
         answer:
-          "GDPR is built in from day one — right to deletion, data minimization, audit trails, processing records. DPIAs available on request."
+          "GDPR is built in from day one — data minimization, lawful basis mapping, right-to-deletion, audit trails, and processing records. We can supply DPIAs and ROPA support on request."
       },
       {
         question: "Where is data stored?",
         answer:
-          "EU-based infrastructure by default. On-premise available. Clear data processing agreements — you control where data lives."
+          "EU-based infrastructure is our default. We can also deploy on-premise or in your chosen cloud region. Every engagement includes clear data processing agreements so you control where data lives."
       },
       {
         question: "Can you work with our legacy systems?",
         answer:
-          "Yes. APIs, RPA, middleware — we integrate with what you have, no rip-and-replace."
+          "Yes. APIs, RPA, middleware, and custom connectors — we integrate with what you have. No rip-and-replace, and no forcing your team into tools they don't want."
+      },
+      {
+        question: "What do we get at handover?",
+        answer:
+          "DPO-ready documentation, runbooks, monitoring, and a clear escalation path. We train your team and can stay on for ongoing tuning and support."
       }
     ]
   },
   finalCta: {
-    headline: "GDPR-compliant automation.",
+    headline: "Ready for automation your legal team will love?",
     subheadline:
-      "Book a call. We'll show you how automation works inside your data protection rules.",
-    cta: "Book a call",
-    supporting: "GDPR · EU residency · Privacy by design"
+      "Book a 45-minute compliance call. We'll map your first GDPR-aware workflow and show you how fast it can ship inside your rules.",
+    cta: "Book a compliance call",
+    supporting: "GDPR · EU residency · DPO-ready docs"
   },
   footer: {
-    tagline: "GDPR-compliant AI workflow automation for European businesses. Privacy by design.",
+    tagline:
+      "GDPR-compliant AI workflow automation for European businesses. Privacy by design.",
     contactLabel: "Europe"
   },
   schema: {

@@ -15,7 +15,7 @@ export function AudienceSplitSection() {
         <Heading
           eyebrow="Two Paths"
           title="One team for business automation and agency white-label delivery"
-          subtitle="TwoApps helps businesses reduce manual work and helps agencies deliver AI projects faster with practical implementation support."
+          subtitle="TwoApps helps businesses cut manual work and helps agencies deliver AI projects faster — without either side hiring a full AI team first."
           align="center"
           className="max-w-4xl"
         />
@@ -48,12 +48,12 @@ export function AudienceSplitSection() {
 
 export function ServicesOverviewSection() {
   return (
-    <Section className="pt-6">
+    <Section>
       <AnimatedReveal>
         <Heading
           eyebrow="Service Pillars"
           title="What TwoApps helps you build"
-          subtitle="AI workflows, internal tools, and white-label AI delivery support that solve real operational bottlenecks."
+          subtitle="AI workflows, internal tools, and white-label delivery support that solve real operational bottlenecks — not proof-of-concepts that sit in a drawer."
         />
       </AnimatedReveal>
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
@@ -61,7 +61,13 @@ export function ServicesOverviewSection() {
           <AnimatedReveal key={service.slug} delay={0.04 * index}>
             <Card className="h-full p-5 sm:p-6">
               <div className="mb-3">
-                <Tag>{service.audiences.includes("agency") && service.audiences.includes("business") ? "Business + Agency" : "Agency"}</Tag>
+                <Tag>
+                  {service.audiences.includes("agency") && service.audiences.includes("business")
+                    ? "Business + Agency"
+                    : service.audiences.includes("agency")
+                      ? "Agency"
+                      : "Business"}
+                </Tag>
               </div>
               <h3 className="font-display text-lg font-semibold leading-tight sm:text-xl lg:text-2xl">{service.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink/75">{service.tagline}</p>
@@ -86,7 +92,7 @@ export function ServicesOverviewSection() {
 
 export function FounderProofSection() {
   return (
-    <Section className="pt-6">
+    <Section>
       <AnimatedReveal>
         <div className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-[1.15fr_0.85fr]">
           <Card className="p-6 sm:p-8">
@@ -95,8 +101,10 @@ export function FounderProofSection() {
               Founder-led delivery that makes scoping and execution faster
             </h2>
             <p className="mt-4 max-w-[62ch] text-sm leading-relaxed text-ink/75 sm:text-base">
-              TwoApps is company-led, but founder depth is a major trust advantage. Clients get practical experience across
-              AI workflows, product engineering, Claude/Claude Code workflows, and compliance-aware process design.
+              TwoApps is run by builders with deep hands-on experience across AI
+              workflows, product engineering, Claude/Claude Code setups, and
+              compliance-aware process design. Clients talk directly to the people
+              who ship.
             </p>
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {[
@@ -149,12 +157,12 @@ export function FounderProofSection() {
 
 export function WorkPreviewSection() {
   return (
-    <Section className="pt-6">
+    <Section>
       <AnimatedReveal>
         <Heading
           eyebrow="Work Style"
           title="Plain-language proof before long technical documents"
-          subtitle="These case-style summaries show how TwoApps scopes and delivers work. They can later expand into formal case studies as client approvals grow."
+          subtitle="These case-style summaries show how TwoApps scopes and ships work — clear outcomes first, technical detail second."
         />
       </AnimatedReveal>
       <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
@@ -186,7 +194,7 @@ export function WorkPreviewSection() {
 
 export function IndustriesAndRegionsSection() {
   return (
-    <Section className="pt-6">
+    <Section>
       <AnimatedReveal>
         <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
           <Card className="p-6">
@@ -235,7 +243,7 @@ export function IndustriesAndRegionsSection() {
 
 export function ProcessSection() {
   return (
-    <Section className="pt-6">
+    <Section>
       <AnimatedReveal>
         <Heading
           eyebrow="Process"

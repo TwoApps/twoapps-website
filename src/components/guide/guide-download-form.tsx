@@ -30,7 +30,7 @@ const initialState: FormState = {
 };
 
 const inputClassName =
-  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3.5 text-base text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white sm:py-3 sm:text-sm";
+  "focus-ring w-full rounded-2xl border border-ink/10 bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink/40 transition-colors hover:border-ink/20 focus:border-blue/30 focus:bg-white sm:py-3.5 sm:text-base";
 
 function FormField({
   label,
@@ -130,10 +130,10 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
 
           setSubmitted(true);
           setValues({ ...initialState, sourcePage });
-          
+
           // Trigger PDF download
           window.open("/downloads/5-ai-workflows-guide.pdf", "_blank");
-          
+
           if (typeof window !== "undefined" && window.plausible) {
             window.plausible("Guide Download", {
               props: {
@@ -164,17 +164,18 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-emerald-700">Guide downloading!</h3>
+          <h3 className="text-lg font-semibold text-emerald-700">Your guide is on its way</h3>
           <p className="mt-2 text-sm text-emerald-700/80">
             Your PDF should open in a new tab. If it doesn&apos;t,{" "}
-            <a 
-              href="/downloads/5-ai-workflows-guide.pdf" 
+            <a
+              href="/downloads/5-ai-workflows-guide.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
             >
               click here to download
-            </a>.
+            </a>
+            .
           </p>
         </div>
 
@@ -198,7 +199,7 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
           <input
             className={inputClassName}
             autoComplete="name"
-            placeholder="Your name"
+            placeholder="Your first name"
             value={values.name}
             onChange={(e) => update("name", e.target.value)}
             aria-invalid={Boolean(fieldErrors.name)}
@@ -218,7 +219,7 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
         </FormField>
       </div>
 
-      <FormField label="Company (optional)" error={fieldErrors.company}>
+      <FormField label="Company (optional, but helpful)" error={fieldErrors.company}>
         <input
           className={inputClassName}
           autoComplete="organization"
@@ -248,10 +249,10 @@ export function GuideDownloadForm({ sourcePage }: GuideDownloadFormProps) {
 
       <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:items-center">
         <Button type="submit" disabled={isPending} size="lg" className="w-full sm:w-auto">
-          {isPending ? "Sending..." : "Send Me The Guide"}
+          {isPending ? "Sending your guide..." : "Get my free guide"}
         </Button>
         <p className="text-center text-xs text-ink/60 sm:text-left">
-          Free PDF. No spam. Unsubscribe anytime.
+          Free PDF. No spam. One-click unsubscribe.
         </p>
       </div>
     </form>

@@ -1,23 +1,23 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 
+import { FaqSection as CommonFaqSection } from "@/components/common/faq-section";
 import { JsonLd } from "@/components/json-ld";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tag } from "@/components/ui/tag";
 import { useMotionDisabled } from "@/components/motion/use-motion-disabled";
-import { cn } from "@/lib/utils";
 import { ScrollBot } from "@/components/shared/scroll-bot";
+import { getContactPhone } from "@/lib/site-config";
 import type {
   RegionalConfig,
   RegionalFeature,
   RegionalIndustry,
   RegionalPainPoint,
   RegionalTestimonial,
-  RegionalFaq,
   RegionalProcessStep,
 } from "./types";
 
@@ -201,7 +201,7 @@ function RegionalHero({ hero }: { hero: RegionalConfig["hero"] }) {
       <Container>
         <div
           ref={ref}
-          className="relative overflow-hidden rounded-[2.5rem] border border-ink/10 bg-white px-4 py-8 shadow-card sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-16 lg:py-16"
+          className="relative overflow-hidden rounded-[22px] border border-ink/10 bg-white px-4 py-8 shadow-card sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-16 lg:py-16"
         >
           <div className="relative max-w-4xl">
             <div data-hero-rise>
@@ -291,13 +291,10 @@ function HowItWorksSection({
           {title}
         </h2>
         <div className="mx-auto max-w-4xl">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+          <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:gap-6 before:absolute before:left-6 before:right-6 before:top-6 before:hidden before:h-px before:bg-ink/10 lg:before:block">
             {steps?.map((step, i) => (
               <div key={i} className="relative">
-                {i < steps.length - 1 && (
-                  <div className="absolute left-1/2 top-8 hidden h-px w-full bg-cream-dark lg:block" />
-                )}
-                <Card className="relative p-5 text-center sm:p-6">
+                <Card className="relative z-10 p-5 text-center sm:p-6">
                   <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-cream text-lg font-bold text-blue">
                     {i + 1}
                   </div>
@@ -414,52 +411,12 @@ function TestimonialsSection({
   );
 }
 
-// FAQ Section
-function FaqSection({ faq }: { faq: { title: string; items: RegionalFaq[] } }) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  return (
-    <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.6" data-bot-say="No hidden fees. No offshore handoffs. Just results." data-bot-icons="shield,check">
-      <Container>
-        <h2 className="mb-8 text-center font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:mb-10 sm:text-3xl md:text-4xl lg:text-5xl">
-          {faq.title}
-        </h2>
-        <div className="mx-auto max-w-3xl space-y-3 sm:space-y-4">
-          {faq.items.map((item, i) => (
-            <Card key={i} className="p-0">
-              <button
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between gap-4 p-5 text-left sm:p-6"
-              >
-                <span className="text-sm font-semibold text-ink sm:text-base">{item.question}</span>
-                <span
-                  className={cn(
-                    "shrink-0 text-ink/70 transition-transform",
-                    openIndex === i && "rotate-180"
-                  )}
-                >
-                  {getIcon("chevronDown")}
-                </span>
-              </button>
-              {openIndex === i && (
-                <div className="border-t border-ink/10 px-5 pb-5 pt-4 sm:px-6 sm:pb-6">
-                  <p className="text-sm leading-relaxed text-ink/70">{item.answer}</p>
-                </div>
-              )}
-            </Card>
-          ))}
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 // Final CTA Section
 function FinalCtaSection({ finalCta }: { finalCta: RegionalConfig["finalCta"] }) {
   return (
     <section className="py-12 sm:py-16 md:py-20 lg:py-24" data-bot-stop data-bot-fx="0.8" data-bot-say="Ready to see it sell in your market?" data-bot-icons="person,arrowR">
       <Container>
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-ink/10 bg-white px-4 py-10 text-center shadow-card sm:px-8 sm:py-12 md:px-10 md:py-16">
+        <div className="relative overflow-hidden rounded-[22px] border border-ink/10 bg-white px-4 py-10 text-center shadow-card sm:px-8 sm:py-12 md:px-10 md:py-16">
           <div className="relative">
             <h2 className="mb-4 font-display text-2xl font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-4xl lg:text-5xl">
               {finalCta.headline}
@@ -496,7 +453,7 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
             name: config.schema.name,
             description: config.schema.description,
             url: `https://thetwoapps.com/${config.slug}`,
-            telephone: "+971-55-672-7803",
+            telephone: getContactPhone() || "+971-55-672-7803",
             email: "team@twoapps.com",
             areaServed: config.schema.areaServed,
           },
@@ -543,7 +500,15 @@ export function RegionalPage({ config }: { config: RegionalConfig }) {
         />
       )}
 
-      {config.faq && <FaqSection faq={config.faq} />}
+      {config.faq && (
+        <CommonFaqSection
+          eyebrow="FAQ"
+          title={config.faq.title}
+          items={config.faq.items}
+          align="center"
+          emitSchema={false}
+        />
+      )}
 
       {/* Final CTA */}
       <FinalCtaSection finalCta={config.finalCta} />

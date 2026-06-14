@@ -5,7 +5,8 @@ const labels = [
   "Ticket triage",
   "Invoice chasing",
   "CRM hygiene",
-  "Data entry"
+  "Data entry",
+  "Follow-up reminders"
 ];
 
 function MarqueeItems() {

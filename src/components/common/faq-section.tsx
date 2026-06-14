@@ -11,11 +11,15 @@ export function FaqSection({
   items,
   title = "Frequently asked questions",
   eyebrow = "FAQ",
+  subtitle = "Expand the questions that matter to you — answers are written in plain English, with no jargon.",
+  align = "left",
   emitSchema = true
 }: {
   items: FaqItem[];
   title?: string;
   eyebrow?: string;
+  subtitle?: string;
+  align?: "left" | "center";
   emitSchema?: boolean;
 }) {
   if (!items.length) return null;
@@ -26,7 +30,8 @@ export function FaqSection({
       <Heading
         eyebrow={eyebrow}
         title={title}
-        subtitle="Questions are collapsed by default to keep the page readable while preserving all the detail."
+        subtitle={subtitle}
+        align={align}
       />
       <Card className="mt-8 p-3 sm:p-4 md:p-5">
         <div className="space-y-3 sm:space-y-4">

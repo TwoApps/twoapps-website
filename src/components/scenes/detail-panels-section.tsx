@@ -15,19 +15,21 @@ export function DetailPanelsSection({
   title,
   subtitle,
   items,
+  align = "left",
   className
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   items: DetailPanelItem[];
+  align?: "left" | "center";
   className?: string;
 }) {
   if (!items.length) return null;
 
   return (
     <Section className={cn("py-12 sm:py-16 md:py-20 lg:py-24", className)}>
-      <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} />
+      <Heading eyebrow={eyebrow} title={title} subtitle={subtitle} align={align} />
       <div className="mt-6 space-y-3 sm:mt-8">
         {items.map((item, index) => (
           <ExpandableDetailPanel

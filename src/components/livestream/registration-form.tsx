@@ -155,18 +155,15 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
   if (submitted) {
     return (
       <div className="space-y-4">
-        <div
-          className="rounded-2xl border border-ink/10 bg-cream p-6 text-center"
-          role="status"
-        >
+        <div className="rounded-2xl border border-ink/10 bg-cream p-6 text-center" role="status">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue/10">
             <svg className="h-6 w-6 text-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-ink">You&apos;re on the list!</h3>
-          <p className="mt-2 text-sm text-ink/70">
-            We&apos;ll email you when the demo date is set. You&apos;ll get priority access and all the resources after the session.
+          <h3 className="font-display text-lg font-semibold text-ink">You&apos;re in — we&apos;ll see you there!</h3>
+          <p className="mt-2 text-sm leading-relaxed text-ink/70">
+            We&apos;ll email you as soon as the date is locked in. After the live session, you&apos;ll get the recording, the workflow file, and the resource checklist.
           </p>
           {registrationCount && registrationCount > 1 && (
             <p className="mt-3 text-xs text-ink/50">
@@ -187,17 +184,17 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div className="grid gap-4 md:grid-cols-2">
-        <FormField label="Name" required error={fieldErrors.name}>
+        <FormField label="Your name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
             autoComplete="name"
             value={values.name}
             onChange={(e) => update("name", e.target.value)}
-            placeholder="Your name"
+            placeholder="e.g. Sarah Chen"
             aria-invalid={Boolean(fieldErrors.name)}
           />
         </FormField>
-        <FormField label="Email" required error={fieldErrors.email}>
+        <FormField label="Work email" required error={fieldErrors.email}>
           <input
             className={inputClassName}
             autoComplete="email"
@@ -205,14 +202,14 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
             inputMode="email"
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
-            placeholder="you@company.com"
+            placeholder="sarah@company.com"
             aria-invalid={Boolean(fieldErrors.email)}
           />
         </FormField>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <FormField label="Company" error={fieldErrors.company}>
+        <FormField label="Company (optional)" error={fieldErrors.company}>
           <input
             className={inputClassName}
             autoComplete="organization"
@@ -221,12 +218,12 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
             placeholder="Your company"
           />
         </FormField>
-        <FormField label="Job title" error={fieldErrors.jobTitle}>
+        <FormField label="Job title (optional)" error={fieldErrors.jobTitle}>
           <input
             className={inputClassName}
             value={values.jobTitle}
             onChange={(e) => update("jobTitle", e.target.value)}
-            placeholder="Your role"
+            placeholder="e.g. Head of Operations"
           />
         </FormField>
       </div>
@@ -254,13 +251,17 @@ export function LivestreamRegistrationForm({ sourcePage }: LivestreamRegistratio
           <>
             <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              />
             </svg>
-            Registering...
+            Saving your seat...
           </>
         ) : (
           <>
-            Reserve Your Spot
+            Save my seat
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>

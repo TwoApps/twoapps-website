@@ -40,7 +40,7 @@ function FormField({
 }) {
   return (
     <label className={cn("block", className)}>
-      <span className="mb-2 block text-sm sm:text-base font-medium text-ink/90">
+      <span className="mb-2 block text-sm font-medium text-ink/90 sm:text-base">
         {label}
         {required ? <span className="ml-1 text-accent-2">*</span> : null}
       </span>
@@ -173,9 +173,10 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-base font-semibold text-emerald-800">You&apos;re enrolled!</h3>
+          <h3 className="text-base font-semibold text-emerald-800">You&apos;re in!</h3>
           <p className="mt-2 text-sm text-emerald-700/80">
-            Check your inbox — we&apos;ve sent you the course PDF.
+            Check your inbox — your course PDF is on its way and should land within the next few
+            minutes.
           </p>
         </div>
       </div>
@@ -185,22 +186,22 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div className="grid gap-4">
-        <FormField label="Name" required error={fieldErrors.name}>
+        <FormField label="Your name" required error={fieldErrors.name}>
           <input
             className={inputClassName}
             autoComplete="name"
-            placeholder="Your name"
+            placeholder="e.g. Sarah Chen"
             value={values.name}
             onChange={(e) => update("name", e.target.value)}
             aria-invalid={Boolean(fieldErrors.name)}
           />
         </FormField>
-        <FormField label="Email" required error={fieldErrors.email}>
+        <FormField label="Work email" required error={fieldErrors.email}>
           <input
             className={inputClassName}
             autoComplete="email"
             type="email"
-            placeholder="you@company.com"
+            placeholder="sarah@company.com"
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
             aria-invalid={Boolean(fieldErrors.email)}
@@ -210,7 +211,7 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
           <input
             className={inputClassName}
             autoComplete="organization"
-            placeholder="Your company name"
+            placeholder="Acme Fintech"
             value={values.company}
             onChange={(e) => update("company", e.target.value)}
           />
@@ -237,7 +238,7 @@ export function AcademyEnrollForm({ courseId, courseName, onSuccess }: AcademyEn
 
       <div className="pt-1">
         <Button type="submit" disabled={isPending} size="lg" className="w-full">
-          {isPending ? "Enrolling..." : "Get Free Course"}
+          {isPending ? "Sending your course..." : "Send me the free course"}
         </Button>
         <p className="mt-2 text-center text-xs text-ink/50">
           Free PDF. No spam. Unsubscribe anytime.
