@@ -6,6 +6,8 @@ import { ScrollBot } from "@/components/shared/scroll-bot";
 import { ScrollReveal } from "./scroll-reveal";
 import { HomeStats } from "./stats";
 import { HomeTracks } from "./tracks";
+import { homeFaq } from "@/content";
+import { FaqSection } from "@/components/common/faq-section";
 
 type HomeCinematicExperienceProps = {
   bookingHref: string;
@@ -23,6 +25,12 @@ export function CinematicHomeExperience({
       <HomeStats />
       <HomeTracks />
       <HomeProcess />
+      <FaqSection
+        items={homeFaq}
+        eyebrow="FAQ"
+        title="Common questions about agentic AI & TwoApps"
+        align="center"
+      />
       <HomeCta bookingHref={bookingHref} />
     </div>
   );

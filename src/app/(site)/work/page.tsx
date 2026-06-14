@@ -1,8 +1,9 @@
-import { caseStudies, processSteps } from '@/content';
+import { caseStudies, processSteps, workFaq } from '@/content';
 import { buildMetadata, collectionPageSchema, makeBreadcrumbSchema, organizationSchema } from '@/lib/seo';
 
 import { CaseStudyGrid } from '@/components/case-studies/case-study-grid';
 import { CtaBand } from '@/components/common/cta-band';
+import { FaqSection } from '@/components/common/faq-section';
 import { PageHero } from '@/components/common/page-hero';
 import { JsonLd } from '@/components/json-ld';
 import { Card } from '@/components/ui/card';
@@ -139,6 +140,8 @@ export default function WorkPage() {
       >
         <CaseStudyGrid caseStudies={caseStudies} showFeatured />
       </div>
+
+      <FaqSection items={workFaq} title="Working with TwoApps — common questions" eyebrow="FAQ" />
 
       <div
         data-bot-stop

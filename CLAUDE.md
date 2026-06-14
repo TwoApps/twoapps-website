@@ -228,12 +228,24 @@ Every marketing page uses this section order:
 | `NEXT_PUBLIC_CONTACT_PHONE` | Optional | Displayed on contact page + WhatsApp link |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Optional | Analytics tracking domain |
 | `NEXT_PUBLIC_GSC_VERIFICATION` | Optional | Google Search Console meta tag |
+| `NEXT_PUBLIC_GA4_MEASUREMENT_ID` | Optional | GA4 id (`G-XXXX`). GA4 + AI-referral events load only when set |
+| `NEXT_PUBLIC_LINKEDIN_COMPANY_URL` | Optional | Company LinkedIn — wired into Organization `sameAs` |
+| `NEXT_PUBLIC_LINKEDIN_FOUNDER_URL` | Optional | Founder LinkedIn — wired into Person `sameAs` |
+| `NEXT_PUBLIC_TWITTER_HANDLE` | Optional | `@handle` for `twitter:site`/`creator` + `sameAs` |
+| `NEXT_PUBLIC_ORG_LOGO` | Optional | Path to square raster logo for Organization `logo` (defaults to `/og-default.png`) |
+| `NEXT_PUBLIC_FOUNDER_IMAGE` | Optional | Path to founder headshot for Person `image` |
 | `RESEND_API_KEY` | Production | All email sending |
 | `CONTACT_TO_EMAIL` | Production | Where contact form submissions are sent |
 | `CONTACT_FROM_EMAIL` | Production | Sender identity |
 | `CRON_SECRET` | Production | Bearer token for Vercel cron job auth |
 
-Add new server-side env vars to the Zod schema in `src/lib/env.ts` via `getServerEnv()`.
+Add new server-side env vars to the Zod schema in `src/lib/env.ts` via `getServerEnv()`. Client-exposed (`NEXT_PUBLIC_*`) vars are read via getters in `src/lib/site-config.ts` and validated non-fatally in `getClientEnvIssues()`.
+
+### Structured data (`@graph`) and AEO
+- All page JSON-LD flows through `buildGraph([...])` in `src/lib/seo.ts`, producing one `@graph` with `@id`-cross-linked nodes. The site-wide Organization + WebSite + Person graph is rendered once in `src/app/layout.tsx` via `siteGraph()`; page graphs reference those nodes by `@id`.
+- AEO components live in `src/components/aeo/` (`AnswerBlock`, `KeyTakeaways`, `DefinitionBlock`, `ComparisonTable`). Blog/glossary/solution prose renders through the in-repo Markdown parser (`src/lib/markdown.ts` → `MarkdownRenderer`) — no markdown libs, no `dangerouslySetInnerHTML`.
+- Internal linking is derived centrally in `src/lib/related.ts` (`relatedFor(href)`), grouped by topic cluster — detail pages render `<RelatedLinks>` from it, so new content auto-links and stays orphan-free.
+- New content lives in `src/content/index.ts`: `solutions` (`/solutions`), `glossaryTerms` (`/glossary`), `packages` (single source for `/pricing` AND `/api/catalog`), and `testimonials` (genuine only — powers Review/AggregateRating). RSS feed: `/blog/feed.xml`.
 
 ## Email / Nurture Sequence
 

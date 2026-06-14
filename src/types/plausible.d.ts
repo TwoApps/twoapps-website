@@ -8,5 +8,7 @@ declare global {
         props?: Record<string, string | number | boolean>;
       }
     ) => void;
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { siteNav } from "@/content";
+import { getLinkedInCompanyUrl } from "@/lib/site-config";
 
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/site/logo";
@@ -55,6 +56,14 @@ export function Footer() {
             >
               Book discovery call
             </Link>
+            <a
+              href={getLinkedInCompanyUrl()}
+              target="_blank"
+              rel="noreferrer"
+              className="focus-ring inline-block w-fit rounded-md text-sm text-ink/62 transition-colors hover:text-blue"
+            >
+              LinkedIn
+            </a>
             <a
               href="https://zainhthegreat.github.io/my_cv_zain/"
               target="_blank"

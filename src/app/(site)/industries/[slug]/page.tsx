@@ -10,14 +10,18 @@ import {
 
 import type { Industry } from "@/content/types";
 
+import { relatedFor } from "@/lib/related";
+
 import { ScrollBot } from "@/components/shared/scroll-bot";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { CtaBand } from "@/components/common/cta-band";
 import { FaqSection } from "@/components/common/faq-section";
 import { PageHero } from "@/components/common/page-hero";
+import { RelatedLinks } from "@/components/common/related-links";
 import { JsonLd } from "@/components/json-ld";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { Card } from "@/components/ui/card";
+import { Container } from "@/components/ui/container";
 import { Heading } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 
@@ -297,6 +301,15 @@ export default async function IndustryDetailPage({ params }: Props) {
           eyebrow="FAQ"
         />
       </div>
+
+      <Section className="py-8">
+        <Container className="max-w-3xl">
+          <RelatedLinks
+            items={industry.relatedLinks ?? relatedFor(`/industries/${industry.slug}`)}
+            title="Related"
+          />
+        </Container>
+      </Section>
 
       <div
         data-bot-stop

@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
 
-import { BRAND_NAME, SEO_TARGET_REGIONS } from "@/lib/brand";
-import { getGscVerification, getSiteUrl } from "@/lib/site-config";
+import {
+  BRAND_NAME,
+  CONTACT_EMAIL,
+  KNOWS_ABOUT,
+  SEO_TARGET_REGIONS,
+  TWITTER_HANDLE
+} from "@/lib/brand";
+import {
+  getFounderImageUrl,
+  getGscVerification,
+  getLinkedInCompanyUrl,
+  getLinkedInFounderUrl,
+  getOrgLogoUrl,
+  getSiteUrl
+} from "@/lib/site-config";
+
+const SCHEMA_CONTEXT = "https://schema.org";
 
 export type SeoMeta = {
   title: string;
@@ -9,6 +24,19 @@ export type SeoMeta = {
   keywords?: string[];
   canonicalPath: string;
   ogImage?: string;
+  /** Open Graph object type. Defaults to "website"; use "article" for blog posts. */
+  ogType?: "website" | "article";
+  /** Article metadata — only used when ogType === "article". */
+  article?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    authorName?: string;
+    tags?: string[];
+  };
+  /** Per-page indexing overrides. Defaults to index+follow when omitted. */
+  robots?: { index?: boolean; follow?: boolean };
+  /** hreflang map, e.g. { "en-AE": "https://.../ae", "x-default": "https://..." }. */
+  languages?: Record<string, string>;
 };
 
 export type FaqEntry = { question: string; answer: string };
@@ -43,12 +71,26 @@ export type ArticleInput = {
   datePublished: string;
   dateModified?: string;
   image?: string;
+  keywords?: string[];
   articleType?: "Article" | "TechArticle" | "NewsArticle" | "BlogPosting" | "Course";
 };
 
 const siteName = BRAND_NAME;
 const defaultDescription =
   "TwoApps is a UAE-based AI automation and software delivery partner that helps businesses and agencies reduce manual work, ship faster, and launch practical AI workflows.";
+
+/**
+ * Stable @id anchors for the entity graph. Cross-referenced across nodes so
+ * search engines and AI answer engines resolve one coherent knowledge graph.
+ */
+export function schemaIds(siteUrl = getSiteUrl()) {
+  return {
+    org: `${siteUrl}/#organization`,
+    website: `${siteUrl}/#website`,
+    person: `${siteUrl}/#zain`,
+    logo: `${siteUrl}/#logo`
+  };
+}
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -59,16 +101,19 @@ export const baseMetadata: Metadata = {
   description: defaultDescription,
   applicationName: siteName,
   alternates: {
-    canonical: "/"
+    canonical: "/",
+    types: {
+      "application/rss+xml": [{ url: "/blog/feed.xml", title: `${siteName} Blog` }]
+    }
   },
   robots: {
     index: true,
     follow: true
   },
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' }]
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml", sizes: "any" }]
   },
-  manifest: '/manifest.json',
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     siteName,
@@ -89,7 +134,8 @@ export const baseMetadata: Metadata = {
     card: "summary_large_image",
     title: `${siteName} | Agentic AI Software House`,
     description: defaultDescription,
-    images: ["/og-default.png"]
+    images: ["/og-default.png"],
+    ...(TWITTER_HANDLE ? { site: TWITTER_HANDLE, creator: TWITTER_HANDLE } : {})
   },
   verification: getGscVerification()
     ? {
@@ -99,34 +145,90 @@ export const baseMetadata: Metadata = {
 };
 
 export function buildMetadata(seo: SeoMeta): Metadata {
+  const ogImage = seo.ogImage || "/og-default.png";
+  const ogImages = [{ url: ogImage, width: 1200, height: 630, alt: seo.title }];
+
+  const openGraph: Metadata["openGraph"] =
+    seo.ogType === "article" && seo.article
+      ? {
+          type: "article",
+          title: seo.title,
+          description: seo.description,
+          url: seo.canonicalPath,
+          images: ogImages,
+          publishedTime: seo.article.publishedTime,
+          modifiedTime: seo.article.modifiedTime ?? seo.article.publishedTime,
+          authors: seo.article.authorName ? [seo.article.authorName] : undefined,
+          tags: seo.article.tags
+        }
+      : {
+          type: "website",
+          title: seo.title,
+          description: seo.description,
+          url: seo.canonicalPath,
+          images: ogImages
+        };
+
   return {
     title: seo.title,
     description: seo.description,
     keywords: seo.keywords,
     alternates: {
-      canonical: seo.canonicalPath
+      canonical: seo.canonicalPath,
+      ...(seo.languages ? { languages: seo.languages } : {})
     },
-    openGraph: {
-      title: seo.title,
-      description: seo.description,
-      url: seo.canonicalPath,
-      type: "website",
-      images: [
-        {
-          url: seo.ogImage || "/og-default.png",
-          width: 1200,
-          height: 630,
-          alt: seo.title
-        }
-      ]
-    },
+    ...(seo.robots
+      ? { robots: { index: seo.robots.index ?? true, follow: seo.robots.follow ?? true } }
+      : {}),
+    openGraph,
     twitter: {
       card: "summary_large_image",
       title: seo.title,
       description: seo.description,
-      images: [seo.ogImage || "/og-default.png"]
+      images: [ogImage],
+      ...(TWITTER_HANDLE ? { site: TWITTER_HANDLE, creator: TWITTER_HANDLE } : {})
     }
   };
+}
+
+/**
+ * Assemble JSON-LD nodes into a single @graph. Strips per-node @context (added
+ * once at the top), drops falsy nodes, and dedupes by @id so repeated entities
+ * (e.g. Organization) collapse to one. Returns null when there is nothing to emit.
+ */
+export function buildGraph(
+  nodes: Array<Record<string, unknown> | null | undefined | false>
+) {
+  const seen = new Set<string>();
+  const graph: Array<Record<string, unknown>> = [];
+
+  for (const node of nodes) {
+    if (!node || typeof node !== "object") continue;
+    const rest: Record<string, unknown> = { ...(node as Record<string, unknown>) };
+    delete rest["@context"];
+    const id = typeof rest["@id"] === "string" ? (rest["@id"] as string) : null;
+    if (id) {
+      if (seen.has(id)) continue;
+      seen.add(id);
+    }
+    graph.push(rest);
+  }
+
+  if (!graph.length) return null;
+  return { "@context": SCHEMA_CONTEXT, "@graph": graph };
+}
+
+/**
+ * The site-wide entity graph (Organization + WebSite + founder Person). Rendered
+ * globally in the root layout so every page carries the entity graph; page-level
+ * graphs reference these nodes by @id.
+ */
+export function siteGraph(siteUrl = getSiteUrl()) {
+  return buildGraph([
+    organizationSchema(siteUrl),
+    websiteSchema(siteUrl),
+    personSchema(siteUrl)
+  ]);
 }
 
 export function makeBreadcrumbSchema(
@@ -134,7 +236,7 @@ export function makeBreadcrumbSchema(
   siteUrl = getSiteUrl()
 ) {
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
@@ -146,25 +248,49 @@ export function makeBreadcrumbSchema(
 }
 
 export function organizationSchema(siteUrl = getSiteUrl()) {
+  const ids = schemaIds(siteUrl);
+  const sameAs = [
+    getLinkedInCompanyUrl(),
+    getLinkedInFounderUrl(),
+    "https://zainhthegreat.github.io/my_cv_zain/"
+  ].filter((url): url is string => Boolean(url));
+
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "Organization",
+    "@id": ids.org,
     name: siteName,
     url: siteUrl,
     description: defaultDescription,
+    slogan: "Agentic AI software house — practical AI workflows, shipped.",
+    logo: {
+      "@type": "ImageObject",
+      "@id": ids.logo,
+      url: getOrgLogoUrl(siteUrl)
+    },
+    image: getOrgLogoUrl(siteUrl),
+    founder: { "@id": ids.person },
+    knowsAbout: [...KNOWS_ABOUT],
     areaServed: [...SEO_TARGET_REGIONS],
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dubai",
       addressCountry: "AE"
     },
-    sameAs: ["https://zainhthegreat.github.io/my_cv_zain/"]
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales",
+      email: CONTACT_EMAIL,
+      areaServed: [...SEO_TARGET_REGIONS],
+      availableLanguage: ["en"]
+    },
+    sameAs
   };
 }
 
 export function localBusinessSchema(siteUrl = getSiteUrl()) {
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "ProfessionalService",
     name: siteName,
     url: siteUrl,
@@ -186,17 +312,15 @@ export function serviceSchema(input: {
   areaServed?: string[];
 }) {
   const siteUrl = getSiteUrl();
+  const ids = schemaIds(siteUrl);
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "Service",
+    "@id": `${siteUrl}${input.path}#service`,
     name: input.name,
     description: input.description,
     url: `${siteUrl}${input.path}`,
-    provider: {
-      "@type": "Organization",
-      name: siteName,
-      url: siteUrl
-    },
+    provider: { "@id": ids.org },
     areaServed: input.areaServed || [...SEO_TARGET_REGIONS],
     serviceType: input.serviceType
   };
@@ -205,7 +329,7 @@ export function serviceSchema(input: {
 export function makeFaqPageSchema(items: FaqEntry[] | null | undefined) {
   if (!items || items.length === 0) return null;
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "FAQPage",
     mainEntity: items.map((item) => ({
       "@type": "Question",
@@ -219,48 +343,47 @@ export function makeFaqPageSchema(items: FaqEntry[] | null | undefined) {
 }
 
 export function personSchema(siteUrl = getSiteUrl()) {
+  const ids = schemaIds(siteUrl);
+  const image = getFounderImageUrl(siteUrl);
+  const sameAs = [
+    getLinkedInFounderUrl(),
+    "https://zainhthegreat.github.io/my_cv_zain/"
+  ].filter((url): url is string => Boolean(url));
+
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "Person",
+    "@id": ids.person,
     name: "Zain Hassan",
     url: `${siteUrl}/about`,
-    image: `${siteUrl}/zain-hassan.jpg`,
+    ...(image ? { image } : {}),
     jobTitle: "Founder & AI Implementation Engineer",
     description:
       "Founder of TwoApps. Builds practical AI workflows, Claude / Claude Code delivery systems, and AI-enabled internal tools for businesses and software houses.",
-    worksFor: {
-      "@type": "Organization",
-      name: siteName,
-      url: siteUrl
-    },
-    knowsAbout: [
-      "AI Workflow Automation",
-      "Agentic AI",
-      "Claude",
-      "Claude Code",
-      "AML/KYC Compliance Automation",
-      "Marketing Automation",
-      "Analytics & Reporting Automation",
-      "Product Engineering",
-      "Flutter",
-      "AWS"
-    ],
-    sameAs: ["https://zainhthegreat.github.io/my_cv_zain/"]
+    worksFor: { "@id": ids.org },
+    knowsAbout: [...KNOWS_ABOUT],
+    sameAs
   };
 }
 
 export function websiteSchema(siteUrl = getSiteUrl()) {
+  const ids = schemaIds(siteUrl);
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "WebSite",
+    "@id": ids.website,
     name: siteName,
     url: siteUrl,
-    publisher: {
-      "@type": "Organization",
-      name: siteName,
-      url: siteUrl
-    },
-    inLanguage: "en"
+    publisher: { "@id": ids.org },
+    inLanguage: "en",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/search?q={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    }
   };
 }
 
@@ -272,11 +395,13 @@ export function collectionPageSchema(input: {
 }) {
   const siteUrl = getSiteUrl();
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "CollectionPage",
+    "@id": `${siteUrl}${input.path}#collection`,
     name: input.name,
     description: input.description,
     url: `${siteUrl}${input.path}`,
+    isPartOf: { "@id": schemaIds(siteUrl).website },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: input.items.map((item, index) => ({
@@ -291,29 +416,25 @@ export function collectionPageSchema(input: {
 }
 
 export function makeArticleSchema(input: ArticleInput, siteUrl = getSiteUrl()) {
+  const ids = schemaIds(siteUrl);
+  const isFounderAuthor = !input.authorName || input.authorName === "Zain Hassan";
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": input.articleType ?? "Article",
+    "@id": `${siteUrl}${input.path}#article`,
     headline: input.title,
     description: input.description,
     url: `${siteUrl}${input.path}`,
+    mainEntityOfPage: `${siteUrl}${input.path}`,
+    inLanguage: "en",
     image: input.image ? `${siteUrl}${input.image}` : `${siteUrl}/og-default.png`,
     datePublished: input.datePublished,
     dateModified: input.dateModified ?? input.datePublished,
-    author: {
-      "@type": "Person",
-      name: input.authorName ?? "Zain Hassan",
-      url: `${siteUrl}/about`
-    },
-    publisher: {
-      "@type": "Organization",
-      name: siteName,
-      url: siteUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/favicon.svg`
-      }
-    }
+    ...(input.keywords && input.keywords.length ? { keywords: input.keywords } : {}),
+    author: isFounderAuthor
+      ? { "@id": ids.person }
+      : { "@type": "Person", name: input.authorName, url: `${siteUrl}/about` },
+    publisher: { "@id": ids.org }
   };
 }
 
@@ -324,7 +445,7 @@ export function makeHowToSchema(input: {
   totalTime?: string;
 }) {
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "HowTo",
     name: input.name,
     description: input.description,
@@ -339,34 +460,22 @@ export function makeHowToSchema(input: {
 }
 
 export function makeProductSchema(pkg: ProductPackage, siteUrl = getSiteUrl()) {
-  const oneYearFromNow = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-    .toISOString()
-    .slice(0, 10);
-
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "Product",
     "@id": `${siteUrl}/pricing#${pkg.id}`,
     name: pkg.name,
     description: pkg.description,
-    brand: {
-      "@type": "Brand",
-      name: siteName
-    },
+    brand: { "@id": schemaIds(siteUrl).org },
     category: pkg.serviceType ?? "AI Workflow Automation",
     offers: {
       "@type": "Offer",
       url: pkg.url ?? `${siteUrl}/contact?package=${pkg.id}`,
       priceCurrency: pkg.priceCurrency ?? "USD",
       price: pkg.priceUsd.toString(),
-      priceValidUntil: oneYearFromNow,
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@type": "Organization",
-        name: siteName,
-        url: siteUrl
-      }
+      seller: { "@id": schemaIds(siteUrl).org }
     }
   };
 }
@@ -377,7 +486,7 @@ export function makeReviewSchema(
   siteUrl = getSiteUrl()
 ) {
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "Review",
     reviewRating: {
       "@type": "Rating",
@@ -398,7 +507,7 @@ export function makeReviewSchema(
     itemReviewed: {
       "@type": "Service",
       name: productName,
-      provider: { "@type": "Organization", name: siteName, url: siteUrl }
+      provider: { "@id": schemaIds(siteUrl).org }
     }
   };
 }
@@ -422,12 +531,12 @@ export function definedTermSchema(input: {
 }) {
   const siteUrl = getSiteUrl();
   return {
-    "@context": "https://schema.org",
+    "@context": SCHEMA_CONTEXT,
     "@type": "DefinedTerm",
+    "@id": `${siteUrl}${input.path}#term`,
     name: input.name,
     description: input.description,
     url: `${siteUrl}${input.path}`,
-    inDefinedTermSet:
-      input.inDefinedTermSet ?? `${siteUrl}/glossary`
+    inDefinedTermSet: input.inDefinedTermSet ?? `${siteUrl}/glossary`
   };
 }

@@ -1,13 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import { Bricolage_Grotesque, Instrument_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 
+import { Analytics } from "@/components/analytics";
 import { JsonLd } from "@/components/json-ld";
 import { PlausibleScript } from "@/components/plausible-script";
-import { baseMetadata, websiteSchema } from "@/lib/seo";
+import { baseMetadata, siteGraph } from "@/lib/seo";
 
 export const metadata: Metadata = baseMetadata;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f7f5ef"
+};
 
 const fontDisplay = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -51,7 +58,8 @@ export default function RootLayout({
     >
       <body className="font-body antialiased">
         <PlausibleScript />
-        <JsonLd data={websiteSchema()} />
+        <Analytics />
+        <JsonLd data={siteGraph()} />
         {children}
       </body>
     </html>

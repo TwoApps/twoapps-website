@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "UAE-based AI automation and software delivery partner",
     start_url: "/",
     display: "standalone",
-    background_color: "#06070d",
-    theme_color: "#06070d",
+    background_color: "#f7f5ef",
+    theme_color: "#f7f5ef",
     icons: [
       {
         src: "/favicon.svg",

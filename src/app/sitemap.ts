@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
 
-import { blogPosts, industries, regions, services } from "@/content";
+import { blogPosts, glossaryTerms, industries, regions, services, solutions } from "@/content";
 import { getSiteUrl } from "@/lib/site-config";
 
 type StaticRoute = {
   path: string;
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  lastModified?: Date;
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -16,6 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: StaticRoute[] = [
     { path: "/", priority: 1, changeFrequency: "weekly" },
     { path: "/services", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/solutions", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/glossary", priority: 0.7, changeFrequency: "monthly" },
     { path: "/agency-partners", priority: 0.9, changeFrequency: "weekly" },
     { path: "/industries", priority: 0.8, changeFrequency: "weekly" },
     { path: "/regions", priority: 0.8, changeFrequency: "monthly" },
@@ -36,6 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/au", priority: 0.85, changeFrequency: "monthly" },
     { path: "/nz", priority: 0.8, changeFrequency: "monthly" },
     { path: "/eu", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/ee", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/latam", priority: 0.8, changeFrequency: "monthly" },
     { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
     { path: "/terms", priority: 0.3, changeFrequency: "yearly" }
   ];
@@ -44,6 +49,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((service) => ({
       path: `/services/${service.slug}`,
       priority: 0.85,
+      changeFrequency: "monthly" as const
+    })),
+    ...solutions.map((solution) => ({
+      path: `/solutions/${solution.slug}`,
+      priority: 0.85,
+      changeFrequency: "monthly" as const
+    })),
+    ...glossaryTerms.map((term) => ({
+      path: `/glossary/${term.slug}`,
+      priority: 0.6,
       changeFrequency: "monthly" as const
     })),
     ...industries.map((industry) => ({
@@ -59,13 +74,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPosts.map((post) => ({
       path: `/blog/${post.slug}`,
       priority: 0.7,
-      changeFrequency: "monthly" as const
+      changeFrequency: "monthly" as const,
+      lastModified: new Date(post.dateModified ?? post.datePublished)
     }))
   ];
 
   return [...staticRoutes, ...contentRoutes].map((route) => ({
     url: `${siteUrl}${route.path}`,
-    lastModified: now,
+    lastModified: route.lastModified ?? now,
     changeFrequency: route.changeFrequency,
     priority: route.priority
   }));

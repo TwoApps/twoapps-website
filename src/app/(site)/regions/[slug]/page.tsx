@@ -8,13 +8,16 @@ import {
   serviceSchema,
 } from "@/lib/seo";
 import { SEO_PARTNER_FOCUS_REGIONS } from "@/lib/brand";
+import { relatedFor } from "@/lib/related";
 
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { CtaBand } from "@/components/common/cta-band";
 import { FaqSection } from "@/components/common/faq-section";
 import { Heading } from "@/components/ui/heading";
 import { PageHero } from "@/components/common/page-hero";
+import { RelatedLinks } from "@/components/common/related-links";
 import { JsonLd } from "@/components/json-ld";
+import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { ScrollBot } from "@/components/shared/scroll-bot";
@@ -295,6 +298,15 @@ export default async function RegionDetailPage({ params }: Props) {
           title="Questions about delivery in this region"
         />
       </div>
+
+      <Section className="py-8">
+        <Container className="max-w-3xl">
+          <RelatedLinks
+            items={region.relatedLinks ?? relatedFor(`/regions/${region.slug}`)}
+            title="Related"
+          />
+        </Container>
+      </Section>
 
       <div
         data-bot-stop

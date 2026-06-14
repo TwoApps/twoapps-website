@@ -1,4 +1,12 @@
-import { blogPosts, caseStudies, industries, regions, services } from "@/content";
+import {
+  blogPosts,
+  caseStudies,
+  glossaryTerms,
+  industries,
+  regions,
+  services,
+  solutions
+} from "@/content";
 import { BRAND_NAME } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-config";
 
@@ -47,6 +55,41 @@ export async function GET() {
       lines.push(`A: ${faq.answer}`);
       lines.push("");
     }
+    lines.push("---");
+    lines.push("");
+  }
+
+  lines.push("## Solutions");
+  lines.push("");
+  for (const solution of solutions) {
+    lines.push(`### ${solution.title}`);
+    lines.push(`URL: ${siteUrl}${solution.seo.canonicalPath}`);
+    lines.push("");
+    lines.push(`Definition: ${solution.shortAnswer}`);
+    lines.push("");
+    lines.push(`Summary: ${solution.summary}`);
+    lines.push("");
+    lines.push("Benefits:");
+    for (const benefit of solution.benefits) lines.push(`- ${benefit}`);
+    lines.push("");
+    lines.push("FAQ:");
+    for (const faq of solution.faq) {
+      lines.push(`Q: ${faq.question}`);
+      lines.push(`A: ${faq.answer}`);
+      lines.push("");
+    }
+    lines.push("---");
+    lines.push("");
+  }
+
+  lines.push("## Glossary");
+  lines.push("");
+  for (const term of glossaryTerms) {
+    lines.push(`### ${term.term}`);
+    lines.push(`URL: ${siteUrl}${term.seo.canonicalPath}`);
+    lines.push("");
+    lines.push(`Definition: ${term.shortAnswer}`);
+    lines.push("");
     lines.push("---");
     lines.push("");
   }

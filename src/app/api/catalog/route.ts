@@ -1,4 +1,4 @@
-import { industries, regions, services } from "@/content";
+import { glossaryTerms, industries, packages, regions, services, solutions } from "@/content";
 import { BRAND_NAME } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-config";
 
@@ -34,6 +34,20 @@ export async function GET() {
       deliverables: service.deliverables,
       process: service.process
     })),
+    solutions: solutions.map((solution) => ({
+      id: solution.slug,
+      url: `${siteUrl}${solution.seo.canonicalPath}`,
+      name: solution.title,
+      tagline: solution.tagline,
+      summary: solution.summary,
+      shortAnswer: solution.shortAnswer
+    })),
+    glossary: glossaryTerms.map((term) => ({
+      id: term.slug,
+      url: `${siteUrl}${term.seo.canonicalPath}`,
+      term: term.term,
+      definition: term.shortAnswer
+    })),
     industries: industries.map((industry) => ({
       id: industry.slug,
       url: `${siteUrl}${industry.seo.canonicalPath}`,
@@ -51,52 +65,30 @@ export async function GET() {
       { id: "sg", url: `${siteUrl}/sg`, name: "Singapore", focus: "MAS / PDPA compliance" },
       { id: "au", url: `${siteUrl}/au`, name: "Australia", focus: "Mid-market ROI" },
       { id: "nz", url: `${siteUrl}/nz`, name: "New Zealand", focus: "Team capacity" },
-      { id: "eu", url: `${siteUrl}/eu`, name: "Europe", focus: "GDPR by design" }
+      { id: "eu", url: `${siteUrl}/eu`, name: "Europe", focus: "GDPR by design" },
+      { id: "ee", url: `${siteUrl}/ee`, name: "Eastern Europe", focus: "White-label delivery" },
+      { id: "latam", url: `${siteUrl}/latam`, name: "Latin America", focus: "White-label delivery" }
     ],
     pricing: {
       url: `${siteUrl}/pricing`,
       currency: "USD",
-      packages: [
-        {
-          id: "workflow-assessment",
-          name: "Workflow Assessment",
-          priceUsd: 8000,
-          timeline: "2 weeks"
-        },
-        {
-          id: "lead-qualification",
-          name: "Lead Qualification Workflow",
-          priceUsd: 10000,
-          timeline: "1 week"
-        },
-        {
-          id: "customer-support",
-          name: "Customer Support Automation",
-          priceUsd: 12000,
-          timeline: "2 weeks"
-        },
-        {
-          id: "finance-reporting",
-          name: "Finance Reporting Automation",
-          priceUsd: 15000,
-          timeline: "2 weeks"
-        },
-        {
-          id: "ai-governance-audit",
-          name: "AI Governance Audit",
-          priceUsd: 20000,
-          timeline: "3 weeks"
-        }
-      ],
-      retainers: [
-        {
-          id: "compliance-as-a-service",
-          name: "Compliance-as-a-Service",
-          priceUsd: 5000,
-          billingPeriod: "month",
-          minimumTerm: "6 months"
-        }
-      ]
+      packages: packages
+        .filter((pkg) => pkg.billingPeriod !== "month")
+        .map((pkg) => ({
+          id: pkg.id,
+          name: pkg.name,
+          priceUsd: pkg.priceUsd,
+          timeline: pkg.timeline
+        })),
+      retainers: packages
+        .filter((pkg) => pkg.billingPeriod === "month")
+        .map((pkg) => ({
+          id: pkg.id,
+          name: pkg.name,
+          priceUsd: pkg.priceUsd,
+          billingPeriod: pkg.billingPeriod,
+          minimumTerm: pkg.timeline
+        }))
     },
     learn: {
       guide: `${siteUrl}/guide`,

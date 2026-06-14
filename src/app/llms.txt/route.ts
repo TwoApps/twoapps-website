@@ -1,4 +1,4 @@
-import { blogPosts, industries, regions, services } from "@/content";
+import { blogPosts, glossaryTerms, industries, regions, services, solutions } from "@/content";
 import { BRAND_NAME } from "@/lib/brand";
 import { getSiteUrl } from "@/lib/site-config";
 
@@ -27,6 +27,19 @@ export async function GET() {
         `- [${service.title}](${siteUrl}${service.seo.canonicalPath}): ${service.tagline}`
     ),
     "",
+    "## Solutions",
+    "",
+    ...solutions.map(
+      (solution) =>
+        `- [${solution.title}](${siteUrl}${solution.seo.canonicalPath}): ${solution.shortAnswer}`
+    ),
+    "",
+    "## Glossary",
+    "",
+    ...glossaryTerms.map(
+      (term) => `- [${term.term}](${siteUrl}${term.seo.canonicalPath}): ${term.shortAnswer}`
+    ),
+    "",
     "## Industries",
     "",
     ...industries.map(
@@ -43,6 +56,8 @@ export async function GET() {
     `- [Australia microsite](${siteUrl}/au)`,
     `- [New Zealand microsite](${siteUrl}/nz)`,
     `- [Europe microsite](${siteUrl}/eu) — GDPR by design`,
+    `- [Eastern Europe microsite](${siteUrl}/ee) — white-label delivery`,
+    `- [Latin America microsite](${siteUrl}/latam) — white-label delivery`,
     "",
     "## Learn",
     "",

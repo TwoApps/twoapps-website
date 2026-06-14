@@ -1,6 +1,8 @@
+import { aboutFaq } from "@/content";
 import { buildMetadata, makeBreadcrumbSchema, organizationSchema } from "@/lib/seo";
 
 import { CtaBand } from "@/components/common/cta-band";
+import { FaqSection } from "@/components/common/faq-section";
 import { PageHero } from "@/components/common/page-hero";
 import { DetailPanelsSection } from "@/components/scenes/detail-panels-section";
 import { JsonLd } from "@/components/json-ld";
@@ -240,6 +242,8 @@ export default function AboutPage() {
           ]}
         />
       </div>
+
+      <FaqSection items={aboutFaq} title="About TwoApps — common questions" eyebrow="FAQ" />
 
       <div
         data-bot-stop="cta"

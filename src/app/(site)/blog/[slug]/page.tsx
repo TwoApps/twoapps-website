@@ -2,16 +2,21 @@ import { notFound } from "next/navigation";
 
 import { blogPosts, getBlogPostBySlug } from "@/content";
 import {
+  buildGraph,
   buildMetadata,
   makeArticleSchema,
   makeBreadcrumbSchema,
-  organizationSchema,
 } from "@/lib/seo";
+import { relatedFor } from "@/lib/related";
 
+import { AnswerBlock } from "@/components/aeo/answer-block";
+import { KeyTakeaways } from "@/components/aeo/key-takeaways";
 import { BlogCard } from "@/components/blog/blog-card";
 import { BlogContent } from "@/components/blog/blog-content";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { CtaBand } from "@/components/common/cta-band";
+import { FaqSection } from "@/components/common/faq-section";
+import { RelatedLinks } from "@/components/common/related-links";
 import { JsonLd } from "@/components/json-ld";
 import { ScrollBot } from "@/components/shared/scroll-bot";
 import { Container } from "@/components/ui/container";
@@ -30,7 +35,16 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
-  return buildMetadata(post.seo);
+  return buildMetadata({
+    ...post.seo,
+    ogType: "article",
+    article: {
+      publishedTime: post.datePublished,
+      modifiedTime: post.dateModified,
+      authorName: post.authorName,
+      tags: post.tags,
+    },
+  });
 }
 
 function formatDate(isoDate: string) {
@@ -74,8 +88,7 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <>
       <JsonLd
-        data={[
-          organizationSchema(),
+        data={buildGraph([
           makeBreadcrumbSchema(breadcrumbItems),
           makeArticleSchema({
             title: post.title,
@@ -85,9 +98,10 @@ export default async function BlogPostPage({ params }: Props) {
             datePublished: post.datePublished,
             dateModified: post.dateModified,
             image: post.coverImage,
+            keywords: post.seo.keywords,
             articleType: "BlogPosting",
           }),
-        ]}
+        ])}
       />
 
       <ScrollBot />
@@ -137,6 +151,16 @@ export default async function BlogPostPage({ params }: Props) {
                 <span>{post.estimatedReadTime}</span>
               </div>
             </div>
+
+            {post.tldr ? (
+              <AnswerBlock className="mt-8" question="In short">
+                {post.tldr}
+              </AnswerBlock>
+            ) : null}
+
+            {post.keyTakeaways && post.keyTakeaways.length > 0 ? (
+              <KeyTakeaways className="mt-8" items={post.keyTakeaways} />
+            ) : null}
           </Container>
         </Section>
       </div>
@@ -172,6 +196,21 @@ export default async function BlogPostPage({ params }: Props) {
           </Container>
         </Section>
       </div>
+
+      {post.faq && post.faq.length > 0 ? (
+        <Container className="max-w-3xl">
+          <FaqSection items={post.faq} subtitle="Quick answers to the questions readers ask most about this topic." />
+        </Container>
+      ) : null}
+
+      <Section className="py-8">
+        <Container className="max-w-3xl">
+          <RelatedLinks
+            items={post.relatedLinks ?? relatedFor(`/blog/${post.slug}`)}
+            title="Keep exploring"
+          />
+        </Container>
+      </Section>
 
       {relatedPosts.length > 0 ? (
         <div
