@@ -1,4 +1,5 @@
 import { HomeCta } from "./cta";
+import { HomeExplainer } from "./explainer";
 import { HomeHero } from "./hero";
 import { HomeMarquee } from "./marquee";
 import { HomeProcess } from "./process";
@@ -22,6 +23,7 @@ export function CinematicHomeExperience({
       <ScrollBot />
       <HomeHero bookingHref={bookingHref} />
       <HomeMarquee />
+      <HomeExplainer />
       <HomeStats />
       <HomeTracks />
       <HomeProcess />
